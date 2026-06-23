@@ -5,6 +5,7 @@ import {
   Check,
   Plus,
   Minus,
+  ChevronDown,
   Star,
   Play,
   Sparkles,
