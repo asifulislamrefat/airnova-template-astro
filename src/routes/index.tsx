@@ -869,8 +869,8 @@ function Cta() {
               CTA
             </span>
           </div>
-          <h2 className="max-w-[640px] text-[clamp(36px,5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-white">
-            Create a <span className={`${serif} text-white/50`}>brand that stands</span>{" "}
+          <h2 className="max-w-[720px] text-[clamp(36px,5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-white">
+            Create a <span className={`${serif} text-white/50 whitespace-nowrap`}>brand that stands</span>{" "}
             the test of time
           </h2>
           <p className="max-w-[665px] text-base font-medium leading-[1.5] tracking-[-0.075em] text-white">
