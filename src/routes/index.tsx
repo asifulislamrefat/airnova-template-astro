@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowUpRight,
   Check,
@@ -12,6 +12,13 @@ import {
   Lightbulb,
   PenTool,
 } from "lucide-react";
+import hero1 from "@/assets/hero-1.png.asset.json";
+import hero2 from "@/assets/hero-2.png.asset.json";
+import hero3 from "@/assets/hero-3.png.asset.json";
+import brandLogo1 from "@/assets/brand-logo-1.png.asset.json";
+import brandLogo2 from "@/assets/brand-logo-2.png.asset.json";
+import brandLogo3 from "@/assets/brand-logo-3.png.asset.json";
+import brandLogo4 from "@/assets/brand-logo-4.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -96,64 +103,146 @@ function Nav() {
   );
 }
 
+const heroImages = [hero1.url, hero2.url, hero3.url];
+const brandLogos = [brandLogo2, brandLogo3, brandLogo4, brandLogo1];
+
 function Hero() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActive((i) => (i + 1) % heroImages.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
-    <section className="bg-surface px-6 pb-20 pt-8 lg:px-20">
-      <div className="mx-auto grid max-w-[1280px] gap-8 lg:grid-cols-[735fr_513fr]">
-        {/* Left card */}
-        <div className="flex h-full flex-col justify-between rounded-[20px] bg-background p-8">
-          <div className="flex flex-col gap-8 pt-8">
-            <div className="flex items-center gap-4">
-              <div className="flex gap-1">
+    <section
+      className="bg-surface"
+      style={{ padding: "64px 80px 80px" }}
+    >
+      <div className="mx-auto flex max-w-[1280px] items-start gap-8">
+        {/* Left card — 735 × 750 */}
+        <div className="flex h-[750px] w-[735px] shrink-0 flex-col items-center justify-between overflow-hidden rounded-[20px] bg-background p-8">
+          {/* Text container — 671 × 457 */}
+          <div className="flex h-[457px] w-[671px] flex-col justify-center gap-4">
+            {/* Rating */}
+            <div className="flex items-center gap-[17px]">
+              <div className="flex">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="size-6 fill-foreground text-foreground" />
+                  <Star
+                    key={i}
+                    className="size-[26px] fill-foreground text-foreground"
+                    strokeWidth={0}
+                  />
                 ))}
               </div>
-              <span className="text-base font-medium">Rated 4.9/5</span>
+              <span className="text-[16px] font-medium leading-[1.5] tracking-[-0.0075em] text-foreground">
+                Rated 4.9/5
+              </span>
             </div>
-            <h1 className="text-[clamp(48px,7vw,80px)] font-semibold leading-[1.05] tracking-[-0.065em] text-foreground">
-              Creative <span className={`${serif} text-foreground/40`}>designer &amp; digital</span> experience.
-            </h1>
-            <p className="max-w-[535px] text-base font-medium leading-[1.5] text-muted-foreground">
-              I create modern and visually compelling digital experiences that help brands stand
-              out. From user-focused UI/UX design to clean and responsive web interfaces my goal is
-              to transform.
-            </p>
-            <div className="flex flex-wrap items-center gap-6">
-              <a
-                href="#contact"
-                className="inline-flex h-12 items-center justify-center rounded-full bg-foreground px-6 text-base font-medium text-background shadow-[0_4px_2px_rgba(0,0,0,0.16)] transition hover:bg-foreground/90"
-              >
-                Get in touch
-              </a>
-              <a href="#services" className="inline-flex items-center gap-2 text-base font-medium">
-                What we do <ArrowUpRight className="size-5" />
-              </a>
+
+            {/* Quote */}
+            <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-4">
+                <h1
+                  className="w-[660px] font-semibold tracking-[-0.065em] text-black"
+                  style={{ fontSize: "80px", lineHeight: 1.2 }}
+                >
+                  Creative{" "}
+                  <span className={`${serif} text-black/40`}>
+                    designer &amp; digital
+                  </span>{" "}
+                  experience.
+                </h1>
+                <p
+                  className="w-[535px] font-medium leading-[1.5] tracking-[-0.0075em]"
+                  style={{ color: "#515151", fontSize: "16px" }}
+                >
+                  I create modern and visually compelling digital experiences that
+                  help brands stand out. From user-focused UI/UX design to clean
+                  and responsive web interfaces my goal is to transform.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-6">
+                <a
+                  href="#contact"
+                  className="inline-flex h-12 items-center justify-center rounded-full px-6 text-[16px] font-medium tracking-[-0.0075em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)]"
+                  style={{ background: "#070606" }}
+                >
+                  Get in touch
+                </a>
+                <a
+                  href="#services"
+                  className="inline-flex items-center gap-2 text-[16px] font-medium tracking-[-0.0075em] text-black underline decoration-from-font underline-offset-[3px]"
+                >
+                  What we do
+                  <ArrowUpRight className="size-6" strokeWidth={1.75} />
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Logo strip */}
-          <div className="mt-12 grid grid-cols-4 gap-px overflow-hidden rounded-2xl bg-black/5">
-            {["/2027", "/2027", "/2027", "/2027"].map((label, i) => (
+          {/* Logo strip — 4 × 164 squares with 5px gap */}
+          <div className="flex items-start gap-[5px]">
+            {brandLogos.map((logo, i) => (
               <div
                 key={i}
-                className="flex aspect-square flex-col items-center justify-center gap-2 bg-background"
+                className="relative flex size-[164px] flex-col items-center justify-center overflow-hidden rounded-[12.336px] bg-surface"
               >
-                <div className={`${serif} text-2xl font-semibold text-foreground/80`}>brand</div>
-                <span className="text-[11px] tracking-wider text-foreground/60">{label}</span>
+                <img
+                  src={logo.url}
+                  alt=""
+                  className="max-h-[50px] w-auto max-w-[100px] object-contain"
+                />
+                <span
+                  className="absolute font-semibold tracking-[-0.055em]"
+                  style={{
+                    color: "#282828",
+                    fontSize: "8px",
+                    lineHeight: 1.4,
+                    left: "50%",
+                    bottom: "10px",
+                    transform: "translateX(-50%)",
+                  }}
+                >
+                  /2027
+                </span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Right portrait */}
-        <div
-          className="min-h-[500px] overflow-hidden rounded-[20px] bg-cover bg-center lg:min-h-[750px]"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1200&q=80')",
-          }}
-        />
+        {/* Right image slider — flex-1, 750h */}
+        <div className="relative h-[750px] min-w-0 flex-1 overflow-hidden rounded-[20px] bg-black/5">
+          {heroImages.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              alt=""
+              className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ${
+                i === active ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          ))}
+
+          {/* Progress bar — 3 segments, 142 wide, ~30px from bottom */}
+          <div className="absolute bottom-[30px] left-1/2 flex w-[142px] -translate-x-1/2 items-center gap-2">
+            {heroImages.map((_, i) => (
+              <span
+                key={i}
+                className="h-[5.775px] rounded-full transition-all duration-500"
+                style={{
+                  flex: i === active ? "0 0 67.3px" : "1 1 0",
+                  background:
+                    i === active ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.25)",
+                  backdropFilter: i === active ? "blur(16px)" : undefined,
+                }}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
