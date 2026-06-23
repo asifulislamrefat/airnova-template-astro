@@ -500,22 +500,28 @@ function Projects() {
             innovation. Each project reflects our commitment to delivering .
           </p>
         </div>
-        <div className="mt-16 grid gap-8 md:grid-cols-2">
+        <div className="mt-16 grid gap-2 md:grid-cols-2">
           {items.map((p, i) => (
-            <article key={p.title} className="flex flex-col gap-4">
+            <article key={p.title} className="flex flex-col gap-2">
               <div className="overflow-hidden rounded-[20px] bg-black/5">
                 <img
                   src={projectImages[i]}
                   alt={p.title}
-                  className="aspect-[636/500] w-full object-cover transition duration-700 hover:scale-105"
+                  className="h-[500px] w-full object-cover transition duration-700 hover:scale-105"
                 />
               </div>
-              <div className="flex items-end justify-between gap-4 px-2">
-                <div>
-                  <h3 className="text-2xl font-semibold tracking-[-0.02em]">{p.title}</h3>
-                  <p className="mt-1 text-base text-muted-foreground">2026 — 32</p>
+              <div className="flex items-center justify-between gap-16 rounded-[10px] bg-[#f5f5f5] px-6 py-2">
+                <div className="flex min-w-0 flex-1 flex-col gap-2">
+                  <h3 className="text-[24px] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+                    {p.title}
+                  </h3>
+                  <p className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                    2026 — 32
+                  </p>
                 </div>
-                <span className="text-base font-medium text-muted-foreground">{p.tag}</span>
+                <span className="whitespace-nowrap text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                  {p.tag}
+                </span>
               </div>
             </article>
           ))}
