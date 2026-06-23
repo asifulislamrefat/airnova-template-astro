@@ -533,31 +533,36 @@ function Stats() {
     { v: "15+", l: "Design Experience" },
   ];
   return (
-    <section id="studio" className="bg-surface px-6 py-28 lg:px-20">
-      <div className="mx-auto max-w-[1280px]">
-        <div className="mx-auto max-w-4xl text-center">
+    <section id="studio" className="bg-[#f5f5f5] p-[30px]">
+      <div className="flex w-full flex-col gap-8">
+        <div className="flex flex-col items-center gap-[10px]">
           <Pill>About us</Pill>
-          <p className="mt-6 text-[clamp(28px,3.5vw,44px)] font-semibold leading-[1.2] tracking-[-0.03em]">
-            We are a creative design team dedicated to crafting modern and{" "}
-            <span className={`${serif} text-foreground/40`}>meaningful digital experiences.</span> Our
-            focus is on combining creativity strategy and user-centered design to deliver visually
-            compelling and highly functional solutions.
+          <p className="max-w-[1075px] text-center text-[clamp(28px,3vw,40px)] font-semibold leading-[1.3] tracking-[-0.065em] text-black">
+            We are a creative design team dedicated to crafting modern and meaningful digital experiences.{" "}
+            <span className="text-black/50">
+              Our focus is on combining creativity strategy and user-centered design to deliver visually
+              compelling and highly functional solutions.
+            </span>
           </p>
         </div>
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-[20px] bg-black/10 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.l} className="flex flex-col justify-between bg-surface p-6">
-              <div>
-                <div className="text-[56px] font-semibold leading-none tracking-[-0.04em]">{s.v}</div>
-                <div className="mt-4 h-px w-full bg-black/10" />
+            <div key={s.l} className="flex flex-1 flex-col gap-16 rounded-[20px] bg-white p-6">
+              <div className="flex flex-col gap-8">
+                <div className="text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+                  {s.v}
+                </div>
+                <div className="h-px w-full bg-black/10" />
               </div>
-              <div className="mt-16 text-base text-muted-foreground">{s.l}</div>
+              <div className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                {s.l}
+              </div>
             </div>
           ))}
         </div>
 
-        <div className="relative mt-12 overflow-hidden rounded-[20px]">
+        <div className="relative overflow-hidden rounded-[20px]">
           <img
             src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1600&q=80"
             alt="Showreel"
