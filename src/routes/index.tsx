@@ -47,10 +47,11 @@ const serif = "font-serif italic";
 function BrandMark({ size = 38, dark = true }: { size?: number; dark?: boolean }) {
   return (
     <span
-      className="inline-flex items-center justify-center rounded-[7.6px] shadow-sm"
+      className="inline-flex items-center justify-center shadow-sm"
       style={{
         width: size,
         height: size,
+        borderRadius: size * 0.2,
         background: dark ? "var(--foreground)" : "var(--surface)",
       }}
     >
@@ -72,9 +73,11 @@ function Logo({ light = false }: { light?: boolean }) {
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-flex items-center gap-2 rounded-lg bg-white/70 px-3 py-2 ring-1 ring-black/5">
+    <div className="inline-flex items-center gap-[10px] rounded-lg bg-white px-[14px] py-2">
       <BrandMark size={24} />
-      <span className="text-sm font-medium text-foreground">{children}</span>
+      <span className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-black">
+        {children}
+      </span>
     </div>
   );
 }
