@@ -336,7 +336,11 @@ function BenefitsAccordion() {
         return (
           <div
             key={item.title}
-            className={`${isOpen ? "rounded-[20px] bg-surface p-6" : "border-b border-black/[0.28] px-6 pb-6"}`}
+            className={`rounded-[20px] px-6 transition-[background-color,padding,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              isOpen
+                ? "border border-transparent bg-surface pt-6 pb-6"
+                : "border-b border-black/[0.28] pt-0 pb-6 rounded-none"
+            }`}
           >
             <button
               type="button"
@@ -348,20 +352,26 @@ function BenefitsAccordion() {
                 <span className={`${serif} italic text-black/40`}>{item.accent}</span>
               </span>
               <span
-                className={`grid size-8 shrink-0 place-items-center rounded-2xl border border-black/10 transition ${
+                className={`grid size-8 shrink-0 place-items-center rounded-2xl border border-black/10 transition-colors duration-300 ${
                   isOpen ? "bg-white" : "bg-surface"
                 }`}
               >
                 <ChevronDown
-                  className={`size-4 text-black transition-transform ${isOpen ? "rotate-180" : ""}`}
+                  className={`size-4 text-black transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    isOpen ? "rotate-180" : ""
+                  }`}
                 />
               </span>
             </button>
-            {isOpen && (
-              <p className="mt-4 text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+            <div
+              className={`grid transition-[grid-template-rows,opacity,margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                isOpen ? "mt-4 grid-rows-[1fr] opacity-100" : "mt-0 grid-rows-[0fr] opacity-0"
+              }`}
+            >
+              <p className="overflow-hidden text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                 {item.desc}
               </p>
-            )}
+            </div>
           </div>
         );
       })}
