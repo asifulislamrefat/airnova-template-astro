@@ -860,8 +860,8 @@ function Faq() {
 
 function Cta() {
   return (
-    <section className="bg-white px-6 py-28 lg:px-20">
-      <div className="mx-auto flex max-w-[1380px] flex-col items-center justify-center gap-8 rounded-[20px] bg-[#070606] px-6 py-28 text-center">
+    <section className="bg-white p-[30px]">
+      <div className="flex w-full flex-col items-center justify-center gap-8 rounded-[20px] bg-[#070606] px-6 py-28 text-center">
         <div className="flex flex-col items-center gap-4">
           <div className="inline-flex items-center justify-center gap-[10px] rounded-lg bg-white/[0.04] px-[14px] py-2">
             <BrandMark size={24} dark={false} />
