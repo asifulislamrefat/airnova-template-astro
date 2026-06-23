@@ -12,6 +12,7 @@ import {
   Palette,
   Lightbulb,
   PenTool,
+  Gift,
 } from "lucide-react";
 import hero1 from "@/assets/hero-1.png.asset.json";
 import hero2 from "@/assets/hero-2.png.asset.json";
