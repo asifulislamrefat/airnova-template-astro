@@ -341,49 +341,74 @@ function Benefits() {
 }
 
 function Services() {
+  const stroke = "#FF2626";
   const items = [
     {
-      icon: PenTool,
       title: "Brand Identity Design",
       desc: "Designing logos color schemes and visuals that reflect your brand.",
+      icon: (
+        <svg viewBox="0 0 56 56" fill="none" className="size-14">
+          <path d="M23.3342 17.5001C23.3342 15.531 23.1395 13.2583 25.0842 12.1356C25.8962 11.6667 26.9865 11.6667 29.1675 11.6667H31.5008C33.6816 11.6667 34.7719 11.6667 35.5842 12.1356C37.5285 13.2583 37.3342 15.531 37.3342 17.5001C37.3342 19.4691 37.5285 21.7418 35.5842 22.8645C34.7719 23.3334 33.6816 23.3334 31.5008 23.3334H29.1675C26.9865 23.3334 25.8962 23.3334 25.0842 22.8645C23.1395 21.7418 23.3342 19.4691 23.3342 17.5001Z" stroke={stroke} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M9.33415 38.5001C9.33415 36.531 9.13963 34.2583 11.0842 33.1357C11.8963 32.6667 12.9867 32.6667 15.1675 32.6667H31.5009C33.6816 32.6667 34.772 32.6667 35.5842 33.1357C37.5286 34.2583 37.3342 36.531 37.3342 38.5001C37.3342 40.4692 37.5286 42.7418 35.5842 43.8644C34.772 44.3334 33.6816 44.3334 31.5009 44.3334H15.1675C12.9867 44.3334 11.8963 44.3334 11.0842 43.8644C9.13963 42.7418 9.33415 40.4692 9.33415 38.5001Z" stroke={stroke} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M46.6666 4.66672V51.3334" stroke={stroke} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ),
     },
     {
-      icon: Lightbulb,
       title: "Creative Consulting",
       desc: "Providing guidance to improve design strategy and digital presence.",
+      icon: (
+        <svg viewBox="0 0 56 56" fill="none" className="size-14">
+          <path d="M11.6667 39.6667H4.66667M44.3333 39.6667H51.3333" stroke={stroke} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M18.6721 16.3333C18.6721 14.3643 18.4775 12.0916 20.4221 10.9689C21.2342 10.5 22.3246 10.5 24.5054 10.5H31.5054C33.6861 10.5 34.7765 10.5 35.5887 10.9689C37.5333 12.0916 37.3387 14.3643 37.3387 16.3333C37.3387 18.3024 37.5333 20.5751 35.5887 21.6978C34.7765 22.1667 33.6861 22.1667 31.5054 22.1667H24.5054C22.3246 22.1667 21.2342 22.1667 20.4221 21.6978C18.4775 20.5751 18.6721 18.3024 18.6721 16.3333Z" stroke={stroke} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M11.6721 39.6667C11.6721 37.6976 11.4775 35.4249 13.4221 34.3023C14.2342 33.8333 15.3246 33.8333 17.5054 33.8333H38.5054C40.6861 33.8333 41.7765 33.8333 42.5887 34.3023C44.5333 35.4249 44.3387 37.6976 44.3387 39.6667C44.3387 41.6358 44.5333 43.9084 42.5887 45.031C41.7765 45.5 40.6861 45.5 38.5054 45.5H17.5054C15.3246 45.5 14.2342 45.5 13.4221 45.031C11.4775 43.9084 11.6721 41.6358 11.6721 39.6667Z" stroke={stroke} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M18.6667 16.3333H4.66667M37.3333 16.3333H51.3333" stroke={stroke} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ),
     },
     {
-      icon: Palette,
       title: "Prototype & Wireframing",
       desc: "Building interactive prototypes to visualize your digital products.",
+      icon: (
+        <svg viewBox="0 0 56 56" fill="none" className="size-14">
+          <path d="M16.3333 11.6667V4.66667M16.3333 44.3333V51.3333" stroke={stroke} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M39.6667 18.6721C41.6358 18.6721 43.9084 18.4775 45.031 20.4221C45.5 21.2342 45.5 22.3246 45.5 24.5054V31.5054C45.5 33.6861 45.5 34.7765 45.031 35.5887C43.9084 37.5333 41.6358 37.3387 39.6667 37.3387C37.6976 37.3387 35.4249 37.5333 34.3023 35.5887C33.8333 34.7765 33.8333 33.6861 33.8333 31.5054V24.5054C33.8333 22.3246 33.8333 21.2342 34.3023 20.4221C35.4249 18.4775 37.6976 18.6721 39.6667 18.6721Z" stroke={stroke} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M16.3333 11.6721C18.3024 11.6721 20.5751 11.4775 21.6978 13.4221C22.1667 14.2342 22.1667 15.3246 22.1667 17.5054V38.5054C22.1667 40.6861 22.1667 41.7765 21.6978 42.5887C20.5751 44.5333 18.3024 44.3387 16.3333 44.3387C14.3643 44.3387 12.0916 44.5333 10.9689 42.5887C10.5 41.7765 10.5 40.6861 10.5 38.5054V17.5054C10.5 15.3246 10.5 14.2342 10.9689 13.4221C12.0916 11.4775 14.3643 11.6721 16.3333 11.6721Z" stroke={stroke} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M39.6667 18.6667V4.66667M39.6667 37.3333V51.3333" stroke={stroke} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ),
     },
   ];
   return (
-    <section id="services" className="bg-surface px-6 py-28 lg:px-20">
-      <div className="mx-auto max-w-[1280px]">
-        <div className="mx-auto max-w-3xl text-center">
+    <section id="services" className="bg-surface px-20 py-28">
+      <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-16">
+        <div className="flex flex-col items-center gap-2">
           <Pill>Our Services</Pill>
-          <h2 className="mt-4 text-[clamp(40px,5.5vw,64px)] font-semibold leading-[1.1] tracking-[-0.04em]">
-            Design solutions that make your <span className={`${serif} text-foreground/40`}>brand stand</span>
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground">
-            We create thoughtful and visually compelling design solutions that help your brand stand
-            out in a competitive digital world. By combining creativity with strategy our designs
-          </p>
+          <div className="flex flex-col items-center gap-4 text-center">
+            <h2 className="w-[864px] max-w-full text-[72px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
+              Design solutions that make your{" "}
+              <span className={`${serif} italic text-black/40`}>brand stand</span>
+            </h2>
+            <p className="w-[605px] max-w-full text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+              We create thoughtful and visually compelling design solutions that help your brand
+              stand out in a competitive digital world. By combining creativity with strategy our
+              designs
+            </p>
+          </div>
         </div>
 
-        <div className="mt-16 grid gap-2 md:grid-cols-3">
-          {items.map(({ icon: Icon, title, desc }) => (
+        <div className="grid w-full grid-cols-1 gap-2 md:grid-cols-3">
+          {items.map(({ icon, title, desc }) => (
             <div
               key={title}
-              className="group flex flex-col gap-12 rounded-[20px] bg-background p-8 transition hover:bg-foreground hover:text-background"
+              className="flex flex-col items-start gap-16 rounded-[20px] bg-white p-8"
             >
-              <span className="grid size-14 place-items-center rounded-2xl bg-surface text-foreground group-hover:bg-white/10 group-hover:text-background">
-                <Icon className="size-6" />
-              </span>
-              <div>
-                <h3 className="text-2xl font-semibold tracking-[-0.02em]">{title}</h3>
-                <p className="mt-3 text-base text-muted-foreground group-hover:text-background/70">
+              {icon}
+              <div className="flex w-full flex-col gap-2">
+                <h3 className="text-[28px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
+                  {title}
+                </h3>
+                <p className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                   {desc}
                 </p>
               </div>
