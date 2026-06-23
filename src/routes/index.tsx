@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowUpRight,
   Check,
@@ -12,6 +12,13 @@ import {
   Lightbulb,
   PenTool,
 } from "lucide-react";
+import hero1 from "@/assets/hero-1.png.asset.json";
+import hero2 from "@/assets/hero-2.png.asset.json";
+import hero3 from "@/assets/hero-3.png.asset.json";
+import brandLogo1 from "@/assets/brand-logo-1.png.asset.json";
+import brandLogo2 from "@/assets/brand-logo-2.png.asset.json";
+import brandLogo3 from "@/assets/brand-logo-3.png.asset.json";
+import brandLogo4 from "@/assets/brand-logo-4.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
