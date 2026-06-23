@@ -270,7 +270,7 @@ function Benefits() {
               className="absolute inset-0 size-full object-cover"
             />
             <span className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-[20px] bg-white px-4 py-2">
-              <BrandMark size={16} />
+              <Gift size={16} strokeWidth={1.25} className="text-[#FF2626]" />
               <span className="text-[14px] font-medium leading-[1.5] tracking-[-0.075em] text-[#070606]">
                 February Sale
               </span>
