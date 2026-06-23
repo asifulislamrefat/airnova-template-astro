@@ -488,8 +488,8 @@ function Projects() {
     { title: "Aurex Digital Platform", tag: "Creative Design" },
   ];
   return (
-    <section id="projects" className="bg-background px-6 py-28 lg:px-20">
-      <div className="mx-auto max-w-[1320px] rounded-[24px] bg-surface px-6 py-20 lg:px-16">
+    <section id="projects" className="bg-background p-[30px]">
+      <div className="w-full rounded-[24px] bg-surface px-6 py-20 lg:px-16">
         <div className="mx-auto max-w-3xl text-center">
           <Pill>Our Project</Pill>
           <h2 className="mt-4 text-[clamp(40px,5.5vw,64px)] font-semibold leading-[1.1] tracking-[-0.04em]">
