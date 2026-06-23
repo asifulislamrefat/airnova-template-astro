@@ -260,52 +260,65 @@ function Hero() {
 
 function Benefits() {
   return (
-    <section className="bg-background px-6 py-28 lg:px-20">
-      <div className="mx-auto grid max-w-[1280px] gap-16 lg:grid-cols-[567fr_649fr]">
-        <div className="flex flex-col gap-8">
-          <div className="relative overflow-hidden rounded-[20px]">
+    <section className="bg-white px-20 py-28">
+      <div className="mx-auto flex max-w-[1280px] items-start gap-16">
+        <div className="flex flex-1 flex-col gap-8 self-stretch">
+          <div className="relative h-[399px] w-full overflow-hidden rounded-[20px]">
             <img
               src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1000&q=80"
               alt="Working on design"
-              className="aspect-[567/399] w-full object-cover"
+              className="absolute inset-0 size-full object-cover"
             />
-            <span className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-lg bg-white/90 px-3 py-2 text-sm font-medium backdrop-blur">
-              <Sparkles className="size-4 text-[var(--brand)]" /> February Sale
+            <span className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-[20px] bg-white px-4 py-2">
+              <BrandMark size={16} />
+              <span className="text-[14px] font-medium leading-[1.5] tracking-[-0.075em] text-[#070606]">
+                February Sale
+              </span>
             </span>
           </div>
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-3">
-              <BrandMark size={24} />
-              <span className="text-sm font-medium tracking-wide">ESR — 2029</span>
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-6">
+              <div className="flex items-center gap-[14px]">
+                <BrandMark size={24} />
+                <p className="text-[20px] font-medium leading-[1.5] tracking-[-0.075em] text-black">
+                  <span className="text-[#FF2626]">ESR</span> - 2029
+                </p>
+              </div>
+              <p className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                An engaging user experience ensures that visitors can interact with your website
+                easily and enjoyably. With intuitive navigation
+              </p>
             </div>
-            <p className="text-base text-muted-foreground">
-              An engaging user experience ensures that visitors can interact with your website
-              easily and enjoyably. With intuitive navigation
-            </p>
-            <h3 className="text-[32px] font-semibold leading-[1.2] tracking-[-0.04em]">
-              Engaging <span className={`${serif} text-foreground/40`}>User Experience</span>
-            </h3>
-            <a
-              href="#contact"
-              className="mt-2 inline-flex h-12 w-fit items-center gap-3 rounded-full bg-foreground px-6 text-base font-medium text-background"
-            >
-              Join Now! <ArrowUpRight className="size-5" />
-            </a>
+            <div className="flex flex-col gap-8">
+              <h3 className="whitespace-nowrap text-[32px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
+                Engaging User Experience
+              </h3>
+              <a
+                href="#contact"
+                className="inline-flex h-12 w-[271px] items-center justify-center gap-[10px] rounded-[80px] bg-[#070606] px-6 py-4 text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)]"
+              >
+                <span className="flex-1">Join Now!</span>
+                <ArrowUpRight className="size-6" />
+              </a>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-12">
-          <div>
-            <h2 className="text-[clamp(40px,5.5vw,64px)] font-semibold leading-[1.1] tracking-[-0.04em]">
-              Explore our <span className={`${serif} text-foreground/40`}>flexible</span> of activity.
+        <div className="flex w-[649px] shrink-0 flex-col items-start justify-between self-stretch">
+          <div className="flex w-full flex-col gap-12">
+            <h2 className="w-[611px] text-[72px] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+              Explore our{" "}
+              <span className={`${serif} italic text-black/40`}>flexible of</span> activity.
             </h2>
-            <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+            <div className="flex flex-wrap items-start gap-x-8 gap-y-3">
               {["High-quality visual elements", "Flexible Design System"].map((t) => (
-                <span key={t} className="inline-flex items-center gap-2 text-base font-medium">
-                  <span className="grid size-8 place-items-center rounded-full bg-foreground text-background">
-                    <Check className="size-4" />
+                <span key={t} className="inline-flex items-center gap-3">
+                  <span className="grid size-8 place-items-center rounded-2xl border-[0.5px] border-black/10 bg-surface">
+                    <Check className="size-[15px] text-[#070606]" />
                   </span>
-                  {t}
+                  <span className="whitespace-nowrap text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#070606]">
+                    {t}
+                  </span>
                 </span>
               ))}
             </div>
