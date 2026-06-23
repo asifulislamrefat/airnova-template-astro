@@ -582,68 +582,85 @@ function Stats() {
 
 function Solution() {
   return (
-    <section className="bg-background px-6 py-28 lg:px-20">
-      <div className="mx-auto max-w-[1280px]">
-        <h2 className="mx-auto max-w-4xl text-center text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.15] tracking-[-0.035em]">
-          Crafting unique strategies that turn{" "}
-          <span className={`${serif} text-foreground/40`}>visions into powerful results</span>
+    <section className="bg-white px-6 py-28 lg:px-20">
+      <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-16">
+        <h2 className="max-w-[873px] text-center text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+          Crafting unique strategies that turn visions into powerful results
         </h2>
 
-        <div className="mt-16 grid gap-2 lg:grid-cols-[366fr_532fr_366fr]">
-          {/* Left card */}
-          <div className="flex flex-col justify-between rounded-[20px] bg-surface p-8 min-h-[500px]">
+        <div className="grid w-full gap-2 lg:grid-cols-[1fr_532fr_1fr]">
+          {/* Left card — dark */}
+          <div className="flex min-h-[500px] flex-col justify-between rounded-[20px] bg-[#070606] p-8">
             <div className="flex items-start justify-between">
-              <div className="h-24 w-36 overflow-hidden rounded-xl bg-black/10">
+              <div className="h-[100px] w-[150px] overflow-hidden rounded-[20px]">
                 <img
                   src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=400&q=80"
                   alt="Market research"
                   className="size-full object-cover"
                 />
               </div>
-              <Plus className="size-6 text-foreground/60" />
+              <Plus className="size-6 text-white/70" strokeWidth={1.5} />
             </div>
-            <div>
-              <h3 className="text-2xl font-semibold tracking-[-0.02em]">Market research</h3>
-              <p className="mt-3 text-base text-muted-foreground">
+            <div className="flex flex-col gap-2">
+              <h3 className="text-[20px] font-semibold leading-[1.5] tracking-[-0.075em] text-white">
+                Market research
+              </h3>
+              <p className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-white/[0.62]">
                 We work closely to turn your goals into digital experiences that combine strategy
                 design and technology.
               </p>
             </div>
           </div>
 
-          {/* Center image */}
-          <div className="overflow-hidden rounded-[20px] bg-black/10 min-h-[500px]">
+          {/* Center image with overlay */}
+          <div className="relative flex min-h-[500px] flex-col justify-between overflow-hidden rounded-[20px] p-8">
             <img
               src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1200&q=80"
-              alt="Solution"
-              className="size-full object-cover"
+              alt="Our strategy meets bold creativity"
+              className="absolute inset-0 size-full object-cover"
             />
-          </div>
-
-          {/* Right card */}
-          <div className="flex flex-col justify-between rounded-[20px] bg-foreground p-8 text-background min-h-[500px]">
-            <div>
-              <div className="flex items-start justify-between">
-                <div className="text-[56px] font-semibold leading-none tracking-[-0.04em]">100%</div>
-                <Plus className="size-6 text-background/60" />
-              </div>
-              <div className="mt-4 text-2xl font-semibold">Satisfied client</div>
-              <p className="mt-3 text-base text-background/70">
-                A seamless process with a polished fast and easy-to-manage result
+            <div className="absolute inset-0 bg-black/40" />
+            <div className="relative flex justify-end">
+              <Plus className="size-6 text-white" strokeWidth={1.5} />
+            </div>
+            <div className="relative flex flex-col gap-6">
+              <span className="grid size-14 place-items-center rounded-full bg-white">
+                <Play className="size-4 fill-[#070606] text-[#070606]" />
+              </span>
+              <p className="max-w-[281px] text-[32px] font-semibold leading-[1.2] tracking-[-0.065em] text-white">
+                Our strategy meets bold creativity
               </p>
             </div>
-            <div className="flex -space-x-3">
+          </div>
+
+          {/* Right card — light */}
+          <div className="flex min-h-[500px] flex-col justify-between rounded-[20px] bg-[#f5f5f5] p-8">
+            <div className="flex items-start justify-between">
+              <div className="flex flex-col gap-2">
+                <p className="text-[56px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
+                  100%
+                </p>
+                <p className="text-[20px] font-medium leading-[1.5] tracking-[-0.075em] text-[#070606]">
+                  Satisfied client
+                </p>
+                <p className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                  A seamless process with a polished fast and easy-to-manage result
+                </p>
+              </div>
+              <Plus className="size-6 shrink-0 text-[#070606]/70" strokeWidth={1.5} />
+            </div>
+            <div className="flex -space-x-5">
               {[
-                "https://i.pravatar.cc/100?img=12",
-                "https://i.pravatar.cc/100?img=32",
-                "https://i.pravatar.cc/100?img=47",
-                "https://i.pravatar.cc/100?img=58",
+                "https://i.pravatar.cc/120?img=12",
+                "https://i.pravatar.cc/120?img=32",
+                "https://i.pravatar.cc/120?img=47",
+                "https://i.pravatar.cc/120?img=58",
               ].map((src) => (
                 <img
                   key={src}
                   src={src}
                   alt=""
-                  className="size-14 rounded-full ring-2 ring-foreground"
+                  className="size-14 rounded-full border-2 border-white object-cover"
                 />
               ))}
             </div>
