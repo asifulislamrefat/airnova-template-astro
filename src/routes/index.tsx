@@ -310,42 +310,61 @@ function Benefits() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-[20px] bg-surface">
-            <div className="border-b border-black/5 p-8">
-              <div className="flex items-start justify-between gap-6">
-                <h4 className="text-[32px] font-semibold leading-[1.15] tracking-[-0.03em]">
-                  Responsive <span className={`${serif} text-foreground/40`}>for All Devices</span>
-                </h4>
-                <span className="grid size-8 shrink-0 place-items-center rounded-full bg-foreground text-background">
-                  <ArrowUpRight className="size-4" />
-                </span>
-              </div>
-              <p className="mt-4 text-base text-muted-foreground">
-                Your website will look and perform perfectly on every device including desktops
-                tablets and smartphones. The design adapts smoothly to different screen sizes
-              </p>
-            </div>
-            {[
-              "Conversion-Focused Design",
-              "Brand Identity Design",
-            ].map((t) => (
-              <div
-                key={t}
-                className="flex items-center justify-between gap-6 border-b border-black/5 px-8 py-6 last:border-b-0"
-              >
-                <h4 className="text-[28px] font-semibold tracking-[-0.03em]">
-                  {t.split(" ")[0]}{" "}
-                  <span className={`${serif} text-foreground/40`}>{t.split(" ").slice(1).join(" ")}</span>
-                </h4>
-                <span className="grid size-8 shrink-0 place-items-center rounded-full bg-foreground text-background">
-                  <ArrowUpRight className="size-4" />
-                </span>
-              </div>
-            ))}
-          </div>
+          <BenefitsAccordion />
         </div>
       </div>
     </section>
+  );
+}
+
+function BenefitsAccordion() {
+  const accordionItems = [
+    {
+      title: "Responsive",
+      accent: "for All Devices",
+      desc: "Your website will look and perform perfectly on every device including desktops tablets and smartphones. The design adapts smoothly to different screen sizes",
+    },
+    { title: "Conversion-Focused", accent: "Design", desc: "Crafted with conversion in mind — every section, button, and flow is designed to turn visitors into customers." },
+    { title: "Brand Identity", accent: "Design", desc: "A cohesive visual identity built from logos, color, and type that reflects your brand at every touchpoint." },
+  ];
+  const [open, setOpen] = useState(0);
+  return (
+    <div className="flex flex-col gap-8">
+      {accordionItems.map((item, i) => {
+        const isOpen = open === i;
+        return (
+          <div
+            key={item.title}
+            className={`${isOpen ? "rounded-[20px] bg-surface p-6" : "border-b border-black/[0.28] px-6 pb-6"}`}
+          >
+            <button
+              type="button"
+              onClick={() => setOpen(isOpen ? -1 : i)}
+              className="flex w-full items-center gap-16 text-left"
+            >
+              <span className="flex-1 text-[28px] font-semibold leading-[1.5] tracking-[-0.075em] text-[#070606]">
+                {item.title}{" "}
+                <span className={`${serif} italic text-black/40`}>{item.accent}</span>
+              </span>
+              <span
+                className={`grid size-8 shrink-0 place-items-center rounded-2xl border border-black/10 transition ${
+                  isOpen ? "bg-white" : "bg-surface"
+                }`}
+              >
+                <ChevronDown
+                  className={`size-4 text-black transition-transform ${isOpen ? "rotate-180" : ""}`}
+                />
+              </span>
+            </button>
+            {isOpen && (
+              <p className="mt-4 text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                {item.desc}
+              </p>
+            )}
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
