@@ -787,41 +787,55 @@ const faqs = [
 function Faq() {
   const [open, setOpen] = useState(0);
   return (
-    <section className="bg-background px-6 py-28 lg:px-20">
-      <div className="mx-auto max-w-[1280px]">
-        <div className="mx-auto max-w-3xl text-center">
-          <Pill>FAQ</Pill>
-          <h2 className="mt-4 text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.1] tracking-[-0.035em]">
-            Answers to your most <span className={`${serif} text-foreground/40`}>common questions</span>
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground">
-            Find answers to some of the most common questions about our design services process and
-            collaboration. This section helps you quickly understand how we work.
-          </p>
+    <section className="flex flex-col items-center gap-16 bg-white px-6 py-28 lg:px-20">
+      <div className="flex flex-col items-center gap-4">
+        <div className="inline-flex items-center justify-center gap-[10px] rounded-lg bg-[#f5f5f5] px-[14px] py-2">
+          <BrandMark size={24} />
+          <span className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-black">
+            FAQ
+          </span>
         </div>
+        <h2 className="max-w-[650px] text-center text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
+          Answers to{" "}
+          <span className={`${serif} text-[#070606]/50`}>your most</span> common questions
+        </h2>
+        <p className="max-w-[617px] text-center text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+          Find answers to some of the most common questions about our design services process and
+          collaboration. This section helps you quickly understand how we work.
+        </p>
+      </div>
 
-        <div className="mx-auto mt-12 max-w-3xl space-y-3 rounded-[24px] bg-surface p-4">
-          {faqs.map((f, i) => {
-            const isOpen = open === i;
-            return (
-              <button
-                key={f.q}
-                onClick={() => setOpen(isOpen ? -1 : i)}
-                className="block w-full rounded-2xl bg-background px-6 py-5 text-left transition"
+      <div className="flex w-full max-w-[900px] flex-col gap-6 bg-[#f5f5f5] p-8">
+        {faqs.map((f, i) => {
+          const isOpen = open === i;
+          return (
+            <button
+              key={f.q}
+              onClick={() => setOpen(isOpen ? -1 : i)}
+              className="block w-full rounded-[10px] bg-white px-6 py-4 text-left transition"
+            >
+              <div className="flex items-center justify-between gap-16">
+                <span className="text-[clamp(18px,1.8vw,26px)] font-medium leading-[1.5] tracking-[-0.075em] text-black">
+                  {f.q}
+                </span>
+                <span className="grid size-[54px] shrink-0 place-items-center">
+                  <span className="grid size-[38px] place-items-center rounded-full bg-[#070606] text-white">
+                    {isOpen ? <Minus className="size-4" strokeWidth={2.5} /> : <Plus className="size-4" strokeWidth={2.5} />}
+                  </span>
+                </span>
+              </div>
+              <div
+                className={`grid transition-[grid-template-rows,opacity,margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  isOpen ? "mt-2 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                }`}
               >
-                <div className="flex items-start justify-between gap-6">
-                  <span className="text-[clamp(18px,2vw,24px)] font-semibold tracking-[-0.02em]">
-                    {f.q}
-                  </span>
-                  <span className="grid size-10 shrink-0 place-items-center rounded-full bg-foreground text-background">
-                    {isOpen ? <Minus className="size-4" /> : <Plus className="size-4" />}
-                  </span>
-                </div>
-                {isOpen && <p className="mt-4 max-w-2xl text-base text-muted-foreground">{f.a}</p>}
-              </button>
-            );
-          })}
-        </div>
+                <p className="overflow-hidden text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                  {f.a}
+                </p>
+              </div>
+            </button>
+          );
+        })}
       </div>
     </section>
   );
