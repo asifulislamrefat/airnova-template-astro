@@ -1691,7 +1691,7 @@ function Faq() {
 
 function Index() {
   return (
-    <main className="min-h-screen bg-background font-sans text-foreground antialiased">
+    <main className="min-h-screen overflow-x-hidden bg-background font-sans text-foreground antialiased">
       <Nav />
       <Hero />
       <Benefits />
