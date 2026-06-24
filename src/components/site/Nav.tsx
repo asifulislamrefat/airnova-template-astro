@@ -1,8 +1,22 @@
 import { useEffect, useState } from "react";
 import { Logo } from "./shared";
 
-function FullscreenMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const links = ["Home", "About Us", "Services", "Blog", "Contact"];
+function FullscreenMenu({
+  open,
+  onClose,
+  extraLinks = [],
+}: {
+  open: boolean;
+  onClose: () => void;
+  extraLinks?: { label: string; href: string }[];
+}) {
+  const links = ["Home", "About Us", "Services", "Blog", "Contact"].map((label) => ({
+    label,
+    href: `#${label.toLowerCase().replace(/\s+/g, "-")}`,
+    mobileOnly: false,
+  }));
+  const mobileExtras = extraLinks.map((l) => ({ ...l, mobileOnly: true }));
+  const allLinks = [...mobileExtras, ...links];
   return (
     <div
       className={`fixed inset-0 z-50 overflow-hidden ${
@@ -31,10 +45,10 @@ function FullscreenMenu({ open, onClose }: { open: boolean; onClose: () => void 
       </button>
       <nav className="relative z-10 flex h-full w-full items-center justify-center p-8">
         <ul className="flex flex-col items-center gap-[22px] text-center">
-          {links.map((label, i) => (
+          {allLinks.map((l, i) => (
             <li
-              key={label}
-              className="py-1"
+              key={l.label}
+              className={`py-1 ${l.mobileOnly ? "lg:hidden" : ""}`}
               style={{
                 transform: open ? "translateY(0)" : "translateY(120%)",
                 opacity: open ? 1 : 0,
@@ -44,11 +58,11 @@ function FullscreenMenu({ open, onClose }: { open: boolean; onClose: () => void 
               }}
             >
               <a
-                href={`#${label.toLowerCase().replace(/\s+/g, "-")}`}
+                href={l.href}
                 onClick={onClose}
                 className="inline-block px-2 py-2 text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-white/70 transition-colors duration-300 ease-out hover:text-white"
               >
-                {label}
+                {l.label}
               </a>
             </li>
           ))}
@@ -123,7 +137,7 @@ export function Nav() {
           </button>
         </div>
       </div>
-      <FullscreenMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <FullscreenMenu open={menuOpen} onClose={() => setMenuOpen(false)} extraLinks={navLinks} />
     </header>
   );
 }
