@@ -81,7 +81,7 @@ function Logo({ light = false }: { light?: boolean }) {
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-flex items-center gap-[10px] rounded-lg bg-white px-[14px] py-2">
+    <div className="inline-flex items-center gap-[10px] rounded-lg bg-[#f5f5f5] px-[14px] py-2">
       <BrandMark size={24} />
       <span className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-black">
         {children}
