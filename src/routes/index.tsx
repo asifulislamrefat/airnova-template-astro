@@ -106,12 +106,32 @@ function Pill({
 /* ---------- Sections ---------- */
 
 function Nav() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [menuOpen]);
+
   return (
     <header className="bg-surface">
       <div className="flex w-full items-center justify-center px-6 py-6 md:px-[93px]">
         <div className="flex w-full items-center justify-between gap-6 md:hidden">
           <Logo />
-          <button aria-label="Menu" className="flex h-[10px] w-14 flex-col justify-between">
+          <button
+            aria-label="Menu"
+            onClick={() => setMenuOpen(true)}
+            className="flex h-[10px] w-14 flex-col justify-between"
+          >
             <span className="block h-px w-full bg-foreground" />
             <span className="block h-px w-full bg-foreground" />
           </button>
@@ -145,13 +165,58 @@ function Nav() {
           >
             Pricing
           </a>
-          <button aria-label="Menu" className="flex h-[10px] w-14 flex-col justify-between">
+          <button
+            aria-label="Menu"
+            onClick={() => setMenuOpen(true)}
+            className="flex h-[10px] w-14 flex-col justify-between"
+          >
             <span className="block h-px w-full bg-foreground" />
             <span className="block h-px w-full bg-foreground" />
           </button>
         </div>
       </div>
+      <FullscreenMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </header>
+  );
+}
+
+function FullscreenMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const links = ["Home", "About Us", "Services", "Blog", "Contact"];
+  return (
+    <div
+      className={`fixed inset-0 z-50 bg-black transition-opacity duration-300 ${
+        open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+      }`}
+      aria-hidden={!open}
+      role="dialog"
+      aria-modal="true"
+    >
+      <button
+        aria-label="Close menu"
+        onClick={onClose}
+        className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center text-white md:right-[93px] md:top-8"
+      >
+        <span className="relative block h-6 w-6">
+          <span className="absolute left-0 top-1/2 block h-px w-full rotate-45 bg-white" />
+          <span className="absolute left-0 top-1/2 block h-px w-full -rotate-45 bg-white" />
+        </span>
+      </button>
+      <nav className="flex h-full w-full items-center justify-center p-8">
+        <ul className="flex flex-col items-center gap-8 text-center">
+          {links.map((label) => (
+            <li key={label}>
+              <a
+                href={`#${label.toLowerCase().replace(/\s+/g, "-")}`}
+                onClick={onClose}
+                className="text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-white"
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
   );
 }
 
