@@ -23,6 +23,10 @@ import benefits1 from "@/assets/benefits-1.png.asset.json";
 import showreelThumb from "@/assets/showreel-thumb.png.asset.json";
 import project1 from "@/assets/project-1.png.asset.json";
 import solutionThumb from "@/assets/solution-thumb.png.asset.json";
+import avatar10 from "@/assets/avatar-10.png.asset.json";
+import avatar11 from "@/assets/avatar-11.png.asset.json";
+import avatar12 from "@/assets/avatar-12.png.asset.json";
+import avatar13 from "@/assets/avatar-13.png.asset.json";
 import brandLogo1 from "@/assets/brand-logo-1.png.asset.json";
 import brandLogo2 from "@/assets/brand-logo-2.png.asset.json";
 import brandLogo3 from "@/assets/brand-logo-3.png.asset.json";
@@ -1283,12 +1287,7 @@ function SolutionInner() {
               <Plus className="size-6 shrink-0 text-[#070606]" strokeWidth={1.5} />
             </div>
             <div className="flex -space-x-5">
-              {[
-                "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=facearea&facepad=3&w=160&h=160&q=80",
-                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&facepad=3&w=160&h=160&q=80",
-                "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=facearea&facepad=3&w=160&h=160&q=80",
-                "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=facearea&facepad=3&w=160&h=160&q=80",
-              ].map((src) => (
+              {[avatar10.url, avatar11.url, avatar12.url, avatar13.url].map((src) => (
                 <img
                   key={src}
                   src={src}
