@@ -603,6 +603,218 @@ function Stats() {
 }
 
 function Solution() {
+  return <SolutionInner />;
+}
+
+function CustomVideoPlayer({ src, poster }: { src: string; poster?: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(false);
+  const [volume, setVolume] = useState(1);
+  const [time, setTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [showControls, setShowControls] = useState(true);
+  const hideTimer = useRef<number | null>(null);
+
+  useEffect(() => {
+    // autoplay on mount
+    const v = videoRef.current;
+    if (!v) return;
+    v.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+  }, []);
+
+  const togglePlay = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      v.play();
+      setPlaying(true);
+    } else {
+      v.pause();
+      setPlaying(false);
+    }
+  };
+
+  const toggleMute = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setMuted(v.muted);
+  };
+
+  const onVolume = (val: number) => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.volume = val;
+    setVolume(val);
+    if (val === 0) {
+      v.muted = true;
+      setMuted(true);
+    } else if (v.muted) {
+      v.muted = false;
+      setMuted(false);
+    }
+  };
+
+  const onSeek = (val: number) => {
+    const v = videoRef.current;
+    if (!v || !duration) return;
+    v.currentTime = (val / 100) * duration;
+    setTime(v.currentTime);
+  };
+
+  const toggleFullscreen = () => {
+    const w = wrapRef.current;
+    if (!w) return;
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      w.requestFullscreen?.();
+    }
+  };
+
+  const nudgeControls = () => {
+    setShowControls(true);
+    if (hideTimer.current) window.clearTimeout(hideTimer.current);
+    hideTimer.current = window.setTimeout(() => {
+      if (videoRef.current && !videoRef.current.paused) setShowControls(false);
+    }, 2500);
+  };
+
+  const fmt = (s: number) => {
+    if (!isFinite(s)) return "0:00";
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return `${m}:${sec.toString().padStart(2, "0")}`;
+  };
+
+  const progress = duration ? (time / duration) * 100 : 0;
+
+  return (
+    <div
+      ref={wrapRef}
+      onMouseMove={nudgeControls}
+      onMouseLeave={() => playing && setShowControls(false)}
+      className="group relative overflow-hidden rounded-2xl bg-black shadow-2xl"
+      style={{ aspectRatio: "16 / 9" }}
+    >
+      <video
+        ref={videoRef}
+        src={src}
+        poster={poster}
+        playsInline
+        onClick={togglePlay}
+        onTimeUpdate={(e) => setTime(e.currentTarget.currentTime)}
+        onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
+        onEnded={() => setPlaying(false)}
+        className="size-full cursor-pointer object-cover"
+      />
+
+      {/* Center play overlay when paused */}
+      {!playing && (
+        <button
+          type="button"
+          aria-label="Play"
+          onClick={togglePlay}
+          className="absolute inset-0 grid place-items-center bg-black/30"
+        >
+          <span className="grid size-20 place-items-center rounded-full bg-white shadow-2xl">
+            <Play className="size-7 fill-[#070606] text-[#070606]" />
+          </span>
+        </button>
+      )}
+
+      {/* Bottom control bar */}
+      <div
+        className={`pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-5 transition-opacity duration-300 ${
+          showControls || !playing ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        {/* Scrubber */}
+        <div className="pointer-events-auto relative mb-3 h-1 w-full overflow-hidden rounded-full bg-white/20">
+          <div
+            className="absolute inset-y-0 left-0 bg-white"
+            style={{ width: `${progress}%` }}
+          />
+          <input
+            type="range"
+            min={0}
+            max={100}
+            step={0.1}
+            value={progress}
+            onChange={(e) => onSeek(parseFloat(e.target.value))}
+            aria-label="Seek"
+            className="absolute inset-0 size-full cursor-pointer appearance-none bg-transparent opacity-0"
+          />
+        </div>
+
+        <div className="pointer-events-auto flex items-center gap-4 text-white">
+          <button
+            type="button"
+            onClick={togglePlay}
+            aria-label={playing ? "Pause" : "Play"}
+            className="grid size-10 place-items-center rounded-full bg-white text-[#070606] transition hover:scale-105"
+          >
+            {playing ? (
+              <Pause className="size-4 fill-[#070606]" />
+            ) : (
+              <Play className="size-4 fill-[#070606]" />
+            )}
+          </button>
+
+          <span className="font-mono text-xs tabular-nums tracking-tight text-white/80">
+            {fmt(time)} <span className="text-white/40">/ {fmt(duration)}</span>
+          </span>
+
+          <div className="ml-auto flex items-center gap-3">
+            <div className="hidden items-center gap-2 sm:flex">
+              <button
+                type="button"
+                onClick={toggleMute}
+                aria-label={muted ? "Unmute" : "Mute"}
+                className="grid size-9 place-items-center rounded-full text-white hover:bg-white/10"
+              >
+                {muted || volume === 0 ? (
+                  <VolumeX className="size-4" />
+                ) : (
+                  <Volume2 className="size-4" />
+                )}
+              </button>
+              <div className="relative h-1 w-20 overflow-hidden rounded-full bg-white/20">
+                <div
+                  className="absolute inset-y-0 left-0 bg-white"
+                  style={{ width: `${(muted ? 0 : volume) * 100}%` }}
+                />
+                <input
+                  type="range"
+                  min={0}
+                  max={1}
+                  step={0.01}
+                  value={muted ? 0 : volume}
+                  onChange={(e) => onVolume(parseFloat(e.target.value))}
+                  aria-label="Volume"
+                  className="absolute inset-0 size-full cursor-pointer appearance-none bg-transparent opacity-0"
+                />
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={toggleFullscreen}
+              aria-label="Fullscreen"
+              className="grid size-9 place-items-center rounded-full text-white hover:bg-white/10"
+            >
+              <Maximize className="size-4" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SolutionInner() {
   const [videoOpen, setVideoOpen] = useState(false);
 
   useEffect(() => {
