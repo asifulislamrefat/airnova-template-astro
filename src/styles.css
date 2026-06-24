@@ -9,14 +9,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Global section gutters: 5% horizontal padding outside the max container,
-   applied across all sections and all viewports. Overrides per-section
-   horizontal padding utilities. */
-main > section {
-  padding-left: 5% !important;
-  padding-right: 5% !important;
-}
-
 @custom-variant dark (&:is(.dark *));
 
 /*
