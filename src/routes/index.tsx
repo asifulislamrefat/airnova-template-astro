@@ -1180,7 +1180,36 @@ function CustomVideoPlayer({
 }
 
 function SolutionInner() {
-  const [videoOpen, setVideoOpen] = useState(false);
+  const [lightboxMounted, setLightboxMounted] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const closeTimer = useRef<number | null>(null);
+  const openLightbox = () => {
+    if (closeTimer.current) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    setLightboxMounted(true);
+    requestAnimationFrame(() => setLightboxOpen(true));
+  };
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    closeTimer.current = window.setTimeout(() => setLightboxMounted(false), 450);
+  };
+  useEffect(() => {
+    if (!lightboxMounted) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+    };
+    window.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lightboxMounted]);
 
   return (
     <section className="bg-white px-6 py-28 lg:px-20">
@@ -1215,36 +1244,28 @@ function SolutionInner() {
 
           {/* Center image with overlay */}
           <div className="relative flex h-[500px] w-full shrink-0 flex-col justify-between overflow-hidden rounded-[20px] p-8 lg:w-[532px]">
-            {videoOpen ? (
-              <div className="absolute inset-0">
-                <CustomVideoPlayer youtubeId="9u1RLVS0ziU" fill />
-              </div>
-            ) : (
-              <>
-                <img
-                  src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1200&q=80"
-                  alt="Our strategy meets bold creativity"
-                  className="absolute inset-0 size-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/40" />
-                <div className="relative flex justify-end">
-                  <Plus className="size-6 text-white" strokeWidth={1.5} />
-                </div>
-                <div className="relative flex flex-col gap-6">
-                  <button
-                    type="button"
-                    onClick={() => setVideoOpen(true)}
-                    aria-label="Play video"
-                    className="grid size-14 place-items-center rounded-full bg-white shadow-lg transition hover:scale-105"
-                  >
-                    <Play className="size-4 fill-[#070606] text-[#070606]" />
-                  </button>
-                  <p className="max-w-[281px] text-[32px] font-semibold leading-[1.2] tracking-[-0.065em] text-white">
-                    Our strategy meets bold creativity
-                  </p>
-                </div>
-              </>
-            )}
+            <img
+              src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1200&q=80"
+              alt="Our strategy meets bold creativity"
+              className="absolute inset-0 size-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/40" />
+            <div className="relative flex justify-end">
+              <Plus className="size-6 text-white" strokeWidth={1.5} />
+            </div>
+            <div className="relative flex flex-col gap-6">
+              <button
+                type="button"
+                onClick={openLightbox}
+                aria-label="Play video"
+                className="grid size-14 cursor-pointer place-items-center rounded-full bg-white shadow-lg transition-transform duration-300 ease-out hover:scale-105"
+              >
+                <Play className="size-4 fill-[#070606] text-[#070606]" />
+              </button>
+              <p className="max-w-[281px] text-[32px] font-semibold leading-[1.2] tracking-[-0.065em] text-white">
+                Our strategy meets bold creativity
+              </p>
+            </div>
           </div>
 
           {/* Right card — light */}
@@ -1281,6 +1302,38 @@ function SolutionInner() {
           </div>
         </div>
       </div>
+
+      {lightboxMounted && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Strategy video"
+          onClick={closeLightbox}
+          className={`fixed inset-0 z-[100] flex items-center justify-center p-4 transition-all duration-500 ease-out sm:p-8 ${
+            lightboxOpen ? "bg-black/80 backdrop-blur-sm opacity-100" : "bg-black/0 opacity-0"
+          }`}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className={`relative w-full max-w-[1280px] overflow-hidden rounded-[20px] bg-black shadow-2xl transition-all duration-500 ease-out ${
+              lightboxOpen ? "scale-100 opacity-100" : "scale-[0.96] opacity-0"
+            }`}
+            style={{ aspectRatio: "16 / 9" }}
+          >
+            <CustomVideoPlayer youtubeId="9u1RLVS0ziU" fill />
+          </div>
+          <button
+            type="button"
+            onClick={closeLightbox}
+            aria-label="Close video"
+            className={`fixed right-5 top-5 z-[101] grid size-12 cursor-pointer place-items-center rounded-full bg-white/10 text-white backdrop-blur transition-all duration-500 ease-out hover:bg-white/20 ${
+              lightboxOpen ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <X className="size-5" />
+          </button>
+        </div>
+      )}
     </section>
   );
 }
