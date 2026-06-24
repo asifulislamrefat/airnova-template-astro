@@ -38,7 +38,7 @@ export function Footer() {
         <div className="mt-16 h-px bg-white/10" />
 
         <div className="mt-6 rounded-lg bg-white/5 px-6 py-4 text-center text-base text-background/80">
-          Copyright © Airnova. "All rights reserved" — License | Design and Develop By Airdute LLC
+          Copyright © Airnova. "All rights reserved" | Design and Develop By Airdute LLC
         </div>
       </div>
 
