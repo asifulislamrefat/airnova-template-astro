@@ -781,7 +781,7 @@ function Stats() {
                 <div className="text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
                   {s.v}
                 </div>
-                <div className="h-px w-full bg-black/10" />
+              <div className="w-full border-t border-dashed border-black/15" />
               </div>
               <div className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                 {s.l}
