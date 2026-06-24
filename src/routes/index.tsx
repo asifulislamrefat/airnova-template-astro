@@ -1201,11 +1201,11 @@ function Testimonials() {
     },
   ];
   return (
-    <section className="bg-surface py-28">
-      <div className="container-x flex flex-col gap-16">
+    <section className="bg-surface py-16 lg:py-28">
+      <div className="container-x flex flex-col gap-12 sm:gap-16">
         <div className="flex flex-col items-start gap-10 lg:flex-row lg:gap-[150px]">
           <Pill>Testimonials</Pill>
-          <h2 className="flex-1 text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.05em] text-black">
+          <h2 className="flex-1 text-[clamp(24px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.05em] text-black">
             Client Experiences That Highlight Our{" "}
             <span className={`${serif} text-black/50`}>commitment to quality</span> and Innovation
           </h2>
