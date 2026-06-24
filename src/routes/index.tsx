@@ -1731,7 +1731,6 @@ function Index() {
       <Stats />
       <Solution />
       <Testimonials />
-      <TestimonialsSlider />
       <FannedTestimonials />
       <Faq />
       <Cta />
