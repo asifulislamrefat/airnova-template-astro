@@ -606,7 +606,14 @@ function Solution() {
   return <SolutionInner />;
 }
 
-function loadYouTubeAPI(): Promise<typeof window.YT> {
+declare global {
+  interface Window {
+    YT: any;
+    onYouTubeIframeAPIReady?: () => void;
+  }
+}
+
+function loadYouTubeAPI(): Promise<any> {
   return new Promise((resolve) => {
     if (typeof window === "undefined") return;
     if (window.YT && window.YT.Player) return resolve(window.YT);
