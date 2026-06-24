@@ -1632,8 +1632,9 @@ const faqs = [
 function Faq() {
   const [open, setOpen] = useState(0);
   return (
-    <section className="container-x flex flex-col items-center gap-16 bg-white py-28">
-      <div className="flex flex-col items-center gap-4">
+    <section className="bg-white py-28">
+      <div className="container-x flex flex-col items-center gap-16">
+        <div className="flex flex-col items-center gap-4">
         <div className="inline-flex items-center justify-center gap-[10px] rounded-lg bg-[#f5f5f5] px-[14px] py-2">
           <BrandMark size={24} />
           <span className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-black">
