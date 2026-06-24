@@ -133,6 +133,7 @@ const brandLogos = [brandLogo2, brandLogo3, brandLogo4, brandLogo1, brandLogo5, 
 function Hero() {
   const [active, setActive] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [cycleKey, setCycleKey] = useState(0);
 
   useEffect(() => {
     const DURATION = 5000;
@@ -151,7 +152,7 @@ function Hero() {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [cycleKey]);
 
   return (
     <section
@@ -269,9 +270,16 @@ function Hero() {
           {/* Progress bar — 3 segments, 142 wide, ~30px from bottom */}
           <div className="absolute bottom-[30px] left-1/2 flex w-[142px] -translate-x-1/2 items-center gap-2">
             {heroImages.map((_, i) => (
-              <span
+              <button
                 key={i}
-                className="relative h-[5.775px] overflow-hidden rounded-full transition-all duration-500"
+                type="button"
+                aria-label={`Go to slide ${i + 1}`}
+                onClick={() => {
+                  setActive(i);
+                  setProgress(0);
+                  setCycleKey((k) => k + 1);
+                }}
+                className="relative h-[5.775px] cursor-pointer overflow-hidden rounded-full p-0 transition-all duration-500"
                 style={{
                   flex: i === active ? "0 0 67.3px" : "1 1 0",
                   background: "rgba(255,255,255,0.25)",
@@ -287,7 +295,7 @@ function Hero() {
                     }}
                   />
                 )}
-              </span>
+              </button>
             ))}
           </div>
         </div>
