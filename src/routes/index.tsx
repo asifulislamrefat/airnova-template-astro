@@ -148,9 +148,9 @@ function Nav() {
             <a
               key={l.label}
               href={l.href}
-              className="group relative inline-flex items-start overflow-hidden text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground"
+              className="group relative inline-flex items-start text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground"
             >
-              <span className="relative block overflow-hidden">
+              <span className="relative block overflow-hidden py-0.5">
                 <span className="block transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-full">
                   {l.label}
                 </span>
