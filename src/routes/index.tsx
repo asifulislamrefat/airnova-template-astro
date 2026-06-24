@@ -38,6 +38,10 @@ import brandLogo3 from "@/assets/brand-logo-3.png.asset.json";
 import brandLogo4 from "@/assets/brand-logo-4.png.asset.json";
 import brandLogo5 from "@/assets/brand-logo-5.png.asset.json";
 import brandLogo6 from "@/assets/brand-logo-6.png.asset.json";
+import { serif, BrandMark, Logo, Pill } from "@/components/site/shared";
+import { Nav } from "@/components/site/Nav";
+import { Cta } from "@/components/site/Cta";
+import { Footer } from "@/components/site/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -61,62 +65,6 @@ export const Route = createFileRoute("/")({
 
 /* ---------- Shared bits ---------- */
 
-const serif = "font-serif italic";
-
-function BrandMark({ size = 38, dark = true }: { size?: number; dark?: boolean }) {
-  return (
-    <span
-      className="inline-flex items-center justify-center shadow-sm"
-      style={{
-        width: size,
-        height: size,
-        borderRadius: size * 0.2,
-        background: dark ? "var(--foreground)" : "var(--surface)",
-      }}
-    >
-      <svg
-        viewBox="0 0 13.44 13.4111"
-        fill={dark ? "#ffffff" : "var(--foreground)"}
-        style={{ width: size * 0.56, height: size * 0.56 }}
-      >
-        <path d="M13.1829 6.35083L11.2547 5.79982C10.3864 5.55501 9.59543 5.09147 8.95751 4.45355C8.31958 3.81562 7.85604 3.02466 7.61124 2.15634L7.06023 0.228154C7.03252 0.160693 6.98538 0.102993 6.9248 0.0623858C6.86421 0.0217787 6.79293 9.76562e-05 6.72 9.76562e-05C6.64707 9.76562e-05 6.57578 0.0217787 6.5152 0.0623858C6.45462 0.102993 6.40748 0.160693 6.37977 0.228154L5.82876 2.15634C5.58396 3.02466 5.12042 3.81562 4.48249 4.45355C3.84457 5.09147 3.0536 5.55501 2.18529 5.79982L0.257098 6.35083C0.183062 6.37184 0.117901 6.41643 0.0715024 6.47783C0.0251038 6.53924 0 6.6141 0 6.69106C0 6.76802 0.0251038 6.84288 0.0715024 6.90428C0.117901 6.96568 0.183062 7.01027 0.257098 7.03128L2.18529 7.5823C3.0536 7.8271 3.84457 8.29064 4.48249 8.92857C5.12042 9.56649 5.58396 10.3575 5.82876 11.2258L6.37977 13.154C6.40079 13.228 6.44538 13.2932 6.50678 13.3396C6.56818 13.386 6.64304 13.4111 6.72 13.4111C6.79696 13.4111 6.87182 13.386 6.93322 13.3396C6.99462 13.2932 7.03921 13.228 7.06023 13.154L7.61124 11.2258C7.85604 10.3575 8.31958 9.56649 8.95751 8.92857C9.59543 8.29064 10.3864 7.8271 11.2547 7.5823L13.1829 7.03128C13.2569 7.01027 13.3221 6.96568 13.3685 6.90428C13.4149 6.84288 13.44 6.76802 13.44 6.69106C13.44 6.6141 13.4149 6.53924 13.3685 6.47783C13.3221 6.41643 13.2569 6.37184 13.1829 6.35083Z" />
-      </svg>
-    </span>
-  );
-}
-
-function Logo({ light = false }: { light?: boolean }) {
-  return (
-    <div className="flex items-center gap-2">
-      <BrandMark dark={!light} />
-      <span className={`${serif} font-bold text-[32px] leading-[1.1] tracking-[-0.075em] ${light ? "text-white" : "text-foreground"}`}>
-        Airnova
-      </span>
-    </div>
-  );
-}
-
-function Pill({
-  children,
-  variant = "grey",
-}: {
-  children: React.ReactNode;
-  variant?: "grey" | "white";
-}) {
-  return (
-    <div
-      className={`inline-flex items-center gap-[10px] rounded-lg px-[14px] py-2 ${
-        variant === "white" ? "bg-white" : "bg-[#f5f5f5]"
-      }`}
-    >
-      <BrandMark size={24} />
-      <span className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-black">
-        {children}
-      </span>
-    </div>
-  );
-}
-
 function FigmaPlusIcon({ className = "", dark = false }: { className?: string; dark?: boolean }) {
   return (
     <span
@@ -129,132 +77,6 @@ function FigmaPlusIcon({ className = "", dark = false }: { className?: string; d
 }
 
 /* ---------- Sections ---------- */
-
-function Nav() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const navLinks = [
-    { label: "Studio", href: "#studio" },
-    { label: "Projects", href: "#projects", sup: "15" },
-    { label: "Services", href: "#services" },
-    { label: "Pricing", href: "#pricing" },
-  ];
-
-  useEffect(() => {
-    if (!menuOpen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMenuOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = prev;
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [menuOpen]);
-
-  return (
-    <header className="bg-surface">
-      <div className="flex w-full items-center justify-center px-6 py-6 md:px-[93px]">
-        <div className="flex w-full items-center justify-between gap-6 md:hidden">
-          <Logo />
-          <button
-            aria-label="Menu"
-            onClick={() => setMenuOpen(true)}
-            className="flex h-[10px] w-14 cursor-pointer flex-col justify-between"
-          >
-            <span className="block h-px w-full bg-foreground" />
-            <span className="block h-px w-full bg-foreground" />
-          </button>
-        </div>
-        <div className="hidden items-center gap-[167px] md:flex">
-          <Logo />
-          {navLinks.map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              className="inline-flex items-start text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground/70 transition-colors duration-300 ease-out hover:text-foreground"
-            >
-              <span>{l.label}</span>
-              {l.sup && (
-                <sup className="ml-px text-[10px] font-semibold leading-[0.9] tracking-[-0.075em] text-foreground/40">
-                  {l.sup}
-                </sup>
-              )}
-            </a>
-          ))}
-          <button
-            aria-label="Menu"
-            onClick={() => setMenuOpen(true)}
-            className="flex h-[10px] w-14 cursor-pointer flex-col justify-between"
-          >
-            <span className="block h-px w-full bg-foreground" />
-            <span className="block h-px w-full bg-foreground" />
-          </button>
-        </div>
-      </div>
-      <FullscreenMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
-    </header>
-  );
-}
-
-function FullscreenMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const links = ["Home", "About Us", "Services", "Blog", "Contact"];
-  return (
-    <div
-      className={`fixed inset-0 z-50 overflow-hidden ${
-        open ? "pointer-events-auto" : "pointer-events-none"
-      }`}
-      aria-hidden={!open}
-      role="dialog"
-      aria-modal="true"
-    >
-      {/* Sliding black panel */}
-      <div
-        className={`absolute inset-0 bg-black transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] ${
-          open ? "translate-y-0" : "-translate-y-full"
-        }`}
-      />
-      <button
-        aria-label="Close menu"
-        onClick={onClose}
-        className={`absolute right-6 top-6 z-20 flex h-10 w-10 cursor-pointer items-center justify-center text-white transition-all duration-500 md:right-[93px] md:top-8 hover:rotate-90 ${
-          open ? "opacity-100 delay-500" : "opacity-0"
-        }`}
-      >
-        <span className="relative block h-6 w-6">
-          <span className="pointer-events-none absolute left-0 top-1/2 block h-px w-full rotate-45 bg-white" />
-          <span className="pointer-events-none absolute left-0 top-1/2 block h-px w-full -rotate-45 bg-white" />
-        </span>
-      </button>
-      <nav className="relative z-10 flex h-full w-full items-center justify-center p-8">
-        <ul className="flex flex-col items-center gap-[22px] text-center">
-          {links.map((label, i) => (
-            <li
-              key={label}
-              className="py-1"
-              style={{
-                transform: open ? "translateY(0)" : "translateY(120%)",
-                opacity: open ? 1 : 0,
-                transition: `transform 700ms cubic-bezier(0.65,0,0.35,1) ${
-                  open ? 300 + i * 80 : 0
-                }ms, opacity 500ms ease ${open ? 300 + i * 80 : 0}ms`,
-              }}
-            >
-              <a
-                href={`#${label.toLowerCase().replace(/\s+/g, "-")}`}
-                onClick={onClose}
-                className="inline-block px-2 py-2 text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-white/70 transition-colors duration-300 ease-out hover:text-white"
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </div>
-  );
-}
 
 const heroImages = [hero1.url, hero2.url, hero3.url];
 const brandLogos = [brandLogo2, brandLogo3, brandLogo4, brandLogo1, brandLogo5, brandLogo6];
@@ -1864,91 +1686,6 @@ function Faq() {
         })}
       </div>
     </section>
-  );
-}
-
-function Cta() {
-  return (
-    <section className="bg-white p-[30px]">
-      <div className="flex w-full flex-col items-center justify-center gap-8 rounded-[20px] bg-[#070606] px-6 py-28 text-center">
-        <div className="flex flex-col items-center gap-4">
-          <div className="inline-flex items-center justify-center gap-[10px] rounded-lg bg-white/[0.04] px-[14px] py-2">
-            <BrandMark size={24} dark={false} />
-            <span className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-white">
-              CTA
-            </span>
-          </div>
-          <h2 className="max-w-[720px] text-[clamp(36px,5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-white">
-            Create a <span className={`${serif} text-white/50 whitespace-nowrap`}>brand that stands</span>{" "}
-            the test of time
-          </h2>
-          <p className="max-w-[665px] text-base font-medium leading-[1.5] tracking-[-0.075em] text-white">
-            Ready to bring your ideas to life with creative and impactful design. Let's collaborate
-            to create modern, user-focused digital experiences that help your brand stand out and
-            connect.
-          </p>
-        </div>
-        <a
-          href="#contact"
-          className="inline-flex h-12 items-center justify-center rounded-[80px] bg-white px-6 text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#070606] shadow-[0_4px_2px_rgba(0,0,0,0.16)]"
-        >
-          Book a Call
-        </a>
-      </div>
-    </section>
-  );
-}
-
-function Footer() {
-  const cols = [
-    { title: "Pages", links: ["Home", "About Us", "Services", "Projects", "Blog"] },
-    { title: "Pages", links: ["Blog Details", "Projects Details", "Services Details", "Pricing"] },
-    { title: "Information", links: ["Book a call", "Instagram", "LinkedIn", "Twitter"] },
-    { title: "Inner Pages", links: ["404", "Licenses", "Changelog", "Style Guide"] },
-  ];
-  return (
-    <footer className="relative overflow-hidden bg-foreground px-6 pb-8 pt-28 text-background lg:px-20">
-      <div className="relative z-10 mx-auto max-w-[1280px]">
-        <div className="grid gap-12 lg:grid-cols-[1fr_2fr]">
-          <div className="flex flex-col gap-6">
-            <Logo light />
-            <p className="max-w-sm text-[28px] font-semibold leading-[1.2] tracking-[-0.03em]">
-              Social media that <span className={`${serif} text-background/50`}>drives<br />real</span> results
-            </p>
-            <p className="text-base text-background/80">Built for creators, businesses and brands.</p>
-          </div>
-
-          <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
-            {cols.map((c, i) => (
-              <div key={i} className="flex flex-col gap-5">
-                <h4 className="text-2xl font-semibold tracking-[-0.02em]">{c.title}</h4>
-                <ul className="space-y-3 text-base text-background/85">
-                  {c.links.map((l) => (
-                    <li key={l}>
-                      <a href="#" className="hover:text-background">{l}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-16 h-px bg-white/10" />
-
-        <div className="mt-6 rounded-lg bg-white/5 px-6 py-4 text-center text-base text-background/80">
-          Design & Developed By Airnova — License | Powered By Airdute LLC
-        </div>
-      </div>
-
-      {/* Giant wordmark */}
-      <div
-        className={`${serif} pointer-events-none mt-12 select-none overflow-hidden text-center font-semibold leading-none tracking-[-0.075em] text-background`}
-        style={{ fontSize: "clamp(120px, 28vw, 420px)" }}
-      >
-        Airnova
-      </div>
-    </footer>
   );
 }
 
