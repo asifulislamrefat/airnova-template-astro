@@ -327,7 +327,7 @@ function Hero() {
 
 function Benefits() {
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-16 lg:py-28">
       <div className="container-x flex flex-col items-stretch gap-12 lg:flex-row lg:items-start lg:gap-16">
         <div className="flex flex-1 flex-col gap-8 self-stretch">
           <div className="relative h-[399px] w-full overflow-hidden rounded-[20px]">
@@ -377,7 +377,7 @@ function Benefits() {
 
         <div className="flex w-full shrink-0 flex-col items-start justify-between gap-12 self-stretch lg:w-[649px]">
           <div className="flex w-full flex-col gap-12">
-            <h2 className="w-full max-w-[611px] font-semibold leading-[1.2] tracking-[-0.065em] text-black" style={{ fontSize: "clamp(40px, 6.5vw, 72px)" }}>
+            <h2 className="w-full max-w-[611px] font-semibold leading-[1.2] tracking-[-0.065em] text-black" style={{ fontSize: "clamp(32px, 6.5vw, 72px)" }}>
               Explore our{" "}
               <span className={`${serif} italic text-black/40`}>flexible of</span> activity.
             </h2>
