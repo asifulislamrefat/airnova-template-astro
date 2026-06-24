@@ -424,7 +424,7 @@ function BenefitsAccordion() {
             key={item.title}
             className={`rounded-[20px] transition-[background-color,padding,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
               isOpen
-                ? "border border-transparent bg-surface p-6"
+                ? "border border-transparent bg-surface p-3 sm:p-6"
                 : "border-b border-black/[0.28] pt-0 pb-6 px-0 rounded-none"
             }`}
           >
