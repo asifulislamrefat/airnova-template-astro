@@ -44,7 +44,7 @@ function FullscreenMenu({
         </span>
       </button>
       <nav className="relative z-10 flex h-full w-full items-center justify-center p-8">
-        <ul className="flex flex-col items-center gap-[22px] text-center">
+        <ul className="flex flex-col items-center gap-[10px] text-center lg:gap-[22px]">
           {allLinks.map((l, i) => (
             <li
               key={l.label}
@@ -60,7 +60,7 @@ function FullscreenMenu({
               <a
                 href={l.href}
                 onClick={onClose}
-                className="inline-block px-2 py-2 text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-white/70 transition-colors duration-300 ease-out hover:text-white"
+                className="inline-block px-2 py-2 text-[32px] lg:text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-white/70 transition-colors duration-300 ease-out hover:text-white"
               >
                 {l.label}
               </a>
