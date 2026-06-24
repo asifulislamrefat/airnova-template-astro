@@ -79,9 +79,19 @@ function Logo({ light = false }: { light?: boolean }) {
   );
 }
 
-function Pill({ children }: { children: React.ReactNode }) {
+function Pill({
+  children,
+  variant = "grey",
+}: {
+  children: React.ReactNode;
+  variant?: "grey" | "white";
+}) {
   return (
-    <div className="inline-flex items-center gap-[10px] rounded-lg bg-[#f5f5f5] px-[14px] py-2">
+    <div
+      className={`inline-flex items-center gap-[10px] rounded-lg px-[14px] py-2 ${
+        variant === "white" ? "bg-white" : "bg-[#f5f5f5]"
+      }`}
+    >
       <BrandMark size={24} />
       <span className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-black">
         {children}
