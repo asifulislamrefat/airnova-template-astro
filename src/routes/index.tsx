@@ -22,6 +22,9 @@ import hero3 from "@/assets/hero-3.png.asset.json";
 import benefits1 from "@/assets/benefits-1.png.asset.json";
 import showreelThumb from "@/assets/showreel-thumb.png.asset.json";
 import project1 from "@/assets/project-1.png.asset.json";
+import project2 from "@/assets/project-2.png.asset.json";
+import project3 from "@/assets/project-3.png.asset.json";
+import project4 from "@/assets/project-4.png.asset.json";
 import solutionThumb from "@/assets/solution-thumb.png.asset.json";
 import avatar10 from "@/assets/avatar-10.png.asset.json";
 import avatar11 from "@/assets/avatar-11.png.asset.json";
@@ -721,9 +724,9 @@ function Services() {
 
 const projectImages = [
   project1.url,
-  "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1517292987719-0369a794ec0f?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1200&q=80",
+  project2.url,
+  project3.url,
+  project4.url,
 ];
 
 function Projects() {
