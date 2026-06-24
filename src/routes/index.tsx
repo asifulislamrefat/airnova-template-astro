@@ -639,8 +639,8 @@ function Stats() {
     }
   };
   return (
-    <section id="studio" className="bg-[#f5f5f5] px-[30px] py-[112px]">
-      <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-8">
+    <section id="studio" className="bg-[#f5f5f5] py-[112px]">
+      <div className="container-x flex flex-col gap-8">
         <div className="flex flex-col items-center gap-[10px]">
           <Pill variant="white">About us</Pill>
           <p className="max-w-[1075px] text-center text-[clamp(28px,3vw,40px)] font-semibold leading-[1.3] tracking-[-0.065em] text-black">
