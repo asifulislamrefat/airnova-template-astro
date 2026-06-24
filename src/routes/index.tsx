@@ -609,9 +609,9 @@ function Solution() {
           Crafting unique strategies that turn visions into powerful results
         </h2>
 
-        <div className="grid w-full gap-2 lg:grid-cols-[1fr_532fr_1fr]">
+        <div className="flex w-full flex-col gap-2 lg:flex-row lg:items-start">
           {/* Left card — dark */}
-          <div className="flex min-h-[500px] flex-col justify-between rounded-[20px] bg-[#070606] p-8">
+          <div className="flex h-[500px] flex-1 flex-col justify-between rounded-[20px] bg-[#070606] p-8">
             <div className="flex items-start justify-between">
               <div className="h-[100px] w-[150px] overflow-hidden rounded-[20px]">
                 <img
@@ -634,7 +634,7 @@ function Solution() {
           </div>
 
           {/* Center image with overlay */}
-          <div className="relative flex min-h-[500px] flex-col justify-between overflow-hidden rounded-[20px] p-8">
+          <div className="relative flex h-[500px] w-full shrink-0 flex-col justify-between overflow-hidden rounded-[20px] p-8 lg:w-[532px]">
             <img
               src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1200&q=80"
               alt="Our strategy meets bold creativity"
@@ -655,7 +655,7 @@ function Solution() {
           </div>
 
           {/* Right card — light */}
-          <div className="flex min-h-[500px] flex-col justify-between rounded-[20px] bg-[#f5f5f5] p-8">
+          <div className="flex h-[500px] flex-1 flex-col justify-between rounded-[20px] bg-[#f5f5f5] p-8">
             <div className="flex items-start justify-between">
               <div className="flex flex-col gap-2">
                 <p className="text-[56px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
@@ -668,14 +668,14 @@ function Solution() {
                   A seamless process with a polished fast and easy-to-manage result
                 </p>
               </div>
-              <Plus className="size-6 shrink-0 text-[#070606]/70" strokeWidth={1.5} />
+              <Plus className="size-6 shrink-0 text-[#070606]" strokeWidth={1.5} />
             </div>
             <div className="flex -space-x-5">
               {[
-                "https://i.pravatar.cc/120?img=12",
-                "https://i.pravatar.cc/120?img=32",
-                "https://i.pravatar.cc/120?img=47",
-                "https://i.pravatar.cc/120?img=58",
+                "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=facearea&facepad=3&w=160&h=160&q=80",
+                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&facepad=3&w=160&h=160&q=80",
+                "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=facearea&facepad=3&w=160&h=160&q=80",
+                "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=facearea&facepad=3&w=160&h=160&q=80",
               ].map((src) => (
                 <img
                   key={src}
