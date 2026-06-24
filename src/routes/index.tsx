@@ -560,7 +560,7 @@ function Projects() {
   return (
     <section id="projects" className="bg-[#f5f5f5] p-[10px] lg:p-[30px]">
       <div className="relative w-full rounded-[20px] bg-white py-20 lg:py-28">
-        <div className="container-x">
+        <div className="container-x-inset">
           <div className="mx-auto flex max-w-[680px] flex-col items-center gap-4 text-center">
             <Pill>Our Project</Pill>
           <h2 className="text-[clamp(40px,5.5vw,72px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">

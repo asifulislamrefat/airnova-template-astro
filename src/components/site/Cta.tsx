@@ -4,7 +4,7 @@ export function Cta() {
   return (
     <section className="bg-white p-[10px] lg:p-[30px]">
       <div className="rounded-[20px] bg-[#070606] py-28">
-        <div className="container-x flex flex-col items-center justify-center gap-8 text-center">
+        <div className="container-x-inset flex flex-col items-center justify-center gap-8 text-center">
           <div className="flex flex-col items-center gap-4">
             <div className="inline-flex items-center justify-center gap-[10px] rounded-lg bg-white/[0.04] px-[14px] py-2">
               <BrandMark size={24} dark={false} />
