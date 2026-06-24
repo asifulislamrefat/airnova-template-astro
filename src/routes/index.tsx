@@ -210,31 +210,31 @@ function Hero() {
     <section className="bg-surface pb-10">
       <div className="container-x flex flex-col items-stretch gap-8 lg:flex-row lg:items-start">
         {/* Left card — 735 × 750 */}
-        <div className="flex w-full shrink-0 flex-col items-center justify-between gap-10 overflow-hidden rounded-[20px] bg-background p-6 sm:p-8 md:px-[30px] lg:h-[750px] lg:w-[735px] lg:gap-0 lg:px-8">
+        <div className="flex w-full shrink-0 flex-col items-center justify-between gap-6 overflow-hidden rounded-[20px] bg-background p-4 sm:gap-10 sm:p-8 md:px-[30px] lg:h-[750px] lg:w-[735px] lg:gap-0 lg:px-8">
           {/* Text container — 671 × 457 */}
-          <div className="flex w-full max-w-[671px] flex-col justify-center gap-4 lg:h-[457px]">
+          <div className="flex w-full max-w-[671px] flex-col justify-center gap-3 sm:gap-4 lg:h-[457px]">
             {/* Rating */}
-            <div className="flex items-center gap-[17px]">
+            <div className="flex items-center gap-2 sm:gap-[17px]">
               <div className="flex">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
                     key={i}
-                    className="size-[26px] fill-foreground text-foreground"
+                    className="size-[11px] sm:size-[26px] fill-foreground text-foreground"
                     strokeWidth={0}
                   />
                 ))}
               </div>
-              <span className="text-[16px] font-medium leading-[1.5] tracking-[-0.0075em] text-foreground">
+              <span className="text-[12px] sm:text-[16px] font-medium leading-[1.2] sm:leading-[1.5] tracking-[-0.0075em] text-foreground">
                 Rated 4.9/5
               </span>
             </div>
 
             {/* Quote */}
-            <div className="flex flex-col gap-8">
-              <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 sm:gap-8">
+              <div className="flex flex-col gap-2 sm:gap-4">
                 <h1
                   className="w-full max-w-[660px] font-semibold tracking-[-0.065em] text-black"
-                  style={{ fontSize: "clamp(40px, 7vw, 80px)", lineHeight: 1.2 }}
+                  style={{ fontSize: "clamp(32px, 7vw, 80px)", lineHeight: 1.2 }}
                 >
                   Creative{" "}
                   <span className={`${serif} text-black/40`}>designer &amp;</span>
@@ -243,8 +243,8 @@ function Hero() {
                   experience.
                 </h1>
                 <p
-                  className="w-full max-w-[535px] font-medium leading-[1.5] tracking-[-0.0075em]"
-                  style={{ color: "#515151", fontSize: "16px" }}
+                  className="w-full max-w-[535px] text-[10px] sm:text-[16px] font-medium leading-[1.5] tracking-[-0.0075em]"
+                  style={{ color: "#515151" }}
                 >
                   I create modern and visually compelling digital experiences that
                   help brands stand out. From user-focused UI/UX design to clean
@@ -252,20 +252,20 @@ function Hero() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-3 sm:gap-6">
                 <a
                   href="#contact"
-                  className="inline-flex h-12 items-center justify-center rounded-full px-6 text-[16px] font-medium tracking-[-0.0075em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)]"
+                  className="inline-flex h-7 items-center justify-center rounded-full px-3.5 text-[9px] sm:h-12 sm:px-6 sm:text-[16px] font-medium tracking-[-0.0075em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)]"
                   style={{ background: "#070606" }}
                 >
                   Get in touch
                 </a>
                 <a
                   href="#services"
-                  className="inline-flex items-center gap-2 text-[16px] font-medium tracking-[-0.0075em] text-black underline decoration-from-font underline-offset-[3px]"
+                  className="inline-flex items-center gap-1 sm:gap-2 text-[9px] sm:text-[16px] font-medium tracking-[-0.0075em] text-black underline decoration-from-font underline-offset-[3px]"
                 >
                   What we do
-                  <ArrowUpRight className="size-6" strokeWidth={1.75} />
+                  <ArrowUpRight className="size-3.5 sm:size-6" strokeWidth={1.75} />
                 </a>
               </div>
             </div>
