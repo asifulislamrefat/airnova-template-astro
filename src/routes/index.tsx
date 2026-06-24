@@ -330,8 +330,8 @@ function Hero() {
 
 function Benefits() {
   return (
-    <section className="bg-white px-20 py-28">
-      <div className="mx-auto flex max-w-[1280px] items-start gap-16">
+    <section className="bg-white px-6 py-20 sm:px-10 lg:px-20 lg:py-28">
+      <div className="mx-auto flex max-w-[1280px] flex-col items-stretch gap-12 lg:flex-row lg:items-start lg:gap-16">
         <div className="flex flex-1 flex-col gap-8 self-stretch">
           <div className="relative h-[399px] w-full overflow-hidden rounded-[20px]">
             <img
@@ -378,9 +378,9 @@ function Benefits() {
           </div>
         </div>
 
-        <div className="flex w-[649px] shrink-0 flex-col items-start justify-between self-stretch">
+        <div className="flex w-full shrink-0 flex-col items-start justify-between gap-12 self-stretch lg:w-[649px]">
           <div className="flex w-full flex-col gap-12">
-            <h2 className="w-[611px] text-[72px] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+            <h2 className="w-full max-w-[611px] font-semibold leading-[1.2] tracking-[-0.065em] text-black" style={{ fontSize: "clamp(40px, 6.5vw, 72px)" }}>
               Explore our{" "}
               <span className={`${serif} italic text-black/40`}>flexible of</span> activity.
             </h2>
@@ -390,7 +390,7 @@ function Benefits() {
                   <span className="grid size-8 place-items-center rounded-2xl border-[0.5px] border-black/10 bg-surface">
                     <Check className="size-[15px] text-[#070606]" />
                   </span>
-                  <span className="whitespace-nowrap text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#070606]">
+                  <span className="text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#070606]">
                     {t}
                   </span>
                 </span>
