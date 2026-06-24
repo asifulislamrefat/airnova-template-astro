@@ -208,7 +208,7 @@ function Hero() {
 
   return (
     <section
-      className="bg-surface px-0 pb-10 md:px-[30px] lg:px-0"
+      className="bg-surface px-0 pb-10 md:px-6 lg:px-0"
     >
       <div className="mx-auto flex max-w-[1280px] flex-col items-stretch gap-8 lg:flex-row lg:items-start">
         {/* Left card — 735 × 750 */}
