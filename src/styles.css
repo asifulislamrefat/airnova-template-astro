@@ -2,6 +2,13 @@
 @source "../src";
 @import "tw-animate-css";
 
+/* Prevent stray horizontal scroll caused by transformed or absolutely
+   positioned descendants escaping their overflow:hidden ancestors. */
+html,
+body {
+  overflow-x: hidden;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /*
