@@ -776,8 +776,8 @@ function Stats() {
 
         <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.l} className="flex flex-1 flex-col gap-16 rounded-[20px] bg-white p-6">
-              <div className="flex flex-col gap-8">
+            <div key={s.l} className="flex flex-1 flex-col gap-6 rounded-[20px] bg-white p-6">
+              <div className="flex flex-col gap-3">
                 <div className="text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
                   {s.v}
                 </div>
