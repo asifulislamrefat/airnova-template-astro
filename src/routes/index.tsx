@@ -275,10 +275,31 @@ function Hero() {
 
           {/* Logo strip — Mercury marquee loop */}
           <LogoMarquee />
+
+          {/* Mobile/Tablet image row — replaces the big right slider below lg */}
+          <div className="flex w-full max-w-[671px] gap-2 sm:gap-3 lg:hidden">
+            {heroImages.map((src, i) => (
+              <button
+                key={src}
+                type="button"
+                onClick={() => {
+                  setActive(i);
+                  setProgress(0);
+                  setCycleKey((k) => k + 1);
+                }}
+                className={`relative aspect-[3/4] flex-1 overflow-hidden rounded-[12px] bg-black/5 transition-all ${
+                  i === active ? "ring-2 ring-foreground/80" : "opacity-80"
+                }`}
+                aria-label={`Show slide ${i + 1}`}
+              >
+                <img src={src} alt="" className="absolute inset-0 size-full object-cover" />
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Right image slider — flex-1, 750h */}
-        <div className="relative h-[438px] min-w-0 w-full flex-1 overflow-hidden rounded-[12px] bg-black/5 sm:h-[560px] sm:rounded-[20px] lg:h-[750px] lg:max-w-[513px]">
+        {/* Right image slider — desktop only */}
+        <div className="relative hidden min-w-0 flex-1 overflow-hidden rounded-[20px] bg-black/5 lg:block lg:h-[750px] lg:max-w-[513px]">
           {heroImages.map((src, i) => (
             <img
               key={src}
