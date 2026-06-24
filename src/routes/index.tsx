@@ -130,12 +130,25 @@ const brandLogos = [brandLogo2, brandLogo3, brandLogo4, brandLogo1];
 
 function Hero() {
   const [active, setActive] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => {
-      setActive((i) => (i + 1) % heroImages.length);
-    }, 4000);
-    return () => clearInterval(id);
+    const DURATION = 5000;
+    const SWITCH_AT = 0.8;
+    let start = performance.now();
+    let raf = 0;
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - start) / DURATION);
+      setProgress(p);
+      if (p >= SWITCH_AT) {
+        setActive((i) => (i + 1) % heroImages.length);
+        setProgress(0);
+        start = performance.now();
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   return (
@@ -254,14 +267,23 @@ function Hero() {
             {heroImages.map((_, i) => (
               <span
                 key={i}
-                className="h-[5.775px] rounded-full transition-all duration-500"
+                className="relative h-[5.775px] overflow-hidden rounded-full transition-all duration-500"
                 style={{
                   flex: i === active ? "0 0 67.3px" : "1 1 0",
-                  background:
-                    i === active ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.25)",
+                  background: "rgba(255,255,255,0.25)",
                   backdropFilter: i === active ? "blur(16px)" : undefined,
                 }}
-              />
+              >
+                {i === active && (
+                  <span
+                    className="absolute inset-y-0 left-0 rounded-full"
+                    style={{
+                      width: `${Math.min(progress / 0.8, 1) * 100}%`,
+                      background: "rgba(255,255,255,0.95)",
+                    }}
+                  />
+                )}
+              </span>
             ))}
           </div>
         </div>
