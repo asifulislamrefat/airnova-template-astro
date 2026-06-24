@@ -489,8 +489,8 @@ function Benefits() {
         <div className="flex flex-1 flex-col gap-8 self-stretch">
           <div className="relative h-[399px] w-full overflow-hidden rounded-[20px]">
             <img
-              src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1000&q=80"
-              alt="Working on design"
+              src={benefits1.url}
+              alt="Editorial portrait"
               className="absolute inset-0 size-full object-cover"
             />
             <span className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-[20px] bg-white px-4 py-2">
