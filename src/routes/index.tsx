@@ -25,6 +25,7 @@ import project1 from "@/assets/project-1.png.asset.json";
 import project2 from "@/assets/project-2.png.asset.json";
 import project3 from "@/assets/project-3.png.asset.json";
 import project4 from "@/assets/project-4.png.asset.json";
+import michaelAvatar from "@/assets/michael.png.asset.json";
 import solutionThumb from "@/assets/solution-thumb.png.asset.json";
 import avatar10 from "@/assets/avatar-10.png.asset.json";
 import avatar11 from "@/assets/avatar-11.png.asset.json";
@@ -1359,7 +1360,7 @@ function Testimonials() {
       name: "Michael Turner",
       role: "Product Manager",
       text: "Fast delivery, great communication, and outstanding design work !",
-      avatar: "https://i.pravatar.cc/120?img=12",
+      avatar: michaelAvatar.url,
       headerTop: true,
     },
     {
