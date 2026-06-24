@@ -1192,7 +1192,7 @@ function Testimonials() {
       role: "Product Manager",
       text: "Fast delivery, great communication, and outstanding design work !",
       avatar: michaelAvatar.url,
-      headerTop: false,
+      headerTop: true,
     },
     {
       name: "David Lee",
