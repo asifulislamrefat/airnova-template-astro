@@ -606,9 +606,37 @@ function Solution() {
   return <SolutionInner />;
 }
 
-function CustomVideoPlayer({ src, poster }: { src: string; poster?: string }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
+declare global {
+  interface Window {
+    YT: any;
+    onYouTubeIframeAPIReady?: () => void;
+  }
+}
+
+function loadYouTubeAPI(): Promise<any> {
+  return new Promise((resolve) => {
+    if (typeof window === "undefined") return;
+    if (window.YT && window.YT.Player) return resolve(window.YT);
+    const existing = document.getElementById("youtube-iframe-api");
+    if (!existing) {
+      const tag = document.createElement("script");
+      tag.id = "youtube-iframe-api";
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(tag);
+    }
+    const prev = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => {
+      prev?.();
+      resolve(window.YT);
+    };
+  });
+}
+
+function CustomVideoPlayer({ youtubeId }: { youtubeId: string }) {
   const wrapRef = useRef<HTMLDivElement>(null);
+  const mountRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<any>(null);
+  const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
   const [volume, setVolume] = useState(1);
@@ -618,67 +646,110 @@ function CustomVideoPlayer({ src, poster }: { src: string; poster?: string }) {
   const hideTimer = useRef<number | null>(null);
 
   useEffect(() => {
-    // autoplay on mount
-    const v = videoRef.current;
-    if (!v) return;
-    v.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
-  }, []);
+    let cancelled = false;
+    let tick: number | undefined;
+    loadYouTubeAPI().then((YT) => {
+      if (cancelled || !mountRef.current) return;
+      playerRef.current = new YT.Player(mountRef.current, {
+        videoId: youtubeId,
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+          showinfo: 0,
+          iv_load_policy: 3,
+          playsinline: 1,
+          disablekb: 1,
+          fs: 0,
+        },
+        events: {
+          onReady: (e: any) => {
+            setReady(true);
+            setDuration(e.target.getDuration());
+            setVolume(e.target.getVolume() / 100);
+            setMuted(e.target.isMuted());
+          },
+          onStateChange: (e: any) => {
+            // 1 playing, 2 paused, 0 ended
+            if (e.data === 1) setPlaying(true);
+            else if (e.data === 2 || e.data === 0) setPlaying(false);
+            if (!duration) setDuration(e.target.getDuration());
+          },
+        },
+      });
+    });
+    tick = window.setInterval(() => {
+      const p = playerRef.current;
+      if (p && typeof p.getCurrentTime === "function") {
+        setTime(p.getCurrentTime() || 0);
+        const d = p.getDuration?.() || 0;
+        if (d && d !== duration) setDuration(d);
+      }
+    }, 250);
+    return () => {
+      cancelled = true;
+      if (tick) window.clearInterval(tick);
+      try {
+        playerRef.current?.destroy?.();
+      } catch {}
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [youtubeId]);
 
   const togglePlay = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (v.paused) {
-      v.play();
-      setPlaying(true);
-    } else {
-      v.pause();
-      setPlaying(false);
-    }
+    const p = playerRef.current;
+    if (!p) return;
+    if (playing) p.pauseVideo();
+    else p.playVideo();
   };
 
   const toggleMute = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = !v.muted;
-    setMuted(v.muted);
+    const p = playerRef.current;
+    if (!p) return;
+    if (p.isMuted()) {
+      p.unMute();
+      setMuted(false);
+    } else {
+      p.mute();
+      setMuted(true);
+    }
   };
 
   const onVolume = (val: number) => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.volume = val;
+    const p = playerRef.current;
+    if (!p) return;
+    p.setVolume(Math.round(val * 100));
     setVolume(val);
     if (val === 0) {
-      v.muted = true;
+      p.mute();
       setMuted(true);
-    } else if (v.muted) {
-      v.muted = false;
+    } else if (p.isMuted()) {
+      p.unMute();
       setMuted(false);
     }
   };
 
   const onSeek = (val: number) => {
-    const v = videoRef.current;
-    if (!v || !duration) return;
-    v.currentTime = (val / 100) * duration;
-    setTime(v.currentTime);
+    const p = playerRef.current;
+    if (!p || !duration) return;
+    const t = (val / 100) * duration;
+    p.seekTo(t, true);
+    setTime(t);
   };
 
   const toggleFullscreen = () => {
     const w = wrapRef.current;
     if (!w) return;
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-    } else {
-      w.requestFullscreen?.();
-    }
+    if (document.fullscreenElement) document.exitFullscreen();
+    else w.requestFullscreen?.();
   };
 
   const nudgeControls = () => {
     setShowControls(true);
     if (hideTimer.current) window.clearTimeout(hideTimer.current);
     hideTimer.current = window.setTimeout(() => {
-      if (videoRef.current && !videoRef.current.paused) setShowControls(false);
+      if (playing) setShowControls(false);
     }, 2500);
   };
 
@@ -699,20 +770,17 @@ function CustomVideoPlayer({ src, poster }: { src: string; poster?: string }) {
       className="group relative overflow-hidden rounded-2xl bg-black shadow-2xl"
       style={{ aspectRatio: "16 / 9" }}
     >
-      <video
-        ref={videoRef}
-        src={src}
-        poster={poster}
-        playsInline
+      <div ref={mountRef} className="absolute inset-0 size-full" />
+      {/* Click shield over iframe to capture play/pause taps */}
+      <button
+        type="button"
+        aria-label={playing ? "Pause" : "Play"}
         onClick={togglePlay}
-        onTimeUpdate={(e) => setTime(e.currentTarget.currentTime)}
-        onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
-        onEnded={() => setPlaying(false)}
-        className="size-full cursor-pointer object-cover"
+        className="absolute inset-0 size-full cursor-pointer bg-transparent"
       />
 
       {/* Center play overlay when paused */}
-      {!playing && (
+      {ready && !playing && (
         <button
           type="button"
           aria-label="Play"
@@ -943,10 +1011,7 @@ function SolutionInner() {
             onClick={(e) => e.stopPropagation()}
             className="relative w-full max-w-[1100px]"
           >
-            <CustomVideoPlayer
-              src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-              poster="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1600&q=80"
-            />
+            <CustomVideoPlayer youtubeId="9u1RLVS0ziU" />
           </div>
         </div>
       )}
