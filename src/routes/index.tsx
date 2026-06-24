@@ -203,7 +203,7 @@ function FullscreenMenu({ open, onClose }: { open: boolean; onClose: () => void 
         </span>
       </button>
       <nav className="relative z-10 flex h-full w-full items-center justify-center p-8">
-        <ul className="flex flex-col items-center gap-8 text-center">
+        <ul className="flex flex-col items-center gap-[22px] text-center">
           {links.map((label, i) => (
             <li
               key={label}
