@@ -580,7 +580,7 @@ function Projects() {
                 <img
                   src={projectImages[i]}
                   alt={p.title}
-                  className="h-[500px] w-full object-cover transition duration-700 hover:scale-105"
+                  className="h-[250px] lg:h-[500px] w-full object-cover transition duration-700 hover:scale-105"
                 />
               </div>
               <div className="flex items-center justify-between gap-3 rounded-[10px] bg-[#f5f5f5] px-2.5 py-2 sm:gap-8 sm:px-6 sm:py-3">
