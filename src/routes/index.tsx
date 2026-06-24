@@ -1161,6 +1161,7 @@ function Index() {
       <Solution />
       <Testimonials />
       <TestimonialsSlider />
+      <FannedTestimonials />
       <Faq />
       <Cta />
       <Footer />
