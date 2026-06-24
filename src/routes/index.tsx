@@ -603,6 +603,22 @@ function Stats() {
 }
 
 function Solution() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
+  useEffect(() => {
+    if (!videoOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setVideoOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [videoOpen]);
+
   return (
     <section className="bg-white px-6 py-28 lg:px-20">
       <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-16">
@@ -646,9 +662,14 @@ function Solution() {
               <Plus className="size-6 text-white" strokeWidth={1.5} />
             </div>
             <div className="relative flex flex-col gap-6">
-              <span className="grid size-14 place-items-center rounded-full bg-white">
+              <button
+                type="button"
+                onClick={() => setVideoOpen(true)}
+                aria-label="Play video"
+                className="grid size-14 place-items-center rounded-full bg-white shadow-lg transition hover:scale-105"
+              >
                 <Play className="size-4 fill-[#070606] text-[#070606]" />
-              </span>
+              </button>
               <p className="max-w-[281px] text-[32px] font-semibold leading-[1.2] tracking-[-0.065em] text-white">
                 Our strategy meets bold creativity
               </p>
@@ -689,6 +710,38 @@ function Solution() {
           </div>
         </div>
       </div>
+
+      {videoOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Video player"
+          onClick={() => setVideoOpen(false)}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm animate-in fade-in duration-200"
+        >
+          <button
+            type="button"
+            aria-label="Close video"
+            onClick={() => setVideoOpen(false)}
+            className="absolute right-6 top-6 grid size-12 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"
+          >
+            <X className="size-6" />
+          </button>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-[1100px] overflow-hidden rounded-2xl bg-black shadow-2xl"
+            style={{ aspectRatio: "16 / 9" }}
+          >
+            <iframe
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0"
+              title="Showreel"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 size-full"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
