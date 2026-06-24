@@ -489,7 +489,7 @@ function Projects() {
   ];
   return (
     <section id="projects" className="bg-[#f5f5f5] p-[30px]">
-      <div className="relative mx-auto w-full max-w-[1320px] rounded-[20px] bg-white px-20 py-28">
+      <div className="relative w-full rounded-[20px] bg-white px-20 py-28">
         <div className="mx-auto flex max-w-[680px] flex-col items-center gap-4 text-center">
           <Pill>Our Project</Pill>
           <h2 className="text-[clamp(40px,5.5vw,72px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
@@ -500,7 +500,7 @@ function Projects() {
             innovation. Each project reflects our commitment to delivering .
           </p>
         </div>
-        <div className="mt-16 grid gap-2 md:grid-cols-2">
+        <div className="mx-auto mt-16 grid max-w-[1320px] gap-2 md:grid-cols-2">
           {items.map((p, i) => (
             <article key={p.title} className="flex flex-col gap-2">
               <div className="overflow-hidden rounded-[20px] bg-black/5">
