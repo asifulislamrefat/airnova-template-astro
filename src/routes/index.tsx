@@ -1212,11 +1212,11 @@ function Testimonials() {
           </h2>
         </div>
 
-        <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-4 lg:h-[454px]">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4 lg:h-[454px]">
           {/* Rating card */}
           <div className="flex flex-col justify-between rounded-lg bg-white p-4">
             <div className="flex items-center gap-3">
-              <p className="whitespace-nowrap font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+              <p className="shrink-0 font-semibold leading-[1.2] tracking-[-0.065em] text-black">
                 <span className="text-[56px]">4.9 </span>
                 <span className="text-[32px] text-black/50">/5</span>
               </p>
