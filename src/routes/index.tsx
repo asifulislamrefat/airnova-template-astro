@@ -729,15 +729,11 @@ function Solution() {
           </button>
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-[1100px] overflow-hidden rounded-2xl bg-black shadow-2xl"
-            style={{ aspectRatio: "16 / 9" }}
+            className="relative w-full max-w-[1100px]"
           >
-            <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0"
-              title="Showreel"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute inset-0 size-full"
+            <CustomVideoPlayer
+              src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+              poster="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1600&q=80"
             />
           </div>
         </div>
