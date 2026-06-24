@@ -112,13 +112,13 @@ function Pill({
   );
 }
 
-function FigmaPlusIcon({ className = "" }: { className?: string }) {
+function FigmaPlusIcon({ className = "", dark = false }: { className?: string; dark?: boolean }) {
   return (
     <span
-      className={`grid size-6 shrink-0 place-items-center rounded-full bg-white ${className}`}
+      className={`grid size-6 shrink-0 place-items-center rounded-full ${dark ? "bg-[#070606]" : "bg-white"} ${className}`}
       aria-hidden="true"
     >
-      <Plus className="size-[14px] text-[#070606]" strokeWidth={2} />
+      <Plus className={`size-[14px] ${dark ? "text-white" : "text-[#070606]"}`} strokeWidth={2} />
     </span>
   );
 }
@@ -1299,7 +1299,7 @@ function SolutionInner() {
                   A seamless process with a polished fast and easy-to-manage result
                 </p>
               </div>
-              <FigmaPlusIcon />
+              <FigmaPlusIcon dark />
             </div>
             <div className="flex -space-x-5">
               {[avatar10.url, avatar11.url, avatar12.url, avatar13.url].map((src) => (
