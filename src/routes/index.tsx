@@ -158,6 +158,107 @@ function Nav() {
 const heroImages = [hero1.url, hero2.url, hero3.url];
 const brandLogos = [brandLogo2, brandLogo3, brandLogo4, brandLogo1, brandLogo5, brandLogo6];
 
+function LogoMarquee() {
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const offsetRef = useRef(0);
+  const halfRef = useRef(0);
+  const pausedRef = useRef(false);
+  const draggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragStartOffsetRef = useRef(0);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    // Half = width of one full set of logos (we render the set twice for seamless loop)
+    halfRef.current = track.scrollWidth / 2;
+
+    const SPEED = halfRef.current / 20; // px per second → ~20s per loop
+    let last = performance.now();
+    let raf = 0;
+
+    const tick = (now: number) => {
+      const dt = (now - last) / 1000;
+      last = now;
+      if (!pausedRef.current && !draggingRef.current) {
+        offsetRef.current -= SPEED * dt;
+      }
+      // Normalize within [-half, 0] for seamless wrap in both directions
+      const half = halfRef.current;
+      if (half > 0) {
+        while (offsetRef.current <= -half) offsetRef.current += half;
+        while (offsetRef.current > 0) offsetRef.current -= half;
+      }
+      track.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`;
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    draggingRef.current = true;
+    dragStartXRef.current = e.clientX;
+    dragStartOffsetRef.current = offsetRef.current;
+    (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
+  };
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!draggingRef.current) return;
+    offsetRef.current = dragStartOffsetRef.current + (e.clientX - dragStartXRef.current);
+  };
+  const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!draggingRef.current) return;
+    draggingRef.current = false;
+    try {
+      (e.currentTarget as HTMLDivElement).releasePointerCapture(e.pointerId);
+    } catch {}
+  };
+
+  return (
+    <div
+      className="w-[671px] cursor-grab overflow-hidden active:cursor-grabbing"
+      onMouseEnter={() => (pausedRef.current = true)}
+      onMouseLeave={() => (pausedRef.current = false)}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={endDrag}
+      onPointerCancel={endDrag}
+    >
+      <div
+        ref={trackRef}
+        className="flex w-max items-start gap-[5px] will-change-transform select-none"
+      >
+        {[...brandLogos, ...brandLogos].map((logo, i) => (
+          <div
+            key={i}
+            className="relative flex size-[164px] shrink-0 flex-col items-center justify-center overflow-hidden rounded-[12.336px] bg-surface"
+          >
+            <img
+              src={logo.url}
+              alt=""
+              draggable={false}
+              className="max-h-[50px] w-auto max-w-[100px] object-contain"
+            />
+            <span
+              className="absolute font-semibold tracking-[-0.055em]"
+              style={{
+                color: "#282828",
+                fontSize: "8px",
+                lineHeight: 1.4,
+                left: "50%",
+                bottom: "10px",
+                transform: "translateX(-50%)",
+              }}
+            >
+              /2027
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Hero() {
   const [active, setActive] = useState(0);
   const [progress, setProgress] = useState(0);
