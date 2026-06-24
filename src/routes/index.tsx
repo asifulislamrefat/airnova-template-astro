@@ -975,6 +975,7 @@ function Index() {
       <Stats />
       <Solution />
       <Testimonials />
+      <TestimonialsSlider />
       <Faq />
       <Cta />
       <Footer />
