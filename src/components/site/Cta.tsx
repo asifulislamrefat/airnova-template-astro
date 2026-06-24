@@ -2,7 +2,7 @@ import { BrandMark, serif } from "./shared";
 
 export function Cta() {
   return (
-    <section className="bg-white p-[30px]">
+    <section className="bg-white p-[10px] lg:p-[30px]">
       <div className="rounded-[20px] bg-[#070606] py-28">
         <div className="container-x flex flex-col items-center justify-center gap-8 text-center">
           <div className="flex flex-col items-center gap-4">
