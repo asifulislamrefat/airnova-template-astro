@@ -1299,7 +1299,7 @@ function SolutionInner() {
                   A seamless process with a polished fast and easy-to-manage result
                 </p>
               </div>
-              <FigmaPlusIcon />
+              <FigmaPlusIcon dark />
             </div>
             <div className="flex -space-x-5">
               {[avatar10.url, avatar11.url, avatar12.url, avatar13.url].map((src) => (
