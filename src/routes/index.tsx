@@ -207,10 +207,8 @@ function Hero() {
   }, [cycleKey]);
 
   return (
-    <section
-      className="bg-surface px-0 pb-10 md:px-6 lg:px-0"
-    >
-      <div className="mx-auto flex max-w-[1280px] flex-col items-stretch gap-8 lg:flex-row lg:items-start">
+    <section className="bg-surface pb-10">
+      <div className="container-x flex flex-col items-stretch gap-8 lg:flex-row lg:items-start">
         {/* Left card — 735 × 750 */}
         <div className="flex w-full shrink-0 flex-col items-center justify-between gap-10 overflow-hidden rounded-[20px] bg-background p-6 sm:p-8 md:px-[30px] lg:h-[750px] lg:w-[735px] lg:gap-0 lg:px-8">
           {/* Text container — 671 × 457 */}
@@ -329,8 +327,8 @@ function Hero() {
 
 function Benefits() {
   return (
-    <section className="bg-white px-6 py-20 sm:px-10 lg:px-20 lg:py-28">
-      <div className="mx-auto flex max-w-[1280px] flex-col items-stretch gap-12 lg:flex-row lg:items-start lg:gap-16">
+    <section className="bg-white py-20 lg:py-28">
+      <div className="container-x flex flex-col items-stretch gap-12 lg:flex-row lg:items-start lg:gap-16">
         <div className="flex flex-1 flex-col gap-8 self-stretch">
           <div className="relative h-[399px] w-full overflow-hidden rounded-[20px]">
             <img
@@ -505,8 +503,8 @@ function Services() {
     },
   ];
   return (
-    <section id="services" className="bg-surface px-6 py-20 sm:px-10 lg:px-20 lg:py-28">
-      <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-16">
+    <section id="services" className="bg-surface py-20 lg:py-28">
+      <div className="container-x flex flex-col items-center gap-16">
         <div className="flex flex-col items-center gap-2">
           <Pill variant="white">Our Services</Pill>
           <div className="flex flex-col items-center gap-4 text-center">
@@ -1055,8 +1053,8 @@ function SolutionInner() {
   }, [lightboxMounted]);
 
   return (
-    <section className="bg-white px-6 py-28 lg:px-20">
-      <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-16">
+    <section className="bg-white py-28">
+      <div className="container-x flex flex-col items-center gap-16">
         <h2 className="max-w-[873px] text-center text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
           Crafting unique strategies that turn visions into powerful results
         </h2>
@@ -1201,8 +1199,8 @@ function Testimonials() {
     },
   ];
   return (
-    <section className="bg-surface px-6 py-28 lg:px-20">
-      <div className="mx-auto flex max-w-[1280px] flex-col gap-16">
+    <section className="bg-surface py-28">
+      <div className="container-x flex flex-col gap-16">
         <div className="flex flex-col items-start gap-10 lg:flex-row lg:gap-[150px]">
           <Pill>Testimonials</Pill>
           <h2 className="flex-1 text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.05em] text-black">
@@ -1384,11 +1382,11 @@ function TestimonialsSlider() {
 
   return (
     <section
-      className="bg-white px-6 py-28 lg:px-20"
+      className="bg-white py-28"
       aria-roledescription="carousel"
       aria-label="Client testimonials"
     >
-      <div className="mx-auto flex max-w-[1280px] flex-col gap-12">
+      <div className="container-x flex flex-col gap-12">
         <div className="flex flex-col gap-6">
           <Pill>Testimonials</Pill>
           <h2 className="text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.05em] text-[#070606]">
@@ -1529,7 +1527,7 @@ function FannedTestimonials() {
   const [visible, setVisible] = useState(false);
   return (
     <section
-      className="overflow-hidden bg-[#070606] px-6 py-28 text-white lg:px-20"
+      className="overflow-hidden bg-[#070606] py-28 text-white"
       aria-label="Client testimonials"
     >
       <div
@@ -1548,7 +1546,7 @@ function FannedTestimonials() {
           );
           io.observe(el);
         }}
-        className="mx-auto flex max-w-[1280px] flex-col items-center gap-16"
+        className="container-x flex flex-col items-center gap-16"
       >
         <div className="flex flex-col items-center gap-5 text-center">
           <div className="inline-flex items-center gap-[10px] rounded-lg bg-white/[0.06] px-[14px] py-2">
@@ -1634,8 +1632,9 @@ const faqs = [
 function Faq() {
   const [open, setOpen] = useState(0);
   return (
-    <section className="flex flex-col items-center gap-16 bg-white px-6 py-28 lg:px-20">
-      <div className="flex flex-col items-center gap-4">
+    <section className="bg-white py-28">
+      <div className="container-x flex flex-col items-center gap-16">
+        <div className="flex flex-col items-center gap-4">
         <div className="inline-flex items-center justify-center gap-[10px] rounded-lg bg-[#f5f5f5] px-[14px] py-2">
           <BrandMark size={24} />
           <span className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-black">
@@ -1683,6 +1682,7 @@ function Faq() {
             </button>
           );
         })}
+      </div>
       </div>
     </section>
   );

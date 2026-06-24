@@ -83,7 +83,7 @@ export function Nav() {
 
   return (
     <header className="bg-surface">
-      <div className="flex w-full items-center justify-center px-6 py-6 lg:px-[93px]">
+      <div className="container-x flex items-center justify-center py-6">
         <div className="flex w-full items-center justify-between gap-6 lg:hidden">
           <Logo />
           <button
@@ -95,7 +95,7 @@ export function Nav() {
             <span className="block h-px w-full bg-foreground" />
           </button>
         </div>
-        <div className="hidden w-full max-w-[1280px] items-center justify-between gap-8 lg:flex">
+        <div className="hidden w-full items-center justify-between gap-8 lg:flex">
           <Logo />
           <div className="flex items-center gap-10 xl:gap-16">
           {navLinks.map((l) => (
