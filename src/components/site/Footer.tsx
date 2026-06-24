@@ -19,7 +19,7 @@ export function Footer() {
             <p className="text-base text-background/80">Built for creators, businesses and brands.</p>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
             {cols.map((c, i) => (
               <div key={i} className="flex flex-col gap-5">
                 <h4 className="text-2xl font-semibold tracking-[-0.02em]">{c.title}</h4>
