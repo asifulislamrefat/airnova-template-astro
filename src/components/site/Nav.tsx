@@ -43,8 +43,8 @@ function FullscreenMenu({
           <span className="pointer-events-none absolute left-0 top-1/2 block h-px w-full -rotate-45 bg-white" />
         </span>
       </button>
-      <nav className="relative z-10 flex h-full w-full items-center justify-center p-8">
-        <ul className="flex flex-col items-center gap-[10px] text-center lg:gap-[22px]">
+      <nav className="relative z-10 flex h-full w-full items-start justify-center overflow-y-auto p-8 lg:items-center">
+        <ul className="flex min-h-full flex-col items-center justify-center gap-[10px] py-4 text-center lg:gap-[22px]">
           {allLinks.map((l, i) => (
             <li
               key={l.label}
