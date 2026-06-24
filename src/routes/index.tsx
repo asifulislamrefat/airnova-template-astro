@@ -511,7 +511,7 @@ function Benefits() {
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-6">
               <div className="flex items-center gap-[14px]">
-                <AppWindow size={24} strokeWidth={1.5} className="text-[#FF2626]" />
+                <Save size={24} strokeWidth={1.5} className="text-[#070606]" />
                 <p className="text-[20px] font-medium leading-[1.5] tracking-[-0.075em] text-black">
                   <span className="text-[#FF2626]">ESR</span> - 2029
                 </p>
