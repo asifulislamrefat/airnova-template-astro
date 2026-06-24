@@ -920,7 +920,7 @@ function SolutionInner() {
           <div className="relative flex h-[500px] w-full shrink-0 flex-col justify-between overflow-hidden rounded-[20px] p-8 lg:w-[532px]">
             {videoOpen ? (
               <div className="absolute inset-0">
-                <CustomVideoPlayer youtubeId="9u1RLVS0ziU" />
+                <CustomVideoPlayer youtubeId="9u1RLVS0ziU" fill />
               </div>
             ) : (
               <>
