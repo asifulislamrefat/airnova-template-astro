@@ -133,6 +133,7 @@ const brandLogos = [brandLogo2, brandLogo3, brandLogo4, brandLogo1, brandLogo5, 
 function Hero() {
   const [active, setActive] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [cycleKey, setCycleKey] = useState(0);
 
   useEffect(() => {
     const DURATION = 5000;
@@ -151,7 +152,7 @@ function Hero() {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [cycleKey]);
 
   return (
     <section
