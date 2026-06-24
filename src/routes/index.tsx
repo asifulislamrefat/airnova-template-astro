@@ -432,9 +432,9 @@ function BenefitsAccordion() {
             <button
               type="button"
               onClick={() => setOpen(isOpen ? -1 : i)}
-              className="flex w-full cursor-pointer items-center gap-16 text-left"
+              className="flex w-full cursor-pointer items-center gap-6 text-left sm:gap-16"
             >
-              <span className="flex-1 text-[28px] font-semibold leading-[1.5] tracking-[-0.075em] text-[#070606]">
+              <span className="flex-1 text-[22px] font-semibold leading-[1.3] tracking-[-0.075em] text-[#070606] sm:text-[28px] sm:leading-[1.5]">
                 {item.title}{" "}
                 <span className={`${serif} italic text-black/40`}>{item.accent}</span>
               </span>
@@ -506,16 +506,16 @@ function Services() {
     },
   ];
   return (
-    <section id="services" className="bg-surface px-20 py-28">
+    <section id="services" className="bg-surface px-6 py-20 sm:px-10 lg:px-20 lg:py-28">
       <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-16">
         <div className="flex flex-col items-center gap-2">
           <Pill variant="white">Our Services</Pill>
           <div className="flex flex-col items-center gap-4 text-center">
-            <h2 className="w-[864px] max-w-full text-[72px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
+            <h2 className="w-full max-w-[864px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]" style={{ fontSize: "clamp(36px, 6vw, 72px)" }}>
               Design solutions that make your{" "}
               <span className={`${serif} italic text-black/40`}>brand stand</span>
             </h2>
-            <p className="w-[605px] max-w-full text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+            <p className="w-full max-w-[605px] text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
               We create thoughtful and visually compelling design solutions that help your brand
               stand out in a competitive digital world. By combining creativity with strategy our
               designs
@@ -523,7 +523,7 @@ function Services() {
           </div>
         </div>
 
-        <div className="grid w-full grid-cols-1 gap-2 md:grid-cols-3">
+        <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {items.map(({ icon, title, desc }) => (
             <div
               key={title}
