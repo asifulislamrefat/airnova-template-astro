@@ -1011,10 +1011,7 @@ function SolutionInner() {
             onClick={(e) => e.stopPropagation()}
             className="relative w-full max-w-[1100px]"
           >
-            <CustomVideoPlayer
-              src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-              poster="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1600&q=80"
-            />
+            <CustomVideoPlayer youtubeId="9u1RLVS0ziU" />
           </div>
         </div>
       )}
