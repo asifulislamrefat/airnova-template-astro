@@ -523,10 +523,10 @@ function Services() {
         </div>
 
         <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map(({ icon, title, desc }) => (
+          {items.map(({ icon, title, desc }, i) => (
             <div
               key={title}
-              className="flex flex-col items-start gap-16 rounded-[20px] bg-white p-8 [&_svg.size-14]:size-12 sm:[&_svg.size-14]:size-14"
+              className={`flex flex-col items-start gap-16 rounded-[20px] bg-white p-8 [&_svg.size-14]:size-12 sm:[&_svg.size-14]:size-14 ${i < 2 ? "sm:col-span-2 lg:col-span-1" : ""}`}
             >
               {icon}
               <div className="flex w-full flex-col gap-2">
