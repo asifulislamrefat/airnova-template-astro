@@ -108,20 +108,25 @@ function Pill({
 function Nav() {
   return (
     <header className="bg-surface">
-      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-6 py-6 lg:px-20">
-        <Logo />
-        <nav className="hidden items-center gap-12 text-base font-medium text-foreground md:flex">
-          <a href="#studio">Studio</a>
-          <a href="#projects" className="inline-flex items-start gap-1">
-            Projects <sup className="text-[10px] font-semibold text-foreground/50">15</sup>
-          </a>
-          <a href="#services">Services</a>
-          <a href="#pricing">Pricing</a>
-        </nav>
-        <button aria-label="Menu" className="flex h-10 w-14 flex-col justify-between py-1.5">
-          <span className="block h-px w-full bg-foreground" />
-          <span className="block h-px w-full bg-foreground" />
-        </button>
+      <div className="flex items-center justify-center px-20 py-6">
+        <div className="flex items-center gap-[167px]">
+          <Logo />
+          <nav className="hidden items-center gap-14 text-base font-medium tracking-[-0.075em] text-foreground md:flex">
+            <a href="#studio">Studio</a>
+            <a href="#projects" className="inline-flex items-start gap-0.5">
+              Projects
+              <sup className="text-[10px] font-semibold leading-[0.9] tracking-[-0.075em] text-foreground/50">
+                15
+              </sup>
+            </a>
+            <a href="#services">Services</a>
+            <a href="#pricing">Pricing</a>
+          </nav>
+          <button aria-label="Menu" className="flex h-[10px] w-14 flex-col justify-between">
+            <span className="block h-px w-full bg-foreground" />
+            <span className="block h-px w-full bg-foreground" />
+          </button>
+        </div>
       </div>
     </header>
   );
