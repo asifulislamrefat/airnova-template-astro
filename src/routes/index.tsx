@@ -811,6 +811,191 @@ function Testimonials() {
   );
 }
 
+/* ---------- Testimonials Slider (Aeline) ---------- */
+
+const sliderTestimonials = [
+  {
+    quote:
+      "They brought clarity to complex problems, breaking down barriers and delivering innovative solutions.",
+    name: "John Doe",
+    company: "Tech Innovations",
+    image:
+      "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    quote:
+      "Their insight resolved difficult hurdles, opening new paths and creating highly effective strategies.",
+    name: "Amelia Chen",
+    company: "Northwind Labs",
+    image:
+      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    quote:
+      "We found focus for tricky requirements, cutting through noise and providing truly advanced responses.",
+    name: "Marcus Wright",
+    company: "Helix Studio",
+    image:
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    quote:
+      "They gave simple paths to hard puzzles, removing all delays while building fresh, brilliant projects.",
+    name: "Priya Patel",
+    company: "Lumen Co.",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    quote:
+      "Sharp thinking, fast turnarounds and a genuine sense of craft on every single deliverable.",
+    name: "Diego Alvarez",
+    company: "Atlas Group",
+    image:
+      "https://images.unsplash.com/photo-1542178243-bc20204b769f?auto=format&fit=crop&w=900&q=80",
+  },
+];
+
+function TriangleArrow({ direction, onClick, disabled }: { direction: "left" | "right"; onClick: () => void; disabled?: boolean }) {
+  return (
+    <button
+      type="button"
+      aria-label={direction === "left" ? "Previous testimonial" : "Next testimonial"}
+      onClick={onClick}
+      disabled={disabled}
+      className="group grid size-12 place-items-center rounded-full border border-black/15 bg-white text-[#070606] transition hover:bg-[#070606] hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className={`size-4 ${direction === "left" ? "-rotate-90" : "rotate-90"}`}
+      >
+        <path d="M12 2L3 21h18L12 2z" />
+      </svg>
+    </button>
+  );
+}
+
+function TestimonialsSlider() {
+  const [index, setIndex] = useState(0);
+  const [perView, setPerView] = useState(3);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const calc = () => {
+      const w = window.innerWidth;
+      setPerView(w < 640 ? 1 : w < 1024 ? 2 : 3);
+    };
+    calc();
+    window.addEventListener("resize", calc);
+    return () => window.removeEventListener("resize", calc);
+  }, []);
+
+  const maxIndex = Math.max(0, sliderTestimonials.length - perView);
+  const safeIndex = Math.min(index, maxIndex);
+
+  const prev = () => setIndex((i) => Math.max(0, i - 1));
+  const next = () => setIndex((i) => Math.min(maxIndex, i + 1));
+
+  return (
+    <section
+      className="bg-white px-6 py-28 lg:px-20"
+      aria-roledescription="carousel"
+      aria-label="Client testimonials"
+    >
+      <div className="mx-auto flex max-w-[1280px] flex-col gap-12">
+        <div className="flex flex-col gap-6">
+          <Pill>Testimonials</Pill>
+          <h2 className="text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.05em] text-[#070606]">
+            What they <span className={`${serif} text-[#070606]/50`}>say about</span> us?
+          </h2>
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="max-w-xl text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+              Here&rsquo;s what they shared about their experience working with our team.
+            </p>
+            <div className="hidden gap-3 sm:flex" role="group" aria-label="Carousel navigation">
+              <TriangleArrow direction="left" onClick={prev} disabled={safeIndex === 0} />
+              <TriangleArrow direction="right" onClick={next} disabled={safeIndex >= maxIndex} />
+            </div>
+          </div>
+        </div>
+
+        <div
+          className="overflow-hidden"
+          ref={(el) => {
+            if (!el || visible) return;
+            const io = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((e) => {
+                  if (e.isIntersecting) {
+                    setVisible(true);
+                    io.disconnect();
+                  }
+                });
+              },
+              { threshold: 0.15 },
+            );
+            io.observe(el);
+          }}
+        >
+          <div
+            className="flex transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+            style={{ transform: `translateX(-${safeIndex * (100 / perView)}%)` }}
+          >
+            {sliderTestimonials.map((t, i) => (
+              <div
+                key={t.name + i}
+                className="shrink-0 px-2"
+                style={{ width: `${100 / perView}%` }}
+              >
+                <article
+                  className="relative h-[460px] overflow-hidden rounded-2xl bg-[#0a0a0a] text-white shadow-[0_20px_60px_-30px_rgba(0,0,0,0.4)] transition-[opacity,transform] duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+                  style={{
+                    opacity: visible ? 1 : 0,
+                    transform: visible ? "scale(1)" : "scale(0.92)",
+                    transitionDelay: `${i * 90}ms`,
+                  }}
+                >
+                  <img
+                    src={t.image}
+                    alt=""
+                    loading="lazy"
+                    className="absolute inset-0 size-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/10" />
+                  <div className="relative flex h-full flex-col justify-end gap-6 p-7">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 32 32"
+                      fill="currentColor"
+                      className="size-8 text-white"
+                      aria-hidden="true"
+                    >
+                      <path d="M3.33398 6.66797H14.6673V16.868L8.69132 25.3346H5.06065L8.61532 17.3346H3.33398V6.66797ZM17.334 6.66797H28.6673V16.868L22.6913 25.3346H19.0607L22.6153 17.3346H17.334V6.66797Z" />
+                    </svg>
+                    <p className="text-lg font-medium leading-[1.4] tracking-[-0.03em]">
+                      &ldquo;{t.quote}&rdquo;
+                    </p>
+                    <p className="text-right text-sm text-white/70">
+                      — {t.name}, {t.company}
+                    </p>
+                  </div>
+                </article>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex justify-center gap-3 sm:hidden" role="group" aria-label="Carousel navigation">
+          <TriangleArrow direction="left" onClick={prev} disabled={safeIndex === 0} />
+          <TriangleArrow direction="right" onClick={next} disabled={safeIndex >= maxIndex} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const faqs = [
   {
     q: "What services do you offer?",
