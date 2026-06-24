@@ -263,29 +263,26 @@ function Hero() {
           ))}
 
           {/* Progress bar — 3 segments, 142 wide, ~30px from bottom */}
-          <div className="absolute bottom-[30px] left-1/2 flex w-[142px] -translate-x-1/2 items-center gap-0">
+          <div className="absolute bottom-[30px] left-1/2 flex w-[142px] -translate-x-1/2 items-center gap-2">
             {heroImages.map((_, i) => (
               <span
                 key={i}
                 className="relative h-[5.775px] overflow-hidden rounded-full transition-all duration-500"
                 style={{
-                  flex: "1 1 0",
+                  flex: i === active ? "0 0 67.3px" : "1 1 0",
                   background: "rgba(255,255,255,0.25)",
                   backdropFilter: i === active ? "blur(16px)" : undefined,
                 }}
               >
-                <span
-                  className="absolute inset-y-0 left-0 rounded-full"
-                  style={{
-                    width:
-                      i < active
-                        ? "100%"
-                        : i === active
-                          ? `${Math.min(progress / 0.8, 1) * 100}%`
-                          : "0%",
-                    background: "rgba(255,255,255,0.95)",
-                  }}
-                />
+                {i === active && (
+                  <span
+                    className="absolute inset-y-0 left-0 rounded-full"
+                    style={{
+                      width: `${Math.min(progress / 0.8, 1) * 100}%`,
+                      background: "rgba(255,255,255,0.95)",
+                    }}
+                  />
+                )}
               </span>
             ))}
           </div>
