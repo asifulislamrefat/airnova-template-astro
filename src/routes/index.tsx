@@ -950,6 +950,12 @@ function CustomVideoPlayer({
     else p.playVideo();
   };
 
+  useEffect(() => {
+    if (playSignal === undefined) return;
+    const p = playerRef.current;
+    if (p && typeof p.playVideo === "function") p.playVideo();
+  }, [playSignal]);
+
   const toggleMute = () => {
     const p = playerRef.current;
     if (!p) return;
