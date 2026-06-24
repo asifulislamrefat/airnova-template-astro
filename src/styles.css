@@ -212,7 +212,7 @@ body {
   isolation: isolate;
   contain: paint;
   width: 100%;
-  height: 8em;
+  height: 16em;
   transform-style: preserve-3d;
   position: fixed;
   bottom: 0;
