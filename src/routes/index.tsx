@@ -148,18 +148,11 @@ function Nav() {
             <a
               key={l.label}
               href={l.href}
-              className="group relative inline-flex items-start text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground"
+              className="inline-flex items-start text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground/70 transition-colors duration-300 ease-out hover:text-foreground"
             >
-              <span className="relative block overflow-hidden py-0.5">
-                <span className="block transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-full">
-                  {l.label}
-                </span>
-                <span aria-hidden className="absolute left-0 top-full block transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-full">
-                  {l.label}
-                </span>
-              </span>
+              <span>{l.label}</span>
               {l.sup && (
-                <sup className="ml-px text-[10px] font-semibold leading-[0.9] tracking-[-0.075em] text-foreground/50">
+                <sup className="ml-px text-[10px] font-semibold leading-[0.9] tracking-[-0.075em] text-foreground/40">
                   {l.sup}
                 </sup>
               )}
