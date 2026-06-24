@@ -540,7 +540,7 @@ function Stats() {
   ];
   return (
     <section id="studio" className="bg-[#f5f5f5] p-[30px]">
-      <div className="flex w-full flex-col gap-8">
+      <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-8">
         <div className="flex flex-col items-center gap-[10px]">
           <Pill>About us</Pill>
           <p className="max-w-[1075px] text-center text-[clamp(28px,3vw,40px)] font-semibold leading-[1.3] tracking-[-0.065em] text-black">
