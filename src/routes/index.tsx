@@ -996,6 +996,146 @@ function TestimonialsSlider() {
   );
 }
 
+/* ---------- Fanned Testimonial Cards (Hirekit) ---------- */
+
+const fannedItems = [
+  {
+    name: "Mark Tressler",
+    role: "COO, FinTech Global",
+    title: "A true partner in growth.",
+    quote:
+      "We launched our Mexico City operations in 30 days – no local entity needed. Their payroll and benefits infrastructure saved us $280K in setup costs, and their talent retention rate is 40% higher than industry average.",
+    avatar: "https://i.pravatar.cc/160?img=14",
+    rotation: -8,
+    variant: "light" as const,
+  },
+  {
+    name: "Jake Miller",
+    role: "VP, NorthBridge",
+    title: "They simplified everything.",
+    quote:
+      "In less than six weeks, they streamlined our entire onboarding workflow across three countries. We cut our administrative load by 55% and reduced compliance errors to virtually zero. The transparency and execution speed are unmatched.",
+    avatar: "https://i.pravatar.cc/160?img=33",
+    rotation: -3,
+    variant: "dark" as const,
+  },
+  {
+    name: "Chloe Adams",
+    role: "CFO, Horizon Labs",
+    title: "A team that delivers.",
+    quote:
+      "Their end-to-end HR and payroll support let us expand to Latin America without distraction. We saved $190K in annual overhead, and our hiring cycle went from 28 days to just 9. It's the kind of operational lift that changes your whole roadmap.",
+    avatar: "https://i.pravatar.cc/160?img=45",
+    rotation: 3,
+    variant: "light" as const,
+  },
+  {
+    name: "Ryan Parker",
+    role: "CEO, FinTech Global",
+    title: "Clear impact from day one.",
+    quote:
+      "Their ecosystem flagged inefficiencies in our multi-country payouts and fixed them in a week. That alone reduced our monthly burn by 12%. Add their reporting tools, and we now make decisions in hours, not weeks. Truly game-changing.",
+    avatar: "https://i.pravatar.cc/160?img=68",
+    rotation: 8,
+    variant: "dark" as const,
+  },
+];
+
+function FannedTestimonials() {
+  const [visible, setVisible] = useState(false);
+  return (
+    <section
+      className="overflow-hidden bg-[#070606] px-6 py-28 text-white lg:px-20"
+      aria-label="Client testimonials"
+    >
+      <div
+        ref={(el) => {
+          if (!el || visible) return;
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (e.isIntersecting) {
+                  setVisible(true);
+                  io.disconnect();
+                }
+              });
+            },
+            { threshold: 0.15 },
+          );
+          io.observe(el);
+        }}
+        className="mx-auto flex max-w-[1280px] flex-col items-center gap-16"
+      >
+        <div className="flex flex-col items-center gap-5 text-center">
+          <div className="inline-flex items-center gap-[10px] rounded-lg bg-white/[0.06] px-[14px] py-2">
+            <BrandMark size={24} dark={false} />
+            <span className="text-sm font-medium leading-[1.5] tracking-[-0.04em] text-white">
+              Testimonials
+            </span>
+          </div>
+          <h2 className={`max-w-[820px] text-[clamp(40px,5vw,72px)] font-normal leading-[1.05] tracking-[-0.03em] ${serif}`}>
+            Industry-leading results with Airnova
+          </h2>
+          <p className="max-w-xl text-base text-white/60">
+            The LatAm talent partner top performers choose
+          </p>
+        </div>
+
+        <ul
+          role="list"
+          className="flex w-full flex-col items-center gap-6 lg:flex-row lg:justify-center lg:gap-[-40px]"
+          style={{ perspective: "1200px" }}
+        >
+          {fannedItems.map((t, i) => (
+            <li
+              key={t.name}
+              className="group relative w-full max-w-[340px] lg:max-w-none lg:w-[300px] lg:[&:not(:first-child)]:-ml-10"
+              style={{ zIndex: i + 1 }}
+            >
+              <article
+                className={`flex h-full flex-col gap-5 rounded-2xl p-6 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none group-hover:!rotate-0 group-hover:!translate-y-[-12px] group-hover:z-50 ${
+                  t.variant === "dark"
+                    ? "bg-[#141414] text-white ring-1 ring-white/10"
+                    : "bg-white text-[#070606]"
+                }`}
+                style={{
+                  transform: visible
+                    ? `rotate(${t.rotation}deg) translateY(0)`
+                    : `rotate(${t.rotation}deg) translateY(327px)`,
+                  opacity: visible ? 1 : 0,
+                  transitionProperty: "transform, opacity, box-shadow",
+                  transitionDelay: `${i * 120}ms`,
+                }}
+              >
+                <header className="flex items-center gap-3">
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    loading="lazy"
+                    className="size-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <div className="text-base font-semibold tracking-[-0.02em]">{t.name}</div>
+                    <div className={`text-xs ${t.variant === "dark" ? "text-white/55" : "text-[#515151]"}`}>
+                      {t.role}
+                    </div>
+                  </div>
+                </header>
+                <h3 className="text-xl font-semibold leading-[1.25] tracking-[-0.02em]">
+                  {t.title}
+                </h3>
+                <p className={`text-sm leading-[1.55] ${t.variant === "dark" ? "text-white/65" : "text-[#515151]"}`}>
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+              </article>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 const faqs = [
   {
     q: "What services do you offer?",
@@ -1161,6 +1301,7 @@ function Index() {
       <Solution />
       <Testimonials />
       <TestimonialsSlider />
+      <FannedTestimonials />
       <Faq />
       <Cta />
       <Footer />
