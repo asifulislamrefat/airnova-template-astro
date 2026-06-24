@@ -760,17 +760,8 @@ function Stats() {
     { v: "99%", l: "Client Satisfaction" },
     { v: "15+", l: "Design Experience" },
   ];
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
-  const handlePlay = () => {
-    setPlaying(true);
-    setTimeout(() => videoRef.current?.play(), 0);
-  };
-  const handlePause = () => {
-    videoRef.current?.pause();
-    if (videoRef.current) videoRef.current.currentTime = 0;
-    setPlaying(false);
-  };
+  const [showVideo, setShowVideo] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(false);
   return (
     <section id="studio" className="bg-[#f5f5f5] px-[30px] py-[112px]">
       <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-8">
@@ -801,26 +792,18 @@ function Stats() {
           ))}
         </div>
 
-        <div className="group relative aspect-[1280/700] w-full overflow-hidden rounded-[20px] bg-black">
-          {playing ? (
-            <>
-              <video
-                ref={videoRef}
-                src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-                className="absolute inset-0 h-full w-full object-cover"
-                playsInline
-                onEnded={() => setPlaying(false)}
-              />
-              <button
-                aria-label="Pause showreel"
-                onClick={handlePause}
-                className="absolute inset-0 flex cursor-pointer items-center justify-center bg-black/0 opacity-0 transition-opacity duration-200 hover:bg-black/30 hover:opacity-100"
-              >
-                <span className="grid size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl">
-                  <Pause className="size-10 fill-foreground" />
-                </span>
-              </button>
-            </>
+        <div
+          className="relative aspect-[1280/700] w-full overflow-hidden rounded-[20px] bg-black"
+          onMouseLeave={() => {
+            if (showVideo && !videoPlaying) setShowVideo(false);
+          }}
+        >
+          {showVideo ? (
+            <CustomVideoPlayer
+              youtubeId="9u1RLVS0ziU"
+              fill
+              onPlayingChange={setVideoPlaying}
+            />
           ) : (
             <>
               <img
@@ -830,7 +813,7 @@ function Stats() {
               />
               <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/40 to-transparent">
                 <button
-                  onClick={handlePlay}
+                  onClick={() => setShowVideo(true)}
                   aria-label="Play showreel"
                   className="flex cursor-pointer items-center gap-6"
                 >
@@ -880,7 +863,15 @@ function loadYouTubeAPI(): Promise<any> {
   });
 }
 
-function CustomVideoPlayer({ youtubeId, fill = false }: { youtubeId: string; fill?: boolean }) {
+function CustomVideoPlayer({
+  youtubeId,
+  fill = false,
+  onPlayingChange,
+}: {
+  youtubeId: string;
+  fill?: boolean;
+  onPlayingChange?: (playing: boolean) => void;
+}) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const mountRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<any>(null);
@@ -920,8 +911,13 @@ function CustomVideoPlayer({ youtubeId, fill = false }: { youtubeId: string; fil
           },
           onStateChange: (e: any) => {
             // 1 playing, 2 paused, 0 ended
-            if (e.data === 1) setPlaying(true);
-            else if (e.data === 2 || e.data === 0) setPlaying(false);
+            if (e.data === 1) {
+              setPlaying(true);
+              onPlayingChange?.(true);
+            } else if (e.data === 2 || e.data === 0) {
+              setPlaying(false);
+              onPlayingChange?.(false);
+            }
             if (!duration) setDuration(e.target.getDuration());
           },
         },
