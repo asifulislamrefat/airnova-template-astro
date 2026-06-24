@@ -1181,17 +1181,17 @@ function SolutionInner() {
 function Testimonials() {
   const reviews = [
     {
-      name: "Michael Turner",
-      role: "Product Manager",
-      text: "Fast delivery, great communication, and outstanding design work !",
-      avatar: michaelAvatar.url,
-      headerTop: true,
-    },
-    {
       name: "Sarah Johnson",
       role: "Founder",
       text: "Their creativity and professionalism truly stand out. Our website looks ",
       avatar: "https://i.pravatar.cc/120?img=32",
+      headerTop: true,
+    },
+    {
+      name: "Michael Turner",
+      role: "Product Manager",
+      text: "Fast delivery, great communication, and outstanding design work !",
+      avatar: michaelAvatar.url,
       headerTop: false,
     },
     {
