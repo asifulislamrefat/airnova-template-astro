@@ -130,6 +130,13 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <div className="progressive-blur" aria-hidden="true">
+        <div className="progressive-blur__layer is--1" />
+        <div className="progressive-blur__layer is--2" />
+        <div className="progressive-blur__layer is--3" />
+        <div className="progressive-blur__layer is--4" />
+        <div className="progressive-blur__layer is--5" />
+      </div>
     </QueryClientProvider>
   );
 }
