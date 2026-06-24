@@ -112,6 +112,17 @@ function Pill({
   );
 }
 
+function FigmaPlusIcon({ className = "" }: { className?: string }) {
+  return (
+    <span
+      className={`grid size-6 shrink-0 place-items-center rounded-full bg-white ${className}`}
+      aria-hidden="true"
+    >
+      <Plus className="size-[14px] text-[#070606]" strokeWidth={2} />
+    </span>
+  );
+}
+
 /* ---------- Sections ---------- */
 
 function Nav() {
@@ -1231,7 +1242,7 @@ function SolutionInner() {
                   className="size-full object-cover"
                 />
               </div>
-              <Plus className="size-6 text-white/70" strokeWidth={1.5} />
+              <FigmaPlusIcon />
             </div>
             <div className="flex flex-col gap-2">
               <h3 className="text-[20px] font-semibold leading-[1.5] tracking-[-0.075em] text-white">
@@ -1253,7 +1264,7 @@ function SolutionInner() {
             />
             <div className="absolute inset-0 bg-black/40" />
             <div className="relative flex justify-end">
-              <Plus className="size-6 text-white" strokeWidth={1.5} />
+              <FigmaPlusIcon />
             </div>
             <div className="relative flex flex-col gap-6">
               <button
@@ -1284,7 +1295,7 @@ function SolutionInner() {
                   A seamless process with a polished fast and easy-to-manage result
                 </p>
               </div>
-              <Plus className="size-6 shrink-0 text-[#070606]" strokeWidth={1.5} />
+              <FigmaPlusIcon />
             </div>
             <div className="flex -space-x-5">
               {[avatar10.url, avatar11.url, avatar12.url, avatar13.url].map((src) => (
