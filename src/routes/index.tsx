@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowUpRight,
+  ArrowRight,
   Check,
   Plus,
   Minus,
@@ -207,8 +208,8 @@ function Hero() {
   }, [cycleKey]);
 
   return (
-    <section className="bg-surface pb-10">
-      <div className="container-x flex flex-col items-stretch gap-8 lg:flex-row lg:items-start">
+    <section className="bg-surface pb-16 lg:pb-10">
+      <div className="container-x flex flex-col items-stretch gap-20 lg:flex-row lg:items-start lg:gap-8">
         {/* Left card — 735 × 750 */}
         <div className="flex w-full shrink-0 flex-col items-center justify-between gap-6 overflow-hidden rounded-[20px] bg-background p-4 sm:gap-10 sm:p-8 md:px-[30px] lg:h-[750px] lg:w-[735px] lg:gap-0 lg:px-8">
           {/* Text container — 671 × 457 */}
@@ -265,7 +266,8 @@ function Hero() {
                   className="inline-flex items-center gap-1 sm:gap-2 text-[9px] sm:text-[16px] font-medium tracking-[-0.0075em] text-black underline decoration-from-font underline-offset-[3px]"
                 >
                   What we do
-                  <ArrowUpRight className="size-3.5 sm:size-6" strokeWidth={1.75} />
+                  <ArrowRight className="size-3.5 sm:size-6 lg:hidden" strokeWidth={1.75} />
+                  <ArrowUpRight className="hidden lg:inline size-6" strokeWidth={1.75} />
                 </a>
               </div>
             </div>
@@ -276,7 +278,7 @@ function Hero() {
         </div>
 
         {/* Right image slider — flex-1, 750h */}
-        <div className="relative h-[420px] min-w-0 w-full flex-1 overflow-hidden rounded-[20px] bg-black/5 sm:h-[560px] lg:h-[750px] lg:max-w-[513px]">
+        <div className="relative h-[438px] min-w-0 w-full flex-1 overflow-hidden rounded-[12px] bg-black/5 sm:h-[560px] sm:rounded-[20px] lg:h-[750px] lg:max-w-[513px]">
           {heroImages.map((src, i) => (
             <img
               key={src}
@@ -289,7 +291,7 @@ function Hero() {
           ))}
 
           {/* Progress bar — 3 segments, 142 wide, ~30px from bottom */}
-          <div className="absolute bottom-[30px] left-1/2 flex w-[142px] -translate-x-1/2 items-center gap-2">
+          <div className="absolute bottom-[18px] left-1/2 flex w-[83px] -translate-x-1/2 items-center gap-[4.7px] sm:bottom-[30px] sm:w-[142px] sm:gap-2">
             {heroImages.map((_, i) => (
               <button
                 key={i}
@@ -300,9 +302,9 @@ function Hero() {
                   setProgress(0);
                   setCycleKey((k) => k + 1);
                 }}
-                className="relative h-[5.775px] cursor-pointer overflow-hidden rounded-full p-0 transition-all duration-500"
+                className="relative h-[3.4px] sm:h-[5.775px] cursor-pointer overflow-hidden rounded-full p-0 transition-all duration-500"
                 style={{
-                  flex: i === active ? "0 0 67.3px" : "1 1 0",
+                  flex: i === active ? "47 0 0%" : "27 0 0%",
                   background: "rgba(255,255,255,0.25)",
                   backdropFilter: i === active ? "blur(16px)" : undefined,
                 }}
