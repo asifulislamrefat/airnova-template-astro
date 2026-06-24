@@ -1065,7 +1065,7 @@ function SolutionInner() {
 
         <div className="flex w-full flex-col gap-2 lg:flex-row lg:items-start">
           {/* Left card — dark */}
-          <div className="flex h-[1000px] lg:h-[500px] flex-1 flex-col justify-between rounded-[20px] bg-[#070606] p-8">
+          <div className="flex h-[2000px] lg:h-[500px] flex-1 flex-col justify-between rounded-[20px] bg-[#070606] p-8">
             <div className="flex items-start justify-between">
               <div className="h-[100px] w-[150px] overflow-hidden rounded-[20px]">
                 <img
