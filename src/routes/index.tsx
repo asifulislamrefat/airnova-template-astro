@@ -581,7 +581,7 @@ function BenefitsAccordion() {
             <button
               type="button"
               onClick={() => setOpen(isOpen ? -1 : i)}
-              className="flex w-full items-center gap-16 text-left"
+              className="flex w-full cursor-pointer items-center gap-16 text-left"
             >
               <span className="flex-1 text-[28px] font-semibold leading-[1.5] tracking-[-0.075em] text-[#070606]">
                 {item.title}{" "}
