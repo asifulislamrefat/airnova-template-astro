@@ -925,7 +925,7 @@ function Footer() {
           <div className="flex flex-col gap-6">
             <Logo light />
             <p className="max-w-sm text-[28px] font-semibold leading-[1.2] tracking-[-0.03em]">
-              Social media that <span className={`${serif} text-background/50`}>drives real</span> results
+              Social media that <span className={`${serif} text-background/50`}>drives<br />real</span> results
             </p>
             <p className="text-base text-background/80">Built for creators, businesses and brands.</p>
           </div>
