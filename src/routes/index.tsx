@@ -209,7 +209,7 @@ function Hero() {
 
   return (
     <section className="bg-surface pb-16 lg:pb-10">
-      <div className="container-x flex flex-col items-stretch gap-20 lg:flex-row lg:items-start lg:gap-8">
+      <div className="container-x flex flex-col items-stretch gap-8 lg:flex-row lg:items-start">
         {/* Left card — 735 × 750 */}
         <div className="flex w-full shrink-0 flex-col items-center justify-between gap-6 overflow-hidden rounded-[20px] bg-background p-4 sm:gap-10 sm:p-8 md:px-[30px] lg:h-[750px] lg:w-[735px] lg:gap-0 lg:px-8">
           {/* Text container — 671 × 457 */}
