@@ -503,16 +503,16 @@ function Services() {
     },
   ];
   return (
-    <section id="services" className="bg-surface py-20 lg:py-28">
-      <div className="container-x flex flex-col items-center gap-16">
+    <section id="services" className="bg-surface py-16 lg:py-28">
+      <div className="container-x flex flex-col items-center gap-12 sm:gap-16">
         <div className="flex flex-col items-center gap-2">
           <Pill variant="white">Our Services</Pill>
           <div className="flex flex-col items-center gap-4 text-center">
-            <h2 className="w-full max-w-[864px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]" style={{ fontSize: "clamp(36px, 6vw, 72px)" }}>
+            <h2 className="w-full max-w-[864px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]" style={{ fontSize: "clamp(32px, 6vw, 72px)" }}>
               Design solutions that make your{" "}
               <span className={`${serif} italic text-black/40`}>brand stand</span>
             </h2>
-            <p className="w-full max-w-[605px] text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+            <p className="w-full max-w-[605px] text-[10px] sm:text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
               We create thoughtful and visually compelling design solutions that help your brand
               stand out in a competitive digital world. By combining creativity with strategy our
               designs
@@ -524,11 +524,11 @@ function Services() {
           {items.map(({ icon, title, desc }) => (
             <div
               key={title}
-              className="flex flex-col items-start gap-16 rounded-[20px] bg-white p-8"
+              className="flex flex-col items-start gap-16 rounded-[20px] bg-white p-8 [&_svg.size-14]:size-12 sm:[&_svg.size-14]:size-14"
             >
               {icon}
               <div className="flex w-full flex-col gap-2">
-                <h3 className="text-[28px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
+                <h3 className="text-[18px] sm:text-[28px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
                   {title}
                 </h3>
                 <p className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
