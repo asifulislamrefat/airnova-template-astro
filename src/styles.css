@@ -202,6 +202,61 @@ body {
   animation: marquee-x 20s linear infinite;
 }
 
+/* ---------- Global scroll-reveal ----------
+   Sections start slightly translated/faded; when they enter the viewport
+   the IntersectionObserver in __root.tsx adds .is-visible and they ease
+   in with a soft, editorial cubic-bezier. Respects reduced motion. */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- Global button hover transition ----------
+   Consistent, subtle lift + brightness across every <button> so CTAs
+   feel responsive without competing with the section reveals. */
+button {
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 220ms ease,
+    opacity 220ms ease,
+    background-color 220ms ease,
+    color 220ms ease,
+    box-shadow 220ms ease;
+}
+button:hover:not(:disabled):not([aria-expanded]) {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+button:active:not(:disabled) {
+  transform: translateY(0);
+  filter: brightness(0.96);
+}
+@media (prefers-reduced-motion: reduce) {
+  button,
+  button:hover:not(:disabled),
+  button:active:not(:disabled) {
+    transition: none;
+    transform: none;
+    filter: none;
+  }
+}
+
 /* Progressive blur — sticky bottom overlay.
    Five stacked layers, each with increasing blur strength and a
    linear-gradient mask offset upward, creating a smooth focus toward
