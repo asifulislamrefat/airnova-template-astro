@@ -38,6 +38,10 @@ import brandLogo3 from "@/assets/brand-logo-3.png.asset.json";
 import brandLogo4 from "@/assets/brand-logo-4.png.asset.json";
 import brandLogo5 from "@/assets/brand-logo-5.png.asset.json";
 import brandLogo6 from "@/assets/brand-logo-6.png.asset.json";
+import { serif, BrandMark, Logo, Pill } from "@/components/site/shared";
+import { Nav } from "@/components/site/Nav";
+import { Cta } from "@/components/site/Cta";
+import { Footer } from "@/components/site/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
