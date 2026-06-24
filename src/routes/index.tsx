@@ -108,23 +108,48 @@ function Pill({
 function Nav() {
   return (
     <header className="bg-surface">
-      <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-6 py-6 lg:px-20">
-        <Logo />
-        <nav className="hidden flex-1 items-center justify-around px-12 text-base font-medium tracking-[-0.075em] text-foreground md:flex">
-          <a href="#studio">Studio</a>
-          <a href="#projects" className="inline-flex items-start gap-0.5">
+      <div className="flex w-full items-center justify-center px-6 py-6 md:px-[93px]">
+        <div className="flex w-full items-center justify-between gap-6 md:hidden">
+          <Logo />
+          <button aria-label="Menu" className="flex h-[10px] w-14 flex-col justify-between">
+            <span className="block h-px w-full bg-foreground" />
+            <span className="block h-px w-full bg-foreground" />
+          </button>
+        </div>
+        <div className="hidden items-center gap-[167px] md:flex">
+          <Logo />
+          <a
+            href="#studio"
+            className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground"
+          >
+            Studio
+          </a>
+          <a
+            href="#projects"
+            className="inline-flex items-start text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground"
+          >
             Projects
             <sup className="text-[10px] font-semibold leading-[0.9] tracking-[-0.075em] text-foreground/50">
               15
             </sup>
           </a>
-          <a href="#services">Services</a>
-          <a href="#pricing">Pricing</a>
-        </nav>
-        <button aria-label="Menu" className="flex h-[10px] w-14 flex-col justify-between">
-          <span className="block h-px w-full bg-foreground" />
-          <span className="block h-px w-full bg-foreground" />
-        </button>
+          <a
+            href="#services"
+            className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground"
+          >
+            Services
+          </a>
+          <a
+            href="#pricing"
+            className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground"
+          >
+            Pricing
+          </a>
+          <button aria-label="Menu" className="flex h-[10px] w-14 flex-col justify-between">
+            <span className="block h-px w-full bg-foreground" />
+            <span className="block h-px w-full bg-foreground" />
+          </button>
+        </div>
       </div>
     </header>
   );
