@@ -215,7 +215,7 @@ function Hero() {
         {/* Left card — 735 × 750 */}
         <div className="flex w-full shrink-0 flex-col items-center justify-between gap-10 overflow-hidden rounded-[20px] bg-background p-6 sm:p-8 lg:h-[750px] lg:w-[735px] lg:gap-0">
           {/* Text container — 671 × 457 */}
-          <div className="flex w-full max-w-[671px] flex-col justify-center gap-4 lg:h-[457px]">
+          <div className="flex w-full max-w-[671px] flex-col justify-center gap-4">
             {/* Rating */}
             <div className="flex items-center gap-[17px]">
               <div className="flex">
