@@ -558,7 +558,7 @@ function Projects() {
     { title: "Aurex Digital Platform", tag: "Creative Design" },
   ];
   return (
-    <section id="projects" className="bg-[#f5f5f5] p-4 sm:p-[30px]">
+    <section id="projects" className="bg-[#f5f5f5] p-[10px] lg:p-[30px]">
       <div className="relative w-full rounded-[20px] bg-white py-20 lg:py-28">
         <div className="container-x">
           <div className="mx-auto flex max-w-[680px] flex-col items-center gap-4 text-center">
