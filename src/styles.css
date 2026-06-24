@@ -9,13 +9,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Smooth in-page anchor scrolling, disabled for reduced-motion users. */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
 @custom-variant dark (&:is(.dark *));
 
 /*
