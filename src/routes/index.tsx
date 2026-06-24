@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowUpRight,
   Check,
@@ -14,7 +14,7 @@ import {
   PenTool,
   Gift,
 } from "lucide-react";
-import { X } from "lucide-react";
+import { X, Pause, Volume2, VolumeX, Maximize } from "lucide-react";
 import hero1 from "@/assets/hero-1.png.asset.json";
 import hero2 from "@/assets/hero-2.png.asset.json";
 import hero3 from "@/assets/hero-3.png.asset.json";
