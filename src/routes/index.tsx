@@ -1114,7 +1114,7 @@ function SolutionInner() {
           </div>
 
           {/* Right card — light */}
-          <div className="flex h-[500px] flex-1 flex-col justify-between rounded-[20px] bg-[#f5f5f5] p-8">
+          <div className="flex h-[1000px] lg:h-[500px] flex-1 flex-col justify-between rounded-[20px] bg-[#f5f5f5] p-8">
             <div className="flex items-start justify-between">
               <div className="flex flex-col gap-2">
                 <p className="text-[56px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
