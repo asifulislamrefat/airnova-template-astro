@@ -36,6 +36,24 @@ const DEVICES = [
 
 const failures = [];
 
+/**
+ * Pick a chromium binary. Prefer Playwright's bundled browser (`npx playwright
+ * install chromium`), then fall back to a system chromium so the script also
+ * runs in containers / CI images that ship one preinstalled.
+ */
+function resolveExecutablePath() {
+  if (process.env.CHROMIUM_PATH) return process.env.CHROMIUM_PATH;
+  const candidates = [
+    "/chromium_headless_shell-1194/chrome-linux/headless_shell",
+    "/chromium-1194/chrome-linux/chrome",
+    "/usr/bin/chromium",
+    "/usr/bin/chromium-browser",
+    "/usr/bin/google-chrome",
+    "/bin/chromium",
+  ];
+  return candidates.find((p) => existsSync(p));
+}
+
 async function checkPage(browser, device, route) {
   const ctx = await browser.newContext({
     viewport: { width: device.width, height: device.height },
@@ -118,7 +136,8 @@ async function main() {
   if (!existsSync(OUT_DIR)) await mkdir(OUT_DIR, { recursive: true });
 
   console.log(`Responsive check against ${BASE_URL}`);
-  const browser = await chromium.launch({ headless: true });
+  const executablePath = resolveExecutablePath();
+  const browser = await chromium.launch({ headless: true, executablePath });
   try {
     for (const device of DEVICES) {
       for (const route of ROUTES) {
