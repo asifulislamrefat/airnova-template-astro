@@ -639,11 +639,11 @@ function Stats() {
     }
   };
   return (
-    <section id="studio" className="bg-[#f5f5f5] py-[112px]">
+    <section id="studio" className="bg-[#f5f5f5] py-16 lg:py-[112px]">
       <div className="container-x flex flex-col gap-8">
         <div className="flex flex-col items-center gap-[10px]">
           <Pill variant="white">About us</Pill>
-          <p className="max-w-[1075px] text-center text-[clamp(28px,3vw,40px)] font-semibold leading-[1.3] tracking-[-0.065em] text-black">
+          <p className="max-w-[1075px] text-center text-[clamp(24px,3vw,40px)] font-semibold leading-[1.3] tracking-[-0.065em] text-black">
             We are a creative design team dedicated to crafting modern and meaningful digital experiences.{" "}
             <span className="text-black/50">
               Our focus is on combining creativity strategy and user-centered design to deliver visually
@@ -704,12 +704,12 @@ function Stats() {
               <button
                 onClick={handlePlay}
                 aria-label="Play showreel"
-                className="flex cursor-pointer items-center gap-6 transition-transform duration-300 ease-out hover:scale-[1.03]"
+                className="flex cursor-pointer items-center gap-3 sm:gap-6 transition-transform duration-300 ease-out hover:scale-[1.03]"
               >
-                <span className="grid size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl transition-transform duration-300 ease-out">
-                  <Play className="size-10 fill-foreground" />
+                <span className="grid size-[64px] sm:size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl transition-transform duration-300 ease-out">
+                  <Play className="size-5 sm:size-10 fill-foreground" />
                 </span>
-                <span className="w-[180px] text-left text-[32px] font-bold leading-[1.4] tracking-[-0.065em] text-white">
+                <span className="w-[140px] sm:w-[180px] text-left text-[18px] sm:text-[32px] font-bold leading-[1.4] tracking-[-0.065em] text-white">
                   Watch the Experience
                 </span>
               </button>
