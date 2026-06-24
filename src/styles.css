@@ -92,6 +92,21 @@ body {
   padding-inline: 5%;
 }
 
+/* Inset variant for content placed INSIDE a full-width chrome
+   (e.g. Projects white card, Cta dark card). The chrome already
+   contributes 10px on mobile/tablet and 30px on desktop, so the
+   inner content subtracts that to keep the same 5% total gutter
+   as plain `container-x` sections. */
+@utility container-x-inset {
+  width: 100%;
+  max-width: calc(var(--container-base) * 1.1);
+  margin-inline: auto;
+  padding-inline: calc(5% - 10px);
+  @media (min-width: 1024px) {
+    padding-inline: calc(5% - 30px);
+  }
+}
+
 :root {
   --radius: 0.625rem;
   /* Airnova design tokens (sourced from Figma variables) */
