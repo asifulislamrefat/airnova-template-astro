@@ -1181,7 +1181,6 @@ function SolutionInner() {
 function Testimonials() {
   const reviews = [
     {
-    {
       name: "Michael Turner",
       role: "Product Manager",
       text: "Fast delivery, great communication, and outstanding design work !",
