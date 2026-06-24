@@ -559,19 +559,19 @@ function Projects() {
   ];
   return (
     <section id="projects" className="bg-[#f5f5f5] p-[10px] lg:p-[30px]">
-      <div className="relative w-full rounded-[20px] bg-white py-20 lg:py-28">
+      <div className="relative w-full rounded-[20px] bg-white py-16 lg:py-28">
         <div className="container-x-inset">
           <div className="mx-auto flex max-w-[680px] flex-col items-center gap-4 text-center">
             <Pill>Our Project</Pill>
-          <h2 className="text-[clamp(40px,5.5vw,72px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+          <h2 className="text-[clamp(32px,5.5vw,72px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
             A <span className={`${serif} italic text-black/50`}>showcase</span> of my latest design
           </h2>
-            <p className="max-w-[605px] text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+            <p className="max-w-[605px] text-[10px] sm:text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
               Explore a selection of our creative projects that showcase our passion for design and
               innovation. Each project reflects our commitment to delivering .
             </p>
           </div>
-          <div className="mt-16 grid gap-2 md:grid-cols-2">
+          <div className="mt-12 sm:mt-16 grid gap-2 md:grid-cols-2">
           {items.map((p, i) => (
             <article key={p.title} className="flex flex-col gap-2">
               <div className="overflow-hidden rounded-[20px] bg-black/5">
@@ -581,16 +581,16 @@ function Projects() {
                   className="h-[500px] w-full object-cover transition duration-700 hover:scale-105"
                 />
               </div>
-              <div className="flex items-center justify-between gap-4 rounded-[10px] bg-[#f5f5f5] px-6 py-3 sm:gap-8">
+              <div className="flex items-center justify-between gap-3 rounded-[10px] bg-[#f5f5f5] px-2.5 py-2 sm:gap-8 sm:px-6 sm:py-3">
                 <div className="flex min-w-0 flex-1 flex-col gap-2">
-                  <h3 className="text-[20px] font-semibold leading-[1.2] tracking-[-0.065em] text-black sm:text-[24px]">
+                  <h3 className="text-[16px] font-semibold leading-[1.2] tracking-[-0.065em] text-black sm:text-[24px]">
                     {p.title}
                   </h3>
-                  <p className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                  <p className="text-[10px] sm:text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                     2026 — 32
                   </p>
                 </div>
-                <span className="shrink-0 text-right text-[14px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151] sm:text-[18px]">
+                <span className="shrink-0 text-right text-[10px] sm:text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                   {p.tag}
                 </span>
               </div>
