@@ -1053,8 +1053,8 @@ function SolutionInner() {
   }, [lightboxMounted]);
 
   return (
-    <section className="bg-white px-6 py-28 lg:px-20">
-      <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-16">
+    <section className="bg-white py-28">
+      <div className="container-x flex flex-col items-center gap-16">
         <h2 className="max-w-[873px] text-center text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
           Crafting unique strategies that turn visions into powerful results
         </h2>
@@ -1199,8 +1199,8 @@ function Testimonials() {
     },
   ];
   return (
-    <section className="bg-surface px-6 py-28 lg:px-20">
-      <div className="mx-auto flex max-w-[1280px] flex-col gap-16">
+    <section className="bg-surface py-28">
+      <div className="container-x flex flex-col gap-16">
         <div className="flex flex-col items-start gap-10 lg:flex-row lg:gap-[150px]">
           <Pill>Testimonials</Pill>
           <h2 className="flex-1 text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.05em] text-black">
@@ -1382,11 +1382,11 @@ function TestimonialsSlider() {
 
   return (
     <section
-      className="bg-white px-6 py-28 lg:px-20"
+      className="bg-white py-28"
       aria-roledescription="carousel"
       aria-label="Client testimonials"
     >
-      <div className="mx-auto flex max-w-[1280px] flex-col gap-12">
+      <div className="container-x flex flex-col gap-12">
         <div className="flex flex-col gap-6">
           <Pill>Testimonials</Pill>
           <h2 className="text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.05em] text-[#070606]">
@@ -1527,7 +1527,7 @@ function FannedTestimonials() {
   const [visible, setVisible] = useState(false);
   return (
     <section
-      className="overflow-hidden bg-[#070606] px-6 py-28 text-white lg:px-20"
+      className="overflow-hidden bg-[#070606] py-28 text-white"
       aria-label="Client testimonials"
     >
       <div
@@ -1546,7 +1546,7 @@ function FannedTestimonials() {
           );
           io.observe(el);
         }}
-        className="mx-auto flex max-w-[1280px] flex-col items-center gap-16"
+        className="container-x flex flex-col items-center gap-16"
       >
         <div className="flex flex-col items-center gap-5 text-center">
           <div className="inline-flex items-center gap-[10px] rounded-lg bg-white/[0.06] px-[14px] py-2">
@@ -1632,7 +1632,7 @@ const faqs = [
 function Faq() {
   const [open, setOpen] = useState(0);
   return (
-    <section className="flex flex-col items-center gap-16 bg-white px-6 py-28 lg:px-20">
+    <section className="container-x flex flex-col items-center gap-16 bg-white py-28">
       <div className="flex flex-col items-center gap-4">
         <div className="inline-flex items-center justify-center gap-[10px] rounded-lg bg-[#f5f5f5] px-[14px] py-2">
           <BrandMark size={24} />
