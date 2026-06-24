@@ -760,8 +760,20 @@ function Stats() {
     { v: "99%", l: "Client Satisfaction" },
     { v: "15+", l: "Design Experience" },
   ];
-  const [showVideo, setShowVideo] = useState(false);
+  const [videoStarted, setVideoStarted] = useState(false);
+  const [thumbVisible, setThumbVisible] = useState(true);
   const [videoPlaying, setVideoPlaying] = useState(false);
+  const [playSignal, setPlaySignal] = useState(0);
+  const leaveTimer = useRef<number | null>(null);
+  const handlePlayClick = () => {
+    if (leaveTimer.current) {
+      window.clearTimeout(leaveTimer.current);
+      leaveTimer.current = null;
+    }
+    setVideoStarted(true);
+    setThumbVisible(false);
+    setPlaySignal((n) => n + 1);
+  };
   return (
     <section id="studio" className="bg-[#f5f5f5] px-[30px] py-[112px]">
       <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-8">
@@ -794,39 +806,62 @@ function Stats() {
 
         <div
           className="relative aspect-[1280/700] w-full overflow-hidden rounded-[20px] bg-black"
+          onMouseEnter={() => {
+            if (leaveTimer.current) {
+              window.clearTimeout(leaveTimer.current);
+              leaveTimer.current = null;
+            }
+          }}
           onMouseLeave={() => {
-            if (showVideo && !videoPlaying) setShowVideo(false);
+            if (!videoStarted || videoPlaying) return;
+            if (leaveTimer.current) window.clearTimeout(leaveTimer.current);
+            leaveTimer.current = window.setTimeout(() => {
+              setThumbVisible(true);
+            }, 200);
           }}
         >
-          {showVideo ? (
-            <CustomVideoPlayer
-              youtubeId="9u1RLVS0ziU"
-              fill
-              onPlayingChange={setVideoPlaying}
-            />
-          ) : (
-            <>
-              <img
-                src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1600&q=80"
-                alt="Showreel"
-                className="absolute inset-0 h-full w-full object-cover"
+          {/* Video layer (mounted after first play) */}
+          {videoStarted && (
+            <div
+              className={`absolute inset-0 transition-opacity duration-700 ease-out ${
+                thumbVisible ? "pointer-events-none opacity-0" : "opacity-100"
+              }`}
+            >
+              <CustomVideoPlayer
+                youtubeId="9u1RLVS0ziU"
+                fill
+                onPlayingChange={setVideoPlaying}
+                playSignal={playSignal}
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/40 to-transparent">
-                <button
-                  onClick={() => setShowVideo(true)}
-                  aria-label="Play showreel"
-                  className="flex cursor-pointer items-center gap-6"
-                >
-                  <span className="grid size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl">
-                    <Play className="size-10 fill-foreground" />
-                  </span>
-                  <span className="w-[180px] text-left text-[32px] font-bold leading-[1.4] tracking-[-0.065em] text-white">
-                    Watch the Experience
-                  </span>
-                </button>
-              </div>
-            </>
+            </div>
           )}
+
+          {/* Thumbnail layer */}
+          <div
+            className={`absolute inset-0 transition-opacity duration-700 ease-out ${
+              thumbVisible ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1600&q=80"
+              alt="Showreel"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/40 to-transparent">
+              <button
+                onClick={handlePlayClick}
+                aria-label="Play showreel"
+                className="flex cursor-pointer items-center gap-6 transition-transform duration-300 ease-out hover:scale-[1.03]"
+              >
+                <span className="grid size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl transition-transform duration-300 ease-out">
+                  <Play className="size-10 fill-foreground" />
+                </span>
+                <span className="w-[180px] text-left text-[32px] font-bold leading-[1.4] tracking-[-0.065em] text-white">
+                  Watch the Experience
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
