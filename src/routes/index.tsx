@@ -561,8 +561,8 @@ function Projects() {
     { title: "Aurex Digital Platform", tag: "Creative Design" },
   ];
   return (
-    <section id="projects" className="bg-[#f5f5f5] p-[30px]">
-      <div className="relative w-full rounded-[20px] bg-white px-20 py-28">
+    <section id="projects" className="bg-[#f5f5f5] p-4 sm:p-[30px]">
+      <div className="relative w-full rounded-[20px] bg-white px-6 py-20 sm:px-10 lg:px-20 lg:py-28">
         <div className="mx-auto flex max-w-[680px] flex-col items-center gap-4 text-center">
           <Pill>Our Project</Pill>
           <h2 className="text-[clamp(40px,5.5vw,72px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
@@ -583,16 +583,16 @@ function Projects() {
                   className="h-[500px] w-full object-cover transition duration-700 hover:scale-105"
                 />
               </div>
-              <div className="flex items-center justify-between gap-16 rounded-[10px] bg-[#f5f5f5] px-6 py-2">
+              <div className="flex items-center justify-between gap-4 rounded-[10px] bg-[#f5f5f5] px-6 py-3 sm:gap-8">
                 <div className="flex min-w-0 flex-1 flex-col gap-2">
-                  <h3 className="text-[24px] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+                  <h3 className="text-[20px] font-semibold leading-[1.2] tracking-[-0.065em] text-black sm:text-[24px]">
                     {p.title}
                   </h3>
                   <p className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                     2026 — 32
                   </p>
                 </div>
-                <span className="whitespace-nowrap text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                <span className="shrink-0 text-right text-[14px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151] sm:text-[18px]">
                   {p.tag}
                 </span>
               </div>
