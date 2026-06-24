@@ -106,9 +106,9 @@ function Pill({
 /* ---------- Sections ---------- */
 
 function Nav() {
-  const [menuOpen, setMenuOpen] = React.useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!menuOpen) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
