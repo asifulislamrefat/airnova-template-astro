@@ -1302,6 +1302,38 @@ function SolutionInner() {
           </div>
         </div>
       </div>
+
+      {lightboxMounted && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Strategy video"
+          onClick={closeLightbox}
+          className={`fixed inset-0 z-[100] flex items-center justify-center p-4 transition-all duration-500 ease-out sm:p-8 ${
+            lightboxOpen ? "bg-black/80 backdrop-blur-sm opacity-100" : "bg-black/0 opacity-0"
+          }`}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className={`relative w-full max-w-[1280px] overflow-hidden rounded-[20px] bg-black shadow-2xl transition-all duration-500 ease-out ${
+              lightboxOpen ? "scale-100 opacity-100" : "scale-[0.96] opacity-0"
+            }`}
+            style={{ aspectRatio: "16 / 9" }}
+          >
+            <CustomVideoPlayer youtubeId="9u1RLVS0ziU" fill />
+          </div>
+          <button
+            type="button"
+            onClick={closeLightbox}
+            aria-label="Close video"
+            className={`fixed right-5 top-5 z-[101] grid size-12 cursor-pointer place-items-center rounded-full bg-white/10 text-white backdrop-blur transition-all duration-500 ease-out hover:bg-white/20 ${
+              lightboxOpen ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <X className="size-5" />
+          </button>
+        </div>
+      )}
     </section>
   );
 }
