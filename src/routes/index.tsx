@@ -1730,7 +1730,7 @@ function Index() {
       <Projects />
       <Stats />
       <Solution />
-      <TestimonialsSlider />
+      <Testimonials />
       <FannedTestimonials />
       <Faq />
       <Cta />
