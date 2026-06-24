@@ -767,8 +767,8 @@ function CustomVideoPlayer({ youtubeId, fill = false }: { youtubeId: string; fil
       ref={wrapRef}
       onMouseMove={nudgeControls}
       onMouseLeave={() => playing && setShowControls(false)}
-      className="group relative overflow-hidden rounded-2xl bg-black shadow-2xl"
-      style={{ aspectRatio: "16 / 9" }}
+      className={`group relative overflow-hidden bg-black ${fill ? "size-full" : "rounded-2xl shadow-2xl"}`}
+      style={fill ? undefined : { aspectRatio: "16 / 9" }}
     >
       <div ref={mountRef} className="absolute inset-0 size-full" />
       {/* Click shield over iframe to capture play/pause taps */}
