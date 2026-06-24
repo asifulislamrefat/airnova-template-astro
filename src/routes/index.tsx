@@ -422,10 +422,10 @@ function BenefitsAccordion() {
         return (
           <div
             key={item.title}
-            className={`rounded-[20px] px-6 transition-[background-color,padding,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            className={`rounded-[20px] transition-[background-color,padding,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
               isOpen
-                ? "border border-transparent bg-surface pt-6 pb-6"
-                : "border-b border-black/[0.28] pt-0 pb-6 rounded-none"
+                ? "border border-transparent bg-surface p-6"
+                : "border-b border-black/[0.28] pt-0 pb-6 px-0 rounded-none"
             }`}
           >
             <button
