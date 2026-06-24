@@ -13,6 +13,7 @@ import {
   Lightbulb,
   PenTool,
   Gift,
+  AppWindow,
 } from "lucide-react";
 import { Pause, Volume2, VolumeX, Maximize, X } from "lucide-react";
 import hero1 from "@/assets/hero-1.png.asset.json";
@@ -504,7 +505,7 @@ function Benefits() {
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-6">
               <div className="flex items-center gap-[14px]">
-                <BrandMark size={24} />
+                <AppWindow size={24} strokeWidth={1.5} className="text-[#FF2626]" />
                 <p className="text-[20px] font-medium leading-[1.5] tracking-[-0.075em] text-black">
                   <span className="text-[#FF2626]">ESR</span> - 2029
                 </p>
