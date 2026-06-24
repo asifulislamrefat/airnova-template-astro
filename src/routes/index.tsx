@@ -219,17 +219,9 @@ function FullscreenMenu({ open, onClose }: { open: boolean; onClose: () => void 
               <a
                 href={`#${label.toLowerCase().replace(/\s+/g, "-")}`}
                 onClick={onClose}
-                className="group relative inline-block overflow-hidden px-2 py-2 text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-white"
+                className="inline-block px-2 py-2 text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-white/70 transition-colors duration-300 ease-out hover:text-white"
               >
-                <span className="block transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-full">
-                  {label}
-                </span>
-                <span
-                  aria-hidden
-                  className="absolute left-0 right-0 top-full block italic text-white/60 transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-full"
-                >
-                  {label}
-                </span>
+                {label}
               </a>
             </li>
           ))}
