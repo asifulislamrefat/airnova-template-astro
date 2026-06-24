@@ -15,7 +15,7 @@ import {
   Gift,
   AppWindow,
 } from "lucide-react";
-import { Pause, Volume2, VolumeX, Maximize, X } from "lucide-react";
+import { Pause, Volume2, VolumeX, Maximize, X, Save } from "lucide-react";
 import hero1 from "@/assets/hero-1.png.asset.json";
 import hero2 from "@/assets/hero-2.png.asset.json";
 import hero3 from "@/assets/hero-3.png.asset.json";
@@ -511,7 +511,7 @@ function Benefits() {
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-6">
               <div className="flex items-center gap-[14px]">
-                <AppWindow size={24} strokeWidth={1.5} className="text-[#FF2626]" />
+                <Save size={24} strokeWidth={1.5} className="text-[#070606]" />
                 <p className="text-[20px] font-medium leading-[1.5] tracking-[-0.075em] text-black">
                   <span className="text-[#FF2626]">ESR</span> - 2029
                 </p>
