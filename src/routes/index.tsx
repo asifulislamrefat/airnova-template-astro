@@ -139,7 +139,7 @@ function LogoMarquee() {
 
   return (
     <div
-      className="w-[671px] cursor-grab overflow-hidden rounded-[12.336px] active:cursor-grabbing"
+      className="w-full max-w-[671px] cursor-grab overflow-hidden rounded-[12.336px] active:cursor-grabbing"
       onMouseEnter={() => (pausedRef.current = true)}
       onMouseLeave={() => (pausedRef.current = false)}
       onPointerDown={onPointerDown}
@@ -209,13 +209,13 @@ function Hero() {
   return (
     <section
       className="bg-surface"
-      style={{ padding: "0 80px 80px" }}
+      style={{ padding: "0 16px 40px" }}
     >
-      <div className="mx-auto flex max-w-[1280px] items-start gap-8">
+      <div className="mx-auto flex max-w-[1280px] flex-col items-stretch gap-8 lg:flex-row lg:items-start lg:px-16">
         {/* Left card — 735 × 750 */}
-        <div className="flex h-[750px] w-[735px] shrink-0 flex-col items-center justify-between overflow-hidden rounded-[20px] bg-background p-8">
+        <div className="flex w-full shrink-0 flex-col items-center justify-between gap-10 overflow-hidden rounded-[20px] bg-background p-6 sm:p-8 lg:h-[750px] lg:w-[735px] lg:gap-0">
           {/* Text container — 671 × 457 */}
-          <div className="flex h-[457px] w-[671px] flex-col justify-center gap-4">
+          <div className="flex w-full max-w-[671px] flex-col justify-center gap-4 lg:h-[457px]">
             {/* Rating */}
             <div className="flex items-center gap-[17px]">
               <div className="flex">
@@ -236,8 +236,8 @@ function Hero() {
             <div className="flex flex-col gap-8">
               <div className="flex flex-col gap-4">
                 <h1
-                  className="w-[660px] font-semibold tracking-[-0.065em] text-black"
-                  style={{ fontSize: "80px", lineHeight: 1.2 }}
+                  className="w-full max-w-[660px] font-semibold tracking-[-0.065em] text-black"
+                  style={{ fontSize: "clamp(40px, 7vw, 80px)", lineHeight: 1.2 }}
                 >
                   Creative{" "}
                   <span className={`${serif} text-black/40`}>
@@ -246,7 +246,7 @@ function Hero() {
                   experience.
                 </h1>
                 <p
-                  className="w-[535px] font-medium leading-[1.5] tracking-[-0.0075em]"
+                  className="w-full max-w-[535px] font-medium leading-[1.5] tracking-[-0.0075em]"
                   style={{ color: "#515151", fontSize: "16px" }}
                 >
                   I create modern and visually compelling digital experiences that
@@ -279,7 +279,7 @@ function Hero() {
         </div>
 
         {/* Right image slider — flex-1, 750h */}
-        <div className="relative h-[750px] min-w-0 flex-1 overflow-hidden rounded-[20px] bg-black/5">
+        <div className="relative h-[420px] min-w-0 flex-1 overflow-hidden rounded-[20px] bg-black/5 sm:h-[560px] lg:h-[750px]">
           {heroImages.map((src, i) => (
             <img
               key={src}
@@ -330,8 +330,8 @@ function Hero() {
 
 function Benefits() {
   return (
-    <section className="bg-white px-20 py-28">
-      <div className="mx-auto flex max-w-[1280px] items-start gap-16">
+    <section className="bg-white px-6 py-20 sm:px-10 lg:px-20 lg:py-28">
+      <div className="mx-auto flex max-w-[1280px] flex-col items-stretch gap-12 lg:flex-row lg:items-start lg:gap-16">
         <div className="flex flex-1 flex-col gap-8 self-stretch">
           <div className="relative h-[399px] w-full overflow-hidden rounded-[20px]">
             <img
@@ -378,9 +378,9 @@ function Benefits() {
           </div>
         </div>
 
-        <div className="flex w-[649px] shrink-0 flex-col items-start justify-between self-stretch">
+        <div className="flex w-full shrink-0 flex-col items-start justify-between gap-12 self-stretch lg:w-[649px]">
           <div className="flex w-full flex-col gap-12">
-            <h2 className="w-[611px] text-[72px] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+            <h2 className="w-full max-w-[611px] font-semibold leading-[1.2] tracking-[-0.065em] text-black" style={{ fontSize: "clamp(40px, 6.5vw, 72px)" }}>
               Explore our{" "}
               <span className={`${serif} italic text-black/40`}>flexible of</span> activity.
             </h2>
@@ -390,7 +390,7 @@ function Benefits() {
                   <span className="grid size-8 place-items-center rounded-2xl border-[0.5px] border-black/10 bg-surface">
                     <Check className="size-[15px] text-[#070606]" />
                   </span>
-                  <span className="whitespace-nowrap text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#070606]">
+                  <span className="text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#070606]">
                     {t}
                   </span>
                 </span>
@@ -432,9 +432,9 @@ function BenefitsAccordion() {
             <button
               type="button"
               onClick={() => setOpen(isOpen ? -1 : i)}
-              className="flex w-full cursor-pointer items-center gap-16 text-left"
+              className="flex w-full cursor-pointer items-center gap-6 text-left sm:gap-16"
             >
-              <span className="flex-1 text-[28px] font-semibold leading-[1.5] tracking-[-0.075em] text-[#070606]">
+              <span className="flex-1 text-[22px] font-semibold leading-[1.3] tracking-[-0.075em] text-[#070606] sm:text-[28px] sm:leading-[1.5]">
                 {item.title}{" "}
                 <span className={`${serif} italic text-black/40`}>{item.accent}</span>
               </span>
@@ -506,16 +506,16 @@ function Services() {
     },
   ];
   return (
-    <section id="services" className="bg-surface px-20 py-28">
+    <section id="services" className="bg-surface px-6 py-20 sm:px-10 lg:px-20 lg:py-28">
       <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-16">
         <div className="flex flex-col items-center gap-2">
           <Pill variant="white">Our Services</Pill>
           <div className="flex flex-col items-center gap-4 text-center">
-            <h2 className="w-[864px] max-w-full text-[72px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
+            <h2 className="w-full max-w-[864px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]" style={{ fontSize: "clamp(36px, 6vw, 72px)" }}>
               Design solutions that make your{" "}
               <span className={`${serif} italic text-black/40`}>brand stand</span>
             </h2>
-            <p className="w-[605px] max-w-full text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+            <p className="w-full max-w-[605px] text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
               We create thoughtful and visually compelling design solutions that help your brand
               stand out in a competitive digital world. By combining creativity with strategy our
               designs
@@ -523,7 +523,7 @@ function Services() {
           </div>
         </div>
 
-        <div className="grid w-full grid-cols-1 gap-2 md:grid-cols-3">
+        <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {items.map(({ icon, title, desc }) => (
             <div
               key={title}
@@ -561,8 +561,8 @@ function Projects() {
     { title: "Aurex Digital Platform", tag: "Creative Design" },
   ];
   return (
-    <section id="projects" className="bg-[#f5f5f5] p-[30px]">
-      <div className="relative w-full rounded-[20px] bg-white px-20 py-28">
+    <section id="projects" className="bg-[#f5f5f5] p-4 sm:p-[30px]">
+      <div className="relative w-full rounded-[20px] bg-white px-6 py-20 sm:px-10 lg:px-20 lg:py-28">
         <div className="mx-auto flex max-w-[680px] flex-col items-center gap-4 text-center">
           <Pill>Our Project</Pill>
           <h2 className="text-[clamp(40px,5.5vw,72px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
@@ -583,16 +583,16 @@ function Projects() {
                   className="h-[500px] w-full object-cover transition duration-700 hover:scale-105"
                 />
               </div>
-              <div className="flex items-center justify-between gap-16 rounded-[10px] bg-[#f5f5f5] px-6 py-2">
+              <div className="flex items-center justify-between gap-4 rounded-[10px] bg-[#f5f5f5] px-6 py-3 sm:gap-8">
                 <div className="flex min-w-0 flex-1 flex-col gap-2">
-                  <h3 className="text-[24px] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+                  <h3 className="text-[20px] font-semibold leading-[1.2] tracking-[-0.065em] text-black sm:text-[24px]">
                     {p.title}
                   </h3>
                   <p className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                     2026 — 32
                   </p>
                 </div>
-                <span className="whitespace-nowrap text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                <span className="shrink-0 text-right text-[14px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151] sm:text-[18px]">
                   {p.tag}
                 </span>
               </div>
@@ -1212,11 +1212,11 @@ function Testimonials() {
           </h2>
         </div>
 
-        <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-4 lg:h-[454px]">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4 lg:h-[454px]">
           {/* Rating card */}
           <div className="flex flex-col justify-between rounded-lg bg-white p-4">
             <div className="flex items-center gap-3">
-              <p className="whitespace-nowrap font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+              <p className="shrink-0 font-semibold leading-[1.2] tracking-[-0.065em] text-black">
                 <span className="text-[56px]">4.9 </span>
                 <span className="text-[32px] text-black/50">/5</span>
               </p>

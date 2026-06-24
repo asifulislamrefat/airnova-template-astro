@@ -83,8 +83,8 @@ export function Nav() {
 
   return (
     <header className="bg-surface">
-      <div className="flex w-full items-center justify-center px-6 py-6 md:px-[93px]">
-        <div className="flex w-full items-center justify-between gap-6 md:hidden">
+      <div className="flex w-full items-center justify-center px-6 py-6 lg:px-[93px]">
+        <div className="flex w-full items-center justify-between gap-6 lg:hidden">
           <Logo />
           <button
             aria-label="Menu"
@@ -95,8 +95,9 @@ export function Nav() {
             <span className="block h-px w-full bg-foreground" />
           </button>
         </div>
-        <div className="hidden items-center gap-[167px] md:flex">
+        <div className="hidden w-full max-w-[1280px] items-center justify-between gap-8 lg:flex">
           <Logo />
+          <div className="flex items-center gap-10 xl:gap-16">
           {navLinks.map((l) => (
             <a
               key={l.label}
@@ -111,6 +112,7 @@ export function Nav() {
               )}
             </a>
           ))}
+          </div>
           <button
             aria-label="Menu"
             onClick={() => setMenuOpen(true)}
