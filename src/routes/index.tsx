@@ -251,35 +251,7 @@ function Hero() {
           </div>
 
           {/* Logo strip — Mercury marquee loop */}
-          <div className="w-[671px] overflow-hidden">
-            <div className="flex w-max items-start gap-[5px] animate-marquee">
-              {[...brandLogos, ...brandLogos].map((logo, i) => (
-                <div
-                  key={i}
-                  className="relative flex size-[164px] shrink-0 flex-col items-center justify-center overflow-hidden rounded-[12.336px] bg-surface"
-                >
-                  <img
-                    src={logo.url}
-                    alt=""
-                    className="max-h-[50px] w-auto max-w-[100px] object-contain"
-                  />
-                  <span
-                    className="absolute font-semibold tracking-[-0.055em]"
-                    style={{
-                      color: "#282828",
-                      fontSize: "8px",
-                      lineHeight: 1.4,
-                      left: "50%",
-                      bottom: "10px",
-                      transform: "translateX(-50%)",
-                    }}
-                  >
-                    /2027
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <LogoMarquee />
         </div>
 
         {/* Right image slider — flex-1, 750h */}
