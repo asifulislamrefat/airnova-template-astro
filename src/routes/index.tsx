@@ -1065,7 +1065,7 @@ function SolutionInner() {
 
         <div className="flex w-full flex-col gap-2 lg:flex-row lg:items-start">
           {/* Left card — dark */}
-          <div className="flex h-[2000px] flex-none xl:h-[500px] xl:flex-1 flex-col justify-between rounded-[20px] bg-[#070606] p-8">
+          <div className="flex h-[667px] flex-none xl:h-[500px] xl:flex-1 flex-col justify-between rounded-[20px] bg-[#070606] p-8">
             <div className="flex items-start justify-between">
               <div className="h-[100px] w-[150px] overflow-hidden rounded-[20px]">
                 <img
@@ -1114,7 +1114,7 @@ function SolutionInner() {
           </div>
 
           {/* Right card — light */}
-          <div className="flex h-[2000px] flex-none xl:h-[500px] xl:flex-1 flex-col justify-between rounded-[20px] bg-[#f5f5f5] p-8">
+          <div className="flex h-[667px] flex-none xl:h-[500px] xl:flex-1 flex-col justify-between rounded-[20px] bg-[#f5f5f5] p-8">
             <div className="flex items-start justify-between">
               <div className="flex flex-col gap-2">
                 <p className="text-[56px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
