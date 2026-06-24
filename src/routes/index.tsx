@@ -14,7 +14,7 @@ import {
   PenTool,
   Gift,
 } from "lucide-react";
-import { Pause, Volume2, VolumeX, Maximize } from "lucide-react";
+import { Pause, Volume2, VolumeX, Maximize, X } from "lucide-react";
 import hero1 from "@/assets/hero-1.png.asset.json";
 import hero2 from "@/assets/hero-2.png.asset.json";
 import hero3 from "@/assets/hero-3.png.asset.json";
@@ -760,20 +760,36 @@ function Stats() {
     { v: "99%", l: "Client Satisfaction" },
     { v: "15+", l: "Design Experience" },
   ];
-  const [videoStarted, setVideoStarted] = useState(false);
-  const [thumbVisible, setThumbVisible] = useState(true);
-  const [videoPlaying, setVideoPlaying] = useState(false);
-  const [playSignal, setPlaySignal] = useState(0);
-  const leaveTimer = useRef<number | null>(null);
-  const handlePlayClick = () => {
-    if (leaveTimer.current) {
-      window.clearTimeout(leaveTimer.current);
-      leaveTimer.current = null;
+  const [lightboxMounted, setLightboxMounted] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const closeTimer = useRef<number | null>(null);
+  const openLightbox = () => {
+    if (closeTimer.current) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
     }
-    setVideoStarted(true);
-    setThumbVisible(false);
-    setPlaySignal((n) => n + 1);
+    setLightboxMounted(true);
+    requestAnimationFrame(() => setLightboxOpen(true));
   };
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    closeTimer.current = window.setTimeout(() => setLightboxMounted(false), 450);
+  };
+  useEffect(() => {
+    if (!lightboxMounted) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+    };
+    window.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lightboxMounted]);
   return (
     <section id="studio" className="bg-[#f5f5f5] px-[30px] py-[112px]">
       <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-8">
@@ -804,66 +820,60 @@ function Stats() {
           ))}
         </div>
 
-        <div
-          className="relative aspect-[1280/700] w-full overflow-hidden rounded-[20px] bg-black"
-          onMouseEnter={() => {
-            if (leaveTimer.current) {
-              window.clearTimeout(leaveTimer.current);
-              leaveTimer.current = null;
-            }
-          }}
-          onMouseLeave={() => {
-            if (!videoStarted || videoPlaying) return;
-            if (leaveTimer.current) window.clearTimeout(leaveTimer.current);
-            leaveTimer.current = window.setTimeout(() => {
-              setThumbVisible(true);
-            }, 200);
-          }}
-        >
-          {/* Video layer (mounted after first play) */}
-          {videoStarted && (
-            <div
-              className={`absolute inset-0 transition-opacity duration-700 ease-out ${
-                thumbVisible ? "pointer-events-none opacity-0" : "opacity-100"
-              }`}
+        <div className="relative aspect-[1280/700] w-full overflow-hidden rounded-[20px] bg-black">
+          <img
+            src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1600&q=80"
+            alt="Showreel"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/40 to-transparent">
+            <button
+              onClick={openLightbox}
+              aria-label="Play showreel"
+              className="flex cursor-pointer items-center gap-6 transition-transform duration-300 ease-out hover:scale-[1.03]"
             >
-              <CustomVideoPlayer
-                youtubeId="9u1RLVS0ziU"
-                fill
-                onPlayingChange={setVideoPlaying}
-                playSignal={playSignal}
-              />
-            </div>
-          )}
-
-          {/* Thumbnail layer */}
-          <div
-            className={`absolute inset-0 transition-opacity duration-700 ease-out ${
-              thumbVisible ? "opacity-100" : "pointer-events-none opacity-0"
-            }`}
-          >
-            <img
-              src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1600&q=80"
-              alt="Showreel"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/40 to-transparent">
-              <button
-                onClick={handlePlayClick}
-                aria-label="Play showreel"
-                className="flex cursor-pointer items-center gap-6 transition-transform duration-300 ease-out hover:scale-[1.03]"
-              >
-                <span className="grid size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl transition-transform duration-300 ease-out">
-                  <Play className="size-10 fill-foreground" />
-                </span>
-                <span className="w-[180px] text-left text-[32px] font-bold leading-[1.4] tracking-[-0.065em] text-white">
-                  Watch the Experience
-                </span>
-              </button>
-            </div>
+              <span className="grid size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl transition-transform duration-300 ease-out">
+                <Play className="size-10 fill-foreground" />
+              </span>
+              <span className="w-[180px] text-left text-[32px] font-bold leading-[1.4] tracking-[-0.065em] text-white">
+                Watch the Experience
+              </span>
+            </button>
           </div>
         </div>
       </div>
+
+      {lightboxMounted && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Showreel video"
+          onClick={closeLightbox}
+          className={`fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 transition-all duration-500 ease-out ${
+            lightboxOpen ? "bg-black/80 backdrop-blur-sm opacity-100" : "bg-black/0 opacity-0"
+          }`}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className={`relative w-full max-w-[1280px] overflow-hidden rounded-[20px] bg-black shadow-2xl transition-all duration-500 ease-out ${
+              lightboxOpen ? "scale-100 opacity-100" : "scale-[0.96] opacity-0"
+            }`}
+            style={{ aspectRatio: "16 / 9" }}
+          >
+            <CustomVideoPlayer youtubeId="9u1RLVS0ziU" fill />
+          </div>
+          <button
+            type="button"
+            onClick={closeLightbox}
+            aria-label="Close video"
+            className={`fixed right-5 top-5 z-[101] grid size-12 cursor-pointer place-items-center rounded-full bg-white/10 text-white backdrop-blur transition-all duration-500 ease-out hover:bg-white/20 ${
+              lightboxOpen ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <X className="size-5" />
+          </button>
+        </div>
+      )}
     </section>
   );
 }
