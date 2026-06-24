@@ -22,6 +22,8 @@ import brandLogo1 from "@/assets/brand-logo-1.png.asset.json";
 import brandLogo2 from "@/assets/brand-logo-2.png.asset.json";
 import brandLogo3 from "@/assets/brand-logo-3.png.asset.json";
 import brandLogo4 from "@/assets/brand-logo-4.png.asset.json";
+import brandLogo5 from "@/assets/brand-logo-5.png.asset.json";
+import brandLogo6 from "@/assets/brand-logo-6.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -126,7 +128,7 @@ function Nav() {
 }
 
 const heroImages = [hero1.url, hero2.url, hero3.url];
-const brandLogos = [brandLogo2, brandLogo3, brandLogo4, brandLogo1];
+const brandLogos = [brandLogo2, brandLogo3, brandLogo4, brandLogo1, brandLogo5, brandLogo6];
 
 function Hero() {
   const [active, setActive] = useState(0);
@@ -219,33 +221,35 @@ function Hero() {
             </div>
           </div>
 
-          {/* Logo strip — 4 × 164 squares with 5px gap */}
-          <div className="flex items-start gap-[5px]">
-            {brandLogos.map((logo, i) => (
-              <div
-                key={i}
-                className="relative flex size-[164px] flex-col items-center justify-center overflow-hidden rounded-[12.336px] bg-surface"
-              >
-                <img
-                  src={logo.url}
-                  alt=""
-                  className="max-h-[50px] w-auto max-w-[100px] object-contain"
-                />
-                <span
-                  className="absolute font-semibold tracking-[-0.055em]"
-                  style={{
-                    color: "#282828",
-                    fontSize: "8px",
-                    lineHeight: 1.4,
-                    left: "50%",
-                    bottom: "10px",
-                    transform: "translateX(-50%)",
-                  }}
+          {/* Logo strip — Mercury marquee loop */}
+          <div className="w-[671px] overflow-hidden">
+            <div className="flex w-max items-start gap-[5px] animate-marquee">
+              {[...brandLogos, ...brandLogos].map((logo, i) => (
+                <div
+                  key={i}
+                  className="relative flex size-[164px] shrink-0 flex-col items-center justify-center overflow-hidden rounded-[12.336px] bg-surface"
                 >
-                  /2027
-                </span>
-              </div>
-            ))}
+                  <img
+                    src={logo.url}
+                    alt=""
+                    className="max-h-[50px] w-auto max-w-[100px] object-contain"
+                  />
+                  <span
+                    className="absolute font-semibold tracking-[-0.055em]"
+                    style={{
+                      color: "#282828",
+                      fontSize: "8px",
+                      lineHeight: 1.4,
+                      left: "50%",
+                      bottom: "10px",
+                      transform: "translateX(-50%)",
+                    }}
+                  >
+                    /2027
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
