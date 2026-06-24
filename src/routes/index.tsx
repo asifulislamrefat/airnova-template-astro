@@ -286,7 +286,7 @@ function Hero() {
   return (
     <section
       className="bg-surface"
-      style={{ padding: "64px 80px 80px" }}
+      style={{ padding: "0 80px 80px" }}
     >
       <div className="mx-auto flex max-w-[1280px] items-start gap-8">
         {/* Left card — 735 × 750 */}
