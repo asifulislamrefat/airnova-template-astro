@@ -8,7 +8,7 @@ export function Footer() {
     { title: "Inner Pages", links: ["404", "Licenses", "Changelog", "Style Guide"] },
   ];
   return (
-    <footer className="relative overflow-hidden bg-foreground pb-8 pt-28 text-background">
+    <footer className="relative overflow-hidden bg-foreground pb-8 pt-16 lg:pt-28 text-background">
       <div className="container-x relative z-10">
         <div className="grid gap-12 lg:grid-cols-[1fr_2fr]">
           <div className="flex flex-col gap-6">
