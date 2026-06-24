@@ -216,7 +216,7 @@ function LogoMarquee() {
 
   return (
     <div
-      className="w-[671px] cursor-grab overflow-hidden active:cursor-grabbing"
+      className="w-[671px] cursor-grab overflow-hidden rounded-[12.336px] active:cursor-grabbing"
       onMouseEnter={() => (pausedRef.current = true)}
       onMouseLeave={() => (pausedRef.current = false)}
       onPointerDown={onPointerDown}
