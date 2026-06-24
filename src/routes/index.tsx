@@ -26,6 +26,7 @@ import project2 from "@/assets/project-2.png.asset.json";
 import project3 from "@/assets/project-3.png.asset.json";
 import project4 from "@/assets/project-4.png.asset.json";
 import michaelAvatar from "@/assets/michael.png.asset.json";
+import airnova1 from "@/assets/airnova-1.png.asset.json";
 import solutionThumb from "@/assets/solution-thumb.png.asset.json";
 import avatar10 from "@/assets/avatar-10.png.asset.json";
 import avatar11 from "@/assets/avatar-11.png.asset.json";
@@ -1408,10 +1409,10 @@ function Testimonials() {
                 </div>
                 <div className="flex items-center gap-6">
                   <div className="flex -space-x-[10px]">
-                    {[12, 32, 47, 58].map((i) => (
+                    {[airnova1.url, `https://i.pravatar.cc/80?img=32`, `https://i.pravatar.cc/80?img=47`, `https://i.pravatar.cc/80?img=58`].map((src) => (
                       <img
-                        key={i}
-                        src={`https://i.pravatar.cc/80?img=${i}`}
+                        key={src}
+                        src={src}
                         alt=""
                         className="size-[27px] rounded-[5px] border border-white object-cover"
                       />
