@@ -760,6 +760,17 @@ function Stats() {
     { v: "99%", l: "Client Satisfaction" },
     { v: "15+", l: "Design Experience" },
   ];
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const handlePlay = () => {
+    setPlaying(true);
+    setTimeout(() => videoRef.current?.play(), 0);
+  };
+  const handlePause = () => {
+    videoRef.current?.pause();
+    if (videoRef.current) videoRef.current.currentTime = 0;
+    setPlaying(false);
+  };
   return (
     <section id="studio" className="bg-[#f5f5f5] px-[30px] py-[112px]">
       <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-8">
@@ -790,25 +801,49 @@ function Stats() {
           ))}
         </div>
 
-        <div className="relative overflow-hidden rounded-[20px]">
-          <img
-            src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1600&q=80"
-            alt="Showreel"
-            className="aspect-[1280/700] w-full object-cover"
-          />
-          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/40 to-transparent">
-            <div className="flex items-center gap-6">
+        <div className="group relative aspect-[1280/700] w-full overflow-hidden rounded-[20px] bg-black">
+          {playing ? (
+            <>
+              <video
+                ref={videoRef}
+                src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                className="absolute inset-0 h-full w-full object-cover"
+                playsInline
+                onEnded={() => setPlaying(false)}
+              />
               <button
-                aria-label="Play showreel"
-                className="grid size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl cursor-pointer"
+                aria-label="Pause showreel"
+                onClick={handlePause}
+                className="absolute inset-0 flex cursor-pointer items-center justify-center bg-black/0 opacity-0 transition-opacity duration-200 hover:bg-black/30 hover:opacity-100"
               >
-                <Play className="size-10 fill-foreground" />
+                <span className="grid size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl">
+                  <Pause className="size-10 fill-foreground" />
+                </span>
               </button>
-              <span className="w-[180px] text-[32px] font-bold leading-[1.4] tracking-[-0.065em] text-white">
-                Watch the Experience
-              </span>
-            </div>
-          </div>
+            </>
+          ) : (
+            <>
+              <img
+                src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1600&q=80"
+                alt="Showreel"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/40 to-transparent">
+                <button
+                  onClick={handlePlay}
+                  aria-label="Play showreel"
+                  className="flex cursor-pointer items-center gap-6"
+                >
+                  <span className="grid size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl">
+                    <Play className="size-10 fill-foreground" />
+                  </span>
+                  <span className="w-[180px] text-left text-[32px] font-bold leading-[1.4] tracking-[-0.065em] text-white">
+                    Watch the Experience
+                  </span>
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>
