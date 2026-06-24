@@ -654,7 +654,7 @@ function Stats() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 lg:grid-cols-4">
           {stats.map((s) => (
             <div key={s.l} className="flex flex-1 flex-col gap-16 rounded-[20px] bg-white p-6">
               <div className="flex flex-col gap-8">
