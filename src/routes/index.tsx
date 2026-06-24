@@ -136,7 +136,7 @@ function Nav() {
           <button
             aria-label="Menu"
             onClick={() => setMenuOpen(true)}
-            className="flex h-[10px] w-14 flex-col justify-between"
+            className="flex h-[10px] w-14 cursor-pointer flex-col justify-between"
           >
             <span className="block h-px w-full bg-foreground" />
             <span className="block h-px w-full bg-foreground" />
@@ -161,7 +161,7 @@ function Nav() {
           <button
             aria-label="Menu"
             onClick={() => setMenuOpen(true)}
-            className="flex h-[10px] w-14 flex-col justify-between"
+            className="flex h-[10px] w-14 cursor-pointer flex-col justify-between"
           >
             <span className="block h-px w-full bg-foreground" />
             <span className="block h-px w-full bg-foreground" />
@@ -193,7 +193,7 @@ function FullscreenMenu({ open, onClose }: { open: boolean; onClose: () => void 
       <button
         aria-label="Close menu"
         onClick={onClose}
-        className={`absolute right-6 top-6 z-20 flex h-10 w-10 items-center justify-center text-white transition-all duration-500 md:right-[93px] md:top-8 hover:rotate-90 ${
+        className={`absolute right-6 top-6 z-20 flex h-10 w-10 cursor-pointer items-center justify-center text-white transition-all duration-500 md:right-[93px] md:top-8 hover:rotate-90 ${
           open ? "opacity-100 delay-500" : "opacity-0"
         }`}
       >
