@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "b0742ca4-12c2-4dd8-bc86-b6d09babb58d",
+  "asset_id": "03c894d8-6390-49a5-a7ca-ba8854bd1d51",
   "project_id": "6f28d1d2-1d99-4e9d-ba11-0e398e612d98",
-  "url": "/__l5e/assets-v1/b0742ca4-12c2-4dd8-bc86-b6d09babb58d/hero-1.jpg",
-  "r2_key": "a/v1/6f28d1d2-1d99-4e9d-ba11-0e398e612d98/b0742ca4-12c2-4dd8-bc86-b6d09babb58d/hero-1.jpg",
-  "original_filename": "hero-1.jpg",
-  "size": 85287,
-  "content_type": "image/jpeg",
-  "created_at": "2026-06-24T02:56:27Z"
+  "url": "/__l5e/assets-v1/03c894d8-6390-49a5-a7ca-ba8854bd1d51/hero-1.png",
+  "r2_key": "a/v1/6f28d1d2-1d99-4e9d-ba11-0e398e612d98/03c894d8-6390-49a5-a7ca-ba8854bd1d51/hero-1.png",
+  "original_filename": "hero-1.png",
+  "size": 472876,
+  "content_type": "image/png",
+  "created_at": "2026-06-24T11:07:57Z"
 }
