@@ -304,7 +304,7 @@ function Hero() {
                 }}
                 className="relative h-[3.4px] sm:h-[5.775px] cursor-pointer overflow-hidden rounded-full p-0 transition-all duration-500"
                 style={{
-                  flex: i === active ? "0 0 var(--seg-active, 39.4px)" : "1 1 0",
+                  flex: i === active ? "47 0 0%" : "27 0 0%",
                   background: "rgba(255,255,255,0.25)",
                   backdropFilter: i === active ? "blur(16px)" : undefined,
                 }}
