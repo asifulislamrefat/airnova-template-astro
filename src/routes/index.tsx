@@ -761,7 +761,7 @@ function Stats() {
     { v: "15+", l: "Design Experience" },
   ];
   return (
-    <section id="studio" className="bg-[#f5f5f5] p-[30px]">
+    <section id="studio" className="bg-[#f5f5f5] px-[30px] py-[112px]">
       <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-8">
         <div className="flex flex-col items-center gap-[10px]">
           <Pill variant="white">About us</Pill>
