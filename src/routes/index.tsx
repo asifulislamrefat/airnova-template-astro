@@ -632,7 +632,7 @@ function loadYouTubeAPI(): Promise<any> {
   });
 }
 
-function CustomVideoPlayer({ youtubeId }: { youtubeId: string }) {
+function CustomVideoPlayer({ youtubeId, fill = false }: { youtubeId: string; fill?: boolean }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const mountRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<any>(null);
