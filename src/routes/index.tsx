@@ -79,9 +79,19 @@ function Logo({ light = false }: { light?: boolean }) {
   );
 }
 
-function Pill({ children }: { children: React.ReactNode }) {
+function Pill({
+  children,
+  variant = "grey",
+}: {
+  children: React.ReactNode;
+  variant?: "grey" | "white";
+}) {
   return (
-    <div className="inline-flex items-center gap-[10px] rounded-lg bg-[#f5f5f5] px-[14px] py-2">
+    <div
+      className={`inline-flex items-center gap-[10px] rounded-lg px-[14px] py-2 ${
+        variant === "white" ? "bg-white" : "bg-[#f5f5f5]"
+      }`}
+    >
       <BrandMark size={24} />
       <span className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-black">
         {children}
@@ -436,7 +446,7 @@ function Services() {
     <section id="services" className="bg-surface px-20 py-28">
       <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-16">
         <div className="flex flex-col items-center gap-2">
-          <Pill>Our Services</Pill>
+          <Pill variant="white">Our Services</Pill>
           <div className="flex flex-col items-center gap-4 text-center">
             <h2 className="w-[864px] max-w-full text-[72px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
               Design solutions that make your{" "}
@@ -542,7 +552,7 @@ function Stats() {
     <section id="studio" className="bg-[#f5f5f5] p-[30px]">
       <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-8">
         <div className="flex flex-col items-center gap-[10px]">
-          <Pill>About us</Pill>
+          <Pill variant="white">About us</Pill>
           <p className="max-w-[1075px] text-center text-[clamp(28px,3vw,40px)] font-semibold leading-[1.3] tracking-[-0.065em] text-black">
             We are a creative design team dedicated to crafting modern and meaningful digital experiences.{" "}
             <span className="text-black/50">
