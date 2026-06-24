@@ -278,7 +278,7 @@ function Hero() {
         </div>
 
         {/* Right image slider — same on all viewports, stacks below on mobile/tablet */}
-        <div className="relative min-w-0 w-full flex-1 overflow-hidden rounded-[20px] bg-black/5 aspect-[513/750] lg:aspect-auto lg:h-[750px] lg:max-w-[513px]">
+        <div className="relative min-w-0 w-full flex-1 overflow-hidden rounded-[20px] bg-black/5 aspect-[513/375] lg:aspect-auto lg:h-[750px] lg:max-w-[513px]">
           {heroImages.map((src, i) => (
             <img
               key={src}
