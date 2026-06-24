@@ -149,18 +149,18 @@ function LogoMarquee() {
     >
       <div
         ref={trackRef}
-        className="flex w-max items-start gap-[5px] will-change-transform select-none"
+        className="flex w-max items-start gap-[3px] sm:gap-[5px] will-change-transform select-none"
       >
         {[...brandLogos, ...brandLogos].map((logo, i) => (
           <div
             key={i}
-            className="relative flex size-[164px] shrink-0 flex-col items-center justify-center overflow-hidden rounded-[12.336px] bg-surface"
+            className="relative flex size-[98px] sm:size-[164px] shrink-0 flex-col items-center justify-center overflow-hidden rounded-[12.336px] bg-surface"
           >
             <img
               src={logo.url}
               alt=""
               draggable={false}
-              className="max-h-[50px] w-auto max-w-[100px] object-contain"
+              className="max-h-[30px] w-auto max-w-[60px] sm:max-h-[50px] sm:max-w-[100px] object-contain"
             />
             <span
               className="absolute font-semibold tracking-[-0.055em]"
@@ -210,31 +210,31 @@ function Hero() {
     <section className="bg-surface pb-10">
       <div className="container-x flex flex-col items-stretch gap-8 lg:flex-row lg:items-start">
         {/* Left card — 735 × 750 */}
-        <div className="flex w-full shrink-0 flex-col items-center justify-between gap-10 overflow-hidden rounded-[20px] bg-background p-6 sm:p-8 md:px-[30px] lg:h-[750px] lg:w-[735px] lg:gap-0 lg:px-8">
+        <div className="flex w-full shrink-0 flex-col items-center justify-between gap-6 overflow-hidden rounded-[20px] bg-background p-4 sm:gap-10 sm:p-8 md:px-[30px] lg:h-[750px] lg:w-[735px] lg:gap-0 lg:px-8">
           {/* Text container — 671 × 457 */}
-          <div className="flex w-full max-w-[671px] flex-col justify-center gap-4 lg:h-[457px]">
+          <div className="flex w-full max-w-[671px] flex-col justify-center gap-3 sm:gap-4 lg:h-[457px]">
             {/* Rating */}
-            <div className="flex items-center gap-[17px]">
+            <div className="flex items-center gap-2 sm:gap-[17px]">
               <div className="flex">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
                     key={i}
-                    className="size-[26px] fill-foreground text-foreground"
+                    className="size-[11px] sm:size-[26px] fill-foreground text-foreground"
                     strokeWidth={0}
                   />
                 ))}
               </div>
-              <span className="text-[16px] font-medium leading-[1.5] tracking-[-0.0075em] text-foreground">
+              <span className="text-[12px] sm:text-[16px] font-medium leading-[1.2] sm:leading-[1.5] tracking-[-0.0075em] text-foreground">
                 Rated 4.9/5
               </span>
             </div>
 
             {/* Quote */}
-            <div className="flex flex-col gap-8">
-              <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 sm:gap-8">
+              <div className="flex flex-col gap-2 sm:gap-4">
                 <h1
                   className="w-full max-w-[660px] font-semibold tracking-[-0.065em] text-black"
-                  style={{ fontSize: "clamp(40px, 7vw, 80px)", lineHeight: 1.2 }}
+                  style={{ fontSize: "clamp(32px, 7vw, 80px)", lineHeight: 1.2 }}
                 >
                   Creative{" "}
                   <span className={`${serif} text-black/40`}>designer &amp;</span>
@@ -243,8 +243,8 @@ function Hero() {
                   experience.
                 </h1>
                 <p
-                  className="w-full max-w-[535px] font-medium leading-[1.5] tracking-[-0.0075em]"
-                  style={{ color: "#515151", fontSize: "16px" }}
+                  className="w-full max-w-[535px] text-[10px] sm:text-[16px] font-medium leading-[1.5] tracking-[-0.0075em]"
+                  style={{ color: "#515151" }}
                 >
                   I create modern and visually compelling digital experiences that
                   help brands stand out. From user-focused UI/UX design to clean
@@ -252,20 +252,20 @@ function Hero() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-3 sm:gap-6">
                 <a
                   href="#contact"
-                  className="inline-flex h-12 items-center justify-center rounded-full px-6 text-[16px] font-medium tracking-[-0.0075em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)]"
+                  className="inline-flex h-7 items-center justify-center rounded-full px-3.5 text-[9px] sm:h-12 sm:px-6 sm:text-[16px] font-medium tracking-[-0.0075em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)]"
                   style={{ background: "#070606" }}
                 >
                   Get in touch
                 </a>
                 <a
                   href="#services"
-                  className="inline-flex items-center gap-2 text-[16px] font-medium tracking-[-0.0075em] text-black underline decoration-from-font underline-offset-[3px]"
+                  className="inline-flex items-center gap-1 sm:gap-2 text-[9px] sm:text-[16px] font-medium tracking-[-0.0075em] text-black underline decoration-from-font underline-offset-[3px]"
                 >
                   What we do
-                  <ArrowUpRight className="size-6" strokeWidth={1.75} />
+                  <ArrowUpRight className="size-3.5 sm:size-6" strokeWidth={1.75} />
                 </a>
               </div>
             </div>
@@ -327,7 +327,7 @@ function Hero() {
 
 function Benefits() {
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-16 lg:py-28">
       <div className="container-x flex flex-col items-stretch gap-12 lg:flex-row lg:items-start lg:gap-16">
         <div className="flex flex-1 flex-col gap-8 self-stretch">
           <div className="relative h-[399px] w-full overflow-hidden rounded-[20px]">
@@ -377,7 +377,7 @@ function Benefits() {
 
         <div className="flex w-full shrink-0 flex-col items-start justify-between gap-12 self-stretch lg:w-[649px]">
           <div className="flex w-full flex-col gap-12">
-            <h2 className="w-full max-w-[611px] font-semibold leading-[1.2] tracking-[-0.065em] text-black" style={{ fontSize: "clamp(40px, 6.5vw, 72px)" }}>
+            <h2 className="w-full max-w-[611px] font-semibold leading-[1.2] tracking-[-0.065em] text-black" style={{ fontSize: "clamp(32px, 6.5vw, 72px)" }}>
               Explore our{" "}
               <span className={`${serif} italic text-black/40`}>flexible of</span> activity.
             </h2>
@@ -503,16 +503,16 @@ function Services() {
     },
   ];
   return (
-    <section id="services" className="bg-surface py-20 lg:py-28">
-      <div className="container-x flex flex-col items-center gap-16">
+    <section id="services" className="bg-surface py-16 lg:py-28">
+      <div className="container-x flex flex-col items-center gap-12 sm:gap-16">
         <div className="flex flex-col items-center gap-2">
           <Pill variant="white">Our Services</Pill>
           <div className="flex flex-col items-center gap-4 text-center">
-            <h2 className="w-full max-w-[864px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]" style={{ fontSize: "clamp(36px, 6vw, 72px)" }}>
+            <h2 className="w-full max-w-[864px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]" style={{ fontSize: "clamp(32px, 6vw, 72px)" }}>
               Design solutions that make your{" "}
               <span className={`${serif} italic text-black/40`}>brand stand</span>
             </h2>
-            <p className="w-full max-w-[605px] text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+            <p className="w-full max-w-[605px] text-[10px] sm:text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
               We create thoughtful and visually compelling design solutions that help your brand
               stand out in a competitive digital world. By combining creativity with strategy our
               designs
@@ -524,11 +524,11 @@ function Services() {
           {items.map(({ icon, title, desc }) => (
             <div
               key={title}
-              className="flex flex-col items-start gap-16 rounded-[20px] bg-white p-8"
+              className="flex flex-col items-start gap-16 rounded-[20px] bg-white p-8 [&_svg.size-14]:size-12 sm:[&_svg.size-14]:size-14"
             >
               {icon}
               <div className="flex w-full flex-col gap-2">
-                <h3 className="text-[28px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
+                <h3 className="text-[18px] sm:text-[28px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
                   {title}
                 </h3>
                 <p className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
@@ -559,19 +559,19 @@ function Projects() {
   ];
   return (
     <section id="projects" className="bg-[#f5f5f5] p-[10px] lg:p-[30px]">
-      <div className="relative w-full rounded-[20px] bg-white py-20 lg:py-28">
+      <div className="relative w-full rounded-[20px] bg-white py-16 lg:py-28">
         <div className="container-x-inset">
           <div className="mx-auto flex max-w-[680px] flex-col items-center gap-4 text-center">
             <Pill>Our Project</Pill>
-          <h2 className="text-[clamp(40px,5.5vw,72px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+          <h2 className="text-[clamp(32px,5.5vw,72px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
             A <span className={`${serif} italic text-black/50`}>showcase</span> of my latest design
           </h2>
-            <p className="max-w-[605px] text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+            <p className="max-w-[605px] text-[10px] sm:text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
               Explore a selection of our creative projects that showcase our passion for design and
               innovation. Each project reflects our commitment to delivering .
             </p>
           </div>
-          <div className="mt-16 grid gap-2 md:grid-cols-2">
+          <div className="mt-12 sm:mt-16 grid gap-2 md:grid-cols-2">
           {items.map((p, i) => (
             <article key={p.title} className="flex flex-col gap-2">
               <div className="overflow-hidden rounded-[20px] bg-black/5">
@@ -581,16 +581,16 @@ function Projects() {
                   className="h-[500px] w-full object-cover transition duration-700 hover:scale-105"
                 />
               </div>
-              <div className="flex items-center justify-between gap-4 rounded-[10px] bg-[#f5f5f5] px-6 py-3 sm:gap-8">
+              <div className="flex items-center justify-between gap-3 rounded-[10px] bg-[#f5f5f5] px-2.5 py-2 sm:gap-8 sm:px-6 sm:py-3">
                 <div className="flex min-w-0 flex-1 flex-col gap-2">
-                  <h3 className="text-[20px] font-semibold leading-[1.2] tracking-[-0.065em] text-black sm:text-[24px]">
+                  <h3 className="text-[16px] font-semibold leading-[1.2] tracking-[-0.065em] text-black sm:text-[24px]">
                     {p.title}
                   </h3>
-                  <p className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                  <p className="text-[10px] sm:text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                     2026 — 32
                   </p>
                 </div>
-                <span className="shrink-0 text-right text-[14px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151] sm:text-[18px]">
+                <span className="shrink-0 text-right text-[10px] sm:text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                   {p.tag}
                 </span>
               </div>
@@ -639,11 +639,11 @@ function Stats() {
     }
   };
   return (
-    <section id="studio" className="bg-[#f5f5f5] py-[112px]">
+    <section id="studio" className="bg-[#f5f5f5] py-16 lg:py-[112px]">
       <div className="container-x flex flex-col gap-8">
         <div className="flex flex-col items-center gap-[10px]">
           <Pill variant="white">About us</Pill>
-          <p className="max-w-[1075px] text-center text-[clamp(28px,3vw,40px)] font-semibold leading-[1.3] tracking-[-0.065em] text-black">
+          <p className="max-w-[1075px] text-center text-[clamp(24px,3vw,40px)] font-semibold leading-[1.3] tracking-[-0.065em] text-black">
             We are a creative design team dedicated to crafting modern and meaningful digital experiences.{" "}
             <span className="text-black/50">
               Our focus is on combining creativity strategy and user-centered design to deliver visually
@@ -704,12 +704,12 @@ function Stats() {
               <button
                 onClick={handlePlay}
                 aria-label="Play showreel"
-                className="flex cursor-pointer items-center gap-6 transition-transform duration-300 ease-out hover:scale-[1.03]"
+                className="flex cursor-pointer items-center gap-3 sm:gap-6 transition-transform duration-300 ease-out hover:scale-[1.03]"
               >
-                <span className="grid size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl transition-transform duration-300 ease-out">
-                  <Play className="size-10 fill-foreground" />
+                <span className="grid size-[64px] sm:size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl transition-transform duration-300 ease-out">
+                  <Play className="size-5 sm:size-10 fill-foreground" />
                 </span>
-                <span className="w-[180px] text-left text-[32px] font-bold leading-[1.4] tracking-[-0.065em] text-white">
+                <span className="w-[140px] sm:w-[180px] text-left text-[18px] sm:text-[32px] font-bold leading-[1.4] tracking-[-0.065em] text-white">
                   Watch the Experience
                 </span>
               </button>
@@ -1055,9 +1055,9 @@ function SolutionInner() {
   }, [lightboxMounted]);
 
   return (
-    <section className="bg-white py-28">
-      <div className="container-x flex flex-col items-center gap-16">
-        <h2 className="max-w-[873px] text-center text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+    <section className="bg-white py-16 lg:py-28">
+      <div className="container-x flex flex-col items-center gap-12 sm:gap-16">
+        <h2 className="max-w-[873px] text-center text-[clamp(32px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
           Crafting unique strategies that turn visions into powerful results
         </h2>
 
@@ -1201,11 +1201,11 @@ function Testimonials() {
     },
   ];
   return (
-    <section className="bg-surface py-28">
-      <div className="container-x flex flex-col gap-16">
+    <section className="bg-surface py-16 lg:py-28">
+      <div className="container-x flex flex-col gap-12 sm:gap-16">
         <div className="flex flex-col items-start gap-10 lg:flex-row lg:gap-[150px]">
           <Pill>Testimonials</Pill>
-          <h2 className="flex-1 text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.05em] text-black">
+          <h2 className="flex-1 text-[clamp(24px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.05em] text-black">
             Client Experiences That Highlight Our{" "}
             <span className={`${serif} text-black/50`}>commitment to quality</span> and Innovation
           </h2>
@@ -1634,8 +1634,8 @@ const faqs = [
 function Faq() {
   const [open, setOpen] = useState(0);
   return (
-    <section className="bg-white py-28">
-      <div className="container-x flex flex-col items-center gap-16">
+    <section className="bg-white py-16 lg:py-28">
+      <div className="container-x flex flex-col items-center gap-12 sm:gap-16">
         <div className="flex flex-col items-center gap-4">
         <div className="inline-flex items-center justify-center gap-[10px] rounded-lg bg-[#f5f5f5] px-[14px] py-2">
           <BrandMark size={24} />
@@ -1643,11 +1643,11 @@ function Faq() {
             FAQ
           </span>
         </div>
-        <h2 className="max-w-[650px] text-center text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
+        <h2 className="max-w-[650px] text-center text-[clamp(24px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
           Answers to{" "}
           <span className={`${serif} text-[#070606]/50`}>your most</span> common questions
         </h2>
-        <p className="max-w-[617px] text-center text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+        <p className="max-w-[617px] text-center text-[10px] sm:text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
           Find answers to some of the most common questions about our design services process and
           collaboration. This section helps you quickly understand how we work.
         </p>
@@ -1662,13 +1662,13 @@ function Faq() {
               onClick={() => setOpen(isOpen ? -1 : i)}
               className="block w-full rounded-[10px] bg-white px-6 py-4 text-left transition"
             >
-              <div className="flex items-center justify-between gap-16">
-                <span className="text-[clamp(18px,1.8vw,26px)] font-medium leading-[1.5] tracking-[-0.075em] text-black">
+              <div className="flex items-center justify-between gap-8 sm:gap-16">
+                <span className="text-[clamp(12px,1.8vw,26px)] font-medium leading-[1.5] tracking-[-0.075em] text-black">
                   {f.q}
                 </span>
-                <span className="grid size-[54px] shrink-0 place-items-center">
-                  <span className="grid size-[38px] place-items-center rounded-full bg-[#070606] text-white">
-                    {isOpen ? <Minus className="size-4" strokeWidth={2.5} /> : <Plus className="size-4" strokeWidth={2.5} />}
+                <span className="grid size-[22px] sm:size-[54px] shrink-0 place-items-center">
+                  <span className="grid size-[16px] sm:size-[38px] place-items-center rounded-full bg-[#070606] text-white">
+                    {isOpen ? <Minus className="size-3 sm:size-4" strokeWidth={2.5} /> : <Plus className="size-3 sm:size-4" strokeWidth={2.5} />}
                   </span>
                 </span>
               </div>
@@ -1677,7 +1677,7 @@ function Faq() {
                   isOpen ? "mt-2 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                 }`}
               >
-                <p className="overflow-hidden text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                <p className="overflow-hidden text-[8px] sm:text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                   {f.a}
                 </p>
               </div>
