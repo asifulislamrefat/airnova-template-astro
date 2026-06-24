@@ -149,18 +149,18 @@ function LogoMarquee() {
     >
       <div
         ref={trackRef}
-        className="flex w-max items-start gap-[5px] will-change-transform select-none"
+        className="flex w-max items-start gap-[3px] sm:gap-[5px] will-change-transform select-none"
       >
         {[...brandLogos, ...brandLogos].map((logo, i) => (
           <div
             key={i}
-            className="relative flex size-[164px] shrink-0 flex-col items-center justify-center overflow-hidden rounded-[12.336px] bg-surface"
+            className="relative flex size-[98px] sm:size-[164px] shrink-0 flex-col items-center justify-center overflow-hidden rounded-[12.336px] bg-surface"
           >
             <img
               src={logo.url}
               alt=""
               draggable={false}
-              className="max-h-[50px] w-auto max-w-[100px] object-contain"
+              className="max-h-[30px] w-auto max-w-[60px] sm:max-h-[50px] sm:max-w-[100px] object-contain"
             />
             <span
               className="absolute font-semibold tracking-[-0.055em]"
