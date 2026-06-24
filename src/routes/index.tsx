@@ -1055,9 +1055,9 @@ function SolutionInner() {
   }, [lightboxMounted]);
 
   return (
-    <section className="bg-white py-28">
-      <div className="container-x flex flex-col items-center gap-16">
-        <h2 className="max-w-[873px] text-center text-[clamp(36px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+    <section className="bg-white py-16 lg:py-28">
+      <div className="container-x flex flex-col items-center gap-12 sm:gap-16">
+        <h2 className="max-w-[873px] text-center text-[clamp(32px,4.5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
           Crafting unique strategies that turn visions into powerful results
         </h2>
 
