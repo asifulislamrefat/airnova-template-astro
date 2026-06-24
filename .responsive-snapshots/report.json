@@ -1,14 +1,4 @@
 {
   "baseUrl": "http://localhost:8080",
-  "failures": [
-    {
-      "label": "[mobile 375px] /",
-      "result": {
-        "docW": 375,
-        "scrollW": 383,
-        "offenders": []
-      },
-      "shotPath": ".responsive-snapshots/mobile/home.png"
-    }
-  ]
+  "failures": []
 }
