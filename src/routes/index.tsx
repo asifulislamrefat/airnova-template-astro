@@ -880,7 +880,15 @@ function loadYouTubeAPI(): Promise<any> {
   });
 }
 
-function CustomVideoPlayer({ youtubeId, fill = false }: { youtubeId: string; fill?: boolean }) {
+function CustomVideoPlayer({
+  youtubeId,
+  fill = false,
+  onPlayingChange,
+}: {
+  youtubeId: string;
+  fill?: boolean;
+  onPlayingChange?: (playing: boolean) => void;
+}) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const mountRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<any>(null);
@@ -920,8 +928,13 @@ function CustomVideoPlayer({ youtubeId, fill = false }: { youtubeId: string; fil
           },
           onStateChange: (e: any) => {
             // 1 playing, 2 paused, 0 ended
-            if (e.data === 1) setPlaying(true);
-            else if (e.data === 2 || e.data === 0) setPlaying(false);
+            if (e.data === 1) {
+              setPlaying(true);
+              onPlayingChange?.(true);
+            } else if (e.data === 2 || e.data === 0) {
+              setPlaying(false);
+              onPlayingChange?.(false);
+            }
             if (!duration) setDuration(e.target.getDuration());
           },
         },
