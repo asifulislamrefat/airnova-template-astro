@@ -210,7 +210,7 @@ function Hero() {
     <section
       className="bg-surface px-0 pb-10 md:px-6 lg:px-0"
     >
-      <div className="mx-auto flex max-w-[1280px] flex-col items-stretch gap-8 lg:flex-row lg:items-start">
+      <div className="container-x flex flex-col items-stretch gap-8 lg:flex-row lg:items-start">
         {/* Left card — 735 × 750 */}
         <div className="flex w-full shrink-0 flex-col items-center justify-between gap-10 overflow-hidden rounded-[20px] bg-background p-6 sm:p-8 md:px-[30px] lg:h-[750px] lg:w-[735px] lg:gap-0 lg:px-8">
           {/* Text container — 671 × 457 */}
@@ -329,8 +329,8 @@ function Hero() {
 
 function Benefits() {
   return (
-    <section className="bg-white px-6 py-20 sm:px-10 lg:px-20 lg:py-28">
-      <div className="mx-auto flex max-w-[1280px] flex-col items-stretch gap-12 lg:flex-row lg:items-start lg:gap-16">
+    <section className="bg-white py-20 lg:py-28">
+      <div className="container-x flex flex-col items-stretch gap-12 lg:flex-row lg:items-start lg:gap-16">
         <div className="flex flex-1 flex-col gap-8 self-stretch">
           <div className="relative h-[399px] w-full overflow-hidden rounded-[20px]">
             <img
@@ -505,8 +505,8 @@ function Services() {
     },
   ];
   return (
-    <section id="services" className="bg-surface px-6 py-20 sm:px-10 lg:px-20 lg:py-28">
-      <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-16">
+    <section id="services" className="bg-surface py-20 lg:py-28">
+      <div className="container-x flex flex-col items-center gap-16">
         <div className="flex flex-col items-center gap-2">
           <Pill variant="white">Our Services</Pill>
           <div className="flex flex-col items-center gap-4 text-center">
