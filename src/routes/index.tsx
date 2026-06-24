@@ -867,10 +867,12 @@ function CustomVideoPlayer({
   youtubeId,
   fill = false,
   onPlayingChange,
+  playSignal,
 }: {
   youtubeId: string;
   fill?: boolean;
   onPlayingChange?: (playing: boolean) => void;
+  playSignal?: number;
 }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const mountRef = useRef<HTMLDivElement>(null);
