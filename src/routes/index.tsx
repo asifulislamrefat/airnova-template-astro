@@ -139,7 +139,7 @@ function LogoMarquee() {
 
   return (
     <div
-      className="w-[671px] cursor-grab overflow-hidden rounded-[12.336px] active:cursor-grabbing"
+      className="w-full max-w-[671px] cursor-grab overflow-hidden rounded-[12.336px] active:cursor-grabbing"
       onMouseEnter={() => (pausedRef.current = true)}
       onMouseLeave={() => (pausedRef.current = false)}
       onPointerDown={onPointerDown}
@@ -209,13 +209,13 @@ function Hero() {
   return (
     <section
       className="bg-surface"
-      style={{ padding: "0 80px 80px" }}
+      style={{ padding: "0 16px 40px" }}
     >
-      <div className="mx-auto flex max-w-[1280px] items-start gap-8">
+      <div className="mx-auto flex max-w-[1280px] flex-col items-stretch gap-8 lg:flex-row lg:items-start lg:px-16">
         {/* Left card — 735 × 750 */}
-        <div className="flex h-[750px] w-[735px] shrink-0 flex-col items-center justify-between overflow-hidden rounded-[20px] bg-background p-8">
+        <div className="flex w-full shrink-0 flex-col items-center justify-between gap-10 overflow-hidden rounded-[20px] bg-background p-6 sm:p-8 lg:h-[750px] lg:w-[735px] lg:gap-0">
           {/* Text container — 671 × 457 */}
-          <div className="flex h-[457px] w-[671px] flex-col justify-center gap-4">
+          <div className="flex w-full max-w-[671px] flex-col justify-center gap-4 lg:h-[457px]">
             {/* Rating */}
             <div className="flex items-center gap-[17px]">
               <div className="flex">
@@ -236,8 +236,8 @@ function Hero() {
             <div className="flex flex-col gap-8">
               <div className="flex flex-col gap-4">
                 <h1
-                  className="w-[660px] font-semibold tracking-[-0.065em] text-black"
-                  style={{ fontSize: "80px", lineHeight: 1.2 }}
+                  className="w-full max-w-[660px] font-semibold tracking-[-0.065em] text-black"
+                  style={{ fontSize: "clamp(40px, 7vw, 80px)", lineHeight: 1.2 }}
                 >
                   Creative{" "}
                   <span className={`${serif} text-black/40`}>
@@ -246,7 +246,7 @@ function Hero() {
                   experience.
                 </h1>
                 <p
-                  className="w-[535px] font-medium leading-[1.5] tracking-[-0.0075em]"
+                  className="w-full max-w-[535px] font-medium leading-[1.5] tracking-[-0.0075em]"
                   style={{ color: "#515151", fontSize: "16px" }}
                 >
                   I create modern and visually compelling digital experiences that
@@ -279,7 +279,7 @@ function Hero() {
         </div>
 
         {/* Right image slider — flex-1, 750h */}
-        <div className="relative h-[750px] min-w-0 flex-1 overflow-hidden rounded-[20px] bg-black/5">
+        <div className="relative h-[420px] min-w-0 flex-1 overflow-hidden rounded-[20px] bg-black/5 sm:h-[560px] lg:h-[750px]">
           {heroImages.map((src, i) => (
             <img
               key={src}
