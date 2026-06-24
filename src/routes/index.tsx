@@ -155,7 +155,7 @@ function Nav() {
   );
 }
 
-const heroImages = [hero1.url, hero2.url, hero3.url];
+const heroImages = [hero1.url, hero1.url, hero1.url];
 const brandLogos = [brandLogo2, brandLogo3, brandLogo4, brandLogo1, brandLogo5, brandLogo6];
 
 function LogoMarquee() {
