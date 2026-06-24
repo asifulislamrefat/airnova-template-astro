@@ -22,6 +22,7 @@ import hero3 from "@/assets/hero-3.png.asset.json";
 import benefits1 from "@/assets/benefits-1.png.asset.json";
 import showreelThumb from "@/assets/showreel-thumb.png.asset.json";
 import project1 from "@/assets/project-1.png.asset.json";
+import solutionThumb from "@/assets/solution-thumb.png.asset.json";
 import brandLogo1 from "@/assets/brand-logo-1.png.asset.json";
 import brandLogo2 from "@/assets/brand-logo-2.png.asset.json";
 import brandLogo3 from "@/assets/brand-logo-3.png.asset.json";
@@ -1242,7 +1243,7 @@ function SolutionInner() {
           {/* Center image with overlay */}
           <div className="relative flex h-[500px] w-full shrink-0 flex-col justify-between overflow-hidden rounded-[20px] p-8 lg:w-[532px]">
             <img
-              src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1200&q=80"
+              src={solutionThumb.url}
               alt="Our strategy meets bold creativity"
               className="absolute inset-0 size-full object-cover"
             />
