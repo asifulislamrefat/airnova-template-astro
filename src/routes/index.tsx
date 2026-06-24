@@ -279,7 +279,7 @@ function Hero() {
         </div>
 
         {/* Right image slider — flex-1, 750h */}
-        <div className="relative h-[420px] min-w-0 flex-1 overflow-hidden rounded-[20px] bg-black/5 sm:h-[560px] lg:h-[750px]">
+        <div className="relative h-[420px] min-w-0 w-full max-w-[513px] flex-1 overflow-hidden rounded-[20px] bg-black/5 sm:h-[560px] lg:h-[750px]">
           {heroImages.map((src, i) => (
             <img
               key={src}
