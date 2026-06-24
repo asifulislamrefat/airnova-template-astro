@@ -573,7 +573,7 @@ function Projects() {
               innovation. Each project reflects our commitment to delivering .
             </p>
           </div>
-          <div className="mt-12 sm:mt-16 grid gap-2 md:grid-cols-2">
+          <div className="mt-12 sm:mt-16 grid gap-2 lg:grid-cols-2">
           {items.map((p, i) => (
             <article key={p.title} className="flex flex-col gap-2">
               <div className="overflow-hidden rounded-[20px] bg-black/5">
