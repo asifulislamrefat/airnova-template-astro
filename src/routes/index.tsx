@@ -21,6 +21,7 @@ import hero2 from "@/assets/hero-2.png.asset.json";
 import hero3 from "@/assets/hero-3.png.asset.json";
 import benefits1 from "@/assets/benefits-1.png.asset.json";
 import showreelThumb from "@/assets/showreel-thumb.png.asset.json";
+import project1 from "@/assets/project-1.png.asset.json";
 import brandLogo1 from "@/assets/brand-logo-1.png.asset.json";
 import brandLogo2 from "@/assets/brand-logo-2.png.asset.json";
 import brandLogo3 from "@/assets/brand-logo-3.png.asset.json";
@@ -699,7 +700,7 @@ function Services() {
 }
 
 const projectImages = [
-  "https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1200&q=80",
+  project1.url,
   "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=1200&q=80",
   "https://images.unsplash.com/photo-1517292987719-0369a794ec0f?auto=format&fit=crop&w=1200&q=80",
   "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1200&q=80",
