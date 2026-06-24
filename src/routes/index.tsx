@@ -148,9 +148,9 @@ function Nav() {
             <a
               key={l.label}
               href={l.href}
-              className="group relative inline-flex items-start overflow-hidden text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground"
+              className="group relative inline-flex items-start text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground"
             >
-              <span className="relative block overflow-hidden">
+              <span className="relative block overflow-hidden py-0.5">
                 <span className="block transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-full">
                   {l.label}
                 </span>
@@ -200,13 +200,13 @@ function FullscreenMenu({ open, onClose }: { open: boolean; onClose: () => void 
       <button
         aria-label="Close menu"
         onClick={onClose}
-        className={`absolute right-6 top-6 z-10 flex h-10 w-10 items-center justify-center text-white transition-all duration-500 md:right-[93px] md:top-8 hover:rotate-90 ${
+        className={`absolute right-6 top-6 z-20 flex h-10 w-10 items-center justify-center text-white transition-all duration-500 md:right-[93px] md:top-8 hover:rotate-90 ${
           open ? "opacity-100 delay-500" : "opacity-0"
         }`}
       >
         <span className="relative block h-6 w-6">
-          <span className="absolute left-0 top-1/2 block h-px w-full rotate-45 bg-white" />
-          <span className="absolute left-0 top-1/2 block h-px w-full -rotate-45 bg-white" />
+          <span className="pointer-events-none absolute left-0 top-1/2 block h-px w-full rotate-45 bg-white" />
+          <span className="pointer-events-none absolute left-0 top-1/2 block h-px w-full -rotate-45 bg-white" />
         </span>
       </button>
       <nav className="relative z-10 flex h-full w-full items-center justify-center p-8">
@@ -214,7 +214,7 @@ function FullscreenMenu({ open, onClose }: { open: boolean; onClose: () => void 
           {links.map((label, i) => (
             <li
               key={label}
-              className="overflow-hidden"
+              className="py-1"
               style={{
                 transform: open ? "translateY(0)" : "translateY(120%)",
                 opacity: open ? 1 : 0,
@@ -226,14 +226,14 @@ function FullscreenMenu({ open, onClose }: { open: boolean; onClose: () => void 
               <a
                 href={`#${label.toLowerCase().replace(/\s+/g, "-")}`}
                 onClick={onClose}
-                className="group relative inline-block overflow-hidden text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-white"
+                className="group relative inline-block overflow-hidden px-2 py-2 text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-white"
               >
                 <span className="block transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-full">
                   {label}
                 </span>
                 <span
                   aria-hidden
-                  className="absolute left-0 top-full block text-white/60 italic transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-full"
+                  className="absolute left-0 right-0 top-full block italic text-white/60 transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-full"
                 >
                   {label}
                 </span>
