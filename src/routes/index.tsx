@@ -284,7 +284,7 @@ function Hero() {
               key={src}
               src={src}
               alt=""
-              className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ${
+              className={`absolute inset-0 size-full object-cover object-top transition-opacity duration-700 ${
                 i === active ? "opacity-100" : "opacity-0"
               }`}
             />
