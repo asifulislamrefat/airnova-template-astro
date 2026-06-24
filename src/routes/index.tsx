@@ -796,16 +796,18 @@ function Stats() {
             alt="Showreel"
             className="aspect-[1280/700] w-full object-cover"
           />
-          <div className="absolute inset-0 flex flex-col items-center justify-end gap-6 bg-gradient-to-t from-black/40 to-transparent pb-20">
-            <button
-              aria-label="Play showreel"
-              className="grid size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl"
-            >
-              <Play className="size-10 fill-foreground" />
-            </button>
-            <span className="text-2xl font-semibold tracking-[-0.02em] text-white">
-              Watch the Experience
-            </span>
+          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/40 to-transparent">
+            <div className="flex items-center gap-6">
+              <button
+                aria-label="Play showreel"
+                className="grid size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl cursor-pointer"
+              >
+                <Play className="size-10 fill-foreground" />
+              </button>
+              <span className="w-[180px] text-[32px] font-bold leading-[1.4] tracking-[-0.065em] text-white">
+                Watch the Experience
+              </span>
+            </div>
           </div>
         </div>
       </div>
