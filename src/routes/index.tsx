@@ -107,6 +107,12 @@ function Pill({
 
 function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navLinks = [
+    { label: "Studio", href: "#studio" },
+    { label: "Projects", href: "#projects", sup: "15" },
+    { label: "Services", href: "#services" },
+    { label: "Pricing", href: "#pricing" },
+  ];
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -138,33 +144,27 @@ function Nav() {
         </div>
         <div className="hidden items-center gap-[167px] md:flex">
           <Logo />
-          <a
-            href="#studio"
-            className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground"
-          >
-            Studio
-          </a>
-          <a
-            href="#projects"
-            className="inline-flex items-start text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground"
-          >
-            Projects
-            <sup className="text-[10px] font-semibold leading-[0.9] tracking-[-0.075em] text-foreground/50">
-              15
-            </sup>
-          </a>
-          <a
-            href="#services"
-            className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground"
-          >
-            Services
-          </a>
-          <a
-            href="#pricing"
-            className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground"
-          >
-            Pricing
-          </a>
+          {navLinks.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              className="group relative inline-flex items-start overflow-hidden text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground"
+            >
+              <span className="relative block overflow-hidden">
+                <span className="block transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-full">
+                  {l.label}
+                </span>
+                <span aria-hidden className="absolute left-0 top-full block transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-full">
+                  {l.label}
+                </span>
+              </span>
+              {l.sup && (
+                <sup className="ml-px text-[10px] font-semibold leading-[0.9] tracking-[-0.075em] text-foreground/50">
+                  {l.sup}
+                </sup>
+              )}
+            </a>
+          ))}
           <button
             aria-label="Menu"
             onClick={() => setMenuOpen(true)}
@@ -184,33 +184,59 @@ function FullscreenMenu({ open, onClose }: { open: boolean; onClose: () => void 
   const links = ["Home", "About Us", "Services", "Blog", "Contact"];
   return (
     <div
-      className={`fixed inset-0 z-50 bg-black transition-opacity duration-300 ${
-        open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+      className={`fixed inset-0 z-50 overflow-hidden ${
+        open ? "pointer-events-auto" : "pointer-events-none"
       }`}
       aria-hidden={!open}
       role="dialog"
       aria-modal="true"
     >
+      {/* Sliding black panel */}
+      <div
+        className={`absolute inset-0 bg-black transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] ${
+          open ? "translate-y-0" : "-translate-y-full"
+        }`}
+      />
       <button
         aria-label="Close menu"
         onClick={onClose}
-        className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center text-white md:right-[93px] md:top-8"
+        className={`absolute right-6 top-6 z-10 flex h-10 w-10 items-center justify-center text-white transition-all duration-500 md:right-[93px] md:top-8 hover:rotate-90 ${
+          open ? "opacity-100 delay-500" : "opacity-0"
+        }`}
       >
         <span className="relative block h-6 w-6">
           <span className="absolute left-0 top-1/2 block h-px w-full rotate-45 bg-white" />
           <span className="absolute left-0 top-1/2 block h-px w-full -rotate-45 bg-white" />
         </span>
       </button>
-      <nav className="flex h-full w-full items-center justify-center p-8">
+      <nav className="relative z-10 flex h-full w-full items-center justify-center p-8">
         <ul className="flex flex-col items-center gap-8 text-center">
-          {links.map((label) => (
-            <li key={label}>
+          {links.map((label, i) => (
+            <li
+              key={label}
+              className="overflow-hidden"
+              style={{
+                transform: open ? "translateY(0)" : "translateY(120%)",
+                opacity: open ? 1 : 0,
+                transition: `transform 700ms cubic-bezier(0.65,0,0.35,1) ${
+                  open ? 300 + i * 80 : 0
+                }ms, opacity 500ms ease ${open ? 300 + i * 80 : 0}ms`,
+              }}
+            >
               <a
                 href={`#${label.toLowerCase().replace(/\s+/g, "-")}`}
                 onClick={onClose}
-                className="text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-white"
+                className="group relative inline-block overflow-hidden text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-white"
               >
-                {label}
+                <span className="block transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-full">
+                  {label}
+                </span>
+                <span
+                  aria-hidden
+                  className="absolute left-0 top-full block text-white/60 italic transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-full"
+                >
+                  {label}
+                </span>
               </a>
             </li>
           ))}
