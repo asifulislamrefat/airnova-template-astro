@@ -14,6 +14,7 @@ import {
   PenTool,
   Gift,
 } from "lucide-react";
+import { X } from "lucide-react";
 import hero1 from "@/assets/hero-1.png.asset.json";
 import hero2 from "@/assets/hero-2.png.asset.json";
 import hero3 from "@/assets/hero-3.png.asset.json";
