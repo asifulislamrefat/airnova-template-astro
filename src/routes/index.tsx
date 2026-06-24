@@ -213,7 +213,7 @@ function Hero() {
     >
       <div className="mx-auto flex max-w-[1280px] flex-col items-stretch gap-8 lg:flex-row lg:items-start">
         {/* Left card — 735 × 750 */}
-        <div className="flex w-full shrink-0 flex-col items-center justify-between gap-10 overflow-hidden rounded-[20px] bg-background p-6 sm:p-8 lg:h-[750px] lg:w-[735px] lg:gap-0">
+        <div className="flex w-full shrink-0 flex-col items-center justify-between gap-10 overflow-hidden rounded-[20px] bg-background p-6 sm:p-8 md:px-[30px] lg:h-[750px] lg:w-[735px] lg:gap-0 lg:px-8">
           {/* Text container — 671 × 457 */}
           <div className="flex w-full max-w-[671px] flex-col justify-center gap-4 lg:h-[457px]">
             {/* Rating */}
