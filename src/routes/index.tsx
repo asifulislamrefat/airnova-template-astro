@@ -14,7 +14,7 @@ import {
   PenTool,
   Gift,
 } from "lucide-react";
-import { X, Pause, Volume2, VolumeX, Maximize } from "lucide-react";
+import { Pause, Volume2, VolumeX, Maximize } from "lucide-react";
 import hero1 from "@/assets/hero-1.png.asset.json";
 import hero2 from "@/assets/hero-2.png.asset.json";
 import hero3 from "@/assets/hero-3.png.asset.json";
@@ -632,7 +632,7 @@ function loadYouTubeAPI(): Promise<any> {
   });
 }
 
-function CustomVideoPlayer({ youtubeId }: { youtubeId: string }) {
+function CustomVideoPlayer({ youtubeId, fill = false }: { youtubeId: string; fill?: boolean }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const mountRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<any>(null);
@@ -767,8 +767,8 @@ function CustomVideoPlayer({ youtubeId }: { youtubeId: string }) {
       ref={wrapRef}
       onMouseMove={nudgeControls}
       onMouseLeave={() => playing && setShowControls(false)}
-      className="group relative overflow-hidden rounded-2xl bg-black shadow-2xl"
-      style={{ aspectRatio: "16 / 9" }}
+      className={`group relative overflow-hidden bg-black ${fill ? "size-full" : "rounded-2xl shadow-2xl"}`}
+      style={fill ? undefined : { aspectRatio: "16 / 9" }}
     >
       <div ref={mountRef} className="absolute inset-0 size-full" />
       {/* Click shield over iframe to capture play/pause taps */}
@@ -885,20 +885,6 @@ function CustomVideoPlayer({ youtubeId }: { youtubeId: string }) {
 function SolutionInner() {
   const [videoOpen, setVideoOpen] = useState(false);
 
-  useEffect(() => {
-    if (!videoOpen) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setVideoOpen(false);
-    };
-    document.addEventListener("keydown", onKey);
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prev;
-    };
-  }, [videoOpen]);
-
   return (
     <section className="bg-white px-6 py-28 lg:px-20">
       <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-16">
@@ -932,28 +918,36 @@ function SolutionInner() {
 
           {/* Center image with overlay */}
           <div className="relative flex h-[500px] w-full shrink-0 flex-col justify-between overflow-hidden rounded-[20px] p-8 lg:w-[532px]">
-            <img
-              src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1200&q=80"
-              alt="Our strategy meets bold creativity"
-              className="absolute inset-0 size-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/40" />
-            <div className="relative flex justify-end">
-              <Plus className="size-6 text-white" strokeWidth={1.5} />
-            </div>
-            <div className="relative flex flex-col gap-6">
-              <button
-                type="button"
-                onClick={() => setVideoOpen(true)}
-                aria-label="Play video"
-                className="grid size-14 place-items-center rounded-full bg-white shadow-lg transition hover:scale-105"
-              >
-                <Play className="size-4 fill-[#070606] text-[#070606]" />
-              </button>
-              <p className="max-w-[281px] text-[32px] font-semibold leading-[1.2] tracking-[-0.065em] text-white">
-                Our strategy meets bold creativity
-              </p>
-            </div>
+            {videoOpen ? (
+              <div className="absolute inset-0">
+                <CustomVideoPlayer youtubeId="9u1RLVS0ziU" fill />
+              </div>
+            ) : (
+              <>
+                <img
+                  src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1200&q=80"
+                  alt="Our strategy meets bold creativity"
+                  className="absolute inset-0 size-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/40" />
+                <div className="relative flex justify-end">
+                  <Plus className="size-6 text-white" strokeWidth={1.5} />
+                </div>
+                <div className="relative flex flex-col gap-6">
+                  <button
+                    type="button"
+                    onClick={() => setVideoOpen(true)}
+                    aria-label="Play video"
+                    className="grid size-14 place-items-center rounded-full bg-white shadow-lg transition hover:scale-105"
+                  >
+                    <Play className="size-4 fill-[#070606] text-[#070606]" />
+                  </button>
+                  <p className="max-w-[281px] text-[32px] font-semibold leading-[1.2] tracking-[-0.065em] text-white">
+                    Our strategy meets bold creativity
+                  </p>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Right card — light */}
@@ -990,31 +984,6 @@ function SolutionInner() {
           </div>
         </div>
       </div>
-
-      {videoOpen && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label="Video player"
-          onClick={() => setVideoOpen(false)}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm animate-in fade-in duration-200"
-        >
-          <button
-            type="button"
-            aria-label="Close video"
-            onClick={() => setVideoOpen(false)}
-            className="absolute right-6 top-6 grid size-12 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"
-          >
-            <X className="size-6" />
-          </button>
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-[1100px]"
-          >
-            <CustomVideoPlayer youtubeId="9u1RLVS0ziU" />
-          </div>
-        </div>
-      )}
     </section>
   );
 }
