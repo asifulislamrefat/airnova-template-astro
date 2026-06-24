@@ -1653,7 +1653,7 @@ function Faq() {
         </p>
       </div>
 
-      <div className="flex w-full max-w-[900px] flex-col gap-6 bg-[#f5f5f5] p-8">
+      <div className="flex w-full max-w-[900px] flex-col gap-3 bg-[#f5f5f5] p-4 sm:gap-6 sm:p-8">
         {faqs.map((f, i) => {
           const isOpen = open === i;
           return (
