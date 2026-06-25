@@ -139,10 +139,9 @@ function AwardPill({
     <div
       className={`absolute inline-flex h-11 items-center justify-center rounded-[80px] bg-white/10 px-6 py-2.5 backdrop-blur-[10.4px] ${className}`}
     >
-      <span className="mr-2 inline-block size-1.5 shrink-0 rounded-full bg-white" />
-      <span className="whitespace-nowrap text-sm font-medium leading-[1.5] tracking-[-0.075em] text-white lg:text-base">
-        {children}
-      </span>
+      <ul className="list-disc whitespace-nowrap pl-6 text-sm font-medium leading-[1.5] tracking-[-0.075em] text-white lg:text-base">
+        <li>{children}</li>
+      </ul>
     </div>
   );
 }
