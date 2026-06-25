@@ -51,25 +51,25 @@ function ProjectsPage() {
                 params={{ slug: p.slug }}
                 className="group flex flex-col gap-2"
               >
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px] sm:aspect-[3/4] lg:h-[500px] lg:aspect-auto">
+                <div className="overflow-hidden rounded-[20px] bg-black/5">
                   <img
                     src={p.image}
                     alt={p.name}
-                    className="absolute inset-0 size-full object-cover"
+                    className="h-[375px] lg:h-[500px] w-full object-cover transition duration-700 group-hover:scale-105"
                   />
                 </div>
-                <div className="flex items-center gap-4 px-1 py-4 sm:gap-16">
-                  <div className="flex flex-1 flex-col gap-1">
-                    <p className="text-[20px] sm:text-[24px] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+                <div className="flex items-center justify-between gap-3 rounded-[10px] bg-[#f5f5f5] px-2.5 py-2 sm:gap-8 sm:px-6 sm:py-3">
+                  <div className="flex min-w-0 flex-1 flex-col gap-2">
+                    <h3 className="text-[16px] font-semibold leading-[1.2] tracking-[-0.065em] text-black sm:text-[24px]">
                       {p.name}
-                    </p>
-                    <p className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                    </h3>
+                    <p className="text-[10px] sm:text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                       {p.year}
                     </p>
                   </div>
-                  <p className="hidden text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151] sm:block">
+                  <span className="shrink-0 text-right text-[10px] sm:text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                     {p.category}
-                  </p>
+                  </span>
                 </div>
               </Link>
             ))}
