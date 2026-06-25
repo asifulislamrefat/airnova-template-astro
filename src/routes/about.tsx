@@ -61,7 +61,7 @@ function AboutHero() {
   const avatars = [avatar10.url, avatar11.url, avatar12.url, avatar13.url];
   return (
     <section className="overflow-clip bg-white px-[5%] py-14 lg:h-[900px] lg:px-0 lg:py-0">
-      <div className="mx-auto w-full max-w-[1280px] lg:w-[calc(100%-160px)] lg:pt-14">
+      <div className="mx-auto w-full max-w-[1280px] lg:w-[calc(100%_-_160px)] lg:pt-14">
         <div className="flex flex-col items-start gap-12 lg:flex-row lg:justify-between lg:gap-0">
           <div className="flex flex-col gap-12 lg:w-[48%] lg:shrink-0 lg:pt-20 xl:w-[623px]">
             <div className="flex flex-col items-start gap-4">
@@ -160,7 +160,7 @@ function LogoGrid() {
   ];
   return (
     <section className="bg-[#f5f5f5] py-16 lg:h-[1032px] lg:py-28">
-      <div className="mx-auto grid w-[calc(100%-32px)] max-w-[1280px] grid-cols-2 gap-2 md:grid-cols-3 lg:w-[calc(100%-160px)]">
+      <div className="mx-auto grid w-[calc(100%_-_32px)] max-w-[1280px] grid-cols-2 gap-2 md:grid-cols-3 lg:w-[calc(100%_-_160px)]">
         {logos.map((src, i) => (
           <div
             key={i}
@@ -245,7 +245,7 @@ function ResultsBlock({
   return (
     <section className={`bg-[#f5f5f5] py-16 ${reverse ? "lg:pb-28 lg:pt-14" : "lg:py-28"}`}>
       <div
-        className={`mx-auto grid w-[calc(100%-32px)] max-w-[1280px] items-stretch gap-10 lg:w-[calc(100%-160px)] lg:gap-16 ${
+        className={`mx-auto grid w-[calc(100%_-_32px)] max-w-[1280px] items-stretch gap-10 lg:w-[calc(100%_-_160px)] lg:gap-16 ${
           reverse ? "lg:grid-cols-[598fr_618fr]" : "lg:grid-cols-[618fr_598fr]"
         }`}
       >
