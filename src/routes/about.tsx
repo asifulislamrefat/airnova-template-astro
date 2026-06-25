@@ -150,10 +150,10 @@ function AwardPill({
 
 function LogoGrid() {
   const logos = [
-    brandLogo1.url,
     brandLogo2.url,
     brandLogo3.url,
     brandLogo4.url,
+    brandLogo1.url,
     brandLogo5.url,
     brandLogo6.url,
   ];
