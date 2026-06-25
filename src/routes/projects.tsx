@@ -50,16 +50,15 @@ function ProjectsPage() {
                 to="/projects/$slug"
                 params={{ slug: p.slug }}
                 className="group flex flex-col gap-2"
-                data-hover-lift
               >
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px] sm:aspect-[3/4] lg:h-[500px] lg:aspect-auto">
                   <img
                     src={p.image}
                     alt={p.name}
-                    className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    className="absolute inset-0 size-full object-cover"
                   />
                 </div>
-                <div className="flex items-center gap-4 rounded-[10px] bg-[#f5f5f5] px-6 py-4 sm:gap-16">
+                <div className="flex items-center gap-4 px-1 py-4 sm:gap-16">
                   <div className="flex flex-1 flex-col gap-1">
                     <p className="text-[20px] sm:text-[24px] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
                       {p.name}
