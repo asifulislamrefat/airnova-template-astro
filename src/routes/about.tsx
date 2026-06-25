@@ -150,22 +150,27 @@ function AwardPill({
 
 function LogoGrid() {
   const logos = [
-    brandLogo2.url,
-    brandLogo3.url,
-    brandLogo4.url,
-    brandLogo1.url,
-    brandLogo5.url,
-    brandLogo6.url,
+    { src: brandLogo2.url, w: 120, h: 120 },
+    { src: brandLogo3.url, w: 180, h: 72 },
+    { src: brandLogo4.url, w: 180, h: 40.909 },
+    { src: brandLogo1.url, w: 140, h: 53.846 },
+    { src: brandLogo5.url, w: 150, h: 35.503 },
+    { src: brandLogo6.url, w: 120, h: 77.288 },
   ];
   return (
     <section className="bg-[#f5f5f5] py-16 lg:h-[1032px] lg:py-28">
       <div className="mx-auto grid w-[calc(100%_-_32px)] max-w-[1280px] grid-cols-2 gap-2 md:grid-cols-3 lg:w-[calc(100%_-_160px)]">
-        {logos.map((src, i) => (
+        {logos.map((logo, i) => (
           <div
             key={i}
             className="relative flex h-[200px] items-center justify-center overflow-clip rounded-[30px] bg-white p-12 lg:h-[400px] lg:p-20"
           >
-            <img src={src} alt="" className="max-h-[80px] w-auto object-contain lg:max-h-[120px]" />
+            <img
+              src={logo.src}
+              alt=""
+              className="object-contain"
+              style={{ width: logo.w, height: logo.h }}
+            />
             <span className="absolute bottom-6 left-1/2 -translate-x-1/2 text-base font-semibold leading-[1.4] tracking-[-0.055em] text-[#282828]">
               /2027
             </span>
