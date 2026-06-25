@@ -109,7 +109,7 @@ function AboutHero() {
               <img
                 src={HERO_PORTRAIT}
                 alt="Airnova founder portrait"
-                className="h-full w-full object-contain object-[center_bottom]"
+                className="w-full object-contain object-[center_bottom]"
               />
             </div>
             <AwardPill className="left-4 top-[48%] w-[236px] lg:left-[56%] lg:top-[440px] xl:left-[336px]">
