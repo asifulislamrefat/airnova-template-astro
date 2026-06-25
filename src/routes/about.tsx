@@ -11,7 +11,7 @@ import avatar10 from "@/assets/avatar-10.png.asset.json";
 import avatar11 from "@/assets/avatar-11.png.asset.json";
 import avatar12 from "@/assets/avatar-12.png.asset.json";
 import avatar13 from "@/assets/avatar-13.png.asset.json";
-import brandLogo2 from "@/assets/brand-logo-2.png.asset.json";
+import aboutLogoCircle from "@/assets/about-logo-circle.svg.asset.json";
 import aboutLogoLuyu from "@/assets/about-logo-luyu.svg.asset.json";
 import aboutLogoLoqo from "@/assets/about-logo-loqo.svg.asset.json";
 import aboutLogoInfinity from "@/assets/about-logo-infinity.svg.asset.json";
@@ -150,7 +150,7 @@ function AwardPill({
 
 function LogoGrid() {
   const logos = [
-    { src: brandLogo2.url, w: 120, h: 120 },
+    { src: aboutLogoCircle.url, w: 120, h: 120 },
     { src: aboutLogoLuyu.url, w: 180, h: 72 },
     { src: aboutLogoLoqo.url, w: 180, h: 40.909 },
     { src: aboutLogoInfinity.url, w: 140, h: 53.846 },
