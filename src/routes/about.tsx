@@ -218,27 +218,18 @@ function LogoTile({
   total: number;
   progress: MotionValue<number>;
 }) {
-  // Every tile reveals on scroll, in sequence. useTransform clamps at both
-  // ends, so once revealed the logo stays visible while scrolling further,
-  // and scrolling back up hides them in reverse order.
-  const step = 1 / (total + 1);
+  // Reveal all tiles within the first 75% of the section's scroll progress.
+  // The remaining 25% keeps every logo fully visible while the section is
+  // still pinned, so scrolling further down never hides them. useTransform
+  // is clamped, so scrolling back up reverses the reveals in order.
+  const revealRange = 0.75;
+  const step = revealRange / total;
   const start = index * step;
-  const end = start + step * 1.2;
-  const opacity = useTransform(
-    progress,
-    [start, Math.min(1, end)],
-    [0, 1],
-  );
-  const y = useTransform(
-    progress,
-    [start, Math.min(1, end)],
-    [40, 0],
-  );
-  const scale = useTransform(
-    progress,
-    [start, Math.min(1, end)],
-    [0.85, 1],
-  );
+  const end = start + step * 1.1;
+  const transformOpts = { clamp: true } as const;
+  const opacity = useTransform(progress, [start, end], [0, 1], transformOpts);
+  const y = useTransform(progress, [start, end], [40, 0], transformOpts);
+  const scale = useTransform(progress, [start, end], [0.85, 1], transformOpts);
   return (
     <div className="relative flex h-[200px] items-center justify-center overflow-clip rounded-[30px] bg-white p-12 lg:h-[400px] lg:p-20">
       <motion.img
