@@ -252,6 +252,14 @@ button:active:not(:disabled):not([data-no-hover-fx]),
   transform: translateY(0);
   filter: brightness(0.96);
 }
+button[data-smooth-hover] {
+  transition: transform 720ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+  will-change: transform;
+}
+button[data-smooth-hover]:hover {
+  transform: scale(1.035);
+}
 @media (prefers-reduced-motion: reduce) {
   button,
   [role="button"],

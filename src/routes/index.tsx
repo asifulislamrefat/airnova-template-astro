@@ -836,9 +836,10 @@ function Stats() {
                 onClick={handlePlay}
                 aria-label="Play showreel"
                 data-no-hover-fx
-                className="flex cursor-pointer items-center gap-3 sm:gap-6 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.04]"
+                data-smooth-hover
+                className="flex cursor-pointer items-center gap-3 sm:gap-6"
               >
-                <span className="grid size-[64px] sm:size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
+                <span className="grid size-[64px] sm:size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl">
                   <Play className="size-5 sm:size-10 fill-foreground" />
                 </span>
                 <span className="w-[140px] sm:w-[180px] text-left text-[18px] sm:text-[32px] font-bold leading-[1.4] tracking-[-0.065em] text-white">
