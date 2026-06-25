@@ -1397,8 +1397,12 @@ function Testimonials() {
           </div>
 
           {reviews.map((r) => {
-            const header = (
-              <div className="flex items-center gap-2 rounded bg-white px-4 py-2">
+            const header = (pos: "top" | "bottom") => (
+              <div
+                className={`flex items-center gap-2 rounded bg-white px-4 py-2 transition-[border-radius] duration-500 ease-out ${
+                  pos === "top" ? "group-hover:rounded-b-none" : "group-hover:rounded-t-none"
+                }`}
+              >
                 <img src={r.avatar} alt={r.name} className="h-[38px] w-[41px] rounded-[5px] border border-white object-cover" />
                 <div className="flex flex-col">
                   <div className="text-[20px] font-medium leading-[1.5] tracking-[-0.075em] text-black">{r.name}</div>
@@ -1406,8 +1410,12 @@ function Testimonials() {
                 </div>
               </div>
             );
-            const body = (
-              <div className="flex flex-1 flex-col justify-between rounded-lg bg-white p-4">
+            const body = (pos: "top" | "bottom") => (
+              <div
+                className={`flex flex-1 flex-col justify-between rounded-lg bg-white p-4 transition-[border-radius] duration-500 ease-out ${
+                  pos === "top" ? "group-hover:rounded-b-none" : "group-hover:rounded-t-none"
+                }`}
+              >
                 <div className="flex gap-1">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star key={i} className="size-5 fill-[#FF2626] text-[#FF2626]" />
@@ -1423,8 +1431,8 @@ function Testimonials() {
                 key={r.name}
                 className="group flex flex-col gap-2 transition-[gap] duration-500 ease-out hover:gap-0"
               >
-                {r.headerTop ? header : body}
-                {r.headerTop ? body : header}
+                {r.headerTop ? header("top") : body("top")}
+                {r.headerTop ? body("bottom") : header("bottom")}
               </div>
             );
           })}
