@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { Minus, Plus, Search, Map, PenTool, Star } from "lucide-react";
 
 import { BrandMark, Pill, serif } from "@/components/site/shared";
@@ -132,7 +132,7 @@ function AwardPill({
   children,
   className = "",
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }) {
   return (
