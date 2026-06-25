@@ -17,9 +17,9 @@ import brandLogo3 from "@/assets/brand-logo-3.png.asset.json";
 import brandLogo4 from "@/assets/brand-logo-4.png.asset.json";
 import brandLogo5 from "@/assets/brand-logo-5.png.asset.json";
 import brandLogo6 from "@/assets/brand-logo-6.png.asset.json";
+import heroPortrait from "@/assets/about-hero-portrait.png.asset.json";
 
-const HERO_PORTRAIT =
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80";
+const HERO_PORTRAIT = heroPortrait.url;
 const RESULTS_IMG =
   "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1200&q=80";
 const CREATIVE_IMG =
