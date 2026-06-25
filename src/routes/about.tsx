@@ -159,8 +159,8 @@ function LogoGrid() {
     brandLogo6.url,
   ];
   return (
-    <section className="bg-[#f5f5f5] px-[10px] py-16 lg:px-[30px] lg:py-28">
-      <div className="container-x-inset grid grid-cols-2 gap-2 md:grid-cols-3">
+    <section className="bg-[#f5f5f5] py-16 lg:py-28">
+      <div className="container-x grid grid-cols-2 gap-2 md:grid-cols-3">
         {logos.map((src, i) => (
           <div
             key={i}
