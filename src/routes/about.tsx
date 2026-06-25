@@ -280,7 +280,7 @@ function ResultsBlock({
 }) {
   const textCol = (
     <div className="flex flex-col justify-between gap-16 lg:gap-[120px]">
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col items-start gap-8">
         <Pill variant="white">{badge}</Pill>
         <div className="flex flex-col gap-4">
           <h2 className="text-[clamp(36px,6vw,72px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
