@@ -1,5 +1,39 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Logo } from "./shared";
+
+// Map menu labels to internal routes. Add an entry here when a new page route is created.
+const ROUTE_MAP: Record<string, string> = {
+  "About Us": "/about",
+};
+
+function MenuLink({
+  href,
+  label,
+  onClick,
+  className,
+  children,
+}: {
+  href: string;
+  label: string;
+  onClick?: () => void;
+  className?: string;
+  children?: React.ReactNode;
+}) {
+  const route = ROUTE_MAP[label];
+  if (route) {
+    return (
+      <Link to={route} onClick={onClick} className={className}>
+        {children ?? label}
+      </Link>
+    );
+  }
+  return (
+    <a href={href} onClick={onClick} className={className}>
+      {children ?? label}
+    </a>
+  );
+}
 
 function FullscreenMenu({
   open,
@@ -57,13 +91,12 @@ function FullscreenMenu({
                 }ms, opacity 500ms ease ${open ? 300 + i * 80 : 0}ms`,
               }}
             >
-              <a
+              <MenuLink
                 href={l.href}
+                label={l.label}
                 onClick={onClose}
                 className="inline-block px-2 py-2 text-[32px] lg:text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-white/70 transition-colors duration-300 ease-out hover:text-white"
-              >
-                {l.label}
-              </a>
+              />
             </li>
           ))}
         </ul>
@@ -113,9 +146,10 @@ export function Nav() {
           <Logo />
           <div className="flex items-center gap-10 xl:gap-16">
           {navLinks.map((l) => (
-            <a
+            <MenuLink
               key={l.label}
               href={l.href}
+              label={l.label}
               className="inline-flex items-start text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground/70 transition-colors duration-300 ease-out hover:text-foreground"
             >
               <span>{l.label}</span>
@@ -124,7 +158,7 @@ export function Nav() {
                   {l.sup}
                 </sup>
               )}
-            </a>
+            </MenuLink>
           ))}
           </div>
           <button
