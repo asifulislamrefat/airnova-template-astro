@@ -231,7 +231,6 @@ body {
    Consistent, subtle lift + brightness across every <button> so CTAs
    feel responsive without competing with the section reveals. */
 button,
-a[href],
 [role="button"] {
   transition:
     transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -243,27 +242,22 @@ a[href],
   cursor: pointer;
 }
 button:hover:not(:disabled):not([aria-expanded]):not([data-no-hover-fx]),
-a[href]:hover:not([data-no-hover-fx]),
 [role="button"]:hover:not(:disabled):not([data-no-hover-fx]) {
   filter: brightness(1.12);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.25);
 }
 button:active:not(:disabled):not([data-no-hover-fx]),
-a[href]:active:not([data-no-hover-fx]),
 [role="button"]:active:not(:disabled):not([data-no-hover-fx]) {
   transform: translateY(0);
   filter: brightness(0.96);
 }
 @media (prefers-reduced-motion: reduce) {
   button,
-  a[href],
   [role="button"],
   button:hover:not(:disabled),
-  a[href]:hover,
   [role="button"]:hover:not(:disabled),
   button:active:not(:disabled),
-  a[href]:active,
   [role="button"]:active:not(:disabled) {
     transition: none;
     transform: none;
