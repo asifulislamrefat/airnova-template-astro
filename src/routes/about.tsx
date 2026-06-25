@@ -19,10 +19,10 @@ import aboutLogoInfinity from "@/assets/about-logo-infinity.svg.asset.json";
 import aboutLogoIpsum from "@/assets/about-logo-ipsum.svg.asset.json";
 import aboutLogoN7 from "@/assets/about-logo-n7.png.asset.json";
 import heroPortrait from "@/assets/about-hero-portrait.png.asset.json";
+import resultsPortrait from "@/assets/about-results-portrait.png.asset.json";
 
 const HERO_PORTRAIT = heroPortrait.url;
-const RESULTS_IMG =
-  "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1200&q=80";
+const RESULTS_IMG = resultsPortrait.url;
 const CREATIVE_IMG =
   "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=1200&q=80";
 const TEAM_1 =
