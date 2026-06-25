@@ -569,32 +569,32 @@ function Services() {
   };
 
   return (
-    <section id="services" className="bg-surface py-16 lg:py-28">
-      <div className="container-x flex flex-col items-center gap-12 sm:gap-16">
-        <div className="flex flex-col items-center gap-2">
-          <Pill variant="white">Our Services</Pill>
-          <div className="flex flex-col items-center gap-4 text-center">
-            <h2 className="w-full max-w-[864px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]" style={{ fontSize: "clamp(32px, 6vw, 72px)" }}>
-              Design solutions that make your{" "}
-              <span className={`${serif} italic text-black/40`}>brand stand</span>
-            </h2>
-            <p className="w-full max-w-[605px] text-[10px] sm:text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
-              We create thoughtful and visually compelling design solutions that help your brand
-              stand out in a competitive digital world. By combining creativity with strategy our
-              designs
-            </p>
-          </div>
-        </div>
+    <section id="services" className="bg-surface">
+      <div ref={scrollRef} className="relative w-full lg:h-[220vh]">
+        <div className="w-full py-16 lg:sticky lg:top-0 lg:flex lg:min-h-screen lg:items-center lg:py-20">
+          <div className="container-x flex w-full flex-col items-center gap-12 sm:gap-16">
+            <div className="flex flex-col items-center gap-2">
+              <Pill variant="white">Our Services</Pill>
+              <div className="flex flex-col items-center gap-4 text-center">
+                <h2 className="w-full max-w-[864px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]" style={{ fontSize: "clamp(32px, 6vw, 72px)" }}>
+                  Design solutions that make your{" "}
+                  <span className={`${serif} italic text-black/40`}>brand stand</span>
+                </h2>
+                <p className="w-full max-w-[605px] text-[10px] sm:text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                  We create thoughtful and visually compelling design solutions that help your brand
+                  stand out in a competitive digital world. By combining creativity with strategy our
+                  designs
+                </p>
+              </div>
+            </div>
 
-        <div ref={scrollRef} className="relative w-full lg:h-[200vh]">
-          <div className="w-full lg:sticky lg:top-0 lg:flex lg:h-screen lg:items-center">
             <div className="relative w-full">
               <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:block lg:h-[360px]">
                 {items.map(({ icon, title, desc }, i) => (
                   <div
                     key={title}
                     style={cardStyle(i)}
-                    className={`flex flex-col items-start gap-16 rounded-[20px] bg-white p-8 [&_svg.size-14]:size-12 sm:[&_svg.size-14]:size-14 ${i >= 2 ? "sm:col-span-2 lg:col-span-1" : ""} lg:absolute lg:left-1/2 lg:top-1/2 lg:w-[clamp(320px,28vw,420px)] lg:transition-[box-shadow] lg:duration-300 lg:will-change-transform`}
+                    className={`flex flex-col items-start gap-16 rounded-[20px] bg-white p-8 [&_svg.size-14]:size-12 sm:[&_svg.size-14]:size-14 ${i >= 2 ? "sm:col-span-2 lg:col-span-1" : ""} lg:absolute lg:left-1/2 lg:top-1/2 lg:w-[clamp(320px,28vw,420px)] lg:will-change-transform`}
                   >
                     {icon}
                     <div className="flex w-full flex-col gap-2">
