@@ -4,6 +4,7 @@ import { Logo } from "./shared";
 
 // Map menu labels to internal routes. Add an entry here when a new page route is created.
 const ROUTE_MAP: Record<string, string> = {
+  "Home": "/",
   "About Us": "/about",
 };
 
@@ -12,18 +13,26 @@ function MenuLink({
   label,
   onClick,
   className,
+  activeClassName,
   children,
 }: {
   href: string;
   label: string;
   onClick?: () => void;
   className?: string;
+  activeClassName?: string;
   children?: React.ReactNode;
 }) {
   const route = ROUTE_MAP[label];
   if (route) {
     return (
-      <Link to={route} onClick={onClick} className={className}>
+      <Link
+        to={route}
+        onClick={onClick}
+        className={className}
+        activeProps={activeClassName ? { className: activeClassName } : undefined}
+        activeOptions={{ exact: route === "/" }}
+      >
         {children ?? label}
       </Link>
     );
