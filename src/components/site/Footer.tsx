@@ -23,7 +23,7 @@ export function Footer() {
             <p className="max-w-sm text-[28px] font-semibold leading-[1.2] tracking-[-0.03em]">
               Social media that <span className={`${serif} text-background/50`}>drives<br />real</span> results
             </p>
-            <p className="text-base text-background/80">Built for creators, businesses and brands.</p>
+            <p className="text-base text-background/80">Built for creators businesses and brands.</p>
           </div>
 
           <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
@@ -58,8 +58,8 @@ export function Footer() {
 
         <div className="mt-16 h-px bg-white/10" />
 
-        <div className="mt-6 rounded-lg bg-white/5 px-6 py-4 text-center text-base text-background/80">
-          Copyright © Airnova. "All rights reserved" | Design and Develop By Airdute LLC
+        <div className="mt-6 rounded-lg bg-white/[0.03] px-6 py-3.5 text-center text-base font-medium tracking-[-0.02em] text-background">
+          Design & Developed By Airdute  - License | Powered By Webflow
         </div>
       </div>
 
