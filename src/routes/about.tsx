@@ -182,9 +182,11 @@ function LogoGrid() {
     target: containerRef,
     offset: ["start start", "end end"],
   });
-  // Reveal thresholds across the first 75% of the section's scroll progress.
-  const revealRange = 0.75;
-  const thresholds = logos.map((_, i) => ((i + 0.6) / logos.length) * revealRange);
+  // Reveal thresholds spread across the section's scroll progress.
+  const revealRange = 0.95;
+  const thresholds = logos.map(
+    (_, i) => ((i + 0.6) / logos.length) * revealRange,
+  );
 
   const [revealed, setRevealed] = useState<boolean[]>(() =>
     logos.map(() => false),
@@ -212,7 +214,9 @@ function LogoGrid() {
     });
   });
 
-  const scrollVh = logos.length * 100;
+  // ~50vh of scroll per logo keeps the sticky stage long enough to reveal
+  // every tile without leaving a long empty tail before the next section.
+  const scrollVh = logos.length * 50;
   return (
     <section
       ref={containerRef}
