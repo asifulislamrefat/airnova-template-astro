@@ -1,11 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState, type ReactNode } from "react";
-import {
-  motion,
-  useScroll,
-  useMotionValueEvent,
-  type MotionValue,
-} from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Minus, Plus, Search, Map, PenTool, Star } from "lucide-react";
 
 import { BrandMark, Pill, serif } from "@/components/site/shared";
