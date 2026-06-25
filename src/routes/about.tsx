@@ -60,10 +60,10 @@ export const Route = createFileRoute("/about")({
 function AboutHero() {
   const avatars = [avatar10.url, avatar11.url, avatar12.url, avatar13.url];
   return (
-    <section className="overflow-clip bg-white pt-14 pb-16 lg:h-[900px] lg:pb-28 lg:pt-14">
-      <div className="container-x">
+    <section className="overflow-clip bg-white px-[5%] py-14 lg:h-[900px] lg:px-0 lg:py-0">
+      <div className="mx-auto w-full max-w-[1280px] lg:w-[calc(100%-160px)] lg:pt-14">
         <div className="flex flex-col items-start gap-12 lg:flex-row lg:justify-between lg:gap-0">
-          <div className="flex flex-col gap-12 lg:w-[623px] lg:shrink-0 lg:pt-20">
+          <div className="flex flex-col gap-12 lg:w-[48%] lg:shrink-0 lg:pt-20 xl:w-[623px]">
             <div className="flex flex-col items-start gap-4">
               <Pill>About Us</Pill>
               <h1 className="text-[clamp(40px,8vw,80px)] font-semibold leading-[1.1] tracking-[-0.065em] text-black">
@@ -104,7 +104,7 @@ function AboutHero() {
           </div>
 
           {/* Portrait + floating award pills */}
-          <div className="relative w-full lg:h-[732px] lg:w-[600px] lg:shrink-0">
+          <div className="relative w-full lg:h-[1049.563px] lg:w-[47%] lg:shrink-0 xl:w-[600px]">
             <div className="aspect-[600/700] w-full overflow-hidden rounded-[20px] lg:aspect-auto lg:h-full">
               <img
                 src={HERO_PORTRAIT}
@@ -112,13 +112,13 @@ function AboutHero() {
                 className="h-full w-full object-cover"
               />
             </div>
-            <AwardPill className="left-4 top-[48%] lg:left-[56%] lg:top-[60%]">
+            <AwardPill className="left-4 top-[48%] w-[236px] lg:left-[56%] lg:top-[440px] xl:left-[336px]">
               Best Design Award 2026
             </AwardPill>
-            <AwardPill className="right-4 top-[60%] lg:left-[9%] lg:top-[77%]">
+            <AwardPill className="right-4 top-[60%] w-[201px] lg:left-[9.333%] lg:right-auto lg:top-[563.409px] xl:left-[56px]">
               15+ Years in Design
             </AwardPill>
-            <AwardPill className="left-4 bottom-8 lg:left-[54%] lg:top-[92%] lg:bottom-auto">
+            <AwardPill className="left-4 bottom-8 w-[250px] lg:left-[53.667%] lg:top-[676px] lg:bottom-auto xl:left-[322px]">
               Global Startup Award 2027
             </AwardPill>
           </div>
@@ -137,10 +137,10 @@ function AwardPill({
 }) {
   return (
     <div
-      className={`absolute inline-flex items-center rounded-[80px] bg-white/10 px-6 py-2.5 backdrop-blur-[10px] ${className}`}
+      className={`absolute inline-flex h-11 items-center justify-center rounded-[80px] bg-white/10 px-6 py-2.5 backdrop-blur-[10.4px] ${className}`}
     >
-      <span className="mr-2 inline-block size-1.5 rounded-full bg-white" />
-      <span className="whitespace-nowrap text-sm lg:text-base font-medium leading-[1.5] tracking-[-0.075em] text-white">
+      <span className="mr-2 inline-block size-1.5 shrink-0 rounded-full bg-white" />
+      <span className="whitespace-nowrap text-sm font-medium leading-[1.5] tracking-[-0.075em] text-white lg:text-base">
         {children}
       </span>
     </div>
@@ -159,8 +159,8 @@ function LogoGrid() {
     brandLogo6.url,
   ];
   return (
-    <section className="bg-[#f5f5f5] py-16 lg:py-28">
-      <div className="container-x grid grid-cols-2 gap-2 md:grid-cols-3">
+    <section className="bg-[#f5f5f5] py-16 lg:h-[1032px] lg:py-28">
+      <div className="mx-auto grid w-[calc(100%-32px)] max-w-[1280px] grid-cols-2 gap-2 md:grid-cols-3 lg:w-[calc(100%-160px)]">
         {logos.map((src, i) => (
           <div
             key={i}
@@ -243,8 +243,12 @@ function ResultsBlock({
   );
 
   return (
-    <section className="bg-[#f5f5f5] px-[10px] py-16 lg:px-[30px] lg:py-28">
-      <div className="container-x-inset grid items-stretch gap-10 lg:grid-cols-2 lg:gap-16">
+    <section className={`bg-[#f5f5f5] py-16 ${reverse ? "lg:pb-28 lg:pt-14" : "lg:py-28"}`}>
+      <div
+        className={`mx-auto grid w-[calc(100%-32px)] max-w-[1280px] items-stretch gap-10 lg:w-[calc(100%-160px)] lg:gap-16 ${
+          reverse ? "lg:grid-cols-[598fr_618fr]" : "lg:grid-cols-[618fr_598fr]"
+        }`}
+      >
         {reverse ? (
           <>
             {textCol}
