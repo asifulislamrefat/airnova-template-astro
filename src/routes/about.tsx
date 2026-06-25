@@ -11,7 +11,6 @@ import avatar10 from "@/assets/avatar-10.png.asset.json";
 import avatar11 from "@/assets/avatar-11.png.asset.json";
 import avatar12 from "@/assets/avatar-12.png.asset.json";
 import avatar13 from "@/assets/avatar-13.png.asset.json";
-import brandLogo1 from "@/assets/brand-logo-1.png.asset.json";
 import brandLogo2 from "@/assets/brand-logo-2.png.asset.json";
 import aboutLogoLuyu from "@/assets/about-logo-luyu.svg.asset.json";
 import aboutLogoLoqo from "@/assets/about-logo-loqo.svg.asset.json";
