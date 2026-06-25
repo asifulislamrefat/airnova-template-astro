@@ -4,6 +4,7 @@ import { Logo } from "./shared";
 
 // Map menu labels to internal routes. Add an entry here when a new page route is created.
 const ROUTE_MAP: Record<string, string> = {
+  "Home": "/",
   "About Us": "/about",
 };
 
@@ -12,18 +13,26 @@ function MenuLink({
   label,
   onClick,
   className,
+  activeClassName,
   children,
 }: {
   href: string;
   label: string;
   onClick?: () => void;
   className?: string;
+  activeClassName?: string;
   children?: React.ReactNode;
 }) {
   const route = ROUTE_MAP[label];
   if (route) {
     return (
-      <Link to={route} onClick={onClick} className={className}>
+      <Link
+        to={route}
+        onClick={onClick}
+        className={className}
+        activeProps={activeClassName ? { className: activeClassName } : undefined}
+        activeOptions={{ exact: route === "/" }}
+      >
         {children ?? label}
       </Link>
     );
@@ -96,6 +105,7 @@ function FullscreenMenu({
                 label={l.label}
                 onClick={onClose}
                 className="inline-block px-2 py-2 text-[32px] lg:text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-white/70 transition-colors duration-300 ease-out hover:text-white"
+                activeClassName="inline-block px-2 py-2 text-[32px] lg:text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-white transition-colors duration-300 ease-out"
               />
             </li>
           ))}
@@ -151,6 +161,7 @@ export function Nav() {
               href={l.href}
               label={l.label}
               className="inline-flex items-start text-base font-medium leading-[1.5] tracking-[-0.075em] text-foreground/70 transition-colors duration-300 ease-out hover:text-foreground"
+              activeClassName="inline-flex items-start text-base font-semibold leading-[1.5] tracking-[-0.075em] text-foreground transition-colors duration-300 ease-out"
             >
               <span>{l.label}</span>
               {l.sup && (
