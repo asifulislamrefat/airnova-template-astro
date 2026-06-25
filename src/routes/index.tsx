@@ -1419,7 +1419,10 @@ function Testimonials() {
               </div>
             );
             return (
-              <div key={r.name} className="flex flex-col gap-2">
+              <div
+                key={r.name}
+                className="group flex flex-col gap-2 transition-[gap] duration-500 ease-out hover:gap-0"
+              >
                 {r.headerTop ? header : body}
                 {r.headerTop ? body : header}
               </div>
