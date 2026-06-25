@@ -1792,7 +1792,8 @@ function Faq() {
             <button
               key={f.q}
               onClick={() => setOpen(isOpen ? -1 : i)}
-              className="block w-full rounded-[10px] bg-white px-6 py-4 text-left transition"
+              data-no-hover-fx
+              className="block w-full cursor-pointer rounded-[10px] bg-white px-6 py-4 text-left transition"
             >
               <div className="flex items-center justify-between gap-8 sm:gap-16">
                 <span className="text-[clamp(12px,1.8vw,26px)] font-medium leading-[1.5] tracking-[-0.075em] text-black">
