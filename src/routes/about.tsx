@@ -112,13 +112,13 @@ function AboutHero() {
                 className="h-full w-full object-cover"
               />
             </div>
-            <AwardPill className="left-4 top-[55%] lg:left-auto lg:right-2 lg:top-[48%]">
+            <AwardPill className="left-4 top-[48%] lg:left-[55%] lg:top-[47%]">
               Best Design Award 2026
             </AwardPill>
-            <AwardPill className="left-1/3 top-[68%] lg:left-[-28%] lg:top-[63%]">
+            <AwardPill className="right-4 top-[60%] lg:left-[8%] lg:top-[59%]">
               15+ Years in Design
             </AwardPill>
-            <AwardPill className="right-4 bottom-8 lg:right-2 lg:bottom-12">
+            <AwardPill className="left-4 bottom-8 lg:left-[52%] lg:top-[70%] lg:bottom-auto">
               Global Startup Award 2027
             </AwardPill>
           </div>
