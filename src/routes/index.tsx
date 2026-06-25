@@ -1175,7 +1175,7 @@ function SolutionInner() {
             <div className="flex items-start justify-between">
               <div className="flex flex-col gap-2">
                 <p className="text-[56px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
-                  100%
+                  <CountUp value="100%" />
                 </p>
                 <p className="text-[20px] font-medium leading-[1.5] tracking-[-0.075em] text-[#070606]">
                   Satisfied client
