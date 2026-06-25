@@ -6,6 +6,7 @@ import { Logo } from "./shared";
 const ROUTE_MAP: Record<string, string> = {
   "Home": "/",
   "About Us": "/about",
+  "Projects": "/projects",
 };
 
 function MenuLink({
