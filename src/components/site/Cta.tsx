@@ -24,6 +24,7 @@ export function Cta() {
           </div>
           <a
             href="#contact"
+            data-hover-lift
             className="inline-flex h-12 items-center justify-center rounded-[80px] bg-white px-6 text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#070606] shadow-[0_4px_2px_rgba(0,0,0,0.16)]"
           >
             Book a Call
