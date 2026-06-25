@@ -227,28 +227,25 @@ body {
   }
 }
 
-/* ---------- Global button hover transition ----------
-   Consistent, subtle lift + brightness across every <button> so CTAs
-   feel responsive without competing with the section reveals. */
+/* ---------- Opt-in button hover transition ----------
+   Subtle lift + brightness only on elements explicitly marked with
+   data-hover-lift. Apply per-button, not globally. */
 button,
 [role="button"] {
+  cursor: pointer;
+}
+[data-hover-lift] {
   transition:
     transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
     filter 220ms ease,
-    opacity 220ms ease,
-    background-color 220ms ease,
-    color 220ms ease,
     box-shadow 220ms ease;
-  cursor: pointer;
 }
-button:hover:not(:disabled):not([aria-expanded]):not([data-no-hover-fx]),
-[role="button"]:hover:not(:disabled):not([data-no-hover-fx]) {
+[data-hover-lift]:hover:not(:disabled) {
   filter: brightness(1.12);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.25);
 }
-button:active:not(:disabled):not([data-no-hover-fx]),
-[role="button"]:active:not(:disabled):not([data-no-hover-fx]) {
+[data-hover-lift]:active:not(:disabled) {
   transform: translateY(0);
   filter: brightness(0.96);
 }
@@ -261,12 +258,9 @@ button[data-smooth-hover]:hover {
   transform: scale(1.035);
 }
 @media (prefers-reduced-motion: reduce) {
-  button,
-  [role="button"],
-  button:hover:not(:disabled),
-  [role="button"]:hover:not(:disabled),
-  button:active:not(:disabled),
-  [role="button"]:active:not(:disabled) {
+  [data-hover-lift],
+  [data-hover-lift]:hover,
+  [data-hover-lift]:active {
     transition: none;
     transform: none;
     filter: none;
