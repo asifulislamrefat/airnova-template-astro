@@ -240,6 +240,7 @@ a[href],
     background-color 220ms ease,
     color 220ms ease,
     box-shadow 220ms ease;
+  cursor: pointer;
 }
 button:hover:not(:disabled):not([aria-expanded]):not([data-no-hover-fx]),
 a[href]:hover:not([data-no-hover-fx]),
