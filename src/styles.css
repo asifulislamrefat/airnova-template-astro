@@ -311,3 +311,12 @@ button[data-smooth-hover]:hover {
   backdrop-filter: blur(1.5em);
   mask: linear-gradient(#0000 88%, #000 100%);
 }
+
+@keyframes logo-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-1.2deg); }
+}
+.animate-logo-float {
+  animation: logo-float 3.6s ease-in-out infinite;
+  will-change: transform;
+}

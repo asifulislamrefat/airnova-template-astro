@@ -168,8 +168,12 @@ function LogoGrid() {
             <img
               src={logo.src}
               alt=""
-              className="object-contain"
-              style={{ width: logo.w, height: logo.h }}
+              className="object-contain animate-logo-float"
+              style={{
+                width: logo.w,
+                height: logo.h,
+                animationDelay: `${i * 0.3}s`,
+              }}
             />
             <span className="absolute bottom-6 left-1/2 -translate-x-1/2 text-base font-semibold leading-[1.4] tracking-[-0.055em] text-[#282828]">
               /2027
