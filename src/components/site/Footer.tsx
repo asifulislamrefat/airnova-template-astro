@@ -58,7 +58,7 @@ export function Footer() {
 
         <div className="mt-16 h-px bg-white/10" />
 
-        <div className="mt-6 rounded-lg bg-white/[0.03] px-6 py-3.5 text-center text-base font-medium tracking-[-0.02em] text-background">
+        <div className="mt-6 px-6 py-3.5 text-center text-base font-medium tracking-[-0.02em] text-background">
           Design & Developed By Airdute  - License | Powered By Webflow
         </div>
       </div>
