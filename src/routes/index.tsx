@@ -605,6 +605,63 @@ function Projects() {
   );
 }
 
+function CountUp({ value, duration = 2000 }: { value: string; duration?: number }) {
+  const match = value.match(/^([^\d-]*)(-?[\d.,]+)(.*)$/);
+  const prefix = match?.[1] ?? "";
+  const numStr = match?.[2] ?? "0";
+  const suffix = match?.[3] ?? "";
+  const target = parseFloat(numStr.replace(/,/g, "")) || 0;
+  const hasK = /k/i.test(suffix);
+  const cleanSuffix = hasK ? suffix.replace(/k/i, "") : suffix;
+  const finalTarget = hasK ? target * 1000 : target;
+  const [display, setDisplay] = useState(0);
+  const ref = useRef<HTMLSpanElement | null>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting && !started.current) {
+            started.current = true;
+            const start = performance.now();
+            const tick = (now: number) => {
+              const p = Math.min(1, (now - start) / duration);
+              const eased = 1 - Math.pow(1 - p, 3);
+              setDisplay(finalTarget * eased);
+              if (p < 1) requestAnimationFrame(tick);
+              else setDisplay(finalTarget);
+            };
+            requestAnimationFrame(tick);
+            io.disconnect();
+          }
+        }
+      },
+      { threshold: 0.3 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [finalTarget, duration]);
+
+  const formatted = hasK
+    ? display >= 1000
+      ? (display / 1000).toFixed(display >= 10000 ? 0 : 1).replace(/\.0$/, "") + "k"
+      : Math.round(display).toString()
+    : Number.isInteger(target)
+      ? Math.round(display).toString()
+      : display.toFixed(1);
+
+  return (
+    <span ref={ref}>
+      {prefix}
+      {formatted}
+      {hasK ? "" : cleanSuffix}
+    </span>
+  );
+}
+
 function Stats() {
   const stats = [
     { v: "100+", l: "Creative professionals" },
@@ -659,7 +716,7 @@ function Stats() {
             <div key={s.l} className="flex flex-1 flex-col gap-16 rounded-[20px] bg-white p-6">
               <div className="flex flex-col gap-8">
                 <div className="text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
-                  {s.v}
+                  <CountUp value={s.v} />
                 </div>
               <div className="w-full border-t border-dashed border-black/15" />
               </div>
