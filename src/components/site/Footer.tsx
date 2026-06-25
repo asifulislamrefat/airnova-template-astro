@@ -15,7 +15,7 @@ export function Footer() {
     { title: "Inner Pages", links: ["404", "Licenses", "Chang loge", "Style Guide"] },
   ];
   return (
-    <footer className="relative overflow-hidden bg-foreground px-6 pb-8 pt-16 text-background sm:px-10 lg:h-[757px] lg:px-20 lg:pt-28">
+    <footer className="relative z-50 overflow-hidden bg-foreground px-6 pb-8 pt-16 text-background sm:px-10 lg:h-[757px] lg:px-20 lg:pt-28">
       <div className="relative z-10 mx-auto flex w-full max-w-[1280px] flex-col gap-12">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
           <div className="flex shrink-0 flex-col items-start gap-6">
@@ -42,14 +42,14 @@ export function Footer() {
                       {ROUTE_MAP[l] ? (
                         <Link
                           to={ROUTE_MAP[l]}
-                          className="inline-block transition-all duration-300 ease-out hover:translate-x-1 hover:text-background/70"
+                          className="inline-block"
                         >
                           {l}
                         </Link>
                       ) : (
                         <a
                           href="#"
-                          className="inline-block transition-all duration-300 ease-out hover:translate-x-1 hover:text-background/70"
+                          className="inline-block"
                         >
                           {l}
                         </a>
@@ -71,7 +71,7 @@ export function Footer() {
         <div className="pointer-events-none mt-12 select-none overflow-hidden text-center lg:absolute lg:left-1/2 lg:top-[362px] lg:z-0 lg:mt-0 lg:w-screen lg:-translate-x-1/2">
           <span
             className={`${serif} inline-block font-semibold leading-[1.1] tracking-[-0.075em] text-background`}
-            style={{ fontSize: "clamp(170px, 22vw, 320px)" }}
+            style={{ fontSize: "clamp(170px, 24vw, 320px)" }}
           >
             Airnova
           </span>
