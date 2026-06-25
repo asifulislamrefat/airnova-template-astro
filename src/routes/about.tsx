@@ -60,10 +60,10 @@ export const Route = createFileRoute("/about")({
 function AboutHero() {
   const avatars = [avatar10.url, avatar11.url, avatar12.url, avatar13.url];
   return (
-    <section className="overflow-clip bg-white pt-14 pb-16 lg:pb-28">
+    <section className="overflow-clip bg-white pt-14 pb-16 lg:h-[900px] lg:pb-28 lg:pt-14">
       <div className="container-x">
-        <div className="grid items-start gap-12 lg:grid-cols-[1fr_600px] lg:gap-16">
-          <div className="flex flex-col gap-12 lg:pt-20">
+        <div className="flex flex-col items-start gap-12 lg:flex-row lg:justify-between lg:gap-0">
+          <div className="flex flex-col gap-12 lg:w-[623px] lg:shrink-0 lg:pt-20">
             <div className="flex flex-col items-start gap-4">
               <Pill>About Us</Pill>
               <h1 className="text-[clamp(40px,8vw,80px)] font-semibold leading-[1.1] tracking-[-0.065em] text-black">
@@ -104,21 +104,21 @@ function AboutHero() {
           </div>
 
           {/* Portrait + floating award pills */}
-          <div className="relative">
-            <div className="aspect-[600/700] w-full overflow-hidden rounded-[20px] lg:aspect-[600/900]">
+          <div className="relative w-full lg:h-[732px] lg:w-[600px] lg:shrink-0">
+            <div className="aspect-[600/700] w-full overflow-hidden rounded-[20px] lg:aspect-auto lg:h-full">
               <img
                 src={HERO_PORTRAIT}
                 alt="Airnova founder portrait"
                 className="h-full w-full object-cover"
               />
             </div>
-            <AwardPill className="left-4 top-[48%] lg:left-[55%] lg:top-[47%]">
+            <AwardPill className="left-4 top-[48%] lg:left-[56%] lg:top-[60%]">
               Best Design Award 2026
             </AwardPill>
-            <AwardPill className="right-4 top-[60%] lg:left-[8%] lg:top-[59%]">
+            <AwardPill className="right-4 top-[60%] lg:left-[9%] lg:top-[77%]">
               15+ Years in Design
             </AwardPill>
-            <AwardPill className="left-4 bottom-8 lg:left-[52%] lg:top-[70%] lg:bottom-auto">
+            <AwardPill className="left-4 bottom-8 lg:left-[54%] lg:top-[92%] lg:bottom-auto">
               Global Startup Award 2027
             </AwardPill>
           </div>
