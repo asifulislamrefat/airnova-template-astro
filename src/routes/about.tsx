@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import {
   motion,
   useScroll,
@@ -449,40 +449,112 @@ const STEPS = [
 ];
 
 function HowItWorks() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) {
+      setProgress(0);
+      return;
+    }
+    const el = scrollRef.current;
+    if (!el) return;
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const rect = el.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const total = rect.height - vh;
+        if (total <= 0) return setProgress(0);
+        const scrolled = Math.min(Math.max(-rect.top, 0), total);
+        setProgress(scrolled / total);
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [isDesktop]);
+
+  const smooth = (t: number) => t * t * (3 - 2 * t);
+  const cardStyle = (i: number): CSSProperties | undefined => {
+    if (!isDesktop) return undefined;
+    const e = smooth(Math.min(1, Math.max(0, progress)));
+    if (i === 1) {
+      return {
+        transform: "translate(-50%, -50%) scale(1)",
+        zIndex: 3,
+      };
+    }
+    const dir = i === 0 ? -1 : 1;
+    const startY = i === 0 ? -16 : 16;
+    const startScale = i === 0 ? 0.96 : 0.92;
+    const x = dir * 108 * e;
+    const y = startY * (1 - e);
+    const s = startScale + (1 - startScale) * e;
+    return {
+      transform: `translate(calc(-50% + ${x}%), calc(-50% + ${y}px)) scale(${s})`,
+      zIndex: i === 0 ? 2 : 1,
+    };
+  };
+
   return (
-    <section className="bg-white px-[10px] py-16 lg:px-[30px] lg:py-28">
-      <div className="container-x-inset flex flex-col items-center gap-16">
-        <div className="flex flex-col items-center gap-6">
-          <Pill>How it works</Pill>
-          <h2 className="max-w-[650px] text-center text-[clamp(32px,5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
-            How We Turn Ideas Into{" "}
-            <span className={`${serif} text-black/50`}>creative</span> Results
-          </h2>
-        </div>
-        <div className="grid w-full gap-2 md:grid-cols-3">
-          {STEPS.map((s) => (
-            <div
-              key={s.n}
-              className="flex flex-col gap-12 rounded-[20px] bg-[#f5f5f5] p-6"
-            >
-              <div className="flex items-start justify-between">
-                <div className="grid size-14 place-items-center rounded-[11px] bg-[#070606]">
-                  <s.Icon className="size-6 text-white" />
-                </div>
-                <p className="text-[20px] font-medium leading-[1.5] tracking-[-0.075em] text-black">
-                  {s.n}
-                </p>
-              </div>
-              <div className="flex flex-col gap-4">
-                <h3 className="text-[24px] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
-                  {s.title}
-                </h3>
-                <p className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
-                  {s.body}
-                </p>
+    <section className="bg-white">
+      <div ref={scrollRef} className="relative w-full lg:h-[220vh]">
+        <div className="w-full px-[10px] py-16 lg:sticky lg:top-0 lg:flex lg:min-h-screen lg:items-center lg:px-[30px] lg:py-20">
+          <div className="container-x-inset flex w-full flex-col items-center gap-16">
+            <div className="flex flex-col items-center gap-6">
+              <Pill>How it works</Pill>
+              <h2 className="max-w-[650px] text-center text-[clamp(32px,5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+                How We Turn Ideas Into{" "}
+                <span className={`${serif} text-black/50`}>creative</span> Results
+              </h2>
+            </div>
+
+            <div className="relative w-full">
+              <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:block lg:h-[360px]">
+                {STEPS.map((s, i) => (
+                  <div
+                    key={s.n}
+                    style={cardStyle(i)}
+                    className={`flex flex-col gap-12 rounded-[20px] bg-[#f5f5f5] p-6 ${i >= 2 ? "sm:col-span-2 lg:col-span-1" : ""} lg:absolute lg:left-1/2 lg:top-1/2 lg:w-[clamp(320px,28vw,420px)] lg:will-change-transform`}
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="grid size-14 place-items-center rounded-[11px] bg-[#070606]">
+                        <s.Icon className="size-6 text-white" />
+                      </div>
+                      <p className="text-[20px] font-medium leading-[1.5] tracking-[-0.075em] text-black">
+                        {s.n}
+                      </p>
+                    </div>
+                    <div className="flex flex-col gap-4">
+                      <h3 className="text-[24px] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
+                        {s.title}
+                      </h3>
+                      <p className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                        {s.body}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
