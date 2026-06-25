@@ -378,17 +378,10 @@ function ResultsBlock({
           reverse ? "lg:grid-cols-[598fr_618fr]" : "lg:grid-cols-[618fr_598fr]"
         }`}
       >
-        {reverse ? (
-          <>
-            {textCol}
-            {imgCol}
-          </>
-        ) : (
-          <>
-            {imgCol}
-            {textCol}
-          </>
-        )}
+        <div className={`contents ${reverse ? "lg:[&>*:first-child]:order-2" : ""}`}>
+          {imgCol}
+          {textCol}
+        </div>
       </div>
     </section>
   );
