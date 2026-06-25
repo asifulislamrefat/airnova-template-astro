@@ -577,9 +577,9 @@ function Team() {
             delivering exceptional digital experiences.
           </p>
         </div>
-        <div className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
           {TEAM.map((m) => (
-            <div key={m.name} className="flex flex-col gap-2">
+            <div key={m.name} className="flex flex-col gap-2 lg:gap-4">
               <div className="overflow-hidden rounded-[20px] border-[5px] border-white">
                 <img
                   src={m.img}
