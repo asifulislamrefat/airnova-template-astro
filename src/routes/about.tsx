@@ -113,13 +113,22 @@ function AboutHero() {
                 className="w-full object-contain object-[center_bottom]"
               />
             </div>
-            <AwardPill className="left-4 top-[48%] w-[236px] lg:left-[56%] lg:top-[440px] xl:left-[336px]">
+            <AwardPill
+              floatIndex={0}
+              className="left-4 top-[48%] w-[236px] lg:left-[56%] lg:top-[440px] xl:left-[336px]"
+            >
               Best Design Award 2026
             </AwardPill>
-            <AwardPill className="right-4 top-[60%] w-[201px] lg:left-[9.333%] lg:right-auto lg:top-[563.409px] xl:left-[56px]">
+            <AwardPill
+              floatIndex={1}
+              className="right-4 top-[60%] w-[201px] lg:left-[9.333%] lg:right-auto lg:top-[563.409px] xl:left-[56px]"
+            >
               15+ Years in Design
             </AwardPill>
-            <AwardPill className="left-4 bottom-8 w-[250px] lg:left-[53.667%] lg:top-[676px] lg:bottom-auto xl:left-[322px]">
+            <AwardPill
+              floatIndex={2}
+              className="left-4 bottom-8 w-[250px] lg:left-[53.667%] lg:top-[676px] lg:bottom-auto xl:left-[322px]"
+            >
               Global Startup Award 2027
             </AwardPill>
           </div>
@@ -132,13 +141,21 @@ function AboutHero() {
 function AwardPill({
   children,
   className = "",
+  floatIndex = 0,
 }: {
   children: ReactNode;
   className?: string;
+  floatIndex?: number;
 }) {
+  const durations = [5.2, 6.4, 7.1];
+  const delays = [0, 0.8, 1.6];
   return (
     <div
-      className={`absolute inline-flex h-11 items-center justify-center rounded-[80px] bg-white/10 px-6 py-2.5 backdrop-blur-[10.4px] ${className}`}
+      className={`animate-award-float absolute inline-flex h-11 items-center justify-center rounded-[80px] bg-white/10 px-6 py-2.5 backdrop-blur-[10.4px] ${className}`}
+      style={{
+        animationDuration: `${durations[floatIndex % durations.length]}s`,
+        animationDelay: `${delays[floatIndex % delays.length]}s`,
+      }}
     >
       <ul className="list-disc whitespace-nowrap pl-6 text-sm font-medium leading-[1.5] tracking-[-0.075em] text-white lg:text-base">
         <li>{children}</li>
