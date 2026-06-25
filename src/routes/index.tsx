@@ -835,6 +835,7 @@ function Stats() {
               <button
                 onClick={handlePlay}
                 aria-label="Play showreel"
+                data-no-hover-fx
                 className="flex cursor-pointer items-center gap-3 sm:gap-6 transition-transform duration-300 ease-out hover:scale-[1.03]"
               >
                 <span className="grid size-[64px] sm:size-[140px] place-items-center rounded-full bg-white text-foreground shadow-2xl transition-transform duration-300 ease-out">
