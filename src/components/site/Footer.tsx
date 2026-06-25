@@ -4,6 +4,7 @@ import { Logo, serif } from "./shared";
 // Map footer link labels to internal routes. Add an entry when a new page route is created.
 const ROUTE_MAP: Record<string, string> = {
   "About Us": "/about",
+  "Projects": "/projects",
 };
 
 export function Footer() {
