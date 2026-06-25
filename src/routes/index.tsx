@@ -431,6 +431,7 @@ function BenefitsAccordion() {
             <button
               type="button"
               onClick={() => setOpen(isOpen ? -1 : i)}
+              data-no-hover-fx
               className="flex w-full cursor-pointer items-center gap-6 text-left sm:gap-16"
             >
               <span className="flex-1 text-[22px] font-semibold leading-[1.3] tracking-[-0.075em] text-[#070606] sm:text-[28px] sm:leading-[1.5]">
