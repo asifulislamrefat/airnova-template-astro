@@ -1,6 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useRef, useState, type ReactNode } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  motion,
+  useScroll,
+  useMotionValueEvent,
+  useInView,
+  useMotionValue,
+  useTransform,
+  animate,
+} from "framer-motion";
 import { Minus, Plus, Search, Map, PenTool, Star } from "lucide-react";
 
 import { BrandMark, Pill, serif } from "@/components/site/shared";
@@ -259,6 +267,49 @@ function LogoTile({ logo, revealed }: { logo: LogoItem; revealed: boolean }) {
 
 /* ---------- Results sections ---------- */
 
+function CountUpStat({ value }: { value: string }) {
+  const match = value.match(/^([^\d]*)(\d+(?:\.\d+)?)(.*)$/);
+  const prefix = match?.[1] ?? "";
+  const target = match ? parseFloat(match[2]) : 0;
+  const suffix = match?.[3] ?? "";
+  const decimals = match?.[2].includes(".") ? match[2].split(".")[1].length : 0;
+
+  const ref = useRef<HTMLParagraphElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-15% 0px" });
+  const mv = useMotionValue(0);
+  const rounded = useTransform(mv, (v) =>
+    decimals
+      ? v.toFixed(decimals)
+      : Math.round(v).toLocaleString(),
+  );
+  const [display, setDisplay] = useState(decimals ? (0).toFixed(decimals) : "0");
+
+  useEffect(() => {
+    const unsub = rounded.on("change", setDisplay);
+    return () => unsub();
+  }, [rounded]);
+
+  useEffect(() => {
+    if (!inView) return;
+    const controls = animate(mv, target, {
+      duration: 2,
+      ease: [0.22, 1, 0.36, 1],
+    });
+    return () => controls.stop();
+  }, [inView, mv, target]);
+
+  return (
+    <p
+      ref={ref}
+      className="text-[clamp(32px,5vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606] tabular-nums"
+    >
+      {prefix}
+      {display}
+      {suffix}
+    </p>
+  );
+}
+
 function ResultsBlock({
   reverse = false,
   image,
@@ -299,9 +350,7 @@ function ResultsBlock({
             key={s.title}
             className="flex flex-col justify-between gap-8 rounded-[20px] bg-white p-6 lg:p-8"
           >
-            <p className="text-[clamp(32px,5vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
-              {s.value}
-            </p>
+            <CountUpStat value={s.value} />
             <div className="flex flex-col gap-2">
               <p className="text-[20px] font-medium leading-[1.5] tracking-[-0.075em] text-[#070606]">
                 {s.title}
