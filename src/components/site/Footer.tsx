@@ -16,15 +16,15 @@ export function Footer() {
   ];
   return (
     <footer className="relative z-50 overflow-hidden bg-foreground px-6 pb-8 pt-16 text-background sm:px-10 lg:h-[757px] lg:px-20 lg:pt-[112px] lg:pb-[32px]">
-      {/* Giant wordmark sitting behind everything */}
+      {/* Giant wordmark sitting behind everything (Figma: top:362.49, h:368.805) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 hidden select-none items-end justify-center overflow-hidden lg:flex"
-        style={{ height: "395px" }}
+        className="pointer-events-none absolute left-1/2 z-0 hidden -translate-x-1/2 select-none items-center justify-center overflow-hidden lg:flex"
+        style={{ top: "362.49px", height: "368.805px", width: "100vw" }}
       >
         <span
-          className={`${serif} block font-semibold italic leading-[0.85] tracking-[-0.075em] text-background whitespace-nowrap`}
-          style={{ fontSize: "clamp(170px, 22vw, 320px)" }}
+          className={`${serif} block font-semibold italic leading-[1.1] tracking-[-0.075em] text-background whitespace-nowrap`}
+          style={{ fontSize: "clamp(170px, 20.93vw, 301.422px)" }}
         >
           Airnova
         </span>
