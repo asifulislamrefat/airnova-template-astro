@@ -1388,6 +1388,7 @@ function Testimonials() {
               </div>
               <a
                 href="#"
+                data-hover-lift
                 className="inline-flex h-12 w-full items-center justify-between rounded-[80px] bg-[#070606] px-6 text-base font-medium tracking-[-0.075em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)]"
               >
                 Leave a review <ArrowUpRight className="size-5" />
