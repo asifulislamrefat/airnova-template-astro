@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
+import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { Minus, Plus, Search, Map, PenTool, Star } from "lucide-react";
 
 import { BrandMark, Pill, serif } from "@/components/site/shared";
@@ -148,8 +149,10 @@ function AwardPill({
 
 /* ---------- Logo grid ---------- */
 
+type LogoItem = { src: string; w: number; h: number };
+
 function LogoGrid() {
-  const logos = [
+  const logos: LogoItem[] = [
     { src: aboutLogoCircle.url, w: 120, h: 120 },
     { src: aboutLogoLuyu.url, w: 180, h: 72 },
     { src: aboutLogoLoqo.url, w: 180, h: 40.909 },
@@ -157,31 +160,85 @@ function LogoGrid() {
     { src: aboutLogoIpsum.url, w: 150, h: 35.503 },
     { src: aboutLogoN7.url, w: 120, h: 77.288 },
   ];
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+  // Total scroll length: one viewport of "settle" + one viewport per reveal.
+  const scrollVh = logos.length * 100;
   return (
-    <section className="bg-[#f5f5f5] py-16 lg:h-[1032px] lg:py-28">
-      <div className="mx-auto grid w-[calc(100%_-_32px)] max-w-[1280px] grid-cols-2 gap-2 md:grid-cols-3 lg:w-[calc(100%_-_160px)]">
-        {logos.map((logo, i) => (
-          <div
-            key={i}
-            className="relative flex h-[200px] items-center justify-center overflow-clip rounded-[30px] bg-white p-12 lg:h-[400px] lg:p-20"
-          >
-            <img
-              src={logo.src}
-              alt=""
-              className="object-contain animate-logo-float"
-              style={{
-                width: logo.w,
-                height: logo.h,
-                animationDelay: `${i * 0.3}s`,
-              }}
+    <section
+      ref={containerRef}
+      className="relative bg-[#f5f5f5]"
+      style={{ height: `${scrollVh}vh` }}
+    >
+      <div className="sticky top-0 flex h-screen items-center justify-center py-10 lg:py-16">
+        <div className="mx-auto grid w-[calc(100%_-_32px)] max-w-[1280px] grid-cols-2 gap-2 md:grid-cols-3 lg:w-[calc(100%_-_160px)]">
+          {logos.map((logo, i) => (
+            <LogoTile
+              key={i}
+              logo={logo}
+              index={i}
+              total={logos.length}
+              progress={scrollYProgress}
             />
-            <span className="absolute bottom-6 left-1/2 -translate-x-1/2 text-base font-semibold leading-[1.4] tracking-[-0.055em] text-[#282828]">
-              /2027
-            </span>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
+  );
+}
+
+function LogoTile({
+  logo,
+  index,
+  total,
+  progress,
+}: {
+  logo: LogoItem;
+  index: number;
+  total: number;
+  progress: MotionValue<number>;
+}) {
+  // Tile 0 is visible from the start. Tiles 1..N-1 reveal sequentially as the
+  // user scrolls through the sticky section.
+  const step = 1 / total;
+  const start = index === 0 ? 0 : index * step - step * 0.5;
+  const end = index === 0 ? 0.0001 : index * step + step * 0.2;
+  const opacity = useTransform(
+    progress,
+    [Math.max(0, start), Math.min(1, end)],
+    [index === 0 ? 1 : 0, 1],
+  );
+  const y = useTransform(
+    progress,
+    [Math.max(0, start), Math.min(1, end)],
+    [index === 0 ? 0 : 40, 0],
+  );
+  const scale = useTransform(
+    progress,
+    [Math.max(0, start), Math.min(1, end)],
+    [index === 0 ? 1 : 0.85, 1],
+  );
+  return (
+    <div className="relative flex h-[200px] items-center justify-center overflow-clip rounded-[30px] bg-white p-12 lg:h-[400px] lg:p-20">
+      <motion.img
+        src={logo.src}
+        alt=""
+        className="object-contain"
+        style={{
+          width: logo.w,
+          height: logo.h,
+          opacity,
+          y,
+          scale,
+        }}
+      />
+      <span className="absolute bottom-6 left-1/2 -translate-x-1/2 text-base font-semibold leading-[1.4] tracking-[-0.055em] text-[#282828]">
+        /2027
+      </span>
+    </div>
   );
 }
 
