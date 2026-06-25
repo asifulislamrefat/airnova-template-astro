@@ -369,6 +369,7 @@ function Benefits() {
               </h3>
               <a
                 href="#contact"
+                data-hover-lift
                 className="inline-flex h-12 w-[271px] items-center justify-center gap-[10px] rounded-[80px] bg-[#070606] px-6 py-4 text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)]"
               >
                 <span className="flex-1">Join Now!</span>
