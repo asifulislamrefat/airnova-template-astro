@@ -6,7 +6,7 @@
    positioned descendants escaping their overflow:hidden ancestors. */
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 @custom-variant dark (&:is(.dark *));
