@@ -29,18 +29,18 @@ import aboutLogoN7 from "@/assets/about-logo-n7.png.asset.json";
 import heroPortrait from "@/assets/about-hero-portrait.png.asset.json";
 import resultsPortrait from "@/assets/about-results-portrait.png.asset.json";
 import creativePortrait from "@/assets/about-creative-portrait.png.asset.json";
+import team1Asset from "@/assets/team-1.png.asset.json";
+import team2Asset from "@/assets/team-2.png.asset.json";
+import team3Asset from "@/assets/team-3.png.asset.json";
+import team4Asset from "@/assets/team-4.png.asset.json";
 
 const HERO_PORTRAIT = heroPortrait.url;
 const RESULTS_IMG = resultsPortrait.url;
 const CREATIVE_IMG = creativePortrait.url;
-const TEAM_1 =
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80";
-const TEAM_2 =
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80";
-const TEAM_3 =
-  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=80";
-const TEAM_4 =
-  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=900&q=80";
+const TEAM_1 = team1Asset.url;
+const TEAM_2 = team2Asset.url;
+const TEAM_3 = team3Asset.url;
+const TEAM_4 = team4Asset.url;
 
 export const Route = createFileRoute("/about")({
   head: () => ({
