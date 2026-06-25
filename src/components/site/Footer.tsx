@@ -70,7 +70,7 @@ export function Footer() {
         <div className="h-px w-full bg-background/10" />
 
         <div className="relative z-10 flex w-full items-center justify-center rounded-lg bg-background/[0.03] px-6 py-3.5 text-center text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-background">
-          Design & Developed By Airdute  - License | Powered By Webflow
+          Design & Developed By Airdute - License | Powered By Webflow
         </div>
 
         <div className="pointer-events-none mt-12 select-none overflow-hidden text-center lg:absolute lg:left-1/2 lg:top-[362.49px] lg:z-0 lg:mt-0 lg:flex lg:h-[368.805px] lg:w-screen lg:-translate-x-1/2 lg:items-center lg:justify-center">
