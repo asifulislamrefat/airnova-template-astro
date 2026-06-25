@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState, type ReactNode } from "react";
-import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Minus, Plus, Search, Map, PenTool, Star } from "lucide-react";
 
 import { BrandMark, Pill, serif } from "@/components/site/shared";
@@ -182,7 +182,36 @@ function LogoGrid() {
     target: containerRef,
     offset: ["start start", "end end"],
   });
-  // Total scroll length: one viewport of "settle" + one viewport per reveal.
+  // Reveal thresholds across the first 75% of the section's scroll progress.
+  const revealRange = 0.75;
+  const thresholds = logos.map((_, i) => ((i + 0.6) / logos.length) * revealRange);
+
+  const [revealed, setRevealed] = useState<boolean[]>(() =>
+    logos.map(() => false),
+  );
+  const lastProgress = useRef(0);
+
+  useMotionValueEvent(scrollYProgress, "change", (p) => {
+    const goingDown = p >= lastProgress.current;
+    lastProgress.current = p;
+    setRevealed((prev) => {
+      let changed = false;
+      const next = prev.map((wasRevealed, i) => {
+        const t = thresholds[i];
+        if (goingDown && !wasRevealed && p >= t) {
+          changed = true;
+          return true;
+        }
+        if (!goingDown && wasRevealed && p < t) {
+          changed = true;
+          return false;
+        }
+        return wasRevealed;
+      });
+      return changed ? next : prev;
+    });
+  });
+
   const scrollVh = logos.length * 100;
   return (
     <section
@@ -193,13 +222,7 @@ function LogoGrid() {
       <div className="sticky top-0 flex h-screen items-center justify-center py-10 lg:py-16">
         <div className="mx-auto grid w-[calc(100%_-_32px)] max-w-[1280px] grid-cols-2 gap-2 md:grid-cols-3 lg:w-[calc(100%_-_160px)]">
           {logos.map((logo, i) => (
-            <LogoTile
-              key={i}
-              logo={logo}
-              index={i}
-              total={logos.length}
-              progress={scrollYProgress}
-            />
+            <LogoTile key={i} logo={logo} revealed={revealed[i]} />
           ))}
         </div>
       </div>
@@ -207,42 +230,21 @@ function LogoGrid() {
   );
 }
 
-function LogoTile({
-  logo,
-  index,
-  total,
-  progress,
-}: {
-  logo: LogoItem;
-  index: number;
-  total: number;
-  progress: MotionValue<number>;
-}) {
-  // Reveal all tiles within the first 75% of the section's scroll progress.
-  // The remaining 25% keeps every logo fully visible while the section is
-  // still pinned, so scrolling further down never hides them. useTransform
-  // is clamped, so scrolling back up reverses the reveals in order.
-  const revealRange = 0.75;
-  const step = revealRange / total;
-  const start = index * step;
-  const end = start + step * 1.1;
-  const transformOpts = { clamp: true } as const;
-  const opacity = useTransform(progress, [start, end], [0, 1], transformOpts);
-  const y = useTransform(progress, [start, end], [40, 0], transformOpts);
-  const scale = useTransform(progress, [start, end], [0.85, 1], transformOpts);
+function LogoTile({ logo, revealed }: { logo: LogoItem; revealed: boolean }) {
   return (
     <div className="relative flex h-[200px] items-center justify-center overflow-clip rounded-[30px] bg-white p-12 lg:h-[400px] lg:p-20">
       <motion.img
         src={logo.src}
         alt=""
         className="object-contain"
-        style={{
-          width: logo.w,
-          height: logo.h,
-          opacity,
-          y,
-          scale,
+        initial={false}
+        animate={{
+          opacity: revealed ? 1 : 0,
+          y: revealed ? 0 : 40,
+          scale: revealed ? 1 : 0.85,
         }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        style={{ width: logo.w, height: logo.h }}
       />
       <span className="absolute bottom-6 left-1/2 -translate-x-1/2 text-base font-semibold leading-[1.4] tracking-[-0.055em] text-[#282828]">
         /2027
