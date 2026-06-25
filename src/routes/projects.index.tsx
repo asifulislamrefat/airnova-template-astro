@@ -6,7 +6,7 @@ import { Faq } from "@/components/site/Faq";
 import { Pill, serif } from "@/components/site/shared";
 import { PROJECTS } from "@/lib/projects";
 
-export const Route = createFileRoute("/projects")({
+export const Route = createFileRoute("/projects/")({
   head: () => ({
     meta: [
       { title: "Projects — Airnova" },
