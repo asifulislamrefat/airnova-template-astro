@@ -245,7 +245,7 @@ function ResultsBlock({
     <section className={`bg-[#f5f5f5] py-16 ${reverse ? "lg:pb-28 lg:pt-14" : "lg:py-28"}`}>
       <div
         className={`mx-auto grid w-[calc(100%_-_32px)] max-w-[1280px] items-stretch gap-10 lg:w-[calc(100%_-_160px)] lg:gap-16 ${
-          reverse ? "lg:grid-cols-[598fr_618fr]" : "lg:grid-cols-[618fr_598fr]"
+          reverse ? "lg:grid-cols-[598fr_618fr]" : "lg:grid-cols-[618fr_598fr] lg:[&>*:first-child]:h-[671px]"
         }`}
       >
         {reverse ? (
