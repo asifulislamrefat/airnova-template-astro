@@ -307,9 +307,7 @@ function ResultsBlock({
             key={s.title}
             className="flex flex-col justify-between gap-8 rounded-[20px] bg-white p-6 lg:p-8"
           >
-            <p className="text-[clamp(32px,5vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
-              {s.value}
-            </p>
+            <CountUpStat value={s.value} />
             <div className="flex flex-col gap-2">
               <p className="text-[20px] font-medium leading-[1.5] tracking-[-0.075em] text-[#070606]">
                 {s.title}
