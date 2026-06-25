@@ -201,25 +201,26 @@ function LogoTile({
   total: number;
   progress: MotionValue<number>;
 }) {
-  // Tile 0 is visible from the start. Tiles 1..N-1 reveal sequentially as the
-  // user scrolls through the sticky section.
-  const step = 1 / total;
-  const start = index === 0 ? 0 : index * step - step * 0.5;
-  const end = index === 0 ? 0.0001 : index * step + step * 0.2;
+  // Every tile reveals on scroll, in sequence. useTransform clamps at both
+  // ends, so once revealed the logo stays visible while scrolling further,
+  // and scrolling back up hides them in reverse order.
+  const step = 1 / (total + 1);
+  const start = index * step;
+  const end = start + step * 1.2;
   const opacity = useTransform(
     progress,
-    [Math.max(0, start), Math.min(1, end)],
-    [index === 0 ? 1 : 0, 1],
+    [start, Math.min(1, end)],
+    [0, 1],
   );
   const y = useTransform(
     progress,
-    [Math.max(0, start), Math.min(1, end)],
-    [index === 0 ? 0 : 40, 0],
+    [start, Math.min(1, end)],
+    [40, 0],
   );
   const scale = useTransform(
     progress,
-    [Math.max(0, start), Math.min(1, end)],
-    [index === 0 ? 1 : 0.85, 1],
+    [start, Math.min(1, end)],
+    [0.85, 1],
   );
   return (
     <div className="relative flex h-[200px] items-center justify-center overflow-clip rounded-[30px] bg-white p-12 lg:h-[400px] lg:p-20">
