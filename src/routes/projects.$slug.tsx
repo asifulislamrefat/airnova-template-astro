@@ -51,7 +51,7 @@ function ProjectDetailPage() {
           {/* Header */}
           <div className="flex flex-col gap-6">
             <div className="flex flex-wrap items-center gap-3">
-              {p.tags.map((t) => (
+              {p.tags.map((t: string) => (
                 <span
                   key={t}
                   className="inline-flex h-8 items-center rounded-[80px] border border-black/20 bg-[#f5f5f5] px-4 text-base font-medium leading-[1.5] tracking-[-0.075em] text-black"
