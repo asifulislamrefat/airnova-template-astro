@@ -15,7 +15,31 @@ export function Footer() {
     { title: "Inner Pages", links: ["404", "Licenses", "Chang loge", "Style Guide"] },
   ];
   return (
-    <footer className="relative z-50 overflow-hidden bg-foreground px-6 pb-8 pt-16 text-background sm:px-10 lg:h-[757px] lg:px-20 lg:pt-[112px]">
+    <footer className="relative z-50 overflow-hidden bg-foreground px-6 pb-8 pt-16 text-background sm:px-10 lg:h-[757px] lg:px-20 lg:pt-[112px] lg:pb-[32px]">
+      {/* Giant wordmark sitting behind everything */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 hidden select-none items-end justify-center overflow-hidden lg:flex"
+        style={{ height: "395px" }}
+      >
+        <span
+          className={`${serif} block font-semibold italic leading-[0.85] tracking-[-0.075em] text-background whitespace-nowrap`}
+          style={{ fontSize: "clamp(170px, 22vw, 320px)" }}
+        >
+          Airnova
+        </span>
+      </div>
+
+      {/* Mobile wordmark below */}
+      <div className="pointer-events-none mt-12 select-none overflow-hidden text-center lg:hidden">
+        <span
+          className={`${serif} inline-block font-semibold italic leading-[1.1] tracking-[-0.075em] text-background`}
+          style={{ fontSize: "clamp(80px, 20vw, 200px)" }}
+        >
+          Airnova
+        </span>
+      </div>
+
       <div className="relative z-10 flex w-full flex-col gap-12 lg:gap-[48px]">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
           <div className="flex shrink-0 flex-col items-start gap-6">
@@ -71,15 +95,6 @@ export function Footer() {
 
         <div className="relative z-10 flex w-full items-center justify-center rounded-lg bg-background/[0.03] px-6 py-3.5 text-center text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-background">
           Design & Developed By Airdute - License | Powered By Webflow
-        </div>
-
-        <div className="pointer-events-none mt-12 select-none overflow-hidden text-center lg:absolute lg:left-1/2 lg:top-[362.49px] lg:z-0 lg:mt-0 lg:flex lg:h-[368.805px] lg:w-screen lg:-translate-x-1/2 lg:items-center lg:justify-center">
-          <span
-            className={`${serif} inline-block font-semibold leading-[1.1] tracking-[-0.075em] text-background`}
-            style={{ fontSize: "clamp(170px, 20.93vw, 301.422px)" }}
-          >
-            Airnova
-          </span>
         </div>
       </div>
     </footer>
