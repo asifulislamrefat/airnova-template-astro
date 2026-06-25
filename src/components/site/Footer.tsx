@@ -26,7 +26,12 @@ export function Footer() {
                 <ul className="space-y-3 text-base text-background/85">
                   {c.links.map((l) => (
                     <li key={l}>
-                      <a href="#" className="hover:text-background">{l}</a>
+                      <a
+                        href="#"
+                        className="inline-block transition-all duration-300 ease-out hover:translate-x-1 hover:text-background"
+                      >
+                        {l}
+                      </a>
                     </li>
                   ))}
                 </ul>
