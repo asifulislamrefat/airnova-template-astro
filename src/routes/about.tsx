@@ -13,10 +13,11 @@ import avatar12 from "@/assets/avatar-12.png.asset.json";
 import avatar13 from "@/assets/avatar-13.png.asset.json";
 import brandLogo1 from "@/assets/brand-logo-1.png.asset.json";
 import brandLogo2 from "@/assets/brand-logo-2.png.asset.json";
-import brandLogo3 from "@/assets/brand-logo-3.png.asset.json";
-import brandLogo4 from "@/assets/brand-logo-4.png.asset.json";
-import brandLogo5 from "@/assets/brand-logo-5.png.asset.json";
-import brandLogo6 from "@/assets/brand-logo-6.png.asset.json";
+import aboutLogoLuyu from "@/assets/about-logo-luyu.svg.asset.json";
+import aboutLogoLoqo from "@/assets/about-logo-loqo.svg.asset.json";
+import aboutLogoInfinity from "@/assets/about-logo-infinity.svg.asset.json";
+import aboutLogoIpsum from "@/assets/about-logo-ipsum.svg.asset.json";
+import aboutLogoN7 from "@/assets/about-logo-n7.png.asset.json";
 import heroPortrait from "@/assets/about-hero-portrait.png.asset.json";
 
 const HERO_PORTRAIT = heroPortrait.url;
@@ -151,11 +152,11 @@ function AwardPill({
 function LogoGrid() {
   const logos = [
     { src: brandLogo2.url, w: 120, h: 120 },
-    { src: brandLogo3.url, w: 180, h: 72 },
-    { src: brandLogo4.url, w: 180, h: 40.909 },
-    { src: brandLogo1.url, w: 140, h: 53.846 },
-    { src: brandLogo5.url, w: 150, h: 35.503 },
-    { src: brandLogo6.url, w: 120, h: 77.288 },
+    { src: aboutLogoLuyu.url, w: 180, h: 72 },
+    { src: aboutLogoLoqo.url, w: 180, h: 40.909 },
+    { src: aboutLogoInfinity.url, w: 140, h: 53.846 },
+    { src: aboutLogoIpsum.url, w: 150, h: 35.503 },
+    { src: aboutLogoN7.url, w: 120, h: 77.288 },
   ];
   return (
     <section className="bg-[#f5f5f5] py-16 lg:h-[1032px] lg:py-28">
