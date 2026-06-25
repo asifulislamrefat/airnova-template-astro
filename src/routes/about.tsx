@@ -430,7 +430,7 @@ function IconDesign({ className }: { className?: string }) {
 const STEPS = [
   {
     n: "01",
-    Icon: IconResearch,
+    Icon: IconDesign,
     title: "Research & Discovery",
     body: "We start by understanding your brand goals and target audience to ensure the design aligns perfectly.",
   },
@@ -442,7 +442,7 @@ const STEPS = [
   },
   {
     n: "03",
-    Icon: IconDesign,
+    Icon: IconResearch,
     title: "Design & Prototyping",
     body: "Our team crafts visually appealing and user-friendly designs, building interactive prototypes.",
   },
