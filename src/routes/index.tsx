@@ -659,7 +659,7 @@ function Stats() {
             <div key={s.l} className="flex flex-1 flex-col gap-16 rounded-[20px] bg-white p-6">
               <div className="flex flex-col gap-8">
                 <div className="text-[48px] font-semibold leading-[1.2] tracking-[-0.065em] text-black">
-                  {s.v}
+                  <CountUp value={s.v} />
                 </div>
               <div className="w-full border-t border-dashed border-black/15" />
               </div>
