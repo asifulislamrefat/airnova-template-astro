@@ -256,6 +256,7 @@ function Hero() {
               <div className="flex items-center gap-3 sm:gap-6">
                 <a
                   href="#contact"
+                  data-hover-lift
                   className="inline-flex h-7 items-center justify-center rounded-full px-3.5 text-[9px] sm:h-12 sm:px-6 sm:text-[16px] font-medium tracking-[-0.0075em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)]"
                   style={{ background: "#070606" }}
                 >
