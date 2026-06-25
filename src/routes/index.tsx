@@ -504,6 +504,70 @@ function Services() {
       ),
     },
   ];
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) {
+      setProgress(0);
+      return;
+    }
+    const el = scrollRef.current;
+    if (!el) return;
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const rect = el.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const total = rect.height - vh;
+        if (total <= 0) return setProgress(0);
+        const scrolled = Math.min(Math.max(-rect.top, 0), total);
+        setProgress(scrolled / total);
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [isDesktop]);
+
+  const smooth = (t: number) => t * t * (3 - 2 * t);
+  const cardStyle = (i: number): CSSProperties | undefined => {
+    if (!isDesktop) return undefined;
+    const e = smooth(Math.min(1, Math.max(0, progress)));
+    if (i === 1) {
+      return {
+        transform: "translate(-50%, -50%) scale(1)",
+        zIndex: 3,
+      };
+    }
+    const dir = i === 0 ? -1 : 1;
+    const startY = i === 0 ? -16 : 16;
+    const startScale = i === 0 ? 0.96 : 0.92;
+    const x = dir * 108 * e;
+    const y = startY * (1 - e);
+    const s = startScale + (1 - startScale) * e;
+    return {
+      transform: `translate(calc(-50% + ${x}%), calc(-50% + ${y}px)) scale(${s})`,
+      zIndex: i === 0 ? 2 : 1,
+    };
+  };
+
   return (
     <section id="services" className="bg-surface py-16 lg:py-28">
       <div className="container-x flex flex-col items-center gap-12 sm:gap-16">
@@ -522,23 +586,30 @@ function Services() {
           </div>
         </div>
 
-        <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map(({ icon, title, desc }, i) => (
-            <div
-              key={title}
-              className={`flex flex-col items-start gap-16 rounded-[20px] bg-white p-8 [&_svg.size-14]:size-12 sm:[&_svg.size-14]:size-14 ${i >= 2 ? "sm:col-span-2 lg:col-span-1" : ""}`}
-            >
-              {icon}
-              <div className="flex w-full flex-col gap-2">
-                <h3 className="text-[18px] sm:text-[28px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
-                  {title}
-                </h3>
-                <p className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
-                  {desc}
-                </p>
+        <div ref={scrollRef} className="relative w-full lg:h-[200vh]">
+          <div className="w-full lg:sticky lg:top-0 lg:flex lg:h-screen lg:items-center">
+            <div className="relative w-full">
+              <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:block lg:h-[360px]">
+                {items.map(({ icon, title, desc }, i) => (
+                  <div
+                    key={title}
+                    style={cardStyle(i)}
+                    className={`flex flex-col items-start gap-16 rounded-[20px] bg-white p-8 [&_svg.size-14]:size-12 sm:[&_svg.size-14]:size-14 ${i >= 2 ? "sm:col-span-2 lg:col-span-1" : ""} lg:absolute lg:left-1/2 lg:top-1/2 lg:w-[clamp(320px,28vw,420px)] lg:transition-[box-shadow] lg:duration-300 lg:will-change-transform`}
+                  >
+                    {icon}
+                    <div className="flex w-full flex-col gap-2">
+                      <h3 className="text-[18px] sm:text-[28px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
+                        {title}
+                      </h3>
+                      <p className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                        {desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
