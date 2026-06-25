@@ -232,7 +232,7 @@ function LogoGrid() {
       style={{ height: `${scrollVh}vh` }}
     >
       <div className="sticky top-0 flex h-screen items-center justify-center py-10 lg:py-16">
-        <div className="mx-auto grid w-[calc(100%_-_32px)] max-w-[1280px] grid-cols-2 gap-2 md:grid-cols-3 lg:w-[calc(100%_-_160px)]">
+        <div className="mx-auto grid w-[calc(100%_-_32px)] max-w-[1280px] grid-cols-2 gap-2 lg:grid-cols-3 lg:w-[calc(100%_-_160px)]">
           {logos.map((logo, i) => (
             <LogoTile key={i} logo={logo} revealed={revealed[i]} />
           ))}
@@ -244,11 +244,11 @@ function LogoGrid() {
 
 function LogoTile({ logo, revealed }: { logo: LogoItem; revealed: boolean }) {
   return (
-    <div className="relative flex h-[200px] items-center justify-center overflow-clip rounded-[30px] bg-white p-12 lg:h-[400px] lg:p-20">
+    <div className="relative flex h-[200px] items-center justify-center overflow-clip rounded-[30px] bg-white p-8 md:h-[280px] md:p-12 lg:h-[400px] lg:p-20">
       <motion.img
         src={logo.src}
         alt=""
-        className="object-contain"
+        className="max-h-[60%] max-w-[60%] object-contain"
         initial={false}
         animate={{
           opacity: revealed ? 1 : 0,
@@ -256,7 +256,7 @@ function LogoTile({ logo, revealed }: { logo: LogoItem; revealed: boolean }) {
           scale: revealed ? 1 : 0.85,
         }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        style={{ width: logo.w, height: logo.h }}
+        style={{ aspectRatio: `${logo.w} / ${logo.h}` }}
       />
       <span className="absolute bottom-6 left-1/2 -translate-x-1/2 text-base font-semibold leading-[1.4] tracking-[-0.055em] text-[#282828]">
         /2027
