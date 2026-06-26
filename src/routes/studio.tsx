@@ -7,13 +7,13 @@ import { Nav } from "@/components/site/Nav";
 import { Cta } from "@/components/site/Cta";
 import { Footer } from "@/components/site/Footer";
 
-import studioSpace from "@/assets/studio-space.jpg.asset.json";
-import studioFlatlay from "@/assets/studio-flatlay.jpg.asset.json";
-import studioCraft from "@/assets/studio-craft.jpg.asset.json";
-import team1 from "@/assets/team-1.png.asset.json";
-import team2 from "@/assets/team-2.png.asset.json";
-import team3 from "@/assets/team-3.png.asset.json";
-import team4 from "@/assets/team-4.png.asset.json";
+import studioSpace from "@/assets/studio-space.webp.asset.json";
+import studioFlatlay from "@/assets/studio-flatlay.webp.asset.json";
+import studioCraft from "@/assets/studio-craft.webp.asset.json";
+import team1 from "@/assets/team-1.webp.asset.json";
+import team2 from "@/assets/team-2.webp.asset.json";
+import team3 from "@/assets/team-3.webp.asset.json";
+import team4 from "@/assets/team-4.webp.asset.json";
 
 const HERO_IMG = studioSpace.url;
 

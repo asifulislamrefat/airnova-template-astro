@@ -23,12 +23,12 @@ import { Cta } from "@/components/site/Cta";
 import { Faq } from "@/components/site/Faq";
 import { Pill, serif } from "@/components/site/shared";
 
-import img1 from "@/assets/blog-1-robot-eyes.png.asset.json";
-import img2 from "@/assets/blog-2-cpu.png.asset.json";
-import img3 from "@/assets/blog-3-camera.png.asset.json";
-import img4 from "@/assets/blog-4-airpods.png.asset.json";
-import img5 from "@/assets/blog-5-off-button.png.asset.json";
-import img6 from "@/assets/blog-6-pen-tool.png.asset.json";
+import img1 from "@/assets/blog-1-robot-eyes.webp.asset.json";
+import img2 from "@/assets/blog-2-cpu.webp.asset.json";
+import img3 from "@/assets/blog-3-camera.webp.asset.json";
+import img4 from "@/assets/blog-4-airpods.webp.asset.json";
+import img5 from "@/assets/blog-5-off-button.webp.asset.json";
+import img6 from "@/assets/blog-6-pen-tool.webp.asset.json";
 
 export const Route = createFileRoute("/blog/")({
   head: () => ({
