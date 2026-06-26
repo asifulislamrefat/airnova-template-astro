@@ -5,12 +5,12 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { Cta } from "@/components/site/Cta";
 
-import hero from "@/assets/services-detail/hero.png.asset.json";
-import img205 from "@/assets/services-detail/img-205.png.asset.json";
-import img204 from "@/assets/services-detail/img-204.png.asset.json";
-import img208 from "@/assets/services-detail/img-208.png.asset.json";
-import img207 from "@/assets/services-detail/img-207.png.asset.json";
-import img206 from "@/assets/services-detail/img-206.png.asset.json";
+import hero from "@/assets/services-detail/hero.webp.asset.json";
+import img205 from "@/assets/services-detail/img-205.webp.asset.json";
+import img204 from "@/assets/services-detail/img-204.webp.asset.json";
+import img208 from "@/assets/services-detail/img-208.webp.asset.json";
+import img207 from "@/assets/services-detail/img-207.webp.asset.json";
+import img206 from "@/assets/services-detail/img-206.webp.asset.json";
 
 type Service = {
   slug: string;
