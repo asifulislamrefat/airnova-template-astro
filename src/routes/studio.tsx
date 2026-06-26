@@ -272,7 +272,7 @@ function Rituals() {
     <section className="bg-[#f5f5f5] px-[5%] py-20 lg:px-0 lg:py-32">
       <div className="mx-auto w-full max-w-[1280px] lg:w-[calc(100%_-_160px)]">
         <div className="mb-16 flex flex-col items-start gap-6 lg:mb-24">
-          <Pill>Rituals</Pill>
+          <Pill variant="white">Rituals</Pill>
           <h2 className="max-w-[900px] text-[clamp(36px,6vw,72px)] font-semibold leading-[1.1] tracking-[-0.065em] text-[#070606]">
             A day in the{" "}
             <span className={`${serif} text-[#070606]/50`}>studio</span>
