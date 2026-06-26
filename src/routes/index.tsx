@@ -347,6 +347,8 @@ function Benefits() {
             <img
               src={benefits1.url}
               alt="Editorial portrait"
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 size-full object-cover"
             />
             <span className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-[20px] bg-white px-4 py-2">
@@ -668,6 +670,8 @@ function Projects() {
                 <img
                   src={projectImages[i]}
                   alt={p.title}
+                  loading="lazy"
+                  decoding="async"
                   className="h-[375px] lg:h-[500px] w-full object-cover transition duration-700 group-hover:scale-105"
                 />
               </div>
@@ -845,6 +849,8 @@ function Stats() {
             <img
               src={showreelThumb.url}
               alt="Showreel"
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/40 to-transparent">
@@ -1218,6 +1224,8 @@ function SolutionInner() {
                 <img
                   src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=400&q=80"
                   alt="Market research"
+                  loading="lazy"
+                  decoding="async"
                   className="size-full object-cover"
                 />
               </div>
@@ -1239,6 +1247,8 @@ function SolutionInner() {
             <img
               src={solutionThumb.url}
               alt="Our strategy meets bold creativity"
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 size-full object-cover"
             />
             <div className="absolute inset-0 bg-black/40" />
@@ -1282,6 +1292,8 @@ function SolutionInner() {
                   key={src}
                   src={src}
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                   className="size-14 rounded-full border-2 border-white object-cover"
                 />
               ))}
