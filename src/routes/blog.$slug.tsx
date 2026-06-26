@@ -25,8 +25,7 @@ type Post = {
   closing: { heading: string; paragraphs: string[]; bullets?: string[] };
 };
 
-const POSTS: Record<string, Post> = {
-  "how-to-create-content-that-actually-converts": {
+const BASE_POST: Post = {
     slug: "how-to-create-content-that-actually-converts",
     title: "How to create counter that actually converts",
     date: "March 2, 2026",
@@ -68,18 +67,20 @@ const POSTS: Record<string, Post> = {
         "Implement responsive design for seamless storytelling across devices.",
       ],
     },
-  },
+};
+
+function stub(slug: string, title: string, hero: string, gallery: [string, string]): Post {
+  return { ...BASE_POST, slug, title, hero, gallery };
+}
+
+const POSTS: Record<string, Post> = {
+  [BASE_POST.slug]: BASE_POST,
   "where-creativity-meets-strategy": stub("where-creativity-meets-strategy", "Where Creativity Meets Strategy", img2.url, [img3.url, img4.url]),
   "explore-the-future-of-digital-design": stub("explore-the-future-of-digital-design", "Explore the Future of Digital Design", img3.url, [img4.url, img5.url]),
   "innovative-thinking-for-digital-success": stub("innovative-thinking-for-digital-success", "Innovative Thinking for Digital Success", img4.url, [img5.url, img6.url]),
   "creative-tips-for-modern-designers": stub("creative-tips-for-modern-designers", "Creative Tips for Modern Designers", img5.url, [img6.url, img1.url]),
   "your-source-for-design-inspiration": stub("your-source-for-design-inspiration", "Your Source for Design Inspiration", img6.url, [img1.url, img2.url]),
 };
-
-function stub(slug: string, title: string, hero: string, gallery: [string, string]): Post {
-  const base = POSTS["how-to-create-content-that-actually-converts"];
-  return base ? { ...base, slug, title, hero, gallery } : ({} as Post);
-}
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
