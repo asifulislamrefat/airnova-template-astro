@@ -144,9 +144,9 @@ export const Route = createFileRoute("/services/$slug")({
 
 function Bullets({ items }: { items: string[] }) {
   return (
-    <ul className="flex w-full flex-col gap-4 text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#616161]">
+    <ul className="flex w-full flex-col gap-3 text-[15px] font-normal leading-[1.65] tracking-[-0.02em] text-[#616161]">
       {items.map((b) => (
-        <li key={b} className="ml-6 list-disc">
+        <li key={b} className="ml-5 list-disc">
           {b}
         </li>
       ))}
