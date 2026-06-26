@@ -303,12 +303,12 @@ function RitualRow({
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : undefined}
       transition={{ duration: 0.7, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className="group grid grid-cols-1 gap-4 rounded-[20px] bg-white p-6 transition-colors hover:bg-[#070606] lg:grid-cols-[140px_220px_1fr] lg:items-center lg:gap-12 lg:p-10"
+      className="group grid grid-cols-1 gap-4 rounded-[20px] bg-white p-6 transition-colors hover:bg-[#070606] lg:grid-cols-[120px_minmax(260px,auto)_1fr] lg:items-center lg:gap-12 lg:p-10"
     >
       <span className="text-[20px] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]/40 group-hover:text-white/40">
         {ritual.time}
       </span>
-      <h3 className="text-[clamp(24px,2.6vw,32px)] font-semibold leading-[1.15] tracking-[-0.065em] text-[#070606] group-hover:text-white">
+      <h3 className="whitespace-nowrap text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.15] tracking-[-0.065em] text-[#070606] group-hover:text-white">
         {ritual.title}
       </h3>
       <p className="max-w-[640px] text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151] group-hover:text-white/70">
