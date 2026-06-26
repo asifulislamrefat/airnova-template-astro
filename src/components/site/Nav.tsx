@@ -59,7 +59,7 @@ function FullscreenMenu({
   onClose: () => void;
   extraLinks?: { label: string; href: string }[];
 }) {
-  const links = ["Home", "About Us", "Services", "Blog", "Contact"].map((label) => ({
+  const links = ["About Us", "Services", "Blog", "Contact"].map((label) => ({
     label,
     href: `#${label.toLowerCase().replace(/\s+/g, "-")}`,
     mobileOnly: false,
