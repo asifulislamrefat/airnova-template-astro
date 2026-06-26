@@ -94,7 +94,7 @@ function ContactPage() {
         <div className="container-x flex flex-col gap-10 lg:flex-row lg:items-stretch lg:gap-16">
           {/* Left column */}
           <div className="flex flex-1 flex-col gap-10 lg:gap-16">
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col items-start gap-6">
               <Pill variant="white">Contact</Pill>
               <h1 className="max-w-[600px] text-[clamp(36px,5.5vw,56px)] font-semibold leading-[1.1] tracking-[-0.065em] text-black">
                 Let's Build Something Great Together
