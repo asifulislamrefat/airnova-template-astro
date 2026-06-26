@@ -8,6 +8,7 @@ const ROUTE_MAP: Record<string, string> = {
   "About Us": "/about",
   "Projects": "/projects",
   "Pricing": "/pricing",
+  "Contact": "/contact",
 };
 
 function MenuLink({
