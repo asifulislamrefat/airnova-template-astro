@@ -14,7 +14,7 @@ import img4 from "@/assets/blog-4-airpods.png.asset.json";
 import img5 from "@/assets/blog-5-off-button.png.asset.json";
 import img6 from "@/assets/blog-6-pen-tool.png.asset.json";
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
       { title: "Blog — Airnova" },
