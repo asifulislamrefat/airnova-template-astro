@@ -88,12 +88,13 @@ export function Testimonials() {
             </div>
           </div>
 
-          {reviews.map((r) => {
+          {reviews.map((r, idx) => {
+            const isSecond = idx === 1;
             const header = (pos: "top" | "bottom") => (
               <div
                 className={`flex items-center gap-2 rounded bg-white px-4 py-2 transition-[border-radius] duration-500 ease-out ${
                   pos === "top" ? "group-hover:rounded-b-none" : "group-hover:rounded-t-none"
-                }`}
+                } ${isSecond ? "lg:group-hover:rounded-b-* lg:!rounded lg:group-hover:!rounded-t-none lg:group-hover:!rounded-b" : ""}`}
               >
                 <img src={r.avatar} alt={r.name} className="h-[38px] w-[41px] rounded-[5px] border border-white object-cover" />
                 <div className="flex flex-col">
@@ -106,7 +107,7 @@ export function Testimonials() {
               <div
                 className={`flex flex-1 flex-col justify-between rounded-lg bg-white p-4 transition-[border-radius] duration-500 ease-out ${
                   pos === "top" ? "group-hover:rounded-b-none" : "group-hover:rounded-t-none"
-                }`}
+                } ${isSecond ? "lg:group-hover:!rounded-b-none lg:!rounded-lg" : ""}`}
               >
                 <div className="flex gap-1">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -121,7 +122,9 @@ export function Testimonials() {
             return (
               <div
                 key={r.name}
-                className="group flex flex-col gap-2 transition-[gap] duration-500 ease-out hover:gap-0"
+                className={`group flex flex-col gap-2 transition-[gap] duration-500 ease-out hover:gap-0 ${
+                  isSecond ? "lg:flex-col-reverse" : ""
+                }`}
               >
                 {r.headerTop ? header("top") : body("top")}
                 {r.headerTop ? body("bottom") : header("bottom")}
