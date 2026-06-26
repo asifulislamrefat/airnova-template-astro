@@ -94,29 +94,29 @@ const POSTS: Post[] = [
 
 function BlogCard({ post }: { post: Post }) {
   return (
-    <article className="group flex flex-col gap-6">
-      <Link
-        to="/blog/$slug"
-        params={{ slug: post.slug }}
-        className="relative block aspect-[4/5] overflow-hidden rounded-[20px] bg-[#f5f5f5]"
-      >
+    <Link
+      to="/blog/$slug"
+      params={{ slug: post.slug }}
+      className="group flex flex-col gap-6"
+    >
+      <div className="relative block aspect-[4/5] overflow-hidden rounded-[20px] bg-[#f5f5f5]">
         <img
           src={post.image}
           alt={post.title}
           loading="lazy"
           className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
         />
-      </Link>
-      <div className="flex items-center gap-4 rounded-[10px] bg-[#f5f5f5] px-6 py-4">
-        <div className="flex flex-1 flex-col gap-2">
-          <h3 className="text-[20px] font-semibold leading-[1.2] tracking-[-0.065em] text-black sm:text-[24px]">
+      </div>
+      <div className="flex items-stretch gap-4 rounded-[10px] bg-[#f5f5f5] px-6 py-4">
+        <div className="flex min-w-0 flex-1 flex-col gap-2">
+          <h3 className="truncate text-[20px] font-semibold leading-[1.2] tracking-[-0.065em] text-black sm:text-[24px]">
             {post.title}
           </h3>
-          <p className="text-[15px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151] sm:text-base">
+          <p className="line-clamp-2 text-[15px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151] sm:text-base">
             {post.excerpt}
           </p>
         </div>
-        <div className="flex h-full flex-col items-end justify-between gap-6 self-stretch">
+        <div className="flex shrink-0 flex-col items-end justify-between gap-6">
           <p className="whitespace-nowrap text-sm font-medium leading-[1.5] tracking-[-0.04em] text-[#515151] sm:text-base">
             {post.date}
           </p>
@@ -126,7 +126,7 @@ function BlogCard({ post }: { post: Post }) {
           />
         </div>
       </div>
-    </article>
+    </Link>
   );
 }
 
