@@ -144,7 +144,7 @@ function PricingCard({ plan, billing }: { plan: Plan; billing: "monthly" | "annu
               }`}
             >
               <span className="text-[56px] font-semibold sm:text-[72px]">
-                ${price.toLocaleString()}
+                ${price}
               </span>
               <span className="ml-2 text-base font-medium tracking-[-0.075em]">
                 / {billing === "monthly" ? "monthly" : "annual"}
