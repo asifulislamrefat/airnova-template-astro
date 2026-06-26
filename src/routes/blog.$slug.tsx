@@ -128,9 +128,9 @@ function BlogDetailsPage() {
           <div className="flex w-full flex-col items-center gap-12 lg:gap-[72px]">
             <div className="flex w-full flex-col gap-12">
               <div className="flex w-full flex-col items-start gap-4">
-                <div className="flex items-center gap-4 text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#616161] sm:text-[20px]">
+                <div className="flex items-center gap-6 text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#616161] sm:text-[20px]">
                   <span>{post.date}</span>
-                  <span className="ml-4 list-disc"><span className="ml-2">• {post.readTime}</span></span>
+                  <span className="flex items-center gap-2"><span className="inline-block size-1.5 rounded-full bg-[#616161]" />{post.readTime}</span>
                 </div>
                 <h1 className="max-w-[800px] text-[clamp(40px,7vw,80px)] font-semibold leading-[1.1] tracking-[-0.065em] text-black">
                   {post.title}
