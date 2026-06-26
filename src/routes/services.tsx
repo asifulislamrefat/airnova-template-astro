@@ -46,6 +46,7 @@ type Service = {
   title: string;
   description: string;
   icon: string;
+  slug: string;
 };
 
 const SERVICES: Service[] = [
@@ -53,31 +54,37 @@ const SERVICES: Service[] = [
     title: "Brand Identity Design",
     description: "Designing logos, color schemes and visuals that reflect your brand.",
     icon: iconBrand,
+    slug: "brand-identity-design",
   },
   {
     title: "Creative Consulting",
     description: "Providing guidance to improve design strategy and digital presence.",
     icon: iconConsulting,
+    slug: "creative-consulting",
   },
   {
     title: "Prototype & Wireframing",
     description: "Building interactive prototypes to visualize your digital products.",
     icon: iconPrototype,
+    slug: "prototype-wireframing",
   },
   {
     title: "E-commerce Design",
     description: "Designing online stores with a focus on usability, branding and conversions.",
     icon: iconEcommerce,
+    slug: "e-commerce-design",
   },
   {
     title: "Dashboard & SaaS Design",
     description: "Building clean and efficient interfaces for dashboards and SaaS products.",
     icon: iconDashboard,
+    slug: "dashboard-saas-design",
   },
   {
     title: "Graphic Design",
     description: "Developing creative graphics, banners and promotional visuals.",
     icon: iconGraphic,
+    slug: "graphic-design",
   },
 ];
 
@@ -101,10 +108,13 @@ function ServicesHero() {
         </div>
 
         <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map(({ title, description, icon }) => (
-            <div
+          {SERVICES.map(({ title, description, icon, slug }) => (
+            <Link
               key={title}
-              className="flex flex-col items-start gap-12 rounded-[20px] bg-white p-8 lg:gap-16"
+              to="/services/$slug"
+              params={{ slug }}
+              data-hover-lift
+              className="flex flex-col items-start gap-12 rounded-[20px] bg-white p-8 transition-shadow hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] lg:gap-16"
             >
               <img src={icon} alt="" aria-hidden="true" className="size-14" />
               <div className="flex flex-col gap-2">
@@ -115,7 +125,7 @@ function ServicesHero() {
                   {description}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
