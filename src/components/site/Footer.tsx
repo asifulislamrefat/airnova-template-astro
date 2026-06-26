@@ -5,6 +5,7 @@ import { Logo, serif } from "./shared";
 const ROUTE_MAP: Record<string, string> = {
   "About Us": "/about",
   "Projects": "/projects",
+  "Pricing": "/pricing",
 };
 
 export function Footer() {

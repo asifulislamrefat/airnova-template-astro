@@ -7,6 +7,7 @@ const ROUTE_MAP: Record<string, string> = {
   "Home": "/",
   "About Us": "/about",
   "Projects": "/projects",
+  "Pricing": "/pricing",
 };
 
 function MenuLink({
@@ -122,7 +123,7 @@ export function Nav() {
     { label: "Studio", href: "#studio" },
     { label: "Projects", href: "#projects", sup: "15" },
     { label: "Services", href: "#services" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "Pricing", href: "/pricing" },
   ];
 
   useEffect(() => {
