@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { PROJECTS } from "@/lib/projects";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import {
   ArrowUpRight,
