@@ -337,9 +337,6 @@ function DisciplinesMarquee() {
   const row = [...DISCIPLINES, ...DISCIPLINES];
   return (
     <section className="overflow-hidden bg-[#070606] py-20 lg:py-28">
-      <div className="mb-10 px-[5%] lg:mb-14 lg:px-20">
-        <Pill variant="white">Disciplines</Pill>
-      </div>
       <div className="relative">
         <motion.div
           className="flex w-max items-center gap-12 whitespace-nowrap pr-12"
