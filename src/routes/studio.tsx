@@ -111,10 +111,10 @@ function Manifesto() {
     >
       <div className="sticky top-0 flex h-screen items-center px-[5%] lg:px-0">
         <div className="mx-auto w-full max-w-[1280px] lg:w-[calc(100%_-_160px)]">
-          <div className="mb-10">
+          <div className="relative z-10 mb-10">
             <Pill>Manifesto</Pill>
           </div>
-          <div className="relative">
+          <div className="relative h-[clamp(60px,9vw,120px)]">
             {MANIFESTO.map((line, i) => (
               <ManifestoLine
                 key={i}
@@ -155,7 +155,7 @@ function ManifestoLine({
   return (
     <motion.p
       style={{ opacity, y }}
-      className="text-[clamp(40px,7vw,96px)] font-semibold leading-[1.05] tracking-[-0.075em] text-[#070606]"
+      className="absolute inset-x-0 top-0 text-[clamp(40px,7vw,96px)] font-semibold leading-[1.05] tracking-[-0.075em] text-[#070606]"
     >
       {index % 2 === 1 ? (
         <span className={`${serif} text-[#070606]/70`}>{children}</span>
