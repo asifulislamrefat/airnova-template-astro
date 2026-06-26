@@ -1319,7 +1319,7 @@ function SolutionInner() {
             }`}
             style={{ aspectRatio: "16 / 9" }}
           >
-            <CustomVideoPlayer youtubeId="9u1RLVS0ziU" fill />
+            <CustomVideoPlayer youtubeId="c-rV8AcXlQE" fill />
           </div>
           <button
             type="button"
