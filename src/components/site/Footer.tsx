@@ -60,21 +60,21 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Divider + credit row sits above the giant wordmark */}
+        <div className="mt-12 lg:mt-16">
+          <div className="h-px w-full bg-white/10" />
+          <div className="mt-4 text-center text-base font-medium tracking-[-0.02em] text-background">
+            Design & Developed By Airdute — License | Powered By Webflow
+          </div>
+        </div>
       </div>
 
-      {/* Giant wordmark */}
+      {/* Giant wordmark anchored to the bottom edge */}
       <div
-        className={`${serif} pointer-events-none mt-12 select-none text-center font-semibold leading-[0.85] tracking-[-0.075em] text-background lg:absolute lg:left-1/2 lg:bottom-16 lg:mt-0 lg:-translate-x-1/2 lg:whitespace-nowrap`}
+        className={`${serif} pointer-events-none mt-8 select-none text-center font-semibold leading-[0.85] tracking-[-0.075em] text-background lg:absolute lg:left-1/2 lg:bottom-0 lg:mt-0 lg:-translate-x-1/2 lg:whitespace-nowrap`}
         style={{ fontSize: "clamp(120px, 22vw, 302px)" }}
       >
         Airnova
-      </div>
-
-      <div className="relative z-10 mx-auto mt-10 w-full max-w-[1280px] lg:absolute lg:inset-x-0 lg:bottom-6 lg:mt-0">
-        <div className="mx-auto h-px w-full max-w-[1280px] bg-white/10" />
-        <div className="mt-4 px-6 text-center text-base font-medium tracking-[-0.02em] text-background">
-          Design & Developed By Airdute — License | Powered By Webflow
-        </div>
       </div>
     </footer>
   );
