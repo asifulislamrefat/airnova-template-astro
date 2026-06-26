@@ -178,7 +178,7 @@ function BlogDetailsPage() {
           {/* Gallery */}
           <div className="flex w-full flex-col gap-2 sm:flex-row">
             {post.gallery.map((src, i) => (
-              <div key={i} className="relative aspect-[4/5] w-full overflow-hidden rounded-[10px] bg-[#f5f5f5] sm:aspect-auto sm:h-[700px] sm:flex-1">
+              <div key={i} className="relative aspect-[8/5] w-full overflow-hidden rounded-[10px] bg-[#f5f5f5] sm:aspect-auto sm:h-[700px] sm:flex-1">
                 <img src={src} alt="" className="absolute inset-0 size-full object-cover" />
               </div>
             ))}
