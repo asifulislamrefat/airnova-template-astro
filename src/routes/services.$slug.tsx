@@ -156,20 +156,20 @@ function Bullets({ items }: { items: string[] }) {
 
 function ReviewCard({ quote, name, role }: { quote: string; name: string; role: string }) {
   return (
-    <div className="w-full rounded-[20px] bg-[#f5f5f5] p-6">
-      <div className="flex flex-col gap-6 p-6">
+    <div className="w-full rounded-[20px] bg-[#070606] p-8 sm:p-10">
+      <div className="flex flex-col gap-6">
         <div className="flex items-center gap-1" aria-label="5 out of 5 stars">
           {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} className="size-6 fill-[#FFB800] text-[#FFB800]" strokeWidth={0} />
+            <Star key={i} className="size-5 fill-[#FF3D2E] text-[#FF3D2E]" strokeWidth={0} />
           ))}
         </div>
-        <p className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.35] tracking-[-0.065em] text-[#070606]">
+        <p className="text-[clamp(20px,1.8vw,24px)] font-medium leading-[1.4] tracking-[-0.04em] text-white">
           {quote}
         </p>
-        <div className="flex items-center gap-4 pt-2 text-[20px] font-medium leading-[1.5] tracking-[-0.075em]">
-          <span className="text-[#070606]">{name}</span>
-          <span className="text-[#c5c5c5]">×</span>
-          <span className="text-[#616161] text-[16px]">{role}</span>
+        <div className="flex items-center gap-4 text-[16px] font-medium leading-[1.5] tracking-[-0.04em]">
+          <span className="text-white">{name}</span>
+          <span className="text-white/30">×</span>
+          <span className="text-white/60">{role}</span>
         </div>
       </div>
     </div>
