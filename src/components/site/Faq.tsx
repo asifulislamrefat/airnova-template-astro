@@ -52,7 +52,7 @@ export function Faq() {
                     isOpen ? "mt-2 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                   }`}
                 >
-                  <p className="overflow-hidden text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
+                  <p className="overflow-hidden text-[24px] sm:text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                     {f.a}
                   </p>
                 </div>
