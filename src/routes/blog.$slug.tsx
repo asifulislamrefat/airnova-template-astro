@@ -20,8 +20,12 @@ type Post = {
   hero: string;
   gallery: [string, string];
   intro: string;
-  sections: { heading: string; paragraphs: string[]; bullets?: string[] }[];
-  example?: { heading: string; bullets: string[] };
+  sections: {
+    heading: string;
+    paragraphs?: string[];
+    subHeading?: string;
+    bullets?: string[];
+  }[];
   closing: { heading: string; paragraphs: string[]; bullets?: string[] };
 };
 
@@ -47,15 +51,21 @@ const BASE_POST: Post = {
           "Maintain consistent style and tone to build trust and familiarity.",
         ],
       },
+      {
+        heading: "How to Implement Visual Storytelling in Your Brand Strategy",
+        paragraphs: [
+          "Integrating visual storytelling into your brand strategy starts with understanding your audience's desires, challenges, and dreams. From there, design content that speaks directly to their experience—whether through social media posts, videos, website graphics, or packaging. Experiment with formats like infographics, animations, or behind-the-scenes glimpses to keep stories fresh and engaging. Monitor feedback and adjust visuals based on what resonates most, creating a dynamic dialogue that evolves with.",
+          "Emotions are the gateway to memory and decision-making. When your brand's visual story evokes feelings—whether it's joy, nostalgia, trust, or excitement—it becomes more than just an advertisement; it becomes an experience. Visual elements like facial expressions, color psychology, and dynamic movement can all trigger emotional responses that help your audience relate to your brand on a deeper level. This emotional connection not only influences purchase decisions but also turns customers into passionate advocates.",
+          "To ensure your visual storytelling efforts are effective, it's important to measure their impact through key performance indicators (KPIs). Engagement metrics such as likes, shares, comments, and time spent on content indicate how well your visuals resonate with your audience. Additionally, tracking conversion rates, brand recall, and customer feedback provides insight into how storytelling influences behavior and perception. Using these analytics, brands can continually optimize their visual narratives for greater influence and ROI.",
+        ],
+        subHeading: "For example:",
+        bullets: [
+          "Track social media engagement to gauge audience reaction and reach.",
+          "Use A/B testing to compare different visual approaches and messaging.",
+          "Collect qualitative feedback through surveys or focus groups for deeper insights.",
+        ],
+      },
     ],
-    example: {
-      heading: "How to Implement Visual Storytelling in Your Brand Strategy",
-      bullets: [
-        "Track social media engagement to gauge audience reaction and reach.",
-        "Use A/B testing to compare different visual approaches and messaging.",
-        "Collect qualitative feedback through surveys or focus groups for deeper insights.",
-      ],
-    },
     closing: {
       heading: "Leveraging Technology for Enhanced Storytelling",
       paragraphs: [
@@ -151,27 +161,19 @@ function BlogDetailsPage() {
               <h2 className="text-[clamp(28px,4.5vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#111418]">
                 {s.heading}
               </h2>
-              {s.paragraphs.map((p, i) => (
+              {s.paragraphs?.map((p, i) => (
                 <p key={i} className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#616161]">
                   {p}
                 </p>
               ))}
+              {s.subHeading && (
+                <h3 className="text-[clamp(28px,4.5vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#111418]">
+                  {s.subHeading}
+                </h3>
+              )}
               {s.bullets && <Bullets items={s.bullets} />}
             </div>
           ))}
-
-          {/* Example block */}
-          {post.example && (
-            <div className="flex w-full max-w-[800px] flex-col gap-8">
-              <h2 className="text-[clamp(28px,4.5vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#111418]">
-                {post.example.heading}
-              </h2>
-              <p className="text-[clamp(28px,4.5vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#111418]">
-                For example:
-              </p>
-              <Bullets items={post.example.bullets} />
-            </div>
-          )}
 
           {/* Gallery */}
           <div className="flex w-full flex-col gap-2 sm:flex-row">
