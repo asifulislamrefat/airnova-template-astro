@@ -161,27 +161,19 @@ function BlogDetailsPage() {
               <h2 className="text-[clamp(28px,4.5vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#111418]">
                 {s.heading}
               </h2>
-              {s.paragraphs.map((p, i) => (
+              {s.paragraphs?.map((p, i) => (
                 <p key={i} className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#616161]">
                   {p}
                 </p>
               ))}
+              {s.subHeading && (
+                <h3 className="text-[clamp(28px,4.5vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#111418]">
+                  {s.subHeading}
+                </h3>
+              )}
               {s.bullets && <Bullets items={s.bullets} />}
             </div>
           ))}
-
-          {/* Example block */}
-          {post.example && (
-            <div className="flex w-full max-w-[800px] flex-col gap-8">
-              <h2 className="text-[clamp(28px,4.5vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#111418]">
-                {post.example.heading}
-              </h2>
-              <p className="text-[clamp(28px,4.5vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#111418]">
-                For example:
-              </p>
-              <Bullets items={post.example.bullets} />
-            </div>
-          )}
 
           {/* Gallery */}
           <div className="flex w-full flex-col gap-2 sm:flex-row">
