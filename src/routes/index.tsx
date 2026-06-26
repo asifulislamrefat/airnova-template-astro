@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { PROJECTS } from "@/lib/projects";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import {
   ArrowUpRight,
@@ -628,12 +629,11 @@ const projectImages = [
 ];
 
 function Projects() {
-  const items = [
-    { title: "NeuraFlow AI Platform", tag: "Branding strategy" },
-    { title: "Fluxa Studio Website", tag: "Ui/Ux Design" },
-    { title: "Lumora Creative Agency", tag: "Web Development" },
-    { title: "Aurex Digital Platform", tag: "Creative Design" },
-  ];
+  const items = PROJECTS.slice(0, 4).map((p) => ({
+    slug: p.slug,
+    title: p.name,
+    tag: p.category,
+  }));
   return (
     <section id="projects" className="bg-[#f5f5f5] p-[10px] lg:p-[30px]">
       <div className="relative w-full rounded-[20px] bg-white py-16 lg:py-28">
@@ -650,12 +650,17 @@ function Projects() {
           </div>
           <div className="mt-12 sm:mt-16 grid gap-6 lg:grid-cols-2 lg:gap-2">
           {items.map((p, i) => (
-            <article key={p.title} className="flex flex-col gap-2">
+            <Link
+              key={p.slug}
+              to="/projects/$slug"
+              params={{ slug: p.slug }}
+              className="group flex flex-col gap-2"
+            >
               <div className="overflow-hidden rounded-[20px] bg-black/5">
                 <img
                   src={projectImages[i]}
                   alt={p.title}
-                  className="h-[375px] lg:h-[500px] w-full object-cover transition duration-700 hover:scale-105"
+                  className="h-[375px] lg:h-[500px] w-full object-cover transition duration-700 group-hover:scale-105"
                 />
               </div>
               <div className="flex items-center justify-between gap-3 rounded-[10px] bg-[#f5f5f5] px-2.5 py-2 sm:gap-8 sm:px-6 sm:py-3">
@@ -671,7 +676,7 @@ function Projects() {
                   {p.tag}
                 </span>
               </div>
-            </article>
+            </Link>
           ))}
           </div>
         </div>
