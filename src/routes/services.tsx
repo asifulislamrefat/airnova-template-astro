@@ -1,19 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, Star } from "lucide-react";
 
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { Cta } from "@/components/site/Cta";
 import { Faq } from "@/components/site/Faq";
-import { BrandMark, Pill, serif } from "@/components/site/shared";
-
-import avatar10 from "@/assets/avatar-10.png.asset.json";
-import avatar11 from "@/assets/avatar-11.png.asset.json";
-import avatar12 from "@/assets/avatar-12.png.asset.json";
-import avatar13 from "@/assets/avatar-13.png.asset.json";
-import team1 from "@/assets/team-1.png.asset.json";
-import team2 from "@/assets/team-2.png.asset.json";
-import team3 from "@/assets/team-3.png.asset.json";
+import { Pill, serif } from "@/components/site/shared";
+import { Testimonials } from "@/components/site/Testimonials";
 
 import iconBrand from "@/assets/services/icon-brand.svg";
 import iconConsulting from "@/assets/services/icon-consulting.svg";
