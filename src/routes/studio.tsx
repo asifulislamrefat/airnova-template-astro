@@ -114,7 +114,7 @@ function Manifesto() {
           <div className="relative z-10 mb-10">
             <Pill variant="white">Manifesto</Pill>
           </div>
-          <div className="relative h-[clamp(60px,9vw,120px)]">
+          <div className="relative flex flex-col gap-2">
             {MANIFESTO.map((line, i) => (
               <ManifestoLine
                 key={i}
@@ -155,7 +155,7 @@ function ManifestoLine({
   return (
     <motion.p
       style={{ opacity, y }}
-      className="absolute inset-x-0 top-0 text-[clamp(40px,7vw,96px)] font-semibold leading-[1.05] tracking-[-0.075em] text-[#070606]"
+      className="text-[clamp(40px,7vw,96px)] font-semibold leading-[1.05] tracking-[-0.075em] text-[#070606]"
     >
       {index % 2 === 1 ? (
         <span className={`${serif} text-[#070606]/70`}>{children}</span>
