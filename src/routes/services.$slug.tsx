@@ -111,13 +111,12 @@ function stub(slug: string, title: string, heroUrl: string): Service {
 }
 
 const SERVICES: Record<string, Service> = {
-  [BASE.slug]: BASE,
   "brand-identity-design": stub("brand-identity-design", "Brand Identity Design", hero.url),
   "creative-consulting": stub("creative-consulting", "Creative Consulting", img205.url),
   "prototype-wireframing": stub("prototype-wireframing", "Prototype & Wireframing", img204.url),
-  "e-commerce-design": stub("e-commerce-design", "E-commerce Design", img208.url),
+  "e-commerce-design": stub("e-commerce-design", "E-commerce Design", img206.url),
   "dashboard-saas-design": stub("dashboard-saas-design", "Dashboard & SaaS Design", img207.url),
-  "graphic-design": stub("graphic-design", "Graphic Design", img206.url),
+  "graphic-design": stub("graphic-design", "Graphic Design", img208.url),
 };
 
 export const Route = createFileRoute("/services/$slug")({
