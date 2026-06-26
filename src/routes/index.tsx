@@ -290,6 +290,9 @@ function Hero() {
               key={src}
               src={src}
               alt=""
+              loading={i === 0 ? "eager" : "lazy"}
+              decoding={i === 0 ? "sync" : "async"}
+              fetchPriority={i === 0 ? "high" : "low"}
               className={`absolute inset-0 size-full object-cover object-top transition-opacity duration-700 ${
                 i === active ? "opacity-100" : "opacity-0"
               }`}
