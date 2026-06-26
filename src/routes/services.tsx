@@ -129,7 +129,7 @@ function StarsRow({ count = 5 }: { count?: number }) {
   return (
     <div className="flex items-center gap-1" aria-label={`${count} out of 5 stars`}>
       {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} className="size-4 fill-[#FFB800] text-[#FFB800]" strokeWidth={0} />
+        <span key={i} aria-hidden className="inline-block size-4 rounded-[2px] bg-[#FFB800]" />
       ))}
     </div>
   );
