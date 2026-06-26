@@ -1,5 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUp } from "lucide-react";
+
+function BlogArrow({ className }: { className?: string }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect y="16" width="16" height="16" rx="3.333" transform="rotate(-90 0 16)" fill="#070606" />
+      <path d="M6 4C6 4 10 6.94593 10 8C10 9.05413 6 12 6 12" stroke="white" strokeLinecap="round" strokeLinejoin="round" transform="rotate(-90 8 8)" />
+    </svg>
+  );
+}
 
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
@@ -120,10 +136,7 @@ function BlogCard({ post }: { post: Post }) {
           <p className="whitespace-nowrap text-sm font-medium leading-[1.5] tracking-[-0.04em] text-[#515151] sm:text-base">
             {post.date}
           </p>
-          <ArrowUp
-            className="size-4 text-black transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            strokeWidth={1.75}
-          />
+          <BlogArrow className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
         </div>
       </div>
     </Link>
