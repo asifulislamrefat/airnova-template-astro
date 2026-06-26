@@ -1,14 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  Palette,
-  Lightbulb,
-  PenTool,
-  ShoppingBag,
-  LayoutDashboard,
-  ImageIcon,
-  ArrowUpRight,
-  Star,
-} from "lucide-react";
+import { ArrowUpRight, Star } from "lucide-react";
 
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
@@ -23,6 +14,13 @@ import avatar13 from "@/assets/avatar-13.png.asset.json";
 import team1 from "@/assets/team-1.png.asset.json";
 import team2 from "@/assets/team-2.png.asset.json";
 import team3 from "@/assets/team-3.png.asset.json";
+
+import iconBrand from "@/assets/services/icon-brand.svg";
+import iconConsulting from "@/assets/services/icon-consulting.svg";
+import iconPrototype from "@/assets/services/icon-prototype.svg";
+import iconEcommerce from "@/assets/services/icon-ecommerce.svg";
+import iconDashboard from "@/assets/services/icon-dashboard.svg";
+import iconGraphic from "@/assets/services/icon-graphic.svg";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -47,39 +45,39 @@ export const Route = createFileRoute("/services")({
 type Service = {
   title: string;
   description: string;
-  Icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  icon: string;
 };
 
 const SERVICES: Service[] = [
   {
     title: "Brand Identity Design",
     description: "Designing logos, color schemes and visuals that reflect your brand.",
-    Icon: Palette,
+    icon: iconBrand,
   },
   {
     title: "Creative Consulting",
     description: "Providing guidance to improve design strategy and digital presence.",
-    Icon: Lightbulb,
+    icon: iconConsulting,
   },
   {
     title: "Prototype & Wireframing",
     description: "Building interactive prototypes to visualize your digital products.",
-    Icon: PenTool,
+    icon: iconPrototype,
   },
   {
     title: "E-commerce Design",
     description: "Designing online stores with a focus on usability, branding and conversions.",
-    Icon: ShoppingBag,
+    icon: iconEcommerce,
   },
   {
     title: "Dashboard & SaaS Design",
     description: "Building clean and efficient interfaces for dashboards and SaaS products.",
-    Icon: LayoutDashboard,
+    icon: iconDashboard,
   },
   {
     title: "Graphic Design",
     description: "Developing creative graphics, banners and promotional visuals.",
-    Icon: ImageIcon,
+    icon: iconGraphic,
   },
 ];
 
@@ -103,17 +101,12 @@ function ServicesHero() {
         </div>
 
         <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map(({ title, description, Icon }) => (
+          {SERVICES.map(({ title, description, icon }) => (
             <div
               key={title}
               className="flex flex-col items-start gap-12 rounded-[20px] bg-white p-8 lg:gap-16"
             >
-              <span
-                aria-hidden="true"
-                className="grid size-14 place-items-center rounded-[14px] bg-[#070606] text-white"
-              >
-                <Icon className="size-7" strokeWidth={1.8} />
-              </span>
+              <img src={icon} alt="" aria-hidden="true" className="size-14" />
               <div className="flex flex-col gap-2">
                 <h3 className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
                   {title}
