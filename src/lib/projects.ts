@@ -1,10 +1,11 @@
-import thumb1 from "@/assets/Rectangle_7.png.asset.json";
+import thumb1 from "@/assets/Main_Image.png.asset.json";
 import thumb2 from "@/assets/Rectangle_6.png.asset.json";
 import thumb3 from "@/assets/Rectangle_123.png.asset.json";
 import thumb4 from "@/assets/Rectangle_8.png.asset.json";
 import thumb5 from "@/assets/Rectangle_134.png.asset.json";
 import thumb6 from "@/assets/Rectangle_13kmk.png.asset.json";
 import thumb7 from "@/assets/Rectangle_9.png.asset.json";
+import thumb8 from "@/assets/Rectangle_7.png.asset.json";
 import michael from "@/assets/michael.png.asset.json";
 
 export type Project = {
@@ -36,7 +37,7 @@ const PROJECT_IMAGES = [
   thumb5.url,
   thumb6.url,
   thumb7.url,
-  thumb1.url,
+  thumb8.url,
 ];
 
 export const AUTHOR = {
