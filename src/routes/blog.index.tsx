@@ -121,8 +121,8 @@ function BlogCard({ post }: { post: Post }) {
             {post.date}
           </p>
           <ArrowUpRight
-            className="size-5 text-black transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            strokeWidth={1.6}
+            className="size-4 text-black transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            strokeWidth={1.75}
           />
         </div>
       </div>
