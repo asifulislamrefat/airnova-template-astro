@@ -125,7 +125,7 @@ export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navLinks = [
     { label: "Studio", href: "#studio" },
-    { label: "Projects", href: "#projects", sup: String(PROJECTS.length).padStart(2, "0") },
+    { label: "Projects", href: "#projects", sup: String(PROJECTS.length) },
     { label: "Services", href: "/services" },
     { label: "Pricing", href: "/pricing" },
   ];
