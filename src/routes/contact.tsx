@@ -135,14 +135,14 @@ function ContactPage() {
             </div>
 
             {/* Testimonial card */}
-            <div className="flex flex-col justify-between gap-10 rounded-[10px] bg-[#070606] p-6 lg:mt-auto">
-              <div className="flex flex-col gap-6">
+            <div className="flex max-w-[420px] flex-col gap-8 rounded-[10px] bg-[#070606] p-6">
+              <div className="flex flex-col gap-5">
                 <div className="flex gap-1">
                   {[0, 1, 2, 3, 4].map((i) => (
                     <Star key={i} className="size-4 fill-[#f24700] text-[#f24700]" />
                   ))}
                 </div>
-                <p className="text-[20px] font-medium leading-[1.5] tracking-[-0.055em] text-white">
+                <p className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-white">
                   "The team delivered a clean and modern design that perfectly represents our
                   brand. The entire process was smooth and professional."
                 </p>
@@ -154,10 +154,10 @@ function ContactPage() {
                   className="size-12 rounded-full object-cover"
                 />
                 <div className="flex flex-col gap-0.5">
-                  <p className="text-[20px] font-medium leading-[1.5] tracking-[-0.055em] text-white">
+                  <p className="text-[18px] font-medium leading-[1.4] tracking-[-0.055em] text-white">
                     Daniel Smith
                   </p>
-                  <p className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-white">
+                  <p className="text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-white/70">
                     Co-Founder
                   </p>
                 </div>
