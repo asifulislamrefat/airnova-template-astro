@@ -117,7 +117,7 @@ function Bullets({ items }: { items: string[] }) {
 }
 
 function BlogDetailsPage() {
-  const { post } = Route.useLoaderData();
+  const { post } = Route.useLoaderData() as { post: Post };
   return (
     <main className="min-h-screen overflow-x-clip bg-white font-sans text-foreground antialiased">
       <Nav />
