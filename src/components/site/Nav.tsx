@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./shared";
+import { PROJECTS } from "@/lib/projects";
 
 // Map menu labels to internal routes. Add an entry here when a new page route is created.
 const ROUTE_MAP: Record<string, string> = {
@@ -124,7 +125,7 @@ export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navLinks = [
     { label: "Studio", href: "#studio" },
-    { label: "Projects", href: "#projects", sup: "15" },
+    { label: "Projects", href: "#projects", sup: String(PROJECTS.length).padStart(2, "0") },
     { label: "Services", href: "/services" },
     { label: "Pricing", href: "/pricing" },
   ];
