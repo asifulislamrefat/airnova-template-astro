@@ -35,6 +35,7 @@ export const Route = createFileRoute("/blog")({
 });
 
 type Post = {
+  slug: string;
   title: string;
   excerpt: string;
   date: string;
@@ -43,6 +44,7 @@ type Post = {
 
 const POSTS: Post[] = [
   {
+    slug: "how-to-create-content-that-actually-converts",
     title: "How to create content that actually converts",
     excerpt:
       "Stop creating content that gets likes but doesn't drive sales — here's what actually works.",
@@ -50,12 +52,14 @@ const POSTS: Post[] = [
     image: img1.url,
   },
   {
+    slug: "where-creativity-meets-strategy",
     title: "Where Creativity Meets Strategy",
     excerpt: "We design solutions that are both visually stunning and purpose-driven.",
     date: "Mar : 26",
     image: img2.url,
   },
   {
+    slug: "explore-the-future-of-digital-design",
     title: "Explore the Future of Digital Design",
     excerpt:
       "Where creativity and technology come together to shape the experiences of tomorrow.",
@@ -63,6 +67,7 @@ const POSTS: Post[] = [
     image: img3.url,
   },
   {
+    slug: "innovative-thinking-for-digital-success",
     title: "Innovative Thinking for Digital Success",
     excerpt:
       "We believe that innovative thinking drives digital success — by combining creativity and strategy.",
@@ -70,6 +75,7 @@ const POSTS: Post[] = [
     image: img4.url,
   },
   {
+    slug: "creative-tips-for-modern-designers",
     title: "Creative Tips for Modern Designers",
     excerpt:
       "From mastering UI/UX principles to exploring the latest design trends and tools, these insights help designers.",
@@ -77,6 +83,7 @@ const POSTS: Post[] = [
     image: img5.url,
   },
   {
+    slug: "your-source-for-design-inspiration",
     title: "Your Source for Design Inspiration",
     excerpt:
       "Discover a curated collection of ideas, trends and insights to fuel your creativity. Whether you're a designer.",
@@ -89,7 +96,8 @@ function BlogCard({ post }: { post: Post }) {
   return (
     <article className="group flex flex-col gap-6">
       <Link
-        to="/blog"
+        to="/blog/$slug"
+        params={{ slug: post.slug }}
         className="relative block aspect-[4/5] overflow-hidden rounded-[20px] bg-[#f5f5f5]"
       >
         <img
