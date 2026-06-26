@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
@@ -77,34 +78,71 @@ function BillingToggle({
   onChange: (v: "monthly" | "annual") => void;
 }) {
   return (
-    <div className="flex items-center rounded-full bg-white p-1 shadow-[0_1px_2px_rgba(0,0,0,0.06)]">
+    <div className="relative flex items-center rounded-full bg-white p-1 shadow-[0_1px_2px_rgba(0,0,0,0.06)]">
       <button
         type="button"
         onClick={() => onChange("monthly")}
-        className={`flex h-10 cursor-pointer items-center rounded-full px-6 text-base font-semibold tracking-[-0.055em] transition-colors duration-300 ${
-          value === "monthly"
-            ? "bg-[#282828] text-white"
-            : "text-black/60 hover:text-black"
-        }`}
+        className="relative z-10 flex h-10 cursor-pointer items-center rounded-full px-6 text-base font-semibold tracking-[-0.055em]"
       >
-        Monthly
+        <span
+          className={`transition-colors duration-300 ${
+            value === "monthly" ? "text-white" : "text-black/60 hover:text-black"
+          }`}
+        >
+          Monthly
+        </span>
+        {value === "monthly" && (
+          <motion.span
+            layoutId="billing-pill"
+            transition={{ type: "spring", stiffness: 400, damping: 32 }}
+            className="absolute inset-0 -z-10 rounded-full bg-[#282828]"
+          />
+        )}
       </button>
       <button
         type="button"
         onClick={() => onChange("annual")}
-        className={`flex h-10 cursor-pointer items-center gap-3 rounded-full pl-[18px] pr-1.5 text-base font-semibold tracking-[-0.055em] transition-colors duration-300 ${
-          value === "annual"
-            ? "bg-[#282828] text-white"
-            : "text-black/60 hover:text-black"
-        }`}
+        className="relative z-10 flex h-10 cursor-pointer items-center gap-3 rounded-full pl-[18px] pr-1.5 text-base font-semibold tracking-[-0.055em]"
       >
-        <span>Annual</span>
+        <span
+          className={`transition-colors duration-300 ${
+            value === "annual" ? "text-white" : "text-black/60 hover:text-black"
+          }`}
+        >
+          Annual
+        </span>
         <span className="inline-flex items-center justify-center rounded-full bg-[#f24700] px-[9px] py-1.5 text-[12px] font-semibold leading-none tracking-[-0.055em] text-white">
           SAVE 30%
         </span>
+        {value === "annual" && (
+          <motion.span
+            layoutId="billing-pill"
+            transition={{ type: "spring", stiffness: 400, damping: 32 }}
+            className="absolute inset-0 -z-10 rounded-full bg-[#282828]"
+          />
+        )}
       </button>
     </div>
   );
+}
+
+function AnimatedPrice({ value }: { value: number }) {
+  const mv = useMotionValue(value);
+  const spring = useSpring(mv, { stiffness: 90, damping: 20, mass: 0.6 });
+  const rounded = useTransform(spring, (latest) => `$${Math.round(latest)}`);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    mv.set(value);
+  }, [value, mv]);
+
+  useEffect(() => {
+    return rounded.on("change", (v) => {
+      if (ref.current) ref.current.textContent = v;
+    });
+  }, [rounded]);
+
+  return <span ref={ref}>{`$${value}`}</span>;
 }
 
 function PricingCard({ plan, billing }: { plan: Plan; billing: "monthly" | "annual" }) {
@@ -143,12 +181,18 @@ function PricingCard({ plan, billing }: { plan: Plan; billing: "monthly" | "annu
                 dark ? "text-white" : "text-[#111418]"
               }`}
             >
-              <span className="text-[56px] font-semibold sm:text-[72px]">
-                ${price}
+              <span className="inline-block text-[56px] font-semibold tabular-nums sm:text-[72px]">
+                <AnimatedPrice value={price} />
               </span>
-              <span className="ml-2 text-base font-medium tracking-[-0.075em]">
+              <motion.span
+                key={billing}
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+                className="ml-2 inline-block text-base font-medium tracking-[-0.075em]"
+              >
                 / {billing === "monthly" ? "monthly" : "annual"}
-              </span>
+              </motion.span>
             </p>
             <p
               className={`max-w-[440px] text-base font-medium leading-[1.5] tracking-[-0.075em] ${
