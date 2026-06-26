@@ -200,9 +200,9 @@ function BlogDetailsPage() {
           {/* Back button */}
           <Link
             to="/blog"
-            className="inline-flex h-12 w-full max-w-[800px] items-center justify-start self-center rounded-full bg-transparent text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#070606] transition-transform hover:-translate-x-0.5"
+            className="inline-flex h-12 items-center justify-center self-center rounded-full bg-[#070606] px-6 py-4 text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)] transition-transform hover:-translate-y-0.5"
           >
-            <span className="inline-flex h-12 items-center justify-center rounded-full bg-[#070606] px-6 py-4 text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)]">Back to Blog</span>
+            Back to Blog
           </Link>
         </div>
       </section>
