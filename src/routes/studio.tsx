@@ -112,7 +112,7 @@ function Manifesto() {
       <div className="sticky top-0 flex h-screen items-center px-[5%] lg:px-0">
         <div className="mx-auto w-full max-w-[1280px] lg:w-[calc(100%_-_160px)]">
           <div className="relative z-10 mb-10">
-            <Pill>Manifesto</Pill>
+            <Pill variant="white">Manifesto</Pill>
           </div>
           <div className="relative h-[clamp(60px,9vw,120px)]">
             {MANIFESTO.map((line, i) => (
