@@ -9,16 +9,6 @@ body {
   overflow-x: clip;
 }
 
-/* Mobile readability: the design uses very tight tracking (-0.075em) on
-   body copy which becomes hard to read at small sizes. Loosen letter
-   spacing on paragraph body text only, on small screens. Headings,
-   buttons and inline labels are unaffected. */
-@media (max-width: 640px) {
-  p.tracking-\[-0\.075em\] {
-    letter-spacing: -0.015em;
-  }
-}
-
 /* Hide the "Edit with Lovable" badge across all environments (dev, preview, published). */
 #lovable-badge,
 [id^="lovable-badge"],
