@@ -7,7 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -152,46 +152,6 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
-  // Global scroll-reveal: tag every <section> with .reveal and add
-  // .is-visible when it enters the viewport. Runs once per mount and
-  // re-scans on route changes via a MutationObserver.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const tagged = new WeakSet<Element>();
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
-          }
-        }
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
-    );
-    const scan = () => {
-      document.querySelectorAll("section").forEach((el) => {
-        if (tagged.has(el)) return;
-        tagged.add(el);
-        el.classList.add("reveal");
-        // If already in view on mount, reveal immediately.
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.9) {
-          requestAnimationFrame(() => el.classList.add("is-visible"));
-        } else {
-          io.observe(el);
-        }
-      });
-    };
-    scan();
-    const mo = new MutationObserver(scan);
-    mo.observe(document.body, { childList: true, subtree: true });
-    return () => {
-      io.disconnect();
-      mo.disconnect();
-    };
-  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
