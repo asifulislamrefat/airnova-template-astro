@@ -11,25 +11,43 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Nav } from "@/components/site/Nav";
+import { Footer } from "@/components/site/Footer";
+import { Cta } from "@/components/site/Cta";
+import notFoundIllustration from "@/assets/404-illustration.svg.asset.json";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
+    <div className="min-h-screen bg-white">
+      <Nav />
+      <main className="px-5 pt-12 pb-16 md:px-10 md:pt-20 md:pb-24">
+        <div className="mx-auto flex max-w-[900px] flex-col items-center text-center">
+          <h1 className="text-[44px] font-semibold leading-[1.1] tracking-[-0.06em] text-black md:text-[72px]">
+            Page Not Found
+          </h1>
+          <p className="mt-4 max-w-[440px] text-[15px] font-medium leading-[1.5] tracking-[-0.04em] text-[#515151] md:text-base">
+            Sorry, the page you are looking for doesn't exist or has been moved. Try searching our site
+          </p>
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="group mt-7 inline-flex items-center gap-3 rounded-full bg-black px-6 py-3 text-sm font-medium tracking-[-0.04em] text-white transition-transform duration-300 hover:-translate-y-0.5 hover:bg-black/90"
           >
-            Go home
+            Back to Home
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-black transition-transform duration-300 group-hover:translate-x-0.5">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
           </Link>
+          <img
+            src={notFoundIllustration.url}
+            alt="404 error"
+            className="mt-10 w-full max-w-[720px]"
+          />
         </div>
-      </div>
+      </main>
+      <Cta />
+      <Footer />
     </div>
   );
 }
