@@ -107,7 +107,7 @@ export function Testimonials() {
               <div
                  className={`flex flex-1 flex-col justify-between rounded-lg bg-white p-4 transition-[border-radius] duration-500 ease-out ${
                   pos === "top" ? "group-hover:rounded-b-none" : "group-hover:rounded-t-none"
-                } ${isSecond ? "lg:group-hover:rounded-t-none lg:group-hover:rounded-b-lg" : ""}`}
+                } ${isSecond ? "lg:group-hover:rounded-t-lg lg:group-hover:rounded-b-none" : ""}`}
               >
                 <div className="flex gap-1">
                   {Array.from({ length: 5 }).map((_, i) => (
