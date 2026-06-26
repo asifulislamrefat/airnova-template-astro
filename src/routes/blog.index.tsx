@@ -97,7 +97,7 @@ function BlogCard({ post }: { post: Post }) {
     <Link
       to="/blog/$slug"
       params={{ slug: post.slug }}
-      className="group flex flex-col gap-6"
+      className="group flex flex-col gap-3"
     >
       <div className="relative block aspect-[4/3] overflow-hidden rounded-[20px] bg-[#f5f5f5]">
         <img
