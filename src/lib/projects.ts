@@ -1,11 +1,10 @@
-import project1 from "@/assets/project-1.png.asset.json";
-import project2 from "@/assets/project-2.png.asset.json";
-import project3 from "@/assets/project-3.png.asset.json";
-import project4 from "@/assets/project-4.png.asset.json";
-import hero1 from "@/assets/hero-1.png.asset.json";
-import hero2 from "@/assets/hero-2.png.asset.json";
-import hero3 from "@/assets/hero-3.png.asset.json";
-import benefits1 from "@/assets/benefits-1.png.asset.json";
+import thumb1 from "@/assets/Rectangle_7.png.asset.json";
+import thumb2 from "@/assets/Rectangle_6.png.asset.json";
+import thumb3 from "@/assets/Rectangle_123.png.asset.json";
+import thumb4 from "@/assets/Rectangle_8.png.asset.json";
+import thumb5 from "@/assets/Rectangle_134.png.asset.json";
+import thumb6 from "@/assets/Rectangle_13kmk.png.asset.json";
+import thumb7 from "@/assets/Rectangle_9.png.asset.json";
 import michael from "@/assets/michael.png.asset.json";
 
 export type Project = {
@@ -30,14 +29,14 @@ export type Project = {
 };
 
 const PROJECT_IMAGES = [
-  project1.url,
-  project2.url,
-  project3.url,
-  project4.url,
-  hero1.url,
-  hero2.url,
-  hero3.url,
-  benefits1.url,
+  thumb1.url,
+  thumb2.url,
+  thumb3.url,
+  thumb4.url,
+  thumb5.url,
+  thumb6.url,
+  thumb7.url,
+  thumb1.url,
 ];
 
 export const AUTHOR = {
