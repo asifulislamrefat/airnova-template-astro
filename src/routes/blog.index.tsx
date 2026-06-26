@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
@@ -120,7 +120,7 @@ function BlogCard({ post }: { post: Post }) {
           <p className="whitespace-nowrap text-sm font-medium leading-[1.5] tracking-[-0.04em] text-[#515151] sm:text-base">
             {post.date}
           </p>
-          <ArrowUpRight
+          <ArrowUp
             className="size-4 text-black transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
             strokeWidth={1.75}
           />
