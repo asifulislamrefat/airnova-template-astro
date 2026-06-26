@@ -136,7 +136,7 @@ function BlogCard({ post }: { post: Post }) {
           <p className="whitespace-nowrap text-sm font-medium leading-[1.5] tracking-[-0.04em] text-[#515151] sm:text-base">
             {post.date}
           </p>
-          <BlogArrow className="size-8 transition-transform duration-300 group-hover:translate-x-0.5" />
+          <BlogArrow className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
         </div>
       </div>
     </Link>
