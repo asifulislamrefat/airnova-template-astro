@@ -19,8 +19,8 @@ export function Footer() {
     { title: "Inner Pages", links: ["404", "Licenses", "Changelog", "Style Guide"] },
   ];
   return (
-    <footer className="relative overflow-hidden bg-foreground pb-0 pt-16 lg:pt-28 text-background">
-      <div className="container-x relative z-10">
+    <footer className="relative overflow-hidden bg-foreground px-5 pb-8 pt-16 text-background sm:px-10 lg:h-[757px] lg:px-20 lg:pt-28">
+      <div className="relative z-10 mx-auto w-full max-w-[1280px]">
         <div className="grid gap-12 lg:grid-cols-[1fr_2fr]">
           <div className="flex flex-col gap-6">
             <Logo light />
@@ -69,8 +69,8 @@ export function Footer() {
 
       {/* Giant wordmark */}
       <div
-        className={`${serif} pointer-events-none mt-12 select-none overflow-hidden text-center font-semibold leading-none tracking-[-0.075em] text-background`}
-        style={{ fontSize: "clamp(120px, 28vw, 420px)" }}
+        className={`${serif} pointer-events-none mt-12 select-none text-center font-semibold leading-none tracking-[-0.075em] text-background lg:absolute lg:left-1/2 lg:top-[362px] lg:mt-0 lg:-translate-x-1/2 lg:whitespace-nowrap`}
+        style={{ fontSize: "clamp(120px, 22vw, 302px)" }}
       >
         Airnova
       </div>

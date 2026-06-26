@@ -96,7 +96,7 @@ function FullscreenMenu({
         <ul className="flex min-h-full flex-col items-center justify-center gap-[10px] py-4 text-center lg:gap-[22px]">
           {allLinks.map((l, i) => (
             <li
-              key={l.label}
+              key={`${l.label}-${i}`}
               className={`py-1 ${l.mobileOnly ? "lg:hidden" : ""}`}
               style={{
                 transform: open ? "translateY(0)" : "translateY(120%)",
