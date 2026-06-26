@@ -153,7 +153,7 @@ function ProjectDetailPage() {
               <Link
                 to="/projects"
                 data-hover-lift
-                className="inline-flex h-12 w-fit items-center justify-center rounded-[80px] bg-[#070606] px-6 text-base font-medium leading-[1.5] tracking-[-0.075em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)]"
+                className="hidden h-12 w-fit items-center justify-center rounded-[80px] bg-[#070606] px-6 text-base font-medium leading-[1.5] tracking-[-0.075em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)] lg:inline-flex"
               >
                 Back to Projects
               </Link>
@@ -171,6 +171,13 @@ function ProjectDetailPage() {
               <p className="text-base font-medium leading-[1.5] tracking-[-0.075em] text-[#616161]">
                 {p.uxBody2}
               </p>
+              <Link
+                to="/projects"
+                data-hover-lift
+                className="mt-2 inline-flex h-12 w-fit items-center justify-center rounded-[80px] bg-[#070606] px-6 text-base font-medium leading-[1.5] tracking-[-0.075em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)] lg:hidden"
+              >
+                Back to Projects
+              </Link>
             </div>
           </div>
         </div>
