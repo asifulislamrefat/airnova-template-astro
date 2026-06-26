@@ -7,6 +7,7 @@ const ROUTE_MAP: Record<string, string> = {
   "Home": "/",
   "About Us": "/about",
   "Projects": "/projects",
+  "Services": "/services",
   "Blog": "/blog",
   "Pricing": "/pricing",
   "Contact": "/contact",
@@ -124,7 +125,7 @@ export function Nav() {
   const navLinks = [
     { label: "Studio", href: "#studio" },
     { label: "Projects", href: "#projects", sup: "15" },
-    { label: "Services", href: "#services" },
+    { label: "Services", href: "/services" },
     { label: "Pricing", href: "/pricing" },
   ];
 
