@@ -204,7 +204,7 @@ function ServiceDetailsPage() {
                 {service.title}
               </h1>
               </div>
-              <div className="relative h-[340px] w-full overflow-hidden bg-white sm:h-[520px] lg:h-[700px]">
+              <div className="relative h-[340px] w-full overflow-hidden rounded-[10px] bg-white sm:h-[520px] lg:h-[700px]">
                 <img src={service.hero} alt={service.title} className="absolute inset-0 size-full object-cover" />
               </div>
             </div>
