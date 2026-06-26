@@ -6,6 +6,8 @@ const ROUTE_MAP: Record<string, string> = {
   "About Us": "/about",
   "Projects": "/projects",
   "Pricing": "/pricing",
+  "Blog": "/blog",
+  "Blog Details": "/blog",
   "Book a call": "/contact",
 };
 
