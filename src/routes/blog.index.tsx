@@ -112,7 +112,7 @@ function BlogCard({ post }: { post: Post }) {
           <h3 className="truncate text-[20px] font-semibold leading-[1.2] tracking-[-0.065em] text-black sm:text-[24px]">
             {post.title}
           </h3>
-          <p className="line-clamp-2 text-[15px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151] sm:text-base">
+          <p className="line-clamp-2 min-h-[3em] text-[15px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151] sm:text-base">
             {post.excerpt}
           </p>
         </div>
