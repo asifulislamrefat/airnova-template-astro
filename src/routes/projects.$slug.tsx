@@ -145,8 +145,8 @@ function ProjectDetailPage() {
           </div>
 
           {/* User experience focus + back button */}
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-14">
-            <div className="flex shrink-0 flex-col justify-between gap-10 lg:h-full lg:w-[260px]">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-stretch lg:justify-between lg:gap-14">
+            <div className="flex shrink-0 flex-col justify-between gap-10 lg:w-[260px] lg:self-stretch">
               <p className="text-[20px] font-medium leading-[1.5] tracking-[-0.075em] text-[#616161]">
                 User experience focus
               </p>
