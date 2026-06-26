@@ -203,7 +203,7 @@ function ServiceDetailsPage() {
           </div>
 
           {/* Pull quote */}
-          <p className={`${serif} w-full text-[clamp(32px,4.5vw,56px)] font-semibold italic leading-[1.15] tracking-[-0.065em] text-[#070606]`}>
+          <p className={`${serif} w-full text-[clamp(32px,4.5vw,56px)] font-medium italic leading-[1.15] tracking-[-0.04em] text-[#070606]`}>
             {service.pullQuote}
           </p>
 
