@@ -167,6 +167,8 @@ function LogoMarquee() {
               alt=""
               draggable={false}
               className="max-h-[30px] w-auto max-w-[60px] sm:max-h-[50px] sm:max-w-[100px] object-contain"
+              loading="lazy"
+              decoding="async"
             />
             <span
               className="absolute font-semibold tracking-[-0.055em]"
