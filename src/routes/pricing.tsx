@@ -144,7 +144,7 @@ function PricingCard({ plan, billing }: { plan: Plan; billing: "monthly" | "annu
               }`}
             >
               <span className="text-[56px] font-semibold sm:text-[72px]">
-                ${price.toLocaleString()}
+                ${price}
               </span>
               <span className="ml-2 text-base font-medium tracking-[-0.075em]">
                 / {billing === "monthly" ? "monthly" : "annual"}
@@ -202,7 +202,7 @@ function PricingPage() {
   return (
     <main className="min-h-screen overflow-x-clip bg-background font-sans text-foreground antialiased">
       <Nav />
-      <section className="bg-white py-16 lg:py-28">
+      <section className="bg-surface py-16 lg:py-28">
         <div className="container-x flex flex-col items-center gap-12 lg:gap-16">
           <div className="flex flex-col items-center gap-6 text-center">
             <Pill variant="white">Pricing</Pill>
