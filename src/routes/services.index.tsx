@@ -14,7 +14,7 @@ import iconEcommerce from "@/assets/services/icon-ecommerce.svg";
 import iconDashboard from "@/assets/services/icon-dashboard.svg";
 import iconGraphic from "@/assets/services/icon-graphic.svg";
 
-export const Route = createFileRoute("/services")({
+export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       { title: "Services — Airnova" },
