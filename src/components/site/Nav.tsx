@@ -64,7 +64,10 @@ function FullscreenMenu({
     href: `#${label.toLowerCase().replace(/\s+/g, "-")}`,
     mobileOnly: false,
   }));
-  const mobileExtras = extraLinks.map((l) => ({ ...l, mobileOnly: true }));
+  const baseLabels = new Set(links.map((l) => l.label));
+  const mobileExtras = extraLinks
+    .filter((l) => !baseLabels.has(l.label))
+    .map((l) => ({ ...l, mobileOnly: true }));
   const allLinks = [...mobileExtras, ...links];
   return (
     <div
