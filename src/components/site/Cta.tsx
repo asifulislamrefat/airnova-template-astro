@@ -2,9 +2,9 @@ import { BrandMark, serif } from "./shared";
 
 export function Cta() {
   return (
-    <section className="bg-white p-[10px] lg:p-[30px]">
-      <div className="rounded-[20px] bg-[#070606] py-16 lg:py-28">
-        <div className="container-x-inset flex flex-col items-center justify-center gap-8 text-center">
+    <section className="relative flex min-h-[620px] items-center justify-center overflow-hidden bg-white px-[10px] py-[30px] lg:h-[772px] lg:px-[30px] lg:py-[30px]">
+      <div className="absolute inset-x-[10px] top-[30px] bottom-[30px] rounded-[20px] bg-[#070606] lg:inset-x-[30px]" />
+      <div className="relative z-10 flex w-full flex-col items-center justify-center gap-8 text-center">
           <div className="flex flex-col items-center gap-4">
             <div className="inline-flex items-center justify-center gap-[10px] rounded-lg bg-white/[0.04] px-[14px] py-2">
               <BrandMark size={24} dark={false} />
@@ -29,7 +29,6 @@ export function Cta() {
           >
             Book a Call
           </a>
-        </div>
       </div>
     </section>
   );

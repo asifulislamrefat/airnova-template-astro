@@ -1,11 +1,9 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { Star } from "lucide-react";
 
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { Cta } from "@/components/site/Cta";
-import { Faq } from "@/components/site/Faq";
-import { serif } from "@/components/site/shared";
 
 import hero from "@/assets/services-detail/hero.png.asset.json";
 import img205 from "@/assets/services-detail/img-205.png.asset.json";
@@ -142,11 +140,17 @@ export const Route = createFileRoute("/services/$slug")({
   component: ServiceDetailsPage,
 });
 
-function Bullets({ items }: { items: string[] }) {
+function Bullets({ items, emphasis = false }: { items: string[]; emphasis?: boolean }) {
   return (
-    <ul className="flex w-full flex-col gap-3 text-[15px] font-normal leading-[1.65] tracking-[-0.02em] text-[#616161]">
+    <ul
+      className={`flex w-full flex-col gap-4 ${
+        emphasis
+          ? "text-[20px] font-semibold leading-[1.4] tracking-[-0.055em] text-[#616161]"
+          : "text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]"
+      }`}
+    >
       {items.map((b) => (
-        <li key={b} className="ml-5 list-disc">
+        <li key={b} className={emphasis ? "ml-[30px] list-disc" : "ml-6 list-disc"}>
           {b}
         </li>
       ))}
@@ -156,20 +160,22 @@ function Bullets({ items }: { items: string[] }) {
 
 function ReviewCard({ quote, name, role }: { quote: string; name: string; role: string }) {
   return (
-    <div className="w-full rounded-[20px] bg-[#070606] p-8 sm:p-10">
-      <div className="flex flex-col gap-6">
-        <div className="flex items-center gap-1" aria-label="5 out of 5 stars">
+    <div className="w-full rounded-[10px] bg-[#070606] p-6">
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6">
+        <div className="flex items-center gap-0" aria-label="5 out of 5 stars">
           {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} className="size-5 fill-[#FF3D2E] text-[#FF3D2E]" strokeWidth={0} />
+            <Star key={i} className="size-6 fill-[#FF2626] text-[#FF2626]" strokeWidth={0} />
           ))}
         </div>
-        <p className="text-[clamp(20px,1.8vw,24px)] font-medium leading-[1.4] tracking-[-0.04em] text-white">
+        <p className="text-[clamp(24px,4vw,32px)] font-semibold leading-[1.2] tracking-[-0.065em] text-white">
           {quote}
         </p>
+        </div>
         <div className="flex items-center gap-4 text-[16px] font-medium leading-[1.5] tracking-[-0.04em]">
-          <span className="text-white">{name}</span>
-          <span className="text-white/30">×</span>
-          <span className="text-white/60">{role}</span>
+          <span className="text-[20px] tracking-[-0.075em] text-white">{name}</span>
+          <span className="ml-4 text-[16px] tracking-[-0.075em] text-white">x</span>
+          <span className="ml-2 text-[16px] tracking-[-0.075em] text-white">{role}</span>
         </div>
       </div>
     </div>
@@ -181,111 +187,105 @@ function ServiceDetailsPage() {
   return (
     <main className="min-h-screen overflow-x-clip bg-white font-sans text-foreground antialiased">
       <Nav />
-      <section className="bg-white py-16 lg:py-24">
-        <div className="mx-auto flex w-full max-w-[1100px] flex-col items-start gap-14 px-[5%] lg:gap-16 lg:px-10">
+      <section className="bg-[#f5f5f5] px-5 py-20 sm:px-10 lg:px-20 lg:py-28">
+        <div className="mx-auto flex w-full max-w-[1280px] flex-col items-start gap-20">
+          <div className="flex w-full flex-col items-start gap-[72px]">
           {/* Header */}
-          <div className="flex w-full flex-col gap-10">
-            <div className="flex w-full flex-col items-start gap-3">
-              <div className="flex items-center gap-4 text-[15px] font-medium leading-[1.5] tracking-[-0.04em] text-[#616161]">
+          <div className="flex w-full flex-col gap-12">
+            <div className="flex w-full flex-col gap-12">
+              <div className="flex w-full flex-col items-start gap-4">
+              <div className="flex items-center gap-4 text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                 <span>{service.date}</span>
-                <span className="flex items-center gap-2">
-                  <span className="inline-block size-1.5 rounded-full bg-[#616161]" />
-                  {service.readTime}
-                </span>
+                <ul className="list-disc pl-[18px]">
+                  <li>{service.readTime}</li>
+                </ul>
               </div>
-              <h1 className="text-[clamp(36px,5.5vw,64px)] font-semibold leading-[1.05] tracking-[-0.05em] text-black">
+              <h1 className="max-w-[905px] text-[clamp(44px,5.6vw,80px)] font-semibold leading-none tracking-[-0.065em] text-[#282828]">
                 {service.title}
               </h1>
+              </div>
+              <div className="relative h-[340px] w-full overflow-hidden bg-white sm:h-[520px] lg:h-[700px]">
+                <img src={service.hero} alt={service.title} className="absolute inset-0 size-full object-cover" />
+              </div>
             </div>
-            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[20px] bg-[#f5f5f5] lg:aspect-[16/8] lg:max-h-[520px]">
-              <img src={service.hero} alt={service.title} className="absolute inset-0 size-full object-cover" />
-            </div>
-          </div>
 
           {/* Pull quote */}
-          <p className={`${serif} w-full text-[clamp(26px,3vw,38px)] font-medium italic leading-[1.25] tracking-[-0.035em] text-[#070606]`}>
+          <p className="w-full max-w-[1107px] text-[clamp(30px,3.35vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#616161]">
             {service.pullQuote}
           </p>
+          </div>
 
           {/* Section One */}
-          <div className="flex w-full flex-col gap-6">
-            <h2 className="text-[clamp(26px,3vw,36px)] font-semibold leading-[1.2] tracking-[-0.05em] text-[#111418]">
+          <div className="flex w-full max-w-[800px] flex-col gap-8">
+            <h2 className="text-[clamp(34px,3.35vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
               {service.sectionOne.heading}
             </h2>
             {service.sectionOne.paragraphs.map((p, i) => (
-              <p key={i} className="text-[15px] font-normal leading-[1.65] tracking-[-0.02em] text-[#616161]">
+              <p key={i} className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                 {p}
               </p>
             ))}
-            <Bullets items={service.sectionOne.bullets} />
+            <Bullets items={service.sectionOne.bullets} emphasis />
           </div>
 
           {/* Gallery A - asymmetric */}
-          <div className="flex w-full flex-col gap-3 sm:flex-row">
-            <div className="relative aspect-square w-full overflow-hidden rounded-[12px] bg-[#f5f5f5] sm:aspect-auto sm:h-[440px] sm:flex-[2]">
-              <img src={service.galleryA[0]} alt="" className="absolute inset-0 size-full object-cover" />
+          <div className="grid w-full gap-2 lg:h-[700px] lg:grid-cols-[minmax(0,1fr)_32.22%]">
+            <div className="relative h-[360px] w-full overflow-hidden rounded-[10px] bg-white sm:h-[520px] lg:h-full">
+              <img src={service.galleryA[0]} alt="" className="absolute inset-0 size-full object-cover" loading="lazy" />
             </div>
-            <div className="relative aspect-square w-full overflow-hidden rounded-[12px] bg-[#f5f5f5] sm:aspect-auto sm:h-[440px] sm:flex-1">
-              <img src={service.galleryA[1]} alt="" className="absolute inset-0 size-full object-cover" />
+            <div className="relative h-[360px] w-full overflow-hidden rounded-[10px] bg-white sm:h-[520px] lg:h-full">
+              <img src={service.galleryA[1]} alt="" className="absolute inset-0 size-full object-cover" loading="lazy" />
             </div>
           </div>
 
           {/* Section Two */}
-          <div className="flex w-full flex-col gap-6">
-            <h2 className="text-[clamp(26px,3vw,36px)] font-semibold leading-[1.2] tracking-[-0.05em] text-[#111418]">
+          <div className="flex w-full max-w-[800px] flex-col gap-8">
+            <h2 className="text-[clamp(34px,3.35vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
               {service.sectionTwo.heading}
             </h2>
             {service.sectionTwo.paragraphs.map((p, i) => (
-              <p key={i} className="text-[15px] font-normal leading-[1.65] tracking-[-0.02em] text-[#616161]">
+              <p key={i} className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                 {p}
               </p>
             ))}
-            <div className="w-full max-w-[560px] py-2">
+            <div className="w-full">
               <ReviewCard {...service.sectionTwo.review} />
             </div>
-            <h3 className="mt-4 text-[clamp(26px,3vw,36px)] font-semibold leading-[1.2] tracking-[-0.05em] text-[#111418]">
+            <h3 className="text-[clamp(34px,3.35vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
               {service.sectionTwo.subHeading}
             </h3>
             <Bullets items={service.sectionTwo.bullets} />
             {service.sectionTwo.paragraphsAfter.map((p, i) => (
-              <p key={i} className="text-[15px] font-normal leading-[1.65] tracking-[-0.02em] text-[#616161]">
+              <p key={i} className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                 {p}
               </p>
             ))}
           </div>
+          </div>
 
           {/* Gallery B - equal split */}
-          <div className="flex w-full flex-col gap-3 sm:flex-row">
+          <div className="grid w-full gap-2 lg:h-[700px] lg:grid-cols-2">
             {service.galleryB.map((src, i) => (
-              <div key={i} className="relative aspect-square w-full overflow-hidden rounded-[12px] bg-[#f5f5f5] sm:aspect-auto sm:h-[440px] sm:flex-1">
-                <img src={src} alt="" className="absolute inset-0 size-full object-cover" />
+              <div key={i} className="relative h-[360px] w-full overflow-hidden rounded-[10px] bg-white sm:h-[520px] lg:h-full">
+                <img src={src} alt="" className="absolute inset-0 size-full object-cover" loading="lazy" />
               </div>
             ))}
           </div>
 
           {/* Closing */}
-          <div className="flex w-full max-w-[640px] flex-col gap-6">
-            <h2 className="text-[clamp(28px,3.4vw,40px)] font-semibold leading-[1.15] tracking-[-0.05em] text-[#111418]">
+          <div className="flex w-full max-w-[800px] flex-col gap-8">
+            <h2 className="max-w-[720px] text-[clamp(34px,3.35vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#070606]">
               {service.closing.heading}
             </h2>
             {service.closing.paragraphs.map((p, i) => (
-              <p key={i} className="text-[15px] font-normal leading-[1.65] tracking-[-0.02em] text-[#616161]">
+              <p key={i} className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#515151]">
                 {p}
               </p>
             ))}
             <Bullets items={service.closing.bullets} />
           </div>
-
-          {/* Back button */}
-          <Link
-            to="/services"
-            className="inline-flex h-11 items-center justify-center rounded-full bg-[#070606] px-5 text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)] transition-transform hover:-translate-x-0.5"
-          >
-            Back to Services
-          </Link>
         </div>
       </section>
-      <Faq />
       <Cta />
       <Footer />
     </main>
