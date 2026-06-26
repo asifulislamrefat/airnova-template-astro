@@ -111,7 +111,7 @@ function stub(slug: string, title: string, heroUrl: string): Service {
 }
 
 const SERVICES: Record<string, Service> = {
-  "brand-identity-design": stub("brand-identity-design", "Brand Identity Design", hero.url),
+  "brand-identity-design": stub("brand-identity-design", "Branding & Identity", hero.url),
   "creative-consulting": stub("creative-consulting", "Creative Consulting", img205.url),
   "prototype-wireframing": stub("prototype-wireframing", "Prototype & Wireframing", img204.url),
   "e-commerce-design": stub("e-commerce-design", "E-commerce Design", img206.url),
@@ -181,39 +181,39 @@ function ServiceDetailsPage() {
   return (
     <main className="min-h-screen overflow-x-clip bg-white font-sans text-foreground antialiased">
       <Nav />
-      <section className="bg-white py-16 lg:py-28">
-        <div className="container-x flex flex-col items-center gap-16 lg:gap-20">
+      <section className="bg-white py-16 lg:py-24">
+        <div className="mx-auto flex w-full max-w-[1100px] flex-col items-start gap-14 px-[5%] lg:gap-16 lg:px-10">
           {/* Header */}
-          <div className="flex w-full flex-col gap-12">
-            <div className="flex w-full flex-col items-start gap-4">
-              <div className="flex items-center gap-6 text-[18px] font-medium leading-[1.5] tracking-[-0.075em] text-[#616161] sm:text-[20px]">
+          <div className="flex w-full flex-col gap-10">
+            <div className="flex w-full flex-col items-start gap-3">
+              <div className="flex items-center gap-4 text-[15px] font-medium leading-[1.5] tracking-[-0.04em] text-[#616161]">
                 <span>{service.date}</span>
                 <span className="flex items-center gap-2">
                   <span className="inline-block size-1.5 rounded-full bg-[#616161]" />
                   {service.readTime}
                 </span>
               </div>
-              <h1 className="text-[clamp(40px,7vw,80px)] font-semibold leading-[1.1] tracking-[-0.065em] text-black">
+              <h1 className="text-[clamp(36px,5.5vw,64px)] font-semibold leading-[1.05] tracking-[-0.05em] text-black">
                 {service.title}
               </h1>
             </div>
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[20px] bg-[#f5f5f5] lg:aspect-auto lg:h-[700px]">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[20px] bg-[#f5f5f5] lg:aspect-[16/8] lg:max-h-[520px]">
               <img src={service.hero} alt={service.title} className="absolute inset-0 size-full object-cover" />
             </div>
           </div>
 
           {/* Pull quote */}
-          <p className={`${serif} w-full text-[clamp(32px,4.5vw,56px)] font-medium italic leading-[1.15] tracking-[-0.04em] text-[#070606]`}>
+          <p className={`${serif} w-full text-[clamp(26px,3vw,38px)] font-medium italic leading-[1.25] tracking-[-0.035em] text-[#070606]`}>
             {service.pullQuote}
           </p>
 
           {/* Section One */}
-          <div className="flex w-full max-w-[800px] flex-col gap-8 self-start">
-            <h2 className="text-[clamp(28px,4.5vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#111418]">
+          <div className="flex w-full flex-col gap-6">
+            <h2 className="text-[clamp(26px,3vw,36px)] font-semibold leading-[1.2] tracking-[-0.05em] text-[#111418]">
               {service.sectionOne.heading}
             </h2>
             {service.sectionOne.paragraphs.map((p, i) => (
-              <p key={i} className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#616161]">
+              <p key={i} className="text-[15px] font-normal leading-[1.65] tracking-[-0.02em] text-[#616161]">
                 {p}
               </p>
             ))}
@@ -221,53 +221,55 @@ function ServiceDetailsPage() {
           </div>
 
           {/* Gallery A - asymmetric */}
-          <div className="flex w-full flex-col gap-2 sm:flex-row">
-            <div className="relative aspect-[8/5] w-full overflow-hidden rounded-[10px] bg-[#f5f5f5] sm:aspect-auto sm:h-[700px] sm:flex-[859]">
+          <div className="flex w-full flex-col gap-3 sm:flex-row">
+            <div className="relative aspect-square w-full overflow-hidden rounded-[12px] bg-[#f5f5f5] sm:aspect-auto sm:h-[440px] sm:flex-[2]">
               <img src={service.galleryA[0]} alt="" className="absolute inset-0 size-full object-cover" />
             </div>
-            <div className="relative aspect-[8/5] w-full overflow-hidden rounded-[10px] bg-[#f5f5f5] sm:aspect-auto sm:h-[700px] sm:flex-[412]">
+            <div className="relative aspect-square w-full overflow-hidden rounded-[12px] bg-[#f5f5f5] sm:aspect-auto sm:h-[440px] sm:flex-1">
               <img src={service.galleryA[1]} alt="" className="absolute inset-0 size-full object-cover" />
             </div>
           </div>
 
           {/* Section Two */}
-          <div className="flex w-full max-w-[800px] flex-col gap-8 self-start">
-            <h2 className="text-[clamp(28px,4.5vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#111418]">
+          <div className="flex w-full flex-col gap-6">
+            <h2 className="text-[clamp(26px,3vw,36px)] font-semibold leading-[1.2] tracking-[-0.05em] text-[#111418]">
               {service.sectionTwo.heading}
             </h2>
             {service.sectionTwo.paragraphs.map((p, i) => (
-              <p key={i} className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#616161]">
+              <p key={i} className="text-[15px] font-normal leading-[1.65] tracking-[-0.02em] text-[#616161]">
                 {p}
               </p>
             ))}
-            <ReviewCard {...service.sectionTwo.review} />
-            <h3 className="mt-4 text-[clamp(28px,4.5vw,48px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#111418]">
+            <div className="w-full max-w-[560px] py-2">
+              <ReviewCard {...service.sectionTwo.review} />
+            </div>
+            <h3 className="mt-4 text-[clamp(26px,3vw,36px)] font-semibold leading-[1.2] tracking-[-0.05em] text-[#111418]">
               {service.sectionTwo.subHeading}
             </h3>
             <Bullets items={service.sectionTwo.bullets} />
             {service.sectionTwo.paragraphsAfter.map((p, i) => (
-              <p key={i} className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#616161]">
+              <p key={i} className="text-[15px] font-normal leading-[1.65] tracking-[-0.02em] text-[#616161]">
                 {p}
               </p>
             ))}
           </div>
 
           {/* Gallery B - equal split */}
-          <div className="flex w-full flex-col gap-2 sm:flex-row">
+          <div className="flex w-full flex-col gap-3 sm:flex-row">
             {service.galleryB.map((src, i) => (
-              <div key={i} className="relative aspect-[8/5] w-full overflow-hidden rounded-[10px] bg-[#f5f5f5] sm:aspect-auto sm:h-[700px] sm:flex-1">
+              <div key={i} className="relative aspect-square w-full overflow-hidden rounded-[12px] bg-[#f5f5f5] sm:aspect-auto sm:h-[440px] sm:flex-1">
                 <img src={src} alt="" className="absolute inset-0 size-full object-cover" />
               </div>
             ))}
           </div>
 
           {/* Closing */}
-          <div className="flex w-full max-w-[800px] flex-col gap-8 self-start">
-            <h2 className="text-[clamp(32px,5vw,56px)] font-semibold leading-[1.2] tracking-[-0.065em] text-[#111418]">
+          <div className="flex w-full max-w-[640px] flex-col gap-6">
+            <h2 className="text-[clamp(28px,3.4vw,40px)] font-semibold leading-[1.15] tracking-[-0.05em] text-[#111418]">
               {service.closing.heading}
             </h2>
             {service.closing.paragraphs.map((p, i) => (
-              <p key={i} className="text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-[#616161]">
+              <p key={i} className="text-[15px] font-normal leading-[1.65] tracking-[-0.02em] text-[#616161]">
                 {p}
               </p>
             ))}
@@ -277,7 +279,7 @@ function ServiceDetailsPage() {
           {/* Back button */}
           <Link
             to="/services"
-            className="inline-flex h-12 items-center justify-center self-start rounded-full bg-[#070606] px-6 py-4 text-[16px] font-medium leading-[1.5] tracking-[-0.075em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)] transition-transform hover:-translate-x-0.5"
+            className="inline-flex h-11 items-center justify-center rounded-full bg-[#070606] px-5 text-[14px] font-medium leading-[1.5] tracking-[-0.04em] text-white shadow-[0_4px_2px_rgba(0,0,0,0.16)] transition-transform hover:-translate-x-0.5"
           >
             Back to Services
           </Link>
