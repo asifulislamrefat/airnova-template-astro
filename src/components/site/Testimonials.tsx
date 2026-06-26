@@ -11,7 +11,6 @@ export function Testimonials() {
       text: "Their creativity and professionalism truly stand out. Our website looks ",
       avatar: "https://i.pravatar.cc/120?img=32",
       headerTop: true,
-      lgOrder: "lg:order-2",
     },
     {
       name: "Michael Turner",
@@ -19,7 +18,6 @@ export function Testimonials() {
       text: "Fast delivery, great communication, and outstanding design work !",
       avatar: michaelAvatar.url,
       headerTop: true,
-      lgOrder: "lg:order-1",
     },
     {
       name: "David Lee",
@@ -27,7 +25,6 @@ export function Testimonials() {
       text: "They understood our vision perfectly and delivered a design that elevated our brand identity.",
       avatar: "https://i.pravatar.cc/120?img=47",
       headerTop: true,
-      lgOrder: "lg:order-3",
     },
   ];
   return (
@@ -124,7 +121,7 @@ export function Testimonials() {
             return (
               <div
                 key={r.name}
-                className={`group flex flex-col gap-2 transition-[gap] duration-500 ease-out hover:gap-0 ${r.lgOrder}`}
+                className="group flex flex-col gap-2 transition-[gap] duration-500 ease-out hover:gap-0"
               >
                 {r.headerTop ? header("top") : body("top")}
                 {r.headerTop ? body("bottom") : header("bottom")}
