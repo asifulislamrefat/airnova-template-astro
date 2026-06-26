@@ -99,7 +99,7 @@ function BlogCard({ post }: { post: Post }) {
       params={{ slug: post.slug }}
       className="group flex flex-col gap-6"
     >
-      <div className="relative block aspect-[4/5] overflow-hidden rounded-[20px] bg-[#f5f5f5]">
+      <div className="relative block aspect-[4/3] overflow-hidden rounded-[20px] bg-[#f5f5f5]">
         <img
           src={post.image}
           alt={post.title}
