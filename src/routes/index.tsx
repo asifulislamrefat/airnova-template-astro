@@ -832,7 +832,7 @@ function Stats() {
               }`}
             >
               <CustomVideoPlayer
-                youtubeId="9u1RLVS0ziU"
+                youtubeId="c-rV8AcXlQE"
                 fill
                 playSignal={playSignal}
                 onPlayingChange={setVideoPlaying}
