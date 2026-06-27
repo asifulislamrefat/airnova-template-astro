@@ -62,6 +62,7 @@ function lovableAssetsProxy() {
 }
 
 export default defineConfig({
+  site: "https://airnova.design",
   integrations: [react(), sitemap()],
   vite: {
     plugins: [tailwindcss(), lovableAssetsProxy()],
