@@ -1,0 +1,66 @@
+---
+import "@/styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "Lovable App",
+  description = "Hello There is a web application for managing and exporting project data.",
+  image = "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/75afe86f-4497-417b-a784-eae5cb537aff/id-preview-e89db76d--6f28d1d2-1d99-4e9d-ba11-0e398e612d98.lovable.app-1782216794429.png"
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Lovable" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:site" content="@Lovable" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-dark.png" media="(prefers-color-scheme: dark)" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#070606" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@1,500;1,600;1,700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <slot />
+
+    <div class="progressive-blur" aria-hidden="true">
+      <div class="progressive-blur__layer is--1"></div>
+      <div class="progressive-blur__layer is--2"></div>
+      <div class="progressive-blur__layer is--3"></div>
+      <div class="progressive-blur__layer is--4"></div>
+      <div class="progressive-blur__layer is--5"></div>
+    </div>
+  </body>
+</html>

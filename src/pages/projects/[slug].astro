@@ -1,0 +1,18 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+import ProjectsDetails from "@/components/pages/ProjectsDetails.tsx";
+import { PROJECTS } from "@/lib/projects";
+
+export async function getStaticPaths() {
+  return PROJECTS.map((project) => ({
+    params: { slug: project.slug },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<RootLayout title={`${project.name} — Airnova`} description={project.intro}>
+  <ProjectsDetails project={project} client:load />
+</RootLayout>

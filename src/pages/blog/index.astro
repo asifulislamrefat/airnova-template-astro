@@ -1,0 +1,8 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+import BlogIndex from "@/components/pages/BlogIndex.tsx";
+---
+
+<RootLayout title="Blog — Airnova" description="Explore our latest thoughts, creative tips, and design inspirations.">
+  <BlogIndex client:load />
+</RootLayout>

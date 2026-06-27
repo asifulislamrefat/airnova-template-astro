@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
 import { Logo } from "./shared";
 import { PROJECTS } from "@/lib/projects";
 
@@ -31,25 +30,31 @@ function MenuLink({
   children?: React.ReactNode;
 }) {
   const route = ROUTE_MAP[label];
-  if (route) {
-    return (
-      <Link
-        to={route}
-        onClick={onClick}
-        className={className}
-        activeProps={activeClassName ? { className: activeClassName } : undefined}
-        activeOptions={{ exact: route === "/" }}
-      >
-        {children ?? label}
-      </Link>
-    );
-  }
+  const targetHref = route ?? href;
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const currentPath = window.location.pathname;
+      setIsActive(
+        targetHref === "/"
+          ? currentPath === "/"
+          : currentPath.startsWith(targetHref)
+      );
+    }
+  }, [targetHref]);
+
   return (
-    <a href={href} onClick={onClick} className={className}>
+    <a
+      href={targetHref}
+      onClick={onClick}
+      className={`${className || ""} ${isActive && activeClassName ? activeClassName : ""}`}
+    >
       {children ?? label}
     </a>
   );
 }
+
 
 function FullscreenMenu({
   open,

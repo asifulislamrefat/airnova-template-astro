@@ -33,3 +33,7 @@ dist-ssr
 
 # Responsive check artifacts
 .responsive-snapshots/
+
+# Astro & Claude cache
+.astro/
+.claude/

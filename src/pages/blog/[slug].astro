@@ -1,0 +1,17 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+import BlogDetails, { POSTS } from "@/components/pages/BlogDetails.tsx";
+
+export async function getStaticPaths() {
+  return Object.values(POSTS).map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<RootLayout title={`${post.title} — Airnova`} description={post.intro}>
+  <BlogDetails post={post} client:load />
+</RootLayout>

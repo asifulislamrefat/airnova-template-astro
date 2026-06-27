@@ -1,8 +1,8 @@
-import { Link } from "@tanstack/react-router";
 import { Logo, serif } from "./shared";
 
 // Map footer link labels to internal routes. Add an entry when a new page route is created.
 const ROUTE_MAP: Record<string, string> = {
+  "Home": "/",
   "About Us": "/about",
   "Projects": "/projects",
   "Pricing": "/pricing",
@@ -37,21 +37,12 @@ export function Footer() {
                 <ul className="space-y-3 text-base text-background/85">
                   {c.links.map((l) => (
                     <li key={l}>
-                      {ROUTE_MAP[l] ? (
-                        <Link
-                          to={ROUTE_MAP[l]}
-                          className="inline-block transition-all duration-300 ease-out hover:translate-x-1 hover:text-background"
-                        >
-                          {l}
-                        </Link>
-                      ) : (
-                        <a
-                          href="#"
-                          className="inline-block transition-all duration-300 ease-out hover:translate-x-1 hover:text-background"
-                        >
-                          {l}
-                        </a>
-                      )}
+                      <a
+                        href={ROUTE_MAP[l] || "#"}
+                        className="inline-block transition-all duration-300 ease-out hover:translate-x-1 hover:text-background"
+                      >
+                        {l}
+                      </a>
                     </li>
                   ))}
                 </ul>

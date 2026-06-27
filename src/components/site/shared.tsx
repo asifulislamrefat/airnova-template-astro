@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "@tanstack/react-router";
 
 export const serif = "font-serif italic";
 
@@ -27,12 +26,12 @@ export function BrandMark({ size = 38, dark = true }: { size?: number; dark?: bo
 
 export function Logo({ light = false }: { light?: boolean }) {
   return (
-    <Link to="/" aria-label="Airnova — home" className="flex items-center gap-2">
+    <a href="/" aria-label="Airnova — home" className="flex items-center gap-2">
       <BrandMark dark={!light} />
       <span className={`${serif} font-bold text-[32px] leading-[1.1] tracking-[-0.075em] ${light ? "text-white" : "text-foreground"}`}>
         Airnova
       </span>
-    </Link>
+    </a>
   );
 }
 
